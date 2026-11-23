@@ -208,6 +208,7 @@ function layout({ title, body, depth, current }) {
 <header class="top">
   <a class="brand" href="${up}index.html"><img src="${up}assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
   <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <a class="site" href="https://equavela.org/">equavela.org <span aria-hidden="true">↗</span></a>
   <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
 </header>
 <div class="frame">
@@ -224,6 +225,7 @@ ${reference}
 <ul>
 ${functions}
 </ul>
+<p class="site-nav"><a href="https://equavela.org/">equavela.org <span aria-hidden="true">↗</span></a></p>
 </nav>
 <main>
 ${body}

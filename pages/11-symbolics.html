@@ -1,0 +1,44 @@
+<!-- title: Symbolic calculation -->
+<h1>Symbolic calculation</h1>
+<p>The symbolic arrow <code>→</code> transforms an expression exactly instead of computing a number: <code>(x + 1)² →</code> gives <code>x² + 2·x + 1</code> with the keyword <code>expand</code>, <code>d/dx x²·sin(x) →</code> gives <code>x²·cos(x) + 2·x·sin(x)</code>. The symbolic engine is <a href="https://www.sympy.org">SymPy</a>, the computer algebra library for Python, which Equavela ships with.</p>
+
+<h2 id="arrow">The symbolic arrow</h2>
+<p>Type an expression and press <kbd>Ctrl</kbd>+<kbd>.</kbd>. Without a keyword, the expression is evaluated with the engine's automatic simplifications: derivatives, integrals, sums and limits are carried out, numbers are combined, <code>x + x</code> becomes <code>2·x</code>. Whole numbers and fractions stay exact (<code>1/3</code>), decimal numbers stay decimal (<code>0.5·x</code>).</p>
+<p>Definitions made above are substituted: if <code>a := 3</code> is defined, <code>a·x →</code> gives <code>3·x</code>. Your functions are expanded into their bodies. A name with no definition stays a symbol. The variables of derivatives, integrals, sums and limits are always symbols, even when a variable of the same name is defined.</p>
+
+<h2 id="keywords">Keywords</h2>
+<p>Keywords go between the expression and the arrow and say what to do. Insert them from the <em>Symbolics</em> panel or type them in the keyword placeholder; <kbd>Shift</kbd>+<kbd>Enter</kbd> adds another keyword line. Several keywords apply in order, each to the result of the previous one.</p>
+<table>
+<thead><tr><th>Keyword</th><th>Arguments</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><code>simplify</code></td><td></td><td>The simplest form the engine finds.</td></tr>
+<tr><td><code>expand</code></td><td></td><td>Products and powers multiplied out.</td></tr>
+<tr><td><code>factor</code></td><td></td><td>Factored into irreducible factors.</td></tr>
+<tr><td><code>solve</code></td><td><code>x</code>, or <code>x, y, …</code> (optional)</td><td>The solutions of <code>e = 0</code> or of the equation <code>e</code> (written with the bold equal sign). One solution is a scalar, several a column. A column of equations with several unknowns is a system: one row per solution, one column per unknown.</td></tr>
+<tr><td><code>substitute</code></td><td><code>x = v</code> (bold)</td><td><code>x</code> replaced by <code>v</code>.</td></tr>
+<tr><td><code>series</code></td><td><code>x = a</code> or <code>x</code>, and the order <code>n</code> (optional)</td><td>The Taylor series about <code>a</code> (0 by default) with the terms of order below <code>n</code> (6 by default), in rising powers.</td></tr>
+<tr><td><code>collect</code></td><td><code>x</code></td><td>Terms grouped by powers of <code>x</code>.</td></tr>
+<tr><td><code>coeffs</code></td><td><code>x</code></td><td>The polynomial's coefficients in <code>x</code>, constant term first.</td></tr>
+<tr><td><code>parfrac</code></td><td><code>x</code> (optional)</td><td>Partial fraction decomposition.</td></tr>
+<tr><td><code>float</code></td><td>digits (optional)</td><td>A decimal number with 15 significant digits, or the number given.</td></tr>
+<tr><td><code>assume</code></td><td><code>x &gt; 0</code>, <code>x ≥ 0</code>, <code>x &lt; 0</code>, <code>x ≤ 0</code>, <code>x = real</code>, <code>x = integer</code>, <code>complex</code>, <code>even</code>, <code>odd</code>, <code>RealRange(a, b)</code></td><td>Assumptions about a symbol for the whole evaluation; for example <code>√(x²)</code> becomes <code>x</code> when <code>x &gt; 0</code>.</td></tr>
+<tr><td><code>laplace</code>, <code>invlaplace</code></td><td>the variable (optional), the result variable (optional)</td><td>Unilateral Laplace transform <code>F(s) = ∫₀^∞ f(t)·e^(−s·t) dt</code> and its inverse (for t &gt; 0).</td></tr>
+<tr><td><code>fourier</code>, <code>invfourier</code></td><td>as above</td><td><code>F(ω) = ∫ f(t)·e^(−i·ω·t) dt</code> over the whole line, and <code>f(t) = 1/(2π)·∫ F(ω)·e^(i·ω·t) dω</code>.</td></tr>
+<tr><td><code>ztrans</code>, <code>invztrans</code></td><td>as above</td><td>Unilateral Z transform <code>F(z) = Σ f(n)·z^(−n)</code> and the inverse of a rational causal transform.</td></tr>
+<tr><td><code>rewrite</code></td><td><code>sin</code>, <code>cos</code>, <code>tan</code>, <code>exp</code>, <code>ln</code>, <code>sincos</code>, <code>sinhcos</code>, <code>gamma</code>, <code>fact</code>, …</td><td>The expression rewritten in terms of that function.</td></tr>
+<tr><td><code>combine</code></td><td><code>parts</code>, <code>power</code>, <code>exp</code>, <code>ln</code>, <code>sincos</code>, <code>gamma</code> (optional)</td><td>Terms combined: over a common denominator, powers, exponentials, logarithms, products of sines and cosines into sums, factorials.</td></tr>
+<tr><td><code>confrac</code></td><td><code>n</code>, <code>x</code> (optional)</td><td>A continued fraction.</td></tr>
+<tr><td><code>rectangular</code></td><td></td><td>The form <code>a + b·i</code>, every variable taken as real: <code>e^(i·x)</code> becomes <code>cos(x) + i·sin(x)</code>.</td></tr>
+</tbody>
+</table>
+<p>The transforms use the conventional variable by default (<code>t</code> for <code>laplace</code> and <code>fourier</code>, <code>s</code> for <code>invlaplace</code>, <code>ω</code> for <code>invfourier</code>, <code>n</code> for <code>ztrans</code>, <code>z</code> for <code>invztrans</code>) or the only free variable of the expression. The keywords <code>cauchy</code>, <code>decomp</code>, <code>explicit</code>, <code>standard</code> and <code>using</code> are recognised but not implemented; they report that.</p>
+
+<h2 id="definitions">Defining with a symbolic result</h2>
+<p>A definition can take a symbolic result as its value: <code>g(x) := d/dx f(x) →</code> defines <code>g</code> as the derivative, and <code>S(n) := e →[solve, k]</code> as a solution. The defined name can then be used in numeric calculation.</p>
+
+<h2 id="fast">Fast Symbolic</h2>
+<p>While you edit a math region, <em>Math › Fast Symbolic</em> applies one operation to the expression without writing keywords: Simplify, Expand, Factor, Float, Combine, Rectangular, Continued fraction on the whole expression, and Collect, Differentiate, Integrate, Partial fractions, Coefficients, Series, the Laplace, Fourier and Z transforms and their inverses, and Solve for a variable you select. <kbd>Alt</kbd>+<kbd>S</kbd> opens the list beside the editor; press the underlined letter to run a command: <kbd>S</kbd> Simplify, <kbd>E</kbd> Expand, <kbd>F</kbd> Factor, <kbd>V</kbd> Solve, <kbd>C</kbd> Collect, <kbd>D</kbd> Differentiate, <kbd>I</kbd> Integrate, <kbd>P</kbd> Partial fractions.</p>
+<p>Two settings in the menu decide what happens: <em>Evaluate in place</em> (off by default) replaces the expression being edited with the result; otherwise the result is inserted as a new region below the source. <em>Worksheet variables</em> (on by default) substitutes the definitions above, leaving the selected variable free.</p>
+
+<h2 id="units">Units and limits</h2>
+<p>Units are passed to the symbolic engine as plain symbols: <code>3 m</code> stays <code>3·m</code>, and no conversion takes place. Matrices are supported (determinant, transpose, inverse), but strings, ranges, programs and Julia calls are not and report so. Symbolic evaluation runs apart from the numeric calculation and never blocks it.</p>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command reference · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html" aria-current="page">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Command reference</h1>
+<p>Every command of the ribbon and the menus can also be run from the <strong>Commands</strong> palette (<kbd>Ctrl</kbd>+<kbd>K</kbd>): type a few letters of its name or of a related word. This list is generated from the palette's catalogue.</p>
+<table><thead><tr><th>Command</th><th>Found by</th></tr></thead><tbody>
+<tr><td>Add page break</td><td>page break spacing document new page</td></tr>
+<tr><td>Add space (one line)</td><td>line space spacing document insert down</td></tr>
+<tr><td>Calculate</td><td>recalculate evaluate run</td></tr>
+<tr><td>Calculate worksheet</td><td>recalculate all evaluate run</td></tr>
+<tr><td>Calculation settings…</td><td>tolerance tol ctol convergence constraint solve block origin</td></tr>
+<tr><td>Check spelling</td><td>spelling spell check underline misspelt words on off toggle</td></tr>
+<tr><td>Clear cells</td><td>matrix array table empty</td></tr>
+<tr><td>Close project</td><td>project folder close workspace</td></tr>
+<tr><td>Close worksheet</td><td>file</td></tr>
+<tr><td>Code: Duplicate line</td><td>text file editor copy line julia</td></tr>
+<tr><td>Code: Find</td><td>text file editor search julia</td></tr>
+<tr><td>Code: Go to line</td><td>text file editor line number jump julia</td></tr>
+<tr><td>Code: Indent</td><td>text file editor tab spaces julia</td></tr>
+<tr><td>Code: Move line down</td><td>text file editor reorder julia</td></tr>
+<tr><td>Code: Move line up</td><td>text file editor reorder julia</td></tr>
+<tr><td>Code: Outdent</td><td>text file editor tab spaces julia</td></tr>
+<tr><td>Code: Replace</td><td>text file editor search substitute julia</td></tr>
+<tr><td>Code: Show file in folder</td><td>text image file explorer reveal</td></tr>
+<tr><td>Code: Toggle line comment</td><td>text file editor comment hash julia</td></tr>
+<tr><td>Collapse or expand area</td><td>area fold unfold hide show</td></tr>
+<tr><td>Convert to project…</td><td>project folder worksheet portable eqvz export</td></tr>
+<tr><td>Decrease font size</td><td>math font size smaller formatting</td></tr>
+<tr><td>Delete column</td><td>matrix array table remove</td></tr>
+<tr><td>Delete row</td><td>matrix array table remove</td></tr>
+<tr><td>Delete selected regions</td><td>remove</td></tr>
+<tr><td>Disable or enable selected regions</td><td>calculate skip ignore stop evaluate region disable enable</td></tr>
+<tr><td>Draft view</td><td>layout</td></tr>
+<tr><td>Equation break</td><td>style line wrap</td></tr>
+<tr><td>Export PDF…</td><td>pdf print save file export</td></tr>
+<tr><td>Extract project from .eqvz…</td><td>project archive import unpack</td></tr>
+<tr><td>Fit page</td><td>zoom whole page</td></tr>
+<tr><td>Fit page width</td><td>zoom</td></tr>
+<tr><td>Header and footer…</td><td>header footer page number date file name title running head</td></tr>
+<tr><td>Help for the function at the cursor</td><td>documentation f1</td></tr>
+<tr><td>Image resource usage…</td><td>project assets images references missing unused owners</td></tr>
+<tr><td>Image: original size</td><td>picture natural size reset fit 1:1</td></tr>
+<tr><td>Image: replace…</td><td>picture swap change file picture</td></tr>
+<tr><td>Import .mcdx or .xmcd worksheet…</td><td>mcdx xmcd worksheet open convert legacy</td></tr>
+<tr><td>Increase font size</td><td>math font size bigger larger formatting</td></tr>
+<tr><td>Insert area</td><td>collapse group section band</td></tr>
+<tr><td>Insert column left</td><td>matrix array table</td></tr>
+<tr><td>Insert column right</td><td>matrix array table</td></tr>
+<tr><td>Insert image…</td><td>picture png svg jpg jpeg figure</td></tr>
+<tr><td>Insert include</td><td>include worksheet reference library</td></tr>
+<tr><td>Insert Julia block</td><td>julia code program script package</td></tr>
+<tr><td>Insert math region</td><td>new equation</td></tr>
+<tr><td>Insert matrix…</td><td>array table size</td></tr>
+<tr><td>Insert row above</td><td>matrix array table</td></tr>
+<tr><td>Insert row below</td><td>matrix array table</td></tr>
+<tr><td>Insert table</td><td>table data sets columns matrix</td></tr>
+<tr><td>Insert text block (full width)</td><td>new text block ctrl+shift+t</td></tr>
+<tr><td>Insert text region</td><td>new text ctrl+t</td></tr>
+<tr><td>Insert XY plot</td><td>graph chart trace</td></tr>
+<tr><td>Julia environment…</td><td>packages kernel julia manager</td></tr>
+<tr><td>Julia REPL</td><td>repl console kernel julia interactive terminal</td></tr>
+<tr><td>Julia: reset to content size</td><td>julia resize natural automatic fit</td></tr>
+<tr><td>Keyboard shortcuts</td><td>keys chords hotkeys print sheet reference</td></tr>
+<tr><td>Label</td><td>style variable unit function constant</td></tr>
+<tr><td>Label styles…</td><td>label style bold italic underline color colour variable constant function unit system keyword formatting</td></tr>
+<tr><td>Line break</td><td>style line wrap new line return arrow</td></tr>
+<tr><td>Literal subscript</td><td>style index name</td></tr>
+<tr><td>Make unit</td><td>style unit label litre selection</td></tr>
+<tr><td>Manual</td><td>help documentation guide reference user manual</td></tr>
+<tr><td>Math font…</td><td>math font size color colour highlight background formatting</td></tr>
+<tr><td>Matrix: show indices</td><td>matrix indices index row column numbers display show hide toggle array</td></tr>
+<tr><td>New project…</td><td>project folder create</td></tr>
+<tr><td>New worksheet</td><td>file create</td></tr>
+<tr><td>Next problem</td><td>error warning tracing</td></tr>
+<tr><td>Open project…</td><td>project folder load</td></tr>
+<tr><td>Open the function catalogue</td><td>functions help builtin</td></tr>
+<tr><td>Open worksheet</td><td>file load</td></tr>
+<tr><td>Options…</td><td>settings preferences autosave recovery backup</td></tr>
+<tr><td>Pack project as .eqvz…</td><td>project archive export portable</td></tr>
+<tr><td>Page setup…</td><td>page size orientation margins paper layout a4 letter landscape portrait</td></tr>
+<tr><td>Page view</td><td>layout</td></tr>
+<tr><td>Plot: add trace</td><td>series curve</td></tr>
+<tr><td>Plot: auto scale</td><td>axis limits range reset</td></tr>
+<tr><td>Plot: axes at the origin</td><td>axis origin crossed boundary boxed position zero</td></tr>
+<tr><td>Plot: bar trace</td><td>trace type bars histogram column</td></tr>
+<tr><td>Plot: grid</td><td>axis gridlines show hide</td></tr>
+<tr><td>Plot: line trace</td><td>trace type lines curve join</td></tr>
+<tr><td>Plot: lines</td><td>trace style type line</td></tr>
+<tr><td>Plot: lines and markers</td><td>trace style type symbol points</td></tr>
+<tr><td>Plot: logarithmic right y axis</td><td>log scale scaling second axis</td></tr>
+<tr><td>Plot: logarithmic x axis</td><td>log scale scaling</td></tr>
+<tr><td>Plot: logarithmic y axis</td><td>log scale scaling</td></tr>
+<tr><td>Plot: markers</td><td>trace style type symbol points</td></tr>
+<tr><td>Plot: remove selected trace</td><td>series curve delete</td></tr>
+<tr><td>Plot: stem trace</td><td>trace type stems spectrum impulse</td></tr>
+<tr><td>Plot: step trace</td><td>trace type steps staircase</td></tr>
+<tr><td>Previous problem</td><td>error warning tracing</td></tr>
+<tr><td>Print…</td><td>printer paper ctrl+p</td></tr>
+<tr><td>Project settings…</td><td>project main worksheet environment packages configuration</td></tr>
+<tr><td>Recovered text files…</td><td>recovery backup autosave restore moved missing project source text julia</td></tr>
+<tr><td>Redo</td><td>repeat</td></tr>
+<tr><td>Remove space (one line)</td><td>line space spacing document remove delete up</td></tr>
+<tr><td>Replace with…</td><td>find search substitute swap edit</td></tr>
+<tr><td>Reset math style</td><td>math font default reset formatting size color colour highlight</td></tr>
+<tr><td>Restart REPL</td><td>repl restart kernel julia reset terminal</td></tr>
+<tr><td>Result format…</td><td>number format decimal scientific engineering percent polar complex nested</td></tr>
+<tr><td>Save worksheet</td><td>file write store</td></tr>
+<tr><td>Save worksheet as</td><td>file write store export</td></tr>
+<tr><td>Select all regions</td><td>select</td></tr>
+<tr><td>Select column</td><td>matrix array table</td></tr>
+<tr><td>Select row</td><td>matrix array table</td></tr>
+<tr><td>Show import report</td><td>mcdx import issues not imported details</td></tr>
+<tr><td>Show problems</td><td>errors warnings side panel</td></tr>
+<tr><td>Spelling…</td><td>spelling spell check checker dictionary language download english italian ignore</td></tr>
+<tr><td>Stop calculation</td><td>interrupt cancel</td></tr>
+<tr><td>Stop trusting this worksheet</td><td>trust julia security untrusted revoke</td></tr>
+<tr><td>Sum or product: = or := in the lower slot</td><td>index bound define glyph sigma product</td></tr>
+<tr><td>Text style: Heading 1</td><td>paragraph style heading chapter section title level 1</td></tr>
+<tr><td>Text style: Heading 2</td><td>paragraph style heading section level 2</td></tr>
+<tr><td>Text style: Heading 3</td><td>paragraph style heading level 3</td></tr>
+<tr><td>Text style: Normal</td><td>paragraph style body text</td></tr>
+<tr><td>Text style: Subtitle</td><td>paragraph style subtitle document</td></tr>
+<tr><td>Text style: Title</td><td>paragraph style title document heading</td></tr>
+<tr><td>Text: align centre</td><td>paragraph alignment centre center middle text</td></tr>
+<tr><td>Text: align left</td><td>paragraph alignment left flush text</td></tr>
+<tr><td>Text: align right</td><td>paragraph alignment right flush text</td></tr>
+<tr><td>Text: justify</td><td>paragraph alignment justify both margins text</td></tr>
+<tr><td>Toggle automatic calculation</td><td>auto manual mode</td></tr>
+<tr><td>Toggle compact ribbon</td><td>icons small toolbar</td></tr>
+<tr><td>Toggle side panel</td><td>variables outline problems includes</td></tr>
+<tr><td>Undo</td><td>revert</td></tr>
+<tr><td>Worksheet format…</td><td>number format precision complex worksheet default all regions</td></tr>
+<tr><td>Zoom in</td><td>magnify</td></tr>
+<tr><td>Zoom out</td><td>shrink</td></tr>
+<tr><td>Zoom to 100%</td><td>reset</td></tr>
+</tbody></table>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

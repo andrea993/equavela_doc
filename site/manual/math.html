@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entering mathematics · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html" aria-current="page">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Entering mathematics</h1>
+<p>A math region holds one statement: a definition, an evaluation, or both. You type it in a linear way and Equavela draws it in two dimensions as you go: fractions stack, exponents rise, roots grow over their contents.</p>
+
+<h2 id="start">Starting a math region</h2>
+<p>Click where the region should go and start typing; any character that can begin an expression starts a math region at the crosshair. <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> or <em>Insert › Math</em> starts one explicitly. The vertical bar of the crosshair behaves like a text cursor: the first line of the region is placed across it.</p>
+<p>Press <kbd>Enter</kbd> to finish the region, or <kbd>Esc</kbd> to leave it. Arrow keys at the edge of the expression leave the region too, and the crosshair moves beside it so you can continue typing on the same line.</p>
+
+<h2 id="the-signs">Six signs, six meanings</h2>
+<p>Operators that mean different things never share a glyph:</p>
+<table>
+<thead><tr><th>Sign</th><th>Meaning</th><th>Typed as</th></tr></thead>
+<tbody>
+<tr><td><code>:=</code></td><td>Definition: the name takes the value on the right, from this point of the worksheet on.</td><td><kbd>:</kbd></td></tr>
+<tr><td><code>≡</code></td><td>Global definition: the name has the value everywhere in the worksheet, also above.</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd></td></tr>
+<tr><td><code>=</code></td><td>Numeric evaluation: shows the value.</td><td><kbd>=</kbd></td></tr>
+<tr><td><code>→</code></td><td>Symbolic evaluation: shows the expression transformed symbolically.</td><td><kbd>Ctrl</kbd>+<kbd>.</kbd></td></tr>
+<tr><td><strong>=</strong> (bold)</td><td>Boolean equality: 1 when both sides are equal, 0 otherwise. Used in conditions and solve blocks.</td><td><kbd>Ctrl</kbd>+<kbd>=</kbd></td></tr>
+<tr><td><code>←</code></td><td>Local assignment inside a program.</td><td><kbd>{</kbd></td></tr>
+</tbody>
+</table>
+<p>A definition can also show its value: type <code>x:2·π=</code> to define <code>x</code> and display it in the same region.</p>
+
+<h2 id="operators">Operators</h2>
+<table>
+<thead><tr><th>Type</th><th>Gets</th></tr></thead>
+<tbody>
+<tr><td><kbd>+</kbd> <kbd>-</kbd></td><td>Addition and subtraction; a minus before an operand is a negation.</td></tr>
+<tr><td><kbd>*</kbd></td><td>Multiplication, drawn <code>·</code>.</td></tr>
+<tr><td><kbd>/</kbd></td><td>A stacked fraction; the operand before the caret becomes the numerator.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>/</kbd></td><td>In-line division <code>÷</code>.</td></tr>
+<tr><td><kbd>^</kbd></td><td>Power: the caret moves into the exponent; <kbd>→</kbd> leaves it.</td></tr>
+<tr><td><kbd>\</kbd></td><td>Square root. The Operators panel also has the n-th root.</td></tr>
+<tr><td><kbd>|</kbd></td><td>Absolute value, magnitude of a complex number, determinant of a square matrix, length of a vector.</td></tr>
+<tr><td><kbd>!</kbd> <kbd>%</kbd></td><td>Factorial; percent (one hundredth).</td></tr>
+<tr><td><kbd>&lt;</kbd> <kbd>&gt;</kbd>, <kbd>Ctrl</kbd>+<kbd>9</kbd>, <kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>Comparisons <code>&lt;</code> <code>&gt;</code> <code>≤</code> <code>≥</code>; <code>≠</code> is on the Operators panel.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>&amp;</kbd>, <kbd>@</kbd>, <kbd>!</kbd>, <kbd>%</kbd></td><td>Logical and <code>∧</code>, or <code>∨</code>, not <code>¬</code>, exclusive or <code>⊕</code>.</td></tr>
+<tr><td><kbd>[</kbd></td><td>After an operand: an index <code>v[i]</code>. On an empty placeholder: a matrix.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td><td>A matrix of a chosen size.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></td><td>Column <code>M⟨j⟩</code> and row of a matrix.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td><td>Transpose <code>Mᵀ</code>.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>8</kbd></td><td>Cross product <code>×</code>.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>^</kbd></td><td>Vectorize: apply the expression element by element.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>|</kbd></td><td>Norm <code>‖x‖</code>.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>(</kbd></td><td>Complex conjugate.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></td><td>Infinity <code>∞</code>.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>'</kbd></td><td>Derivative <code>d/dx</code>, partial derivative <code>∂/∂x</code>, prime derivative <code>f′</code>.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td><td>Definite integral.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>$</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>#</kbd></td><td>Sum <code>∑</code> and product <code>∏</code> with bounds.</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td><td>Limit.</td></tr>
+<tr><td>two periods <kbd>.</kbd><kbd>.</kbd></td><td>A range <code>1..n</code>; the step range <code>1, 3..n</code> is on the Operators panel. A single period is part of a name or a number.</td></tr>
+</tbody>
+</table>
+<p>The <a href="keyboard.html">keyboard reference</a> lists every shortcut for both layouts.</p>
+
+<h2 id="caret">Caret and selection</h2>
+<p>The caret is a vertical insertion bar; a horizontal line under the current operand, the editing line, shows what the next operator applies to.</p>
+<ul>
+<li><kbd>←</kbd> <kbd>→</kbd> move through the expression in reading order. In a fraction the caret visits the numerator, then the denominator; in an integral the bounds, the integrand, then the variable; in a matrix the cells row by row.</li>
+<li><kbd>↑</kbd> <kbd>↓</kbd> move between the lines of a stacked layout, for example from numerator to denominator.</li>
+<li><kbd>Space</kbd> grows the selection one term at a time in the direction the caret faces; pressing it repeatedly ends with the whole expression selected. <kbd>Insert</kbd> flips the caret to the other side of the selection.</li>
+<li><kbd>Shift</kbd>+<kbd>←</kbd> / <kbd>→</kbd> extend the selection; <kbd>Ctrl</kbd>+<kbd>←</kbd> / <kbd>→</kbd> jump by word; <kbd>Home</kbd> and <kbd>End</kbd> go to the start and end.</li>
+<li><kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> move to the next and previous placeholder.</li>
+<li>A double click selects the name or number under the pointer; a drag selects the smallest expression that holds both ends.</li>
+</ul>
+<p>Typing an operator while something is selected applies it to the selection: select <code>a + b</code> and type <kbd>^</kbd> to get <code>(a + b)^□</code>. Typing anything else replaces the selection.</p>
+<p><kbd>Backspace</kbd> and <kbd>Delete</kbd> remove the character or operator next to the caret. Deleting an operator leaves a placeholder for a new one, so you can change <code>a + b</code> into <code>a − b</code> by deleting <code>+</code> and typing <code>-</code>. Deleting a parenthesis removes both parentheses of the pair.</p>
+
+<h2 id="placeholders">Placeholders</h2>
+<p>A small square <code>□</code> marks an operand still to be filled. A region with a placeholder is incomplete: it is saved as it is, but it shows an error until you fill it.</p>
+
+<h2 id="names">Names</h2>
+<ul>
+<li>A name may contain letters of any alphabet, digits (not first), underscores, periods, and symbols with no operator meaning such as <code>€</code> or <code>∀</code>. Names are <strong>case sensitive</strong>.</li>
+<li><strong>Literal subscript</strong>: press <kbd>Ctrl</kbd>+<kbd>-</kbd> after the name, type the subscript, and press it again to return to the base line. <code>F_max</code> is one name, drawn F<sub>max</sub>. It differs from the <strong>index</strong> <code>v[i]</code>, which is element <code>i</code> of a vector.</li>
+<li><strong>Greek letters</strong>: type the Latin letter and press <kbd>Ctrl</kbd>+<kbd>G</kbd> (<code>p</code> gives <code>π</code>, <code>w</code> gives <code>ω</code>). Pressed again, it returns to the Latin letter. The Symbols panel has all Greek letters.</li>
+<li><strong>Labels</strong>: a name is a variable, a function, a unit, a constant, a system variable or a keyword. Equavela resolves most labels from context. <kbd>Ctrl</kbd>+<kbd>U</kbd> marks the name at the caret as a unit; <kbd>Ctrl</kbd>+<kbd>Q</kbd> chooses another label. Two names that differ only in their label are different names, so <code>m</code> the variable and <code>m</code> the metre can coexist. Each label has its own style (colour, bold, italic), set in <em>Calculate › Math Formatting</em>.</li>
+<li>Defining a name with the name of a built-in function or constant hides the built-in from that point on.</li>
+</ul>
+
+<h2 id="functions">Functions</h2>
+<p>Type a function name followed by <kbd>(</kbd>, for example <code>sin(</code>. While you type a name, a suggestion list shows matching built-in functions, your own definitions, units and constants; <kbd>Tab</kbd> or <kbd>Enter</kbd> accepts the highlighted suggestion. A comma adds an argument. <kbd>F2</kbd> opens the function catalogue, where you can search all functions by name, category or description; <kbd>F1</kbd> on a function name opens its help.</p>
+<p>Define your own function with parameters in parentheses: <code>f(x, y) := x² + y²</code>. See <a href="calculation.html#functions">user functions</a>.</p>
+
+<h2 id="line-breaks">Long expressions</h2>
+<p>A long expression can be broken onto several lines: <kbd>Shift</kbd>+<kbd>Enter</kbd> inserts a line break at the caret, and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> toggles an equation break after the operator at the caret (also <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>+</kbd>, <kbd>-</kbd> and <kbd>/</kbd> to type a breaking operator). Line breaks change only the drawing, never the value.</p>
+
+<h2 id="paste">Copy and paste</h2>
+<p>Copied math goes to the clipboard as linear text, such as <code>M := q·L^2/8</code>, which you can paste into another region, another worksheet or a text editor. Pasting linear text into a math region inserts it as mathematics. A selected part of a result can also be copied: the numbers are copied at full precision.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

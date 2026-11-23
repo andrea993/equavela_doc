@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorting, ranking, lookup, convolution · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html" aria-current="page">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Sorting, ranking, lookup, convolution</h1>
+<p class="toc"><a href="#f-convol"><code>convol</code></a> <a href="#f-convolve"><code>convolve</code></a> <a href="#f-crosscorr"><code>crosscorr</code></a> <a href="#f-csort"><code>csort</code></a> <a href="#f-deconvolve"><code>deconvolve</code></a> <a href="#f-hlookup"><code>hlookup</code></a> <a href="#f-lookup"><code>lookup</code></a> <a href="#f-match"><code>match</code></a> <a href="#f-order"><code>order</code></a> <a href="#f-Rank"><code>Rank</code></a> <a href="#f-reverse"><code>reverse</code></a> <a href="#f-rsort"><code>rsort</code></a> <a href="#f-sort"><code>sort</code></a> <a href="#f-vhlookup"><code>vhlookup</code></a> <a href="#f-vlookup"><code>vlookup</code></a></p>
+<section class="function" id="f-convol">
+<h3><code>convol</code></h3>
+<p class="signature"><code>convol(S, K, [BC], [OV])</code></p>
+<p>Convolution of an array with a kernel, 1D or 2D, with an arbitrary phase.</p>
+<dl><dt>Notes</dt><dd>The same function as <code>convolve</code>, under an older name.</dd></dl>
+</section>
+<section class="function" id="f-convolve">
+<h3><code>convolve</code></h3>
+<p class="signature"><code>convolve(S, K, [BC], [OV])</code></p>
+<p>Convolution of an array with a kernel, 1D or 2D, with an arbitrary phase.</p>
+<dl><dt>Notes</dt><dd>Convolution of a signal with a kernel. For two vectors the full result has <code>n + m − 1</code> elements; for matrices the result has the size of the signal. <code>BC</code> chooses the boundary (0 zero padding, the default; 1 circular; 2 reflect; 3 continue) and <code>OV</code> the initial overlap of the kernel (1 in 1-D, the centred kernel in 2-D by default). Computed directly in the time domain. The operator <code>A ∗ B</code> is the linear convolution and <code>A ⊛ B</code> the circular one.</dd></dl>
+</section>
+<section class="function" id="f-crosscorr">
+<h3><code>crosscorr</code></h3>
+<p class="signature"><code>crosscorr(S, K, [BC], [OV])</code></p>
+<p>Cross-correlation of an array with a kernel, 1D or 2D: the convolution with the kernel reversed, at the same BC and OV.</p>
+<dl><dt>Notes</dt><dd>The cross-correlation: the convolution with the kernel reversed (rotated by 180° for matrices), with the same boundary and overlap options as <code>convolve</code>.</dd></dl>
+</section>
+<section class="function" id="f-csort">
+<h3><code>csort</code></h3>
+<p class="signature"><code>csort(A, n)</code></p>
+<p>Rearranges rows so column n ascends.</p>
+<dl><dt>Julia</dt><dd><code>Base.sortslices</code></dd><dt>Notes</dt><dd>Rows rearranged so that column <code>n</code> (counted from <code>ORIGIN</code>) ascends; stable. Julia equivalent: <code>sortslices(A, dims=1, by=r -&gt; r[n])</code>.</dd></dl>
+</section>
+<section class="function" id="f-deconvolve">
+<h3><code>deconvolve</code></h3>
+<p class="signature"><code>deconvolve(vz, vx)</code></p>
+<p>1D deconvolution of two vectors: the first n - m + 1 elements of the circular deconvolution.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.fft</code></dd><dt>Notes</dt><dd>The first <code>n − m + 1</code> elements of the circular deconvolution of <code>vz</code> (n elements) by <code>vx</code> (m elements), computed with FFTs; an exact quotient comes back as polynomial division gives it, otherwise the minimum-norm circular solution.</dd></dl>
+</section>
+<section class="function" id="f-hlookup">
+<h3><code>hlookup</code></h3>
+<p class="signature"><code>hlookup(z, A, r, [modifier | f])</code></p>
+<p>Searches the first row of A, returns row r entries.</p>
+<dl><dt>Notes</dt><dd>Searches the first row of <code>A</code> and returns row <code>r</code> of the matching columns, as a column vector.</dd></dl>
+</section>
+<section class="function" id="f-lookup">
+<h3><code>lookup</code></h3>
+<p class="signature"><code>lookup(z, A, B, [modifier | f])</code></p>
+<p>Finds z in A, returns entries of B at the same positions as a column-wise vector.</p>
+<dl><dt>Notes</dt><dd>The elements of <code>B</code> at the positions where <code>A</code> matches <code>z</code> (with the modifiers of <code>match</code>), as a column in column-wise order. <code>A</code> and <code>B</code> must have the same size.</dd></dl>
+</section>
+<section class="function" id="f-match">
+<h3><code>match</code></h3>
+<p class="signature"><code>match(z, A, [modifier | f])</code></p>
+<p>Indices of matching elements, nested array for matrices, column-wise.</p>
+<dl><dt>Notes</dt><dd>The indices of the elements of <code>A</code> equal to <code>z</code>, counted from <code>ORIGIN</code>. For a matrix each match is a vector <code>[row; column]</code>, scanned column by column. An optional modifier selects otherwise: <code>"eq"</code>, <code>"not"</code>, <code>"gt"</code>, <code>"lt"</code>, <code>"geq"</code>, <code>"leq"</code>, <code>"near"</code> (closest values) or <code>"range"</code> (the interval of an ascending vector that holds <code>z</code>), or a function <code>f(element, z)</code>. No match is an error (so a <code>try</code> can catch it). Julia equivalent: <code>findall</code>, whose indices start at 1.</dd></dl>
+</section>
+<section class="function" id="f-order">
+<h3><code>order</code></h3>
+<p class="signature"><code>order(v)</code></p>
+<p>Indices (relative to ORIGIN) that sort v.</p>
+<dl><dt>Julia</dt><dd><code>Base.sortperm</code></dd><dt>Notes</dt><dd>The indices, counted from <code>ORIGIN</code>, that put <code>v</code> in ascending order; stable. Julia's <code>sortperm</code> returns 1-based indices.</dd></dl>
+</section>
+<section class="function" id="f-Rank">
+<h3><code>Rank</code></h3>
+<p class="signature"><code>Rank(v)</code></p>
+<p>Rank positions of the elements of v (ties averaged, first rank is 1).</p>
+<dl><dt>Notes</dt><dd>The rank of each element (1 for the smallest); tied elements get the mean of their ranks. Not to be confused with <code>rank</code>, the matrix rank.</dd></dl>
+</section>
+<section class="function" id="f-reverse">
+<h3><code>reverse</code></h3>
+<p class="signature"><code>reverse(A)</code></p>
+<p>Reverses vector elements or matrix rows.</p>
+<dl><dt>Julia</dt><dd><code>Base.reverse</code></dd><dt>Notes</dt><dd>Reverses a vector, or the order of the rows of a matrix (Julia's <code>reverse(A, dims=1)</code>).</dd></dl>
+</section>
+<section class="function" id="f-rsort">
+<h3><code>rsort</code></h3>
+<p class="signature"><code>rsort(A, n)</code></p>
+<p>Rearranges columns so row n ascends.</p>
+<dl><dt>Julia</dt><dd><code>Base.sortslices</code></dd><dt>Notes</dt><dd>Columns rearranged so that row <code>n</code> ascends; stable.</dd></dl>
+</section>
+<section class="function" id="f-sort">
+<h3><code>sort</code></h3>
+<p class="signature"><code>sort(v)</code></p>
+<p>Vector in ascending order (heapsort; unstable; imaginary part ignored).</p>
+<dl><dt>Julia</dt><dd><code>Base.sort</code></dd><dt>Notes</dt><dd>Ascending by real part; a row or column vector keeps its orientation; a matrix is an error. The imaginary part is ignored.</dd></dl>
+</section>
+<section class="function" id="f-vhlookup">
+<h3><code>vhlookup</code></h3>
+<p class="signature"><code>vhlookup(z1, z2, A, [modifier | f])</code></p>
+<p>Entry at intersection of z1 (first column) and z2 (first row).</p>
+<dl><dt>Notes</dt><dd>The element at the first row whose first entry matches <code>z1</code> and the first column whose first entry matches <code>z2</code>.</dd></dl>
+</section>
+<section class="function" id="f-vlookup">
+<h3><code>vlookup</code></h3>
+<p class="signature"><code>vlookup(z, A, c, [modifier | f])</code></p>
+<p>Searches the first column of A, returns column c entries.</p>
+<dl><dt>Notes</dt><dd>Searches the first column of <code>A</code> for <code>z</code> and returns column <code>c</code> (counted from <code>ORIGIN</code>) of the matching rows.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

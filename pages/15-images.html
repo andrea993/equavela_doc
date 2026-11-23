@@ -1,0 +1,20 @@
+<!-- title: Images -->
+<h1>Images</h1>
+<p>Image regions show SVG, PNG and JPEG pictures on the page. They are never calculated.</p>
+
+<h2 id="adding">Adding an image</h2>
+<ul>
+<li><em>Insert › Image</em> opens a file dialog; the image is placed at the crosshair.</li>
+<li><kbd>Ctrl</kbd>+<kbd>V</kbd> with a picture on the clipboard pastes it at the crosshair.</li>
+<li>Drop image files from the file manager onto the page.</li>
+</ul>
+<p>A new image keeps its natural size, scaled down when necessary to fit the printable width. In a standalone worksheet the image is stored inside the worksheet file; in a project it is stored once in the project's <code>assets/images</code> folder and shared by every worksheet that uses it (see <a href="projects.html#images">Projects</a>).</p>
+
+<h2 id="editing">Resizing and replacing</h2>
+<p>Select an image to show its corner handle. Dragging it resizes the image and keeps its proportions; hold <kbd>Shift</kbd> to change them. The <strong>Image</strong> tab has <em>Original size</em>, which returns to the picture's own size, and <em>Replace…</em>, which swaps the picture and keeps the position.</p>
+
+<h2 id="safety">SVG safety</h2>
+<p>SVG files are cleaned when they are inserted: scripts, external references, embedded web content and animations are removed, and the message bar says how many parts were removed. What remains is drawn as a picture.</p>
+
+<h2 id="print">Print and copy</h2>
+<p>An SVG image stays vector in the PDF; a PNG or JPEG keeps all its pixels. Copying regions puts them on the clipboard both as Equavela regions and as an SVG and PNG picture, so you can paste a group of regions as a picture into a word processor or a drawing program.</p>

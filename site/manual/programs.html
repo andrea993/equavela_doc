@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programs · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html" aria-current="page">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Programs</h1>
+<p>A program is a block of statements with a double vertical bar on its left. It can be the right side of any definition, usually of a function, and its value is the value of the last statement that ran.</p>
+<pre><code>sign3(x) := ‖ if x &gt; 0
+            ‖   "positive"
+            ‖ else if x &lt; 0
+            ‖   "negative"
+            ‖ else
+            ‖   "zero"</code></pre>
+
+<h2 id="writing">Writing a program</h2>
+<ul>
+<li>Type <kbd>]</kbd> to turn the expression at the caret into the first line of a program, or to add a line. In a program, <kbd>Enter</kbd> adds a line below; <kbd>Shift</kbd>+<kbd>Enter</kbd> adds one around the current line.</li>
+<li>Control statements come from the <em>Programming</em> panel or from shortcuts: <code>if</code> <kbd>}</kbd>, <code>else</code> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>}</kbd>, <code>else if</code> <kbd>Ctrl</kbd>+<kbd>;</kbd>, <code>also if</code> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>)</kbd>, <code>for</code> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>"</kbd>, <code>while</code> <kbd>Ctrl</kbd>+<kbd>]</kbd>, <code>break</code> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>{</kbd>, <code>continue</code> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>:</kbd>, <code>return</code> <kbd>Ctrl</kbd>+<kbd>\</kbd>, <code>try</code> <kbd>Ctrl</kbd>+<kbd>[</kbd>. On another keyboard layout, press <kbd>Ctrl</kbd> with the keys that type the same character (see the <a href="keyboard.html#keys-math">keyboard reference</a>).</li>
+<li>On any layout you can type the keyword and press <kbd>Ctrl</kbd>+<kbd>J</kbd> to turn it into the statement: <code>for</code> <kbd>Ctrl</kbd>+<kbd>J</kbd>.</li>
+<li>A local assignment <code>x ← e</code> is typed with <kbd>{</kbd>.</li>
+</ul>
+<p>Each control statement has a header line with grey placeholders (the condition, or the loop variable and its range) and an indented body with its own bar.</p>
+
+<h2 id="statements">Statements</h2>
+<table>
+<thead><tr><th>Statement</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>x ← e</code></td><td>Local definition: <code>x</code> exists only inside the program, from this line on, including inside nested blocks and after them. Its value is <code>e</code>. A function can be defined locally too: <code>g(t) ← t²</code>.</td></tr>
+<tr><td><code>if c</code></td><td>Runs its body when <code>c</code> is non-zero.</td></tr>
+<tr><td><code>else if c</code></td><td>Runs when every preceding <code>if</code> and <code>else if</code> condition was zero and <code>c</code> is non-zero.</td></tr>
+<tr><td><code>also if c</code></td><td>Runs when <code>c</code> is non-zero, whatever the preceding conditions; if it ran, the following <code>else</code> does not.</td></tr>
+<tr><td><code>else</code></td><td>Runs when no preceding branch ran.</td></tr>
+<tr><td><code>for i ∈ r</code></td><td>Repeats the body for each value of a range (<code>1..n</code>, counting down when the end is smaller) or each element of a vector. The variable keeps its last value afterwards.</td></tr>
+<tr><td><code>while c</code></td><td>Repeats the body while <code>c</code> is non-zero.</td></tr>
+<tr><td><code>break</code>, <code>continue</code></td><td>Leave the innermost loop, or go to its next iteration.</td></tr>
+<tr><td><code>return e</code></td><td>Ends the program at once with the value <code>e</code>.</td></tr>
+<tr><td><code>try</code> … <code>on error</code></td><td>Runs the <code>on error</code> body only if the <code>try</code> body raises an error.</td></tr>
+<tr><td><code>"text"</code></td><td>A string line acts as a comment.</td></tr>
+</tbody>
+</table>
+<p><code>error("message")</code> raises an error with your message, which a surrounding <code>try</code> can catch.</p>
+
+<h2 id="values">Values and scope</h2>
+<ul>
+<li>A program can read the worksheet definitions above it. A local definition of the same name hides the worksheet value; <code>x ← x + 1</code> reads the worksheet's <code>x</code> first.</li>
+<li>Parameters are passed by value: changing a parameter or its elements inside the program never changes the caller's variable.</li>
+<li>Arrays grow in programs as on the worksheet: <code>y[i, j] ← …</code> creates <code>y</code> if needed.</li>
+<li>A program can return several results as a vector, which the caller can destructure: <code>[x, n] := solve2(…)</code>.</li>
+<li>An error is reported on the program line where it happened.</li>
+</ul>
+
+<h2 id="conditional-function">The <code>if</code> function</h2>
+<p>For a short condition the built-in function <code>if(c, a, b)</code> returns <code>a</code> when <code>c</code> is non-zero and <code>b</code> otherwise. Only the chosen branch is evaluated, so the other branch may contain something that would fail.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

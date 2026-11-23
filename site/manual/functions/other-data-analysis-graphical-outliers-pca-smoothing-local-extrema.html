@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Other data analysis (graphical, outliers, PCA, smoothing, local extrema) · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html" aria-current="page">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</h1>
+<p class="toc"><a href="#f-anova"><code>anova</code></a> <a href="#f-blackman"><code>blackman</code></a> <a href="#f-boxbehnken"><code>boxbehnken</code></a> <a href="#f-boxplot"><code>boxplot</code></a> <a href="#f-boxplotgraph"><code>boxplotgraph</code></a> <a href="#f-doelabel"><code>doelabel</code></a> <a href="#f-effects"><code>effects</code></a> <a href="#f-expsmooth"><code>expsmooth</code></a> <a href="#f-filterNaN"><code>filterNaN</code></a> <a href="#f-foldover"><code>foldover</code></a> <a href="#f-fractfact"><code>fractfact</code></a> <a href="#f-fullfact"><code>fullfact</code></a> <a href="#f-gaussian"><code>gaussian</code></a> <a href="#f-Grubbs"><code>Grubbs</code></a> <a href="#f-GrubbsClassic"><code>GrubbsClassic</code></a> <a href="#f-hamming"><code>hamming</code></a> <a href="#f-hanning"><code>hanning</code></a> <a href="#f-hist"><code>hist</code></a> <a href="#f-histogram"><code>histogram</code></a> <a href="#f-ksmooth"><code>ksmooth</code></a> <a href="#f-loadings"><code>loadings</code></a> <a href="#f-localmax"><code>localmax</code></a> <a href="#f-localmin"><code>localmin</code></a> <a href="#f-LogNormal"><code>LogNormal</code></a> <a href="#f-markNaN"><code>markNaN</code></a> <a href="#f-matchNaN"><code>matchNaN</code></a> <a href="#f-medsmooth"><code>medsmooth</code></a> <a href="#f-montecarlo"><code>montecarlo</code></a> <a href="#f-movavg"><code>movavg</code></a> <a href="#f-Nipals"><code>Nipals</code></a> <a href="#f-Nipals2"><code>Nipals2</code></a> <a href="#f-Normal"><code>Normal</code></a> <a href="#f-pareto"><code>pareto</code></a> <a href="#f-PCAeigenvals"><code>PCAeigenvals</code></a> <a href="#f-PCAvariance"><code>PCAvariance</code></a> <a href="#f-plackettburman"><code>plackettburman</code></a> <a href="#f-qqplot"><code>qqplot</code></a> <a href="#f-quickscreen"><code>quickscreen</code></a> <a href="#f-randomize"><code>randomize</code></a> <a href="#f-scores"><code>scores</code></a> <a href="#f-supsmooth"><code>supsmooth</code></a> <a href="#f-taguchi"><code>taguchi</code></a> <a href="#f-ThreeSigma"><code>ThreeSigma</code></a> <a href="#f-triangular"><code>triangular</code></a> <a href="#f-trim"><code>trim</code></a> <a href="#f-Uniform"><code>Uniform</code></a> <a href="#f-VSmooth"><code>VSmooth</code></a> <a href="#f-Weibull"><code>Weibull</code></a></p>
+<section class="function" id="f-anova">
+<h3><code>anova</code></h3>
+<p class="signature"><code>anova(D, Y, [k | term])</code></p>
+<p>Analysis of variance of a replicated design.</p>
+<dl><dt>Notes</dt><dd>The analysis of variance of a replicated design (the columns of <code>Y</code> are the replicates): source, sum of squares, degrees of freedom, mean square, F and p.</dd></dl>
+</section>
+<section class="function" id="f-blackman">
+<h3><code>blackman</code></h3>
+<p class="signature"><code>blackman(n)</code></p>
+<p>Blackman window of n points.</p>
+<dl><dt>Notes</dt><dd>The symmetric Blackman window <code>0.42 − 0.5·cos(2πk/(n−1)) + 0.08·cos(4πk/(n−1))</code> (<code>DSP.blackman</code>).</dd></dl>
+</section>
+<section class="function" id="f-boxbehnken">
+<h3><code>boxbehnken</code></h3>
+<p class="signature"><code>boxbehnken(k)</code></p>
+<p>Box-Behnken design of 3 to 7 factors.</p>
+<dl><dt>Notes</dt><dd>The Box–Behnken response-surface design for 3 to 7 factors, with its blocks and centre runs.</dd></dl>
+</section>
+<section class="function" id="f-boxplot">
+<h3><code>boxplot</code></h3>
+<p class="signature"><code>boxplot(Data)</code></p>
+<p>Matrix for a box plot, per column.</p>
+<dl><dt>Notes</dt><dd>For each column of <code>Data</code>, the values that draw a box plot: minimum, quartiles, median and maximum.</dd></dl>
+</section>
+<section class="function" id="f-boxplotgraph">
+<h3><code>boxplotgraph</code></h3>
+<p class="signature"><code>boxplotgraph(Data)</code></p>
+<p>Two-element vector for box-plot drawing in an XY plot.</p>
+<dl><dt>Notes</dt><dd>Two vectors that draw a box plot as XY traces in an ordinary plot.</dd></dl>
+</section>
+<section class="function" id="f-doelabel">
+<h3><code>doelabel</code></h3>
+<p class="signature"><code>doelabel(D, L)</code></p>
+<p>Factor names and level values for a design matrix.</p>
+<dl><dt>Notes</dt><dd>Replaces the coded levels of a design matrix with real values: <code>L</code> has a row per factor with its name and one value per level.</dd></dl>
+</section>
+<section class="function" id="f-effects">
+<h3><code>effects</code></h3>
+<p class="signature"><code>effects(D, Y, [k | term])</code></p>
+<p>Effects of the factors and interactions at each level.</p>
+<dl><dt>Notes</dt><dd>The effect of each factor at each level (mean response at that level minus the grand mean). A number <code>k</code> adds the interactions up to order k; a string such as <code>"AB"</code> selects one term.</dd></dl>
+</section>
+<section class="function" id="f-expsmooth">
+<h3><code>expsmooth</code></h3>
+<p class="signature"><code>expsmooth(v, a)</code></p>
+<p>Exponential smoothing with weight a.</p>
+<dl><dt>Notes</dt><dd>Exponential smoothing <code>sᵢ = a·vᵢ + (1 − a)·sᵢ₋₁</code>, starting at the first value; 0 ≤ a ≤ 1.</dd></dl>
+</section>
+<section class="function" id="f-filterNaN">
+<h3><code>filterNaN</code></h3>
+<p class="signature"><code>filterNaN(M)</code></p>
+<p>Removes rows containing NaN.</p>
+<dl><dt>Notes</dt><dd><code>M</code> without the rows that contain NaN. Julia equivalent: <code>M[.!any(isnan, M, dims=2)[:], :]</code>.</dd></dl>
+</section>
+<section class="function" id="f-foldover">
+<h3><code>foldover</code></h3>
+<p class="signature"><code>foldover(D, [factor])</code></p>
+<p>Design followed by its fold-over block.</p>
+<dl><dt>Notes</dt><dd>The design followed by its fold-over block with every sign reversed, or only the named factor (a string such as <code>"A"</code>) reversed.</dd></dl>
+</section>
+<section class="function" id="f-fractfact">
+<h3><code>fractfact</code></h3>
+<p class="signature"><code>fractfact(k, p)</code></p>
+<p>Two-level fractional factorial 2^(k-p) with the reference application's generators.</p>
+<dl><dt>Notes</dt><dd>The two-level fractional factorial design 2<sup>k−p</sup>: the first k − p factors in Yates order and p generated factors (named with their generator, for example <code>"D=ABC"</code>) from the standard generator table.</dd></dl>
+</section>
+<section class="function" id="f-fullfact">
+<h3><code>fullfact</code></h3>
+<p class="signature"><code>fullfact(k, [levels])</code></p>
+<p>Full factorial design of k factors.</p>
+<dl><dt>Notes</dt><dd>The full factorial design of <code>k</code> factors with 2 levels (or <code>levels</code> levels), first factor changing fastest (Yates order). A design matrix has a header row (<code>"Run"</code>, <code>"Block"</code>, then the factor names A, B, …) and one row per run with the coded levels (−1/+1, or 0, 1, 2 for three levels).</dd></dl>
+</section>
+<section class="function" id="f-gaussian">
+<h3><code>gaussian</code></h3>
+<p class="signature"><code>gaussian(n, a)</code></p>
+<p>Gaussian window of n points.</p>
+<dl><dt>Notes</dt><dd>The Gaussian window <code>exp(−½·(a·k/((n − 1)/2))²)</code> for k from −(n − 1)/2 to (n − 1)/2.</dd></dl>
+</section>
+<section class="function" id="f-Grubbs">
+<h3><code>Grubbs</code></h3>
+<p class="signature"><code>Grubbs(v, a)</code></p>
+<p>Suspected outlier indices, test statistic, distance to critical value.</p>
+<dl><dt>Notes</dt><dd>Grubbs's test for outliers at significance <code>a</code>, applied repeatedly: the indices of the suspected outliers, their test statistics and their distances to the critical value.</dd></dl>
+</section>
+<section class="function" id="f-GrubbsClassic">
+<h3><code>GrubbsClassic</code></h3>
+<p class="signature"><code>GrubbsClassic(v, a)</code></p>
+<p>Most likely single outlier.</p>
+<dl><dt>Notes</dt><dd>The classic single-outlier Grubbs test: the most likely outlier, if any.</dd></dl>
+</section>
+<section class="function" id="f-hamming">
+<h3><code>hamming</code></h3>
+<p class="signature"><code>hamming(n)</code></p>
+<p>Hamming window of n points.</p>
+<dl><dt>Notes</dt><dd>The symmetric Hamming window <code>0.54 − 0.46·cos(2πk/(n − 1))</code> of <code>n</code> points. Same values as <code>DSP.hamming(n)</code>.</dd></dl>
+</section>
+<section class="function" id="f-hanning">
+<h3><code>hanning</code></h3>
+<p class="signature"><code>hanning(n)</code></p>
+<p>Hann window of n points.</p>
+<dl><dt>Notes</dt><dd>The symmetric Hann window <code>0.5 − 0.5·cos(2πk/(n − 1))</code> of <code>n</code> points (<code>DSP.hanning</code>).</dd></dl>
+</section>
+<section class="function" id="f-hist">
+<h3><code>hist</code></h3>
+<p class="signature"><code>hist(intvls, data)</code></p>
+<p>Histogram frequencies for the intervals.</p>
+<dl><dt>Notes</dt><dd>The number of data values in each interval; intervals include their left end, and the last one both ends. <code>intvls</code> is either a vector of ascending interval boundaries (one fewer result than boundaries) or a number of equal intervals spanning the data. Compare <code>StatsBase.fit(Histogram, data, edges)</code>.</dd></dl>
+</section>
+<section class="function" id="f-histogram">
+<h3><code>histogram</code></h3>
+<p class="signature"><code>histogram(intvls, data)</code></p>
+<p>Two-column matrix: interval midpoints and frequencies.</p>
+<dl><dt>Notes</dt><dd>A two-column matrix for plotting: the midpoints of the intervals and the frequencies, with the intervals given as for <code>hist</code>.</dd></dl>
+</section>
+<section class="function" id="f-ksmooth">
+<h3><code>ksmooth</code></h3>
+<p class="signature"><code>ksmooth(vx, vy, b)</code></p>
+<p>Gaussian kernel smoothing whose kernel standard deviation is the bandwidth b.</p>
+<dl><dt>Notes</dt><dd>A normalised Gaussian kernel smoother; the standard deviation of the kernel is the bandwidth <code>b</code>, in the units of <code>vx</code>.</dd></dl>
+</section>
+<section class="function" id="f-loadings">
+<h3><code>loadings</code></h3>
+<p class="signature"><code>loadings(Nipals)</code></p>
+<p>PCA loadings.</p>
+<dl><dt>Notes</dt><dd>The loading matrix of a <code>Nipals</code> result.</dd></dl>
+</section>
+<section class="function" id="f-localmax">
+<h3><code>localmax</code></h3>
+<p class="signature"><code>localmax(M1, [w]) / localmax(x, y, M2, [w])</code></p>
+<p>Local maxima of 2D/3D data.</p>
+<dl><dt>Notes</dt><dd>The positions and values of local maxima: of a matrix of heights (<code>M1</code>), or of <code>Z</code> over the grid <code>x</code>, <code>y</code>; <code>w</code> is the half-width of the neighbourhood examined.</dd></dl>
+</section>
+<section class="function" id="f-localmin">
+<h3><code>localmin</code></h3>
+<p class="signature"><code>localmin(M1, [w]) / localmin(x, y, M2, [w])</code></p>
+<p>Local minima of 2D/3D data.</p>
+<dl><dt>Notes</dt><dd>As <code>localmax</code>, for minima.</dd></dl>
+</section>
+<section class="function" id="f-LogNormal">
+<h3><code>LogNormal</code></h3>
+<p class="signature"><code>LogNormal(n)</code></p>
+<p>n draws of the lognormal distribution of parameters 0 and 1.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.LogNormal</code></dd><dt>Notes</dt><dd><code>n</code> draws of the lognormal distribution with parameters 0 and 1; for <code>montecarlo</code>.</dd></dl>
+</section>
+<section class="function" id="f-markNaN">
+<h3><code>markNaN</code></h3>
+<p class="signature"><code>markNaN(M, vindex)</code></p>
+<p>Sets the indexed elements to NaN.</p>
+<dl><dt>Notes</dt><dd>A copy of <code>M</code> with the indexed elements set to NaN.</dd></dl>
+</section>
+<section class="function" id="f-matchNaN">
+<h3><code>matchNaN</code></h3>
+<p class="signature"><code>matchNaN(M)</code></p>
+<p>Indices of NaN entries.</p>
+<dl><dt>Notes</dt><dd>The indices of the NaN elements.</dd></dl>
+</section>
+<section class="function" id="f-medsmooth">
+<h3><code>medsmooth</code></h3>
+<p class="signature"><code>medsmooth(v, [n], [m])</code></p>
+<p>Median smoothing, window n.</p>
+<dl><dt>Notes</dt><dd>A centred running median with an odd window <code>n</code> (3 by default); at the ends of a vector the window shrinks. For a matrix, <code>n</code> × <code>m</code> windows.</dd></dl>
+</section>
+<section class="function" id="f-montecarlo">
+<h3><code>montecarlo</code></h3>
+<p class="signature"><code>montecarlo(F, n, Rvals, [Limits], [dist])</code></p>
+<p>n Monte Carlo samples of F at random arguments.</p>
+<dl><dt>Notes</dt><dd><code>n</code> samples of the function <code>F</code> at random arguments. <code>Rvals</code> has a row per argument of F: its name, mean and standard deviation; each argument is <code>mean + σ·r</code> with r drawn from <code>dist</code> (<code>Normal</code> by default, or a function of your own). <code>Limits</code> (lower and upper, NaN for none) truncates a variable: a value outside is drawn again.</dd></dl>
+</section>
+<section class="function" id="f-movavg">
+<h3><code>movavg</code></h3>
+<p class="signature"><code>movavg(v, n)</code></p>
+<p>Moving average, window n.</p>
+<dl><dt>Notes</dt><dd>The trailing moving average over <code>n</code> values; the first values average over the elements available so far.</dd></dl>
+</section>
+<section class="function" id="f-Nipals">
+<h3><code>Nipals</code></h3>
+<p class="signature"><code>Nipals(DATA, NumPC, maxiter, &quot;scale/noscale&quot;, Acc)</code></p>
+<p>Principal component analysis by NIPALS.</p>
+<dl><dt>Notes</dt><dd>Principal component analysis of the columns of <code>DATA</code> by the NIPALS algorithm, extracting <code>NumPC</code> components with at most <code>maxiter</code> iterations each, on scaled or unscaled data. The result feeds <code>scores</code>, <code>loadings</code>, <code>PCAeigenvals</code>, <code>PCAvariance</code> and <code>Nipals2</code>. Components agree with an eigen-decomposition up to sign.</dd></dl>
+</section>
+<section class="function" id="f-Nipals2">
+<h3><code>Nipals2</code></h3>
+<p class="signature"><code>Nipals2(Nipals, numAddPC)</code></p>
+<p>Additional principal components.</p>
+<dl><dt>Notes</dt><dd>Extends a <code>Nipals</code> result with more components.</dd></dl>
+</section>
+<section class="function" id="f-Normal">
+<h3><code>Normal</code></h3>
+<p class="signature"><code>Normal(n)</code></p>
+<p>n draws of the standard normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code></dd><dt>Notes</dt><dd><code>n</code> draws of the standard normal distribution, as a column; intended as the distribution argument of <code>montecarlo</code>.</dd></dl>
+</section>
+<section class="function" id="f-pareto">
+<h3><code>pareto</code></h3>
+<p class="signature"><code>pareto(Data)</code></p>
+<p>Matrix for a Pareto plot.</p>
+<dl><dt>Notes</dt><dd>From a two-column matrix of names and positive values: the rows sorted by decreasing value, with a third column holding the cumulative percentage, for a Pareto chart.</dd></dl>
+</section>
+<section class="function" id="f-PCAeigenvals">
+<h3><code>PCAeigenvals</code></h3>
+<p class="signature"><code>PCAeigenvals(Nipals)</code></p>
+<p>PCA eigenvalues.</p>
+<dl><dt>Notes</dt><dd>The eigenvalues of the principal components of a <code>Nipals</code> result.</dd></dl>
+</section>
+<section class="function" id="f-PCAvariance">
+<h3><code>PCAvariance</code></h3>
+<p class="signature"><code>PCAvariance(Nipals)</code></p>
+<p>Accumulated percentage of explained variance.</p>
+<dl><dt>Notes</dt><dd>The cumulative percentage of variance explained by the principal components.</dd></dl>
+</section>
+<section class="function" id="f-plackettburman">
+<h3><code>plackettburman</code></h3>
+<p class="signature"><code>plackettburman(n)</code></p>
+<p>Plackett-Burman design of n runs for n-1 factors.</p>
+<dl><dt>Notes</dt><dd>The Plackett–Burman screening design of <code>n</code> runs (a multiple of 4 from 8 to 48) for n − 1 factors.</dd></dl>
+</section>
+<section class="function" id="f-qqplot">
+<h3><code>qqplot</code></h3>
+<p class="signature"><code>qqplot(v1, [v2 OR &quot;distribution&quot;])</code></p>
+<p>Two-column Q-Q plot data.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.quantile</code></dd><dt>Notes</dt><dd>The two columns of a quantile–quantile plot: the sorted data against the matching quantiles of a second data set or of a named distribution (the normal distribution by default).</dd></dl>
+</section>
+<section class="function" id="f-quickscreen">
+<h3><code>quickscreen</code></h3>
+<p class="signature"><code>quickscreen(D, Y, [k | term])</code></p>
+<p>Mean response at the - and + level of each term.</p>
+<dl><dt>Notes</dt><dd>For a −1/+1 design: the mean response at the low and the high level of each term and their difference.</dd></dl>
+</section>
+<section class="function" id="f-randomize">
+<h3><code>randomize</code></h3>
+<p class="signature"><code>randomize(D)</code></p>
+<p>The runs of a design matrix in a random order.</p>
+<dl><dt>Notes</dt><dd>The runs of a design matrix in a random order; run numbers move with their rows. Uses the shared random generator (see <code>Seed</code>).</dd></dl>
+</section>
+<section class="function" id="f-scores">
+<h3><code>scores</code></h3>
+<p class="signature"><code>scores(Nipals)</code></p>
+<p>PCA scores.</p>
+<dl><dt>Notes</dt><dd>The score matrix of a <code>Nipals</code> result.</dd></dl>
+</section>
+<section class="function" id="f-supsmooth">
+<h3><code>supsmooth</code></h3>
+<p class="signature"><code>supsmooth(vx, vy)</code></p>
+<p>Adaptive nearest-neighbor least-squares smoothing.</p>
+<dl><dt>Notes</dt><dd>Friedman's super smoother: running-line smoothers with spans of 5, 20 and 50 % of the data, choosing the span point by point by cross-validation.</dd></dl>
+</section>
+<section class="function" id="f-taguchi">
+<h3><code>taguchi</code></h3>
+<p class="signature"><code>taguchi(k, levels)</code></p>
+<p>Taguchi orthogonal array for k factors.</p>
+<dl><dt>Notes</dt><dd>The Taguchi orthogonal array for <code>k</code> factors at the given number of levels (L4, L8, L9, L12, L27 …); other combinations are an error.</dd></dl>
+</section>
+<section class="function" id="f-ThreeSigma">
+<h3><code>ThreeSigma</code></h3>
+<p class="signature"><code>ThreeSigma(v)</code></p>
+<p>Indices of points with test statistic &gt; 3.</p>
+<dl><dt>Notes</dt><dd>The indices of the points more than three standard deviations from the mean.</dd></dl>
+</section>
+<section class="function" id="f-triangular">
+<h3><code>triangular</code></h3>
+<p class="signature"><code>triangular(n)</code></p>
+<p>Triangular window of n points.</p>
+<dl><dt>Notes</dt><dd>The triangular window of <code>n</code> points, rising from 0 to 1 and back to 0.</dd></dl>
+</section>
+<section class="function" id="f-trim">
+<h3><code>trim</code></h3>
+<p class="signature"><code>trim(v, vindex)</code></p>
+<p>Removes entries specified by vindex.</p>
+<dl><dt>Notes</dt><dd>The vector or matrix without the elements (or rows) at the indices <code>vindex</code>, counted from <code>ORIGIN</code>. Julia equivalent: <code>deleteat!</code> on a copy.</dd></dl>
+</section>
+<section class="function" id="f-Uniform">
+<h3><code>Uniform</code></h3>
+<p class="signature"><code>Uniform(n)</code></p>
+<p>n draws uniform on [-6, 6].</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Uniform</code></dd><dt>Notes</dt><dd><code>n</code> draws uniformly distributed on [−6, 6], so that <code>mean + σ·r</code> spans six standard deviations; for <code>montecarlo</code>.</dd></dl>
+</section>
+<section class="function" id="f-VSmooth">
+<h3><code>VSmooth</code></h3>
+<p class="signature"><code>VSmooth(v, w)</code></p>
+<p>Repeated median smoothing.</p>
+<dl><dt>Notes</dt><dd>A repeated running median: for each window width of <code>w</code>, the median smoother is applied until the result stops changing (within <code>TOL</code>).</dd></dl>
+</section>
+<section class="function" id="f-Weibull">
+<h3><code>Weibull</code></h3>
+<p class="signature"><code>Weibull(n)</code></p>
+<p>n draws of the Weibull distribution of shape 1 and scale 1.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Weibull</code></dd><dt>Notes</dt><dd><code>n</code> draws of the Weibull distribution of shape 1 and scale 1; for <code>montecarlo</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

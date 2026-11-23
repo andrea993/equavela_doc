@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Array characteristics and linear algebra · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html" aria-current="page">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Array characteristics and linear algebra</h1>
+<p class="toc"><a href="#f-cols"><code>cols</code></a> <a href="#f-cond1"><code>cond1</code></a> <a href="#f-cond2"><code>cond2</code></a> <a href="#f-conde"><code>conde</code></a> <a href="#f-condi"><code>condi</code></a> <a href="#f-eigenvals"><code>eigenvals</code></a> <a href="#f-eigenvec"><code>eigenvec</code></a> <a href="#f-eigenvecs"><code>eigenvecs</code></a> <a href="#f-geninv"><code>geninv</code></a> <a href="#f-genvals"><code>genvals</code></a> <a href="#f-genvecs"><code>genvecs</code></a> <a href="#f-Jacob"><code>Jacob</code></a> <a href="#f-kronecker"><code>kronecker</code></a> <a href="#f-last"><code>last</code></a> <a href="#f-length"><code>length</code></a> <a href="#f-lsolve"><code>lsolve</code></a> <a href="#f-max"><code>max</code></a> <a href="#f-min"><code>min</code></a> <a href="#f-norm1"><code>norm1</code></a> <a href="#f-norm2"><code>norm2</code></a> <a href="#f-norme"><code>norme</code></a> <a href="#f-normi"><code>normi</code></a> <a href="#f-rank"><code>rank</code></a> <a href="#f-rows"><code>rows</code></a> <a href="#f-rref"><code>rref</code></a> <a href="#f-tr"><code>tr</code></a> <a href="#f-vsum"><code>vsum</code></a></p>
+<section class="function" id="f-cols">
+<h3><code>cols</code></h3>
+<p class="signature"><code>cols(A)</code></p>
+<p>Number of columns.</p>
+<dl><dt>Julia</dt><dd><code>Base.size</code></dd><dt>Notes</dt><dd><code>size(A, 2)</code>; 0 when the argument is not an array.</dd></dl>
+</section>
+<section class="function" id="f-cond1">
+<h3><code>cond1</code></h3>
+<p class="signature"><code>cond1(M)</code></p>
+<p>Condition number, L1 norm (square M).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.cond</code></dd><dt>Notes</dt><dd><code>‖M‖₁·‖M⁻¹‖₁</code> with operator norms, as <code>cond(M, 1)</code>; <code>Inf</code> for a singular matrix.</dd></dl>
+</section>
+<section class="function" id="f-cond2">
+<h3><code>cond2</code></h3>
+<p class="signature"><code>cond2(M)</code></p>
+<p>Condition number, L2 norm.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.cond</code></dd><dt>Notes</dt><dd>The ratio of the largest to the smallest singular value, as <code>cond(M)</code>.</dd></dl>
+</section>
+<section class="function" id="f-conde">
+<h3><code>conde</code></h3>
+<p class="signature"><code>conde(M)</code></p>
+<p>Condition number, Euclidean norm.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.norm</code></dd><dt>Notes</dt><dd><code>norm(M)·norm(inv(M))</code> with the Frobenius norm. Julia's <code>cond</code> has no Frobenius variant.</dd></dl>
+</section>
+<section class="function" id="f-condi">
+<h3><code>condi</code></h3>
+<p class="signature"><code>condi(M)</code></p>
+<p>Condition number, infinity norm.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.cond</code></dd><dt>Notes</dt><dd>As <code>cond(M, Inf)</code>.</dd></dl>
+</section>
+<section class="function" id="f-eigenvals">
+<h3><code>eigenvals</code></h3>
+<p class="signature"><code>eigenvals(M)</code></p>
+<p>Eigenvalues as a column vector in Julia's order: ascending for a symmetric or Hermitian matrix, otherwise by real part then imaginary part.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.eigvals</code></dd><dt>Notes</dt><dd>The eigenvalues as a column vector, in Julia's order: ascending and real for a symmetric or Hermitian matrix (computed with <code>Hermitian</code>), otherwise sorted by real part, then imaginary part. A complex result whose imaginary parts are all zero is returned as real.</dd></dl>
+</section>
+<section class="function" id="f-eigenvec">
+<h3><code>eigenvec</code></h3>
+<p class="signature"><code>eigenvec(M, z)</code></p>
+<p>One unit-length eigenvector for eigenvalue z by inverse iteration.</p>
+<dl><dt>Notes</dt><dd>One unit eigenvector for the eigenvalue <code>z</code>, by inverse iteration on <code>M − z·I</code>. <code>z</code> need only be close to an eigenvalue. Julia has no single-eigenvector function; take the matching column of <code>eigvecs</code>.</dd></dl>
+</section>
+<section class="function" id="f-eigenvecs">
+<h3><code>eigenvecs</code></h3>
+<p class="signature"><code>eigenvecs(M, [&quot;L&quot;])</code></p>
+<p>All normalized eigenvectors as columns, in eigenvals order, with LAPACK's signs.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.eigvecs</code></dd><dt>Notes</dt><dd>The normalised eigenvectors as columns, in the order of <code>eigenvals</code>, with the signs LAPACK chooses. <code>eigenvecs(M, "L")</code> returns left eigenvectors, which Julia does not compute directly (they are the right eigenvectors of the adjoint, paired by eigenvalue).</dd></dl>
+</section>
+<section class="function" id="f-geninv">
+<h3><code>geninv</code></h3>
+<p class="signature"><code>geninv(A)</code></p>
+<p>Generalized (pseudo) inverse, least-squares left inverse.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.pinv</code></dd><dt>Notes</dt><dd>The Moore–Penrose pseudo-inverse; for a matrix of full column rank it is the least-squares left inverse.</dd></dl>
+</section>
+<section class="function" id="f-genvals">
+<h3><code>genvals</code></h3>
+<p class="signature"><code>genvals(M, N)</code></p>
+<p>Generalized eigenvalues of M*x = v*N*x in Julia's order, by real part then imaginary part.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.eigvals</code></dd><dt>Notes</dt><dd>The generalised eigenvalues of <code>M·x = λ·N·x</code>, as <code>eigvals(M, N)</code>, in Julia's order.</dd></dl>
+</section>
+<section class="function" id="f-genvecs">
+<h3><code>genvecs</code></h3>
+<p class="signature"><code>genvecs(M, N, [&quot;L&quot;])</code></p>
+<p>Generalized eigenvectors as unit columns, in genvals order.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.eigvecs</code></dd><dt>Notes</dt><dd>The generalised eigenvectors, normalised to length 1, in the order of <code>genvals</code>. <code>"L"</code> as third argument returns left eigenvectors.</dd></dl>
+</section>
+<section class="function" id="f-Jacob">
+<h3><code>Jacob</code></h3>
+<p class="signature"><code>Jacob(F(x), x, [k])</code></p>
+<p>Jacobian of column vector F with respect to column vector x.</p>
+<dl><dt>Notes</dt><dd>The Jacobian matrix of a column-vector expression <code>F(x)</code> with respect to the column vector <code>x</code>, by numeric differentiation (Richardson extrapolation of central differences, the method of <code>derivative</code>). The optional <code>k</code> uses only the first <code>k</code> variables.</dd></dl>
+</section>
+<section class="function" id="f-kronecker">
+<h3><code>kronecker</code></h3>
+<p class="signature"><code>kronecker(M, N)</code></p>
+<p>Kronecker product of M and N (numeric evaluation needs square matrices).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.kron</code></dd><dt>Notes</dt><dd>The Kronecker product.</dd></dl>
+</section>
+<section class="function" id="f-last">
+<h3><code>last</code></h3>
+<p class="signature"><code>last(v)</code></p>
+<p>Index of the last element of v (depends on ORIGIN).</p>
+<dl><dt>Notes</dt><dd>The index of the last element of a vector: <code>length(v) − 1 + ORIGIN</code>. Julia's <code>lastindex</code> is always the length because Julia counts from 1.</dd></dl>
+</section>
+<section class="function" id="f-length">
+<h3><code>length</code></h3>
+<p class="signature"><code>length(v)</code></p>
+<p>Number of elements of column vector v.</p>
+<dl><dt>Julia</dt><dd><code>Base.length</code></dd><dt>Notes</dt><dd>The number of elements of a column vector. A matrix or a row vector is an error (Julia's <code>length</code> counts every element).</dd></dl>
+</section>
+<section class="function" id="f-lsolve">
+<h3><code>lsolve</code></h3>
+<p class="signature"><code>lsolve(M, v)</code></p>
+<p>Solves M*x = v by LU.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.\</code></dd><dt>Notes</dt><dd>Solves <code>M·x = v</code>: with LU decomposition for a square non-singular matrix (Julia's <code>M \ v</code>), and with the pseudo-inverse (least squares) for a non-square matrix. A singular square matrix is an error. <code>v</code> may have several columns.</dd></dl>
+</section>
+<section class="function" id="f-max">
+<h3><code>max</code></h3>
+<p class="signature"><code>max(A, B, C, …)</code></p>
+<p>Largest value over arrays, scalars or strings.</p>
+<dl><dt>Julia</dt><dd><code>Base.maximum</code></dd><dt>Notes</dt><dd>The largest element over all arguments, scalars and arrays together. Strings are compared alphabetically. For complex values it returns the largest real part plus i times the largest imaginary part, which Julia does not define. Units must agree.</dd></dl>
+</section>
+<section class="function" id="f-min">
+<h3><code>min</code></h3>
+<p class="signature"><code>min(A, B, C, …)</code></p>
+<p>Smallest value over the arguments.</p>
+<dl><dt>Julia</dt><dd><code>Base.minimum</code></dd><dt>Notes</dt><dd>As <code>max</code>, the smallest.</dd></dl>
+</section>
+<section class="function" id="f-norm1">
+<h3><code>norm1</code></h3>
+<p class="signature"><code>norm1(M)</code></p>
+<p>L1 norm: maximum absolute column sum (square M).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.opnorm</code></dd><dt>Notes</dt><dd><code>opnorm(M, 1)</code>: the largest absolute column sum. Note that Julia's <code>norm(M, 1)</code> is the sum of all absolute values, a different number.</dd></dl>
+</section>
+<section class="function" id="f-norm2">
+<h3><code>norm2</code></h3>
+<p class="signature"><code>norm2(M)</code></p>
+<p>L2 norm: largest singular value of a square matrix M.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.opnorm</code></dd><dt>Notes</dt><dd><code>opnorm(M, 2)</code>: the largest singular value.</dd></dl>
+</section>
+<section class="function" id="f-norme">
+<h3><code>norme</code></h3>
+<p class="signature"><code>norme(M)</code></p>
+<p>Euclidean (Frobenius) norm.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.norm</code></dd><dt>Notes</dt><dd><code>norm(M)</code>: the Frobenius (Euclidean) norm.</dd></dl>
+</section>
+<section class="function" id="f-normi">
+<h3><code>normi</code></h3>
+<p class="signature"><code>normi(M)</code></p>
+<p>Infinity norm: maximum absolute row sum.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.opnorm</code></dd><dt>Notes</dt><dd><code>opnorm(M, Inf)</code>: the largest absolute row sum.</dd></dl>
+</section>
+<section class="function" id="f-rank">
+<h3><code>rank</code></h3>
+<p class="signature"><code>rank(A)</code></p>
+<p>Number of linearly independent columns.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.rank</code></dd><dt>Notes</dt><dd>The numerical rank from the singular values, with Julia's default tolerance. The matrix must be numeric and without units.</dd></dl>
+</section>
+<section class="function" id="f-rows">
+<h3><code>rows</code></h3>
+<p class="signature"><code>rows(A)</code></p>
+<p>Number of rows.</p>
+<dl><dt>Julia</dt><dd><code>Base.size</code></dd><dt>Notes</dt><dd><code>size(A, 1)</code>; 0 when the argument is not an array.</dd></dl>
+</section>
+<section class="function" id="f-rref">
+<h3><code>rref</code></h3>
+<p class="signature"><code>rref(A)</code></p>
+<p>Row-reduced echelon form.</p>
+<dl><dt>Notes</dt><dd>The reduced row echelon form, by Gauss–Jordan elimination with partial pivoting; entries below a tolerance proportional to the machine precision count as zero. Julia's standard library has no <code>rref</code>.</dd></dl>
+</section>
+<section class="function" id="f-tr">
+<h3><code>tr</code></h3>
+<p class="signature"><code>tr(M)</code></p>
+<p>Trace (sum of the diagonal) of a square matrix.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.tr</code></dd><dt>Notes</dt><dd>The sum of the diagonal of a square matrix; the elements may carry units.</dd></dl>
+</section>
+<section class="function" id="f-vsum">
+<h3><code>vsum</code></h3>
+<p class="signature"><code>vsum(v)</code></p>
+<p>Sum of the elements of an array, in reading order (a matrix row by row) and keeping the units.</p>
+<dl><dt>Julia</dt><dd><code>Base.sum</code></dd><dt>Notes</dt><dd>The sum of all elements, row by row, keeping units; an empty array sums to 0. The same as the operator <code>Σv</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

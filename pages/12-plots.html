@@ -1,0 +1,40 @@
+<!-- title: Plots -->
+<h1>Plots</h1>
+<p>Plots draw functions and data from the worksheet and update whenever what they show changes. A plot is an ordinary region: it sees the definitions above and to the left of it.</p>
+
+<h2 id="insert">Inserting a plot</h2>
+<p><em>Insert › Plot</em> creates an XY plot at the crosshair, 220 pt high by default. Around the plot area are placeholders: the <strong>y expression</strong> on the left, the <strong>x expression</strong> below, and the axis limits at the ends of the axes. Click a placeholder and type.</p>
+<ul>
+<li><strong>A function</strong>: put a name that nothing defines, such as <code>x</code> or <code>t</code>, in the x placeholder and an expression of it in the y placeholder, for example <code>x</code> and <code>sin(x)</code>. The plot samples the name itself over the x limits (−10 to 10 when none are set) with 501 points. Zooming or panning the plot samples the new range again.</li>
+<li><strong>Data</strong>: put two vectors of equal length, <code>X</code> and <code>Y</code>, or expressions that give them, such as a column of a matrix <code>M⟨0⟩</code>, in the placeholders.</li>
+<li><strong>A range variable</strong> defined on the worksheet can also be the x expression; the y expression is then evaluated for each of its values.</li>
+</ul>
+<p>An empty x placeholder is not filled in for you: a trace needs both expressions. <code>NaN</code> in the data leaves a gap in the line.</p>
+
+<h2 id="plot-tab">The Plot tab</h2>
+<p>Click a plot to select it; the <strong>Plot</strong> tab appears with every control:</p>
+<ul>
+<li><strong>Type</strong>: XY, Polar or Contour.</li>
+<li><strong>Traces</strong>: <em>Add trace</em> (also <kbd>Shift</kbd>+<kbd>Enter</kbd> in a y expression), <em>Remove trace</em>, and the list of traces. Click a trace on the plot, or its expression, to select it.</li>
+<li><strong>Trace</strong>: its y and x expressions, and whether it uses the left or the right y axis.</li>
+<li><strong>Trace type</strong>: Line, Stem, Bar or Step. Stems and bars start at zero.</li>
+<li><strong>Style</strong>: lines, markers or both; the line style, width and colour; the marker shape, size and colour; whether the trace appears in the legend and its legend label.</li>
+<li><strong>Axes</strong>: logarithmic x, y and right y axes, <em>Auto scale</em> (forget the typed limits), axes through the origin, grid and grid spacing.</li>
+<li><strong>Labels</strong>: the plot title, the axis titles and a display unit for each axis.</li>
+</ul>
+
+<h2 id="axes">Limits, titles and units</h2>
+<p>An axis limit is a number or a math expression, such as <code>2·π</code> or <code>L/2</code>, calculated like any region. Limits may carry units. A <strong>display unit</strong> on an axis converts its numbers: a y axis with data in metres and the unit <code>mm</code> shows millimetres. All values on one axis must have compatible dimensions. On a logarithmic axis, zero and negative values are left out.</p>
+<p>The legend sits in the top right corner of the plot area and shows the traces whose <em>Show in legend</em> box is checked; a label you leave empty shows the trace's y expression as typeset math. Under each y expression a short line sample shows the colour and dash of its trace.</p>
+
+<h2 id="navigate">Looking at the data</h2>
+<p>On screen, drag in the plot to zoom into a rectangle, pan with the plot controls, and reset to the data range. While the pointer is over the data, its coordinates are shown in the upper left corner. These views are temporary: the printed plot shows the stored limits. Fixed vertical and horizontal reference lines can be added at given values.</p>
+
+<h2 id="polar">Polar plots</h2>
+<p>In a polar plot the x expression is the angle θ and the y expression the radius r. An undefined name in the angle is sampled from 0 to 2π. Angles are in radians (or in the unit they carry), zero points to the right and positive angles turn counter-clockwise.</p>
+
+<h2 id="contour">Contour plots</h2>
+<p>A contour plot takes an x vector, a y vector and a matrix <code>Z</code> with one row per y value and one column per x value, and draws contour lines at automatically chosen levels.</p>
+
+<h2 id="size">Size and print</h2>
+<p>Drag the handles of a selected plot to resize it, at least 144 × 108 pt. Plots print and export to PDF as vector graphics, exactly as they appear on the page.</p>

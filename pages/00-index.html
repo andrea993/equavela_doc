@@ -1,0 +1,31 @@
+<!-- title: Welcome -->
+<img class="hero" src="assets/equavela-logo.svg" alt="Equavela, Scientific Computing Workspace">
+<h1>Equavela manual</h1>
+<p>Equavela is a workspace for scientific calculation. You write mathematics on a page the way you would on paper: definitions, formulas, results with units, plots, tables and explanatory text, laid out where you want them. Every result recalculates as soon as something it depends on changes, and the page you see on screen is exactly the page you print or export to PDF.</p>
+<p>Behind the page runs <a href="https://julialang.org">Julia</a>, a fast language for numerical computing, together with SymPy for symbolic mathematics. You never have to write Julia to use Equavela, but when you want to, you can call any Julia package from a worksheet or write whole Julia blocks next to your mathematics.</p>
+
+<h2 id="what-you-can-do">What you can do with it</h2>
+<ul>
+  <li><strong>Calculate with units.</strong> Write <code>L := 6 m</code> and <code>q := 12 kN/m</code>; Equavela checks dimensions and shows <code>q·L²/8 = 54 kN·m</code>.</li>
+  <li><strong>Work with vectors and matrices</strong>, ranges, programs with <code>if</code>, <code>for</code> and <code>while</code>, and more than 400 built-in functions for linear algebra, statistics, interpolation, curve fitting, signal processing, special functions and file access.</li>
+  <li><strong>Solve</strong> equations and systems (solve blocks, <code>root</code>, <code>find</code>, <code>minimize</code>) and ordinary differential equations.</li>
+  <li><strong>Transform symbolically</strong>: simplify, expand, factor, differentiate, integrate, solve, take Laplace and Fourier transforms.</li>
+  <li><strong>Plot</strong> functions and data in XY, polar and contour plots that update with the worksheet.</li>
+  <li><strong>Document</strong> your work with formatted text, headings, images, collapsible areas, headers and footers, and export it to PDF.</li>
+  <li><strong>Organise</strong> larger work in projects: several worksheets, shared images, Julia modules and their own package environment.</li>
+</ul>
+
+<h2 id="how-to-read">How this manual is organised</h2>
+<ul>
+  <li>The <strong>Guide</strong> chapters, in the left column, explain the program from the first worksheet to projects and printing. Read <a href="getting-started.html">Getting started</a> first.</li>
+  <li>The <strong>Reference</strong> lists every <a href="keyboard.html">keyboard shortcut</a>, and every <a href="commands.html">command</a>.</li>
+  <li><a href="functions/index.html">Functions</a> documents every built-in function: its arguments, its result, the Julia function or package that computes it and how Equavela differs from that Julia function.</li>
+</ul>
+<p>Use the search field at the top, or press <kbd>/</kbd>, to find a function, a command or a topic. Inside Equavela, <em>Help › Manual</em> opens this manual and <kbd>F1</kbd> on a function name opens its entry.</p>
+
+<h2 id="conventions">Conventions</h2>
+<ul>
+  <li>Key combinations are written <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>. Shortcuts are written with the US characters; on another layout, press <kbd>Ctrl</kbd> with the keys that type the same character (on the Italian layout <kbd>Ctrl</kbd>+<kbd>[</kbd> is <kbd>Ctrl</kbd>+<kbd>AltGr</kbd>+<kbd>è</kbd>).</li>
+  <li>Mathematics is shown in the linear form you can also type, for example <code>x := 2·π</code>. In the worksheet it is drawn in two dimensions.</li>
+  <li>Ribbon commands are written as <em>Tab › Group › Command</em>.</li>
+</ul>

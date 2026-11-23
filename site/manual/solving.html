@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solving equations · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html" aria-current="page">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Solving equations</h1>
+<p>Equavela solves equations numerically with <code>root</code>, <code>polyroots</code> and solve blocks, and symbolically with the <code>solve</code> keyword (see <a href="symbolics.html">Symbolic calculation</a>). Differential equations have their own solvers.</p>
+
+<h2 id="root">One equation: <code>root</code></h2>
+<p><code>root(f(x), x)</code> finds a value of <code>x</code> where <code>f(x)</code> is zero, starting from the current value of <code>x</code> (the guess):</p>
+<pre><code>x := 1
+root(x³ − 2·x − 5, x) = 2.095</code></pre>
+<p><code>root(f(x), x, a, b)</code> searches the interval [a, b] instead, where <code>f</code> must change sign. The result is accurate to the worksheet tolerance <code>TOL</code>. Units are allowed: the guess or the bounds give the unit of the result.</p>
+
+<h2 id="polyroots">Polynomials: <code>polyroots</code></h2>
+<p><code>polyroots(v)</code> returns all roots, real and complex, of the polynomial whose coefficients are in <code>v</code>, constant term first: <code>polyroots([−6; 1; 1])</code> gives the roots of <code>x² + x − 6</code>, 2 and −3.</p>
+
+<h2 id="solve-blocks">Solve blocks</h2>
+<p>A solve block solves a system of equations and inequalities. It is written with ordinary math regions, in reading order:</p>
+<pre><code>x := 1                     guess values, defined above
+y := 1
+Given                      opens the block
+x² + y² <strong>=</strong> 25               constraints, with the bold equal sign or a comparison
+y <strong>=</strong> x + 1
+x &gt; 0
+s := find(x, y)            the first call of find, minerr, minimize or maximize closes it
+s = [3; 4]</code></pre>
+<ul>
+<li>Type <code>Given</code> in a new math region to open a block; it is drawn as a keyword.</li>
+<li>Every bare comparison between <code>Given</code> and the closing call is a constraint: Boolean equality (<kbd>Ctrl</kbd>+<kbd>=</kbd>), <code>&lt;</code>, <code>&gt;</code>, <code>≤</code>, <code>≥</code> or <code>≠</code>. Both sides must have the same dimension; matrices are compared element by element.</li>
+<li>Every unknown needs a guess value, normally a definition above <code>Given</code>. The guesses are not changed: define the result (<code>s := find(x, y)</code>) to keep it.</li>
+<li>With one unknown the result is its value; with several it is a column vector in the order of the call. Each unknown keeps the unit of its guess.</li>
+<li>A block can be followed by another <code>Given</code>; constraints are never shared between blocks.</li>
+<li><code>f(a) := find(x)</code> makes a parameterised block: the constraints may use <code>a</code>, and every call of <code>f</code> solves again.</li>
+</ul>
+<table>
+<thead><tr><th>Closing call</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>find(x, y, …)</code></td><td>Values that satisfy every constraint within <code>CTOL</code>; an error when no such values are found.</td></tr>
+<tr><td><code>minerr(x, y, …)</code></td><td>The best approximation even when the constraints cannot all be met. Check the result yourself.</td></tr>
+<tr><td><code>minimize(f, x, …)</code>, <code>maximize(f, x, …)</code></td><td>The values that make the function <code>f</code> (named without arguments) smallest or largest, subject to the constraints. A block may have no constraints.</td></tr>
+<tr><td><code>find(x, y) →</code></td><td>Solves the equations of the block symbolically; no guesses are needed.</td></tr>
+<tr><td><code>odesolve(y(t), b)</code></td><td>Solves a differential equation; see below.</td></tr>
+</tbody>
+</table>
+<p><code>find</code> and <code>minerr</code> use the Levenberg–Marquardt method on the equation residuals and inequality violations; <code>minimize</code> and <code>maximize</code> a penalty method with BFGS steps. Results depend on the guesses: a guess on the wrong side of an inequality can lead to another root. <code>Given</code>, <code>find</code> and the other closing functions may be written in any letter case.</p>
+
+<h2 id="odesolve">Differential equations in a solve block</h2>
+<p><code>odesolve</code> solves an ordinary differential equation, or a system, written as it appears on paper. The equations use the bold equal sign and primes (<kbd>Ctrl</kbd>+<kbd>'</kbd>) or derivatives:</p>
+<pre><code>Given
+y′′(t) + y(t) <strong>=</strong> 0
+y(0) <strong>=</strong> 0
+y′(0) <strong>=</strong> 1
+y := odesolve(y(t), 10)
+y(1.5) = 0.997</code></pre>
+<p>A constraint that uses the variable <code>t</code> is an equation; one that does not is a condition. The result is a function, valid between the first condition point and the end point <code>b</code>; for a system, <code>odesolve([x(t); y(t)], b)</code> returns a column of functions. Conditions at both ends (boundary values) are solved by shooting. The optional third argument is the number of steps (1000 by default).</p>
+
+<h2 id="ode-functions">Differential equation functions</h2>
+<p>For first-order systems written as a function <code>D(x, y)</code> that returns the derivatives, use the table solvers: <code>rkfixed</code> (fourth-order Runge–Kutta, fixed step), <code>Rkadapt</code>, <code>Bulstoer</code>, <code>Adams</code>, <code>BDF</code>, <code>Radau</code>, <code>Stiffb</code>, <code>Stiffr</code> and <code>AdamsBDF</code>. They return a matrix whose first column holds the points and the other columns the solution. Boundary value problems use <code>sbval</code> and <code>bvalfit</code>, partial differential equations <code>numol</code>, <code>relax</code> and <code>multigrid</code>. See <a href="functions/differential-equations.html">Differential equations</a>.</p>
+
+<h2 id="tolerances">Tolerances</h2>
+<p><code>TOL</code> (default 0.001) controls <code>root</code>, numeric integrals and derivatives; <code>CTOL</code> (default 0.001) controls how closely a solve block must meet its constraints. Change them in <em>Calculate › Calculation settings</em>.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

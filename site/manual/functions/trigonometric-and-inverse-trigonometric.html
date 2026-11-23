@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trigonometric and inverse trigonometric · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html" aria-current="page">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Trigonometric and inverse trigonometric</h1>
+<p class="toc"><a href="#f-acos"><code>acos</code></a> <a href="#f-acot"><code>acot</code></a> <a href="#f-acsc"><code>acsc</code></a> <a href="#f-asec"><code>asec</code></a> <a href="#f-asin"><code>asin</code></a> <a href="#f-atan"><code>atan</code></a> <a href="#f-cos"><code>cos</code></a> <a href="#f-cot"><code>cot</code></a> <a href="#f-csc"><code>csc</code></a> <a href="#f-sec"><code>sec</code></a> <a href="#f-sin"><code>sin</code></a> <a href="#f-sinc"><code>sinc</code></a> <a href="#f-tan"><code>tan</code></a></p>
+<section class="function" id="f-acos">
+<h3><code>acos</code></h3>
+<p class="signature"><code>acos(z)</code></p>
+<p>Inverse cosine.</p>
+<dl><dt>Julia</dt><dd><code>Base.acos</code></dd><dt>Notes</dt><dd>As <code>asin</code>: <code>acos(2) = −1.317i</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-acot">
+<h3><code>acot</code></h3>
+<p class="signature"><code>acot(z)</code></p>
+<p>Inverse cotangent.</p>
+<dl><dt>Julia</dt><dd><code>Base.acot</code></dd><dt>Notes</dt><dd><code>atan(1/z)</code>, with <code>acot(0) = π/2</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-acsc">
+<h3><code>acsc</code></h3>
+<p class="signature"><code>acsc(z)</code></p>
+<p>Inverse cosecant.</p>
+<dl><dt>Julia</dt><dd><code>Base.acsc</code></dd><dt>Notes</dt><dd><code>asin(1/z)</code>, complex where the real value does not exist. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-asec">
+<h3><code>asec</code></h3>
+<p class="signature"><code>asec(z)</code></p>
+<p>Inverse secant.</p>
+<dl><dt>Julia</dt><dd><code>Base.asec</code></dd><dt>Notes</dt><dd><code>acos(1/z)</code>, complex where the real value does not exist. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-asin">
+<h3><code>asin</code></h3>
+<p class="signature"><code>asin(z)</code></p>
+<p>Inverse sine (complex result outside [-1, 1]).</p>
+<dl><dt>Julia</dt><dd><code>Base.asin</code></dd><dt>Notes</dt><dd>For a real argument outside [−1, 1] the result is complex (Julia's value for a complex argument), where Julia's real method throws a <code>DomainError</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-atan">
+<h3><code>atan</code></h3>
+<p class="signature"><code>atan(z)</code></p>
+<p>Inverse tangent.</p>
+<dl><dt>Julia</dt><dd><code>Base.atan</code></dd><dt>Notes</dt><dd>One argument only; for the angle of a point use <code>atan2</code> or <code>angle</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-cos">
+<h3><code>cos</code></h3>
+<p class="signature"><code>cos(z)</code></p>
+<p>Cosine.</p>
+<dl><dt>Julia</dt><dd><code>Base.cos</code></dd><dt>Notes</dt><dd>As <code>sin</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-cot">
+<h3><code>cot</code></h3>
+<p class="signature"><code>cot(z)</code></p>
+<p>Cotangent.</p>
+<dl><dt>Julia</dt><dd><code>Base.cot</code></dd><dt>Notes</dt><dd><code>1/tan(z)</code>; a zero tangent is an error. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-csc">
+<h3><code>csc</code></h3>
+<p class="signature"><code>csc(z)</code></p>
+<p>Cosecant.</p>
+<dl><dt>Julia</dt><dd><code>Base.csc</code></dd><dt>Notes</dt><dd><code>1/sin(z)</code>; a zero sine is the error "can't divide by zero" instead of <code>Inf</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-sec">
+<h3><code>sec</code></h3>
+<p class="signature"><code>sec(z)</code></p>
+<p>Secant.</p>
+<dl><dt>Julia</dt><dd><code>Base.sec</code></dd><dt>Notes</dt><dd><code>1/cos(z)</code>; a zero cosine is an error. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-sin">
+<h3><code>sin</code></h3>
+<p class="signature"><code>sin(z)</code></p>
+<p>Sine, radians.</p>
+<dl><dt>Julia</dt><dd><code>Base.sin</code></dd><dt>Notes</dt><dd>The argument is in radians; an angle with the unit <code>deg</code> is converted. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+<section class="function" id="f-sinc">
+<h3><code>sinc</code></h3>
+<p class="signature"><code>sinc(z)</code></p>
+<p>sin(z)/z, 1 at 0.</p>
+<dl><dt>Julia</dt><dd><code>Base.sin</code></dd><dt>Notes</dt><dd><code>sin(z)/z</code> with the value 1 at 0. This is the unnormalised sinc; Julia's <code>sinc(x)</code> is <code>sin(πx)/(πx)</code>. Element by element on arrays.</dd></dl>
+</section>
+<section class="function" id="f-tan">
+<h3><code>tan</code></h3>
+<p class="signature"><code>tan(z)</code></p>
+<p>Tangent.</p>
+<dl><dt>Julia</dt><dd><code>Base.tan</code></dd><dt>Notes</dt><dd>As <code>sin</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

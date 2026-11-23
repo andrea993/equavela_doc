@@ -1,0 +1,453 @@
+# name	julia (; between several)	notes (HTML)
+# ---- Special functions ----
+J0	SpecialFunctions.besselj0	Equals <code>besselj(0, z)</code>. The argument must be dimensionless; it may be complex and may be an array (element by element). A negative real argument is passed as a complex number, so the principal value is returned where Julia's real method would throw. An overflow is an error instead of <code>Inf</code>.
+J1	SpecialFunctions.besselj1	As <code>J0</code>, order 1.
+Jn	SpecialFunctions.besselj	<code>Jn(m, z) = besselj(m, z)</code>; the order <code>m</code> must be real (it need not be an integer). Arrays of orders or arguments are taken element by element.
+Y0	SpecialFunctions.bessely0	Equals <code>bessely(0, z)</code>. The argument must be non-zero (the function has a pole at 0, reported as an error). Negative real arguments give the complex principal value.
+Y1	SpecialFunctions.bessely1	As <code>Y0</code>, order 1.
+Yn	SpecialFunctions.bessely	<code>Yn(m, z) = bessely(m, z)</code>; <code>z</code> must be non-zero.
+I0	SpecialFunctions.besseli	Equals <code>besseli(0, z)</code>.
+I1	SpecialFunctions.besseli	Equals <code>besseli(1, z)</code>.
+In	SpecialFunctions.besseli	<code>In(m, z) = besseli(m, z)</code>.
+K0	SpecialFunctions.besselk	Equals <code>besselk(0, z)</code>; <code>z</code> must be non-zero.
+K1	SpecialFunctions.besselk	Equals <code>besselk(1, z)</code>; <code>z</code> must be non-zero.
+Kn	SpecialFunctions.besselk	<code>Kn(m, z) = besselk(m, z)</code>; <code>z</code> must be non-zero.
+H1	SpecialFunctions.hankelh1	<code>H1(m, z) = hankelh1(m, z) = Jn(m, z) + i·Yn(m, z)</code>; <code>z</code> must be non-zero.
+H2	SpecialFunctions.hankelh2	<code>H2(m, z) = hankelh2(m, z) = Jn(m, z) − i·Yn(m, z)</code>; <code>z</code> must be non-zero.
+Ai	SpecialFunctions.airyai	Same values as Julia; complex arguments allowed.
+DAi	SpecialFunctions.airyaiprime	Same values as Julia.
+Bi	SpecialFunctions.airybi	Same values as Julia.
+DBi	SpecialFunctions.airybiprime	Same values as Julia.
+ber	SpecialFunctions.besselj	Computed as <code>real(besselj(m, x·e^(3πi/4)))</code>. The order must be a non-negative integer and <code>x</code> real; Julia has no Kelvin function of its own.
+bei	SpecialFunctions.besselj	Computed as <code>imag(besselj(m, x·e^(3πi/4)))</code>, with the same conditions as <code>ber</code>.
+js	SpecialFunctions.besselj	<code>js(m, z) = √(π/(2z))·besselj(m + ½, z)</code>, which equals <code>SpecialFunctions.sphericalbesselj</code>. At <code>z = 0</code> it returns the limit (1 for order 0, 0 otherwise). For an integer order and a real argument the result is real.
+ys	SpecialFunctions.bessely	<code>ys(m, z) = √(π/(2z))·bessely(m + ½, z)</code>, as <code>SpecialFunctions.sphericalbessely</code>; <code>z</code> must be non-zero.
+erf	SpecialFunctions.erf	Same values as Julia; complex arguments allowed; element by element on arrays.
+erfc	SpecialFunctions.erfc	Same values as Julia.
+Γ	SpecialFunctions.gamma	<code>Γ(z)</code> is <code>gamma(z)</code>, also for complex <code>z</code>. At a pole (0, −1, …) or on overflow (<code>Γ(172)</code>) the result is an error instead of Julia's <code>Inf</code> or <code>NaN</code>. <code>Γ(a, x)</code> is the upper incomplete gamma function <code>∫ₓ^∞ t^(a−1)e^(−t) dt</code>, computed as <code>gamma(a, x)</code> in extended precision; it needs <code>a &gt; 0</code> and <code>x ≥ 0</code>. Type it with <code>G</code> <kbd>Ctrl</kbd>+<kbd>G</kbd>.
+lnΓ	SpecialFunctions.loggamma	Where Γ is negative the result is complex (the principal logarithm), as <code>loggamma</code> of a complex number; Julia's <code>logabsgamma</code> would return the logarithm of the absolute value instead.
+Psi	SpecialFunctions.digamma; SpecialFunctions.polygamma	<code>Psi(y)</code> is <code>digamma(y)</code>; <code>Psi(n, y)</code> is <code>polygamma(n, y)</code>, the n-th derivative, with <code>n</code> a non-negative integer.
+fhyper	HypergeometricFunctions._₂F₁	The Gauss hypergeometric function <sub>2</sub>F<sub>1</sub>(a, b; c; x), for real arguments with −1 &lt; x &lt; 1 only (Julia's function also continues outside). Returns 1 when <code>a</code>, <code>b</code> or <code>x</code> is 0.
+mhyper	HypergeometricFunctions._₁F₁	The confluent hypergeometric function <sub>1</sub>F<sub>1</sub>(a; b; x) for real arguments.
+ibeta	SpecialFunctions.beta_inc	<code>ibeta(a, x, y)</code> is the regularised incomplete beta function I<sub>a</sub>(x, y), the first value of <code>beta_inc(x, y, a)</code>. Note the order: the integration limit comes first. It needs 0 ≤ a ≤ 1 and x, y &gt; 0.
+Jac		The Jacobi polynomial P<sub>n</sub><sup>(a, b)</sup>(x) by its three-term recurrence; <code>a</code>, <code>b</code> &gt; −1, <code>n</code> a non-negative integer. Element by element on <code>x</code>. Julia's standard library has no Jacobi polynomial.
+J0.sc	SpecialFunctions.besseljx	Scaled: <code>J0(z)·e^(−|Im z|)</code>. Type the name with a literal subscript, J<sub>0.sc</sub>.
+J1.sc	SpecialFunctions.besseljx	<code>besseljx(1, z)</code>.
+Jn.sc	SpecialFunctions.besseljx	<code>besseljx(m, z)</code>.
+Y0.sc	SpecialFunctions.besselyx	<code>besselyx(0, z)</code>; <code>z</code> non-zero.
+Y1.sc	SpecialFunctions.besselyx	<code>besselyx(1, z)</code>; <code>z</code> non-zero.
+Yn.sc	SpecialFunctions.besselyx	<code>besselyx(m, z)</code>; <code>z</code> non-zero.
+I0.sc	SpecialFunctions.besselix	Scaled: <code>I0(z)·e^(−|Re z|)</code>.
+I1.sc	SpecialFunctions.besselix	<code>besselix(1, z)</code>.
+In.sc	SpecialFunctions.besselix	<code>besselix(m, z)</code>.
+K0.sc	SpecialFunctions.besselkx	Scaled: <code>K0(z)·e^z</code>; <code>z</code> non-zero.
+K1.sc	SpecialFunctions.besselkx	<code>besselkx(1, z)</code>.
+Kn.sc	SpecialFunctions.besselkx	<code>besselkx(m, z)</code>.
+H1.sc	SpecialFunctions.hankelh1x	Scaled: <code>H1(m, z)·e^(−i·z)</code>.
+H2.sc	SpecialFunctions.hankelh2x	Scaled: <code>H2(m, z)·e^(i·z)</code>.
+Ai.sc	SpecialFunctions.airyaix	Scaled: <code>Ai(z)·e^(⅔·z^(3/2))</code>.
+DAi.sc	SpecialFunctions.airyaiprimex	Scaled derivative of Ai, as <code>airyaiprimex</code>.
+Bi.sc	SpecialFunctions.airybix	Scaled: <code>Bi(z)·e^(−|Re(⅔·z^(3/2))|)</code>.
+DBi.sc	SpecialFunctions.airybiprimex	Scaled derivative of Bi, as <code>airybiprimex</code>.
+Gamma	SpecialFunctions.gamma	The same function as <code>Γ</code>, spelled in Latin letters.
+lnGamma	SpecialFunctions.loggamma	The same function as <code>lnΓ</code>.
+Leg		Legendre polynomial P<sub>n</sub>(x) by Bonnet's recurrence. Element by element on <code>x</code>.
+Tcheb		Chebyshev polynomial of the first kind T<sub>n</sub>(x) by its recurrence.
+Ucheb		Chebyshev polynomial of the second kind U<sub>n</sub>(x) by its recurrence.
+Her		Physicists' Hermite polynomial H<sub>n</sub>(x) (H<sub>1</sub>(x) = 2x).
+Lag		Laguerre polynomial L<sub>n</sub>(x).
+δ		Kronecker delta: 1 when <code>m = n</code>, otherwise 0.
+Φ		Heaviside step. <code>Φ(0) = 0.5</code>, where some definitions use 0 or 1.
+ε		The Levi-Civita symbol of rank 3: +1 for an even permutation of the indices, −1 for an odd one, 0 when two are equal. The indices run from <code>ORIGIN</code> to <code>ORIGIN + 2</code>.
+# ---- Trigonometric ----
+sin	Base.sin	The argument is in radians; an angle with the unit <code>deg</code> is converted. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+cos	Base.cos	As <code>sin</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+tan	Base.tan	As <code>sin</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+asin	Base.asin	For a real argument outside [−1, 1] the result is complex (Julia's value for a complex argument), where Julia's real method throws a <code>DomainError</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+acos	Base.acos	As <code>asin</code>: <code>acos(2) = −1.317i</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+atan	Base.atan	One argument only; for the angle of a point use <code>atan2</code> or <code>angle</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+csc	Base.csc	<code>1/sin(z)</code>; a zero sine is the error "can't divide by zero" instead of <code>Inf</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+sec	Base.sec	<code>1/cos(z)</code>; a zero cosine is an error. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+cot	Base.cot	<code>1/tan(z)</code>; a zero tangent is an error. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+sinc	Base.sin	<code>sin(z)/z</code> with the value 1 at 0. This is the unnormalised sinc; Julia's <code>sinc(x)</code> is <code>sin(πx)/(πx)</code>. Element by element on arrays.
+acsc	Base.acsc	<code>asin(1/z)</code>, complex where the real value does not exist. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+asec	Base.asec	<code>acos(1/z)</code>, complex where the real value does not exist. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+acot	Base.acot	<code>atan(1/z)</code>, with <code>acot(0) = π/2</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+# ---- Hyperbolic ----
+sinh	Base.sinh	Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+cosh	Base.cosh	Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+tanh	Base.tanh	Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+asinh	Base.asinh	Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+csch	Base.csch	<code>1/sinh(z)</code>; error at 0. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+sech	Base.sech	<code>1/cosh(z)</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+coth	Base.coth	<code>1/tanh(z)</code>; error at 0. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+acosh	Base.acosh	For a real argument below 1 the result is complex, where Julia's real method throws. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+atanh	Base.atanh	For a real argument with |z| &gt; 1 the result is complex. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+acsch	Base.acsch	<code>asinh(1/z)</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+asech	Base.asech	<code>acosh(1/z)</code>, complex where needed. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+acoth	Base.acoth	<code>atanh(1/z)</code>, complex where needed. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+# ---- Logarithm and exponential ----
+sqrt	Base.sqrt	A negative real number gives the complex root (<code>sqrt(−4) = 2i</code>), where Julia's real method throws. Units are kept: <code>sqrt(9 m²) = 3 m</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element. Same as the root operator.
+exp	Base.exp	A result larger than about 10^307 is an error instead of <code>Inf</code>. The argument must be dimensionless. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+ln	Base.log	The natural logarithm. A negative real argument gives the principal complex value (<code>ln(−1) = πi</code>), where Julia's real method throws; <code>ln(0)</code> is an error instead of <code>−Inf</code>. Of a square matrix it is the matrix function (as Julia's method for matrices); of any other array it applies element by element.
+log	Base.log10; Base.log	<code>log(z)</code> is the base-10 logarithm (Julia's <code>log10</code>), not the natural logarithm as Julia's <code>log(z)</code>. <code>log(z, b)</code> is the logarithm in base <code>b</code>, computed as <code>ln(z)/ln(b)</code>; note that Julia's <code>log(b, z)</code> takes the base first.
+ln0	Base.log	As <code>ln</code>, but returns −10^307 at 0 instead of an error, which keeps plots and sums of logarithmic data finite.
+# ---- Rounding ----
+floor	Base.floor	Element by element; a complex number is rounded part by part. Units are kept.
+ceil	Base.ceil	As <code>floor</code>.
+trunc	Base.trunc	As <code>floor</code>: rounds towards zero.
+round	Base.round	<code>round(z, n)</code> rounds to <code>n</code> decimals (default 0; negative <code>n</code> rounds to tens, hundreds…). Halves round <strong>away from zero</strong> (<code>round(2.5) = 3</code>), whereas Julia's default rounds halves to even (<code>round(2.5) = 2.0</code>); this is Julia's <code>RoundNearestTiesAway</code>.
+Floor	Base.floor	<code>floor(z/y)·y</code>: the greatest multiple of <code>y</code> not above <code>z</code>. Useful with units: <code>Floor(1.234 m, 5 cm) = 1.2 m</code>.
+Ceil	Base.ceil	<code>ceil(z/y)·y</code>.
+Round	Base.round	<code>round(z/y)·y</code> with halves away from zero.
+Trunc	Base.trunc	<code>trunc(z/y)·y</code>.
+# ---- Complex numbers and sign ----
+atan2	Base.atan	<code>atan2(x, y)</code> is Julia's <code>atan(y, x)</code>: note that <strong>x comes first</strong> here and second in Julia. The result is in (−π, π]; both arguments need the same unit; (0, 0) is an error.
+Re	Base.real	Element by element.
+Im	Base.imag	Element by element.
+abs	Base.abs	Absolute value or complex modulus, element by element on arrays. The operator <code>|x|</code> differs on arrays: it gives the length of a vector and the determinant of a square matrix.
+sign	Base.sign	−1, 0 or 1 for a real number; units are ignored. Complex numbers are an error (use <code>signum</code>).
+signum	Base.sign	<code>z/|z|</code>, also for complex <code>z</code> (as Julia's <code>sign</code> of a complex number); at 0 it returns the optional second argument, 1 by default, where Julia returns 0.
+csgn		1 when <code>z</code> is in the right half-plane or on the positive imaginary axis, −1 otherwise, 0 at 0.
+arg	Base.angle	The principal argument in (−π, π], as Julia's <code>angle</code>; <code>arg(0) = 0</code>. Units are ignored.
+angle	Base.atan	The angle of the point (x, y) in [0, 2π), measured counter-clockwise from the positive x axis; Julia's <code>atan(y, x)</code> plus 2π when negative. (0, 0) is an error.
+# ---- Conditional, type tests and errors ----
+IsScalar		1 for a number or a quantity, real or complex; 0 for arrays, strings and functions. Julia equivalent: <code>x isa Number</code>.
+IsArray		1 for a vector or matrix. Julia equivalent: <code>x isa AbstractArray</code>.
+IsFunction		1 when the argument is a function (a built-in, your own or a Julia function). Julia equivalent: <code>x isa Function</code>.
+IsRange		1 when the argument is a range variable.
+SIUnitsOf	Unitful.upreferred	One unit of the argument's dimension in SI base units: <code>SIUnitsOf(3 km) = 1 m</code>; 1 for a dimensionless number. Divide by it to strip the unit: <code>x/SIUnitsOf(x)</code>. Similar to <code>oneunit(upreferred(x))</code> in Unitful.
+IsString		1 for a string. Julia equivalent: <code>x isa AbstractString</code>.
+IsNaN	Base.isnan	Element by element; 1 when the real or the imaginary part is NaN; 0 for strings and other values that are not numbers (Julia's <code>isnan</code> throws for them).
+if	Base.ifelse	<code>if(c, a, b)</code> returns <code>a</code> when <code>c</code> is non-zero and <code>b</code> otherwise. Unlike Julia's <code>ifelse</code>, which evaluates both arguments, only the chosen branch is evaluated (like Julia's ternary <code>c ? a : b</code>), so the other branch may contain an expression that would fail.
+error	Base.error	Raises an error with the given message, shown on the region; a <code>try</code> in a program catches it.
+# ---- Strings ----
+concat	Base.string	Joins two or more strings; every argument must be a string (use <code>num2str</code> for numbers). Julia's <code>string</code> or <code>*</code> also converts other values.
+strlen	Base.length	The number of characters (Unicode code points), not bytes; Julia's <code>sizeof</code> counts bytes.
+substr		<code>substr(S, m, n)</code>: <code>n</code> characters starting at position <code>m</code>. Positions count from <code>ORIGIN</code> like array indices (0 by default), whereas Julia string indices are 1-based byte indices. A count past the end stops at the end.
+search	Base.findnext	<code>search(S, T, m)</code>: the position of the first <code>T</code> in <code>S</code> at or after position <code>m</code>, counted from <code>ORIGIN</code>, or −1 when it is absent (Julia's <code>findnext</code> returns <code>nothing</code> and a 1-based range).
+num2str	Base.string	The number as text with at most three decimals, trailing zeros dropped; complex numbers as <code>a+bi</code>; quantities with their unit. Julia's <code>string</code> writes the full precision.
+str2num	Base.tryparse	Reads a real or complex constant: <code>"1.5"</code>, <code>"-2e3"</code>, <code>"1+2i"</code>, <code>"3j"</code>. Anything else is an error. Julia's <code>parse(Float64, s)</code> reads real numbers only.
+vec2str	Base.Char	A string from a vector of character codes; only 9, 10, 13 and 32 to 255 are accepted.
+str2vec	Base.codepoint	A column vector of the Unicode code points of the characters.
+format		<code>format("Span {0} m, load {1}", L, q)</code> replaces <code>{0}</code>, <code>{1}</code>, … with the arguments, numbers formatted as by <code>num2str</code>. Placeholders count from 0 regardless of <code>ORIGIN</code>.
+# ---- Combinatorics and number theory ----
+mod	Base.rem	The remainder of <code>x/y</code> with the sign of <code>x</code> (truncated division), which is Julia's <code>rem</code>, <strong>not</strong> Julia's <code>mod</code> (which takes the sign of <code>y</code>): <code>mod(−7, 3) = −1</code>. Units must agree; <code>y</code> must not be zero. Element by element.
+combin	Base.binomial	The binomial coefficient, computed exactly with big integers and returned as a double. Needs integers with n ≥ k ≥ 0.
+permut	Base.factorial	The number of ordered selections of k out of n, <code>n!/(n − k)!</code>.
+gcd	Base.gcd	Of any number of integers or integer arrays; dimensionless only; the result is non-negative.
+lcm	Base.lcm	As <code>gcd</code>.
+# ---- Array creation ----
+stack	Base.vcat	Places arrays top to bottom; a scalar counts as a 1 × 1 block. All arguments need the same number of columns. Elements may be of mixed kinds (numbers, strings, arrays).
+augment	Base.hcat	Places arrays side by side; a scalar counts as a 1 × 1 block. All arguments need the same number of rows.
+submatrix		<code>submatrix(A, ir, jr, ic, jc)</code> is Julia's <code>A[ir:jr, ic:jc]</code> with indices counted from <code>ORIGIN</code>. Reversed bounds (<code>jr &lt; ir</code>) return the rows or columns in reverse order. The result is always a matrix, also when it is 1 × 1.
+identity	LinearAlgebra.I	An n × n identity matrix of doubles, as <code>Matrix(1.0I, n, n)</code>.
+matrix		<code>matrix(m, n, f)</code> builds an m × n matrix with element (i, j) equal to <code>f(i, j)</code>, where i and j count from 0 whatever <code>ORIGIN</code> is. Julia equivalent: <code>[f(i, j) for i in 0:m-1, j in 0:n-1]</code>.
+diag	LinearAlgebra.diagm; LinearAlgebra.diag	A vector gives the square diagonal matrix (<code>diagm</code>); a square matrix gives the column of its diagonal (<code>diag</code>). Julia's <code>diag</code> also accepts non-square matrices.
+logspace	Base.range	<code>npts</code> points spaced evenly on a logarithmic scale from <code>min</code> to <code>max</code>, both included; both must be positive and have the same unit, which the points keep. Julia equivalent: <code>exp10.(range(log10(a), log10(b), length=n))</code>.
+logpts		<code>dec·dnpts</code> points <code>10^(minexp + k/dnpts)</code>, k = 0, 1, …: whole decades starting at 10<sup>minexp</sup>, without the start of the next decade.
+vec	Base.collect	<code>vec(x, y, z)</code> is the column from <code>x</code> to <code>z</code> with step <code>y − x</code>, <code>vec(x, z)</code> with step 1 (−1 when <code>z &lt; x</code>), and <code>vec(i)</code> turns a range variable into a vector. Unlike Julia's <code>vec</code>, which reshapes an array into a vector, this function builds a vector from a range, as <code>collect(x:step:z)</code>.
+# ---- Array characteristics and linear algebra ----
+Jacob		The Jacobian matrix of a column-vector expression <code>F(x)</code> with respect to the column vector <code>x</code>, by numeric differentiation (Richardson extrapolation of central differences, the method of <code>derivative</code>). The optional <code>k</code> uses only the first <code>k</code> variables.
+rows	Base.size	<code>size(A, 1)</code>; 0 when the argument is not an array.
+cols	Base.size	<code>size(A, 2)</code>; 0 when the argument is not an array.
+length	Base.length	The number of elements of a column vector. A matrix or a row vector is an error (Julia's <code>length</code> counts every element).
+last		The index of the last element of a vector: <code>length(v) − 1 + ORIGIN</code>. Julia's <code>lastindex</code> is always the length because Julia counts from 1.
+tr	LinearAlgebra.tr	The sum of the diagonal of a square matrix; the elements may carry units.
+rank	LinearAlgebra.rank	The numerical rank from the singular values, with Julia's default tolerance. The matrix must be numeric and without units.
+eigenvals	LinearAlgebra.eigvals	The eigenvalues as a column vector, in Julia's order: ascending and real for a symmetric or Hermitian matrix (computed with <code>Hermitian</code>), otherwise sorted by real part, then imaginary part. A complex result whose imaginary parts are all zero is returned as real.
+eigenvecs	LinearAlgebra.eigvecs	The normalised eigenvectors as columns, in the order of <code>eigenvals</code>, with the signs LAPACK chooses. <code>eigenvecs(M, "L")</code> returns left eigenvectors, which Julia does not compute directly (they are the right eigenvectors of the adjoint, paired by eigenvalue).
+max	Base.maximum	The largest element over all arguments, scalars and arrays together. Strings are compared alphabetically. For complex values it returns the largest real part plus i times the largest imaginary part, which Julia does not define. Units must agree.
+min	Base.minimum	As <code>max</code>, the smallest.
+norm1	LinearAlgebra.opnorm	<code>opnorm(M, 1)</code>: the largest absolute column sum. Note that Julia's <code>norm(M, 1)</code> is the sum of all absolute values, a different number.
+norm2	LinearAlgebra.opnorm	<code>opnorm(M, 2)</code>: the largest singular value.
+norme	LinearAlgebra.norm	<code>norm(M)</code>: the Frobenius (Euclidean) norm.
+normi	LinearAlgebra.opnorm	<code>opnorm(M, Inf)</code>: the largest absolute row sum.
+cond1	LinearAlgebra.cond	<code>‖M‖₁·‖M⁻¹‖₁</code> with operator norms, as <code>cond(M, 1)</code>; <code>Inf</code> for a singular matrix.
+cond2	LinearAlgebra.cond	The ratio of the largest to the smallest singular value, as <code>cond(M)</code>.
+conde	LinearAlgebra.norm	<code>norm(M)·norm(inv(M))</code> with the Frobenius norm. Julia's <code>cond</code> has no Frobenius variant.
+condi	LinearAlgebra.cond	As <code>cond(M, Inf)</code>.
+geninv	LinearAlgebra.pinv	The Moore–Penrose pseudo-inverse; for a matrix of full column rank it is the least-squares left inverse.
+lsolve	LinearAlgebra.\	Solves <code>M·x = v</code>: with LU decomposition for a square non-singular matrix (Julia's <code>M \ v</code>), and with the pseudo-inverse (least squares) for a non-square matrix. A singular square matrix is an error. <code>v</code> may have several columns.
+genvals	LinearAlgebra.eigvals	The generalised eigenvalues of <code>M·x = λ·N·x</code>, as <code>eigvals(M, N)</code>, in Julia's order.
+genvecs	LinearAlgebra.eigvecs	The generalised eigenvectors, normalised to length 1, in the order of <code>genvals</code>. <code>"L"</code> as third argument returns left eigenvectors.
+eigenvec		One unit eigenvector for the eigenvalue <code>z</code>, by inverse iteration on <code>M − z·I</code>. <code>z</code> need only be close to an eigenvalue. Julia has no single-eigenvector function; take the matching column of <code>eigvecs</code>.
+kronecker	LinearAlgebra.kron	The Kronecker product.
+rref		The reduced row echelon form, by Gauss–Jordan elimination with partial pivoting; entries below a tolerance proportional to the machine precision count as zero. Julia's standard library has no <code>rref</code>.
+vsum	Base.sum	The sum of all elements, row by row, keeping units; an empty array sums to 0. The same as the operator <code>Σv</code>.
+# ---- Matrix factorization ----
+qr	LinearAlgebra.qr	The matrix <code>augment(Q, R)</code> with the full m × m orthogonal <code>Q</code> and the m × n upper triangular <code>R</code> from Julia's Householder QR. Kept for older worksheets; prefer <code>QR</code>.
+cholesky	LinearAlgebra.cholesky	The lower triangular <code>L</code> with <code>M = L·Lᴴ</code>, as <code>cholesky(Hermitian(M)).L</code>. Kept for older worksheets; prefer <code>Cholesky</code>.
+Cholesky	LinearAlgebra.cholesky	A nested vector <code>[P; L]</code>: by default with pivoting (<code>RowMaximum</code>), so that <code>P·M·Pᵀ = L·Lᴴ</code>. <code>Cholesky(M, 0)</code> turns pivoting off (P is the identity); a non-zero third argument returns the upper factor <code>Lᴴ</code>. Extract the parts with an index: <code>Cholesky(M)[1]</code>.
+LU	LinearAlgebra.lu	A nested vector <code>[P; L; U]</code> with <code>P·M = L·U</code> (partial pivoting). Julia returns a factorisation object with a permutation vector instead of the matrix <code>P</code>.
+QR	LinearAlgebra.qr	A nested vector <code>[P; Q; R]</code> with <code>M·P = Q·R</code>, columns pivoted by decreasing norm (<code>ColumnNorm</code>); <code>QR(M, 0)</code> returns <code>[Q; R]</code> with <code>M = Q·R</code>. Q is the full square factor. Signs are LAPACK's.
+svds	LinearAlgebra.svdvals	The singular values in descending order, as a column.
+svd	LinearAlgebra.svd	A nested vector <code>[U; S; V]</code> with the thin factors in Julia's order, <code>A = U·diag(S)·Vᵀ</code>. Unpack it with <code>[U; S; V] := svd(A)</code>; <code>[U; S; Wᵀ] := svd(A)</code> defines <code>W</code> as Vᵀ.
+# ---- Sorting, ranking, lookup, convolution ----
+match		The indices of the elements of <code>A</code> equal to <code>z</code>, counted from <code>ORIGIN</code>. For a matrix each match is a vector <code>[row; column]</code>, scanned column by column. An optional modifier selects otherwise: <code>"eq"</code>, <code>"not"</code>, <code>"gt"</code>, <code>"lt"</code>, <code>"geq"</code>, <code>"leq"</code>, <code>"near"</code> (closest values) or <code>"range"</code> (the interval of an ascending vector that holds <code>z</code>), or a function <code>f(element, z)</code>. No match is an error (so a <code>try</code> can catch it). Julia equivalent: <code>findall</code>, whose indices start at 1.
+sort	Base.sort	Ascending by real part; a row or column vector keeps its orientation; a matrix is an error. The imaginary part is ignored.
+reverse	Base.reverse	Reverses a vector, or the order of the rows of a matrix (Julia's <code>reverse(A, dims=1)</code>).
+csort	Base.sortslices	Rows rearranged so that column <code>n</code> (counted from <code>ORIGIN</code>) ascends; stable. Julia equivalent: <code>sortslices(A, dims=1, by=r -&gt; r[n])</code>.
+rsort	Base.sortslices	Columns rearranged so that row <code>n</code> ascends; stable.
+lookup		The elements of <code>B</code> at the positions where <code>A</code> matches <code>z</code> (with the modifiers of <code>match</code>), as a column in column-wise order. <code>A</code> and <code>B</code> must have the same size.
+vlookup		Searches the first column of <code>A</code> for <code>z</code> and returns column <code>c</code> (counted from <code>ORIGIN</code>) of the matching rows.
+hlookup		Searches the first row of <code>A</code> and returns row <code>r</code> of the matching columns, as a column vector.
+vhlookup		The element at the first row whose first entry matches <code>z1</code> and the first column whose first entry matches <code>z2</code>.
+Rank		The rank of each element (1 for the smallest); tied elements get the mean of their ranks. Not to be confused with <code>rank</code>, the matrix rank.
+order	Base.sortperm	The indices, counted from <code>ORIGIN</code>, that put <code>v</code> in ascending order; stable. Julia's <code>sortperm</code> returns 1-based indices.
+convol		The same function as <code>convolve</code>, under an older name.
+convolve		Convolution of a signal with a kernel. For two vectors the full result has <code>n + m − 1</code> elements; for matrices the result has the size of the signal. <code>BC</code> chooses the boundary (0 zero padding, the default; 1 circular; 2 reflect; 3 continue) and <code>OV</code> the initial overlap of the kernel (1 in 1-D, the centred kernel in 2-D by default). Computed directly in the time domain. The operator <code>A ∗ B</code> is the linear convolution and <code>A ⊛ B</code> the circular one.
+crosscorr		The cross-correlation: the convolution with the kernel reversed (rotated by 180° for matrices), with the same boundary and overlap options as <code>convolve</code>.
+deconvolve	FFTW.fft	The first <code>n − m + 1</code> elements of the circular deconvolution of <code>vz</code> (n elements) by <code>vx</code> (m elements), computed with FFTs; an exact quotient comes back as polynomial division gives it, otherwise the minimum-norm circular solution.
+# ---- Descriptive statistics ----
+mean	Statistics.mean	The arithmetic mean over every element of every argument, scalars and arrays together (Julia's <code>mean</code> takes one collection). Units are kept and must agree.
+median	Statistics.median	Over every element of every argument; real values only; the mean of the two middle values for an even count.
+var	Statistics.var	The <strong>population</strong> variance, dividing by N, which is Julia's <code>var(x, corrected=false)</code>; Julia's default <code>var</code> divides by N − 1 (that is <code>Var</code> here). Complex values use <code>|x − mean|²</code>.
+Var	Statistics.var	The sample variance, dividing by N − 1: Julia's default <code>var</code>.
+stdev	Statistics.std	The <strong>population</strong> standard deviation (divides by N), Julia's <code>std(x, corrected=false)</code>. Julia's default <code>std</code> corresponds to <code>Stdev</code>.
+Stdev	Statistics.std	The sample standard deviation (divides by N − 1), Julia's default <code>std</code>.
+gmean		The geometric mean of positive numbers without units, <code>(∏xᵢ)^(1/n)</code>, computed through logarithms when the product would overflow.
+hmean		The harmonic mean <code>n/Σ(1/xᵢ)</code> of positive numbers; units are kept.
+mode		The most frequent value; when several values are equally frequent, the smallest. Real values only.
+percentile	Statistics.quantile	The value below which the fraction <code>p</code> (0 to 1) of the data lies, interpolating linearly between order statistics at position <code>p·(n − 1)</code>. This matches Julia's default <code>quantile(v, p)</code>.
+cvar	Statistics.cov	<code>Σ(aᵢ − ā)·conj(bᵢ − b̄)/N</code>: the population covariance, dividing by N, over all elements of two arrays of equal size. Julia's <code>cov</code> divides by N − 1 unless <code>corrected=false</code>.
+covar	Statistics.cov	The same formula as <code>cvar</code>, for two vectors.
+corr	Statistics.cor	Pearson's correlation coefficient <code>cvar(A, B)/(stdev(A)·stdev(B))</code>; the same value as Julia's <code>cor</code>.
+Ftest	Distributions.FDist	The vector <code>[F; p]</code>: the ratio of the two sample variances and the two-sided probability from the F distribution with (n₁ − 1, n₂ − 1) degrees of freedom.
+Spear		Spearman's rank correlation as a vector of five values: the sum of squared rank differences D, its normal score and two-sided probability, ρ, and the probability of ρ from Student's t distribution. Ties get average ranks.
+kendltau		Kendall's τ<sub>b</sub>, its z-score from the normal approximation with the tie correction of the variance, and the two-sided probability, as SciPy's <code>kendalltau</code>.
+kendltau2		Kendall's τ<sub>b</sub> from a contingency table of frequencies, with its z-score and two-sided probability (without tie correction of the variance).
+contingtbl	Distributions.Chisq	For a contingency table: Pearson's χ², the degrees of freedom, the upper-tail probability, Cramér's V and the contingency coefficient C.
+skew		The sample skewness <code>n/((n−1)(n−2))·Σz³</code> with z standardised by the sample standard deviation (the adjusted Fisher–Pearson coefficient, as spreadsheets compute it). Julia's <code>StatsBase.skewness</code> returns the unadjusted value.
+kurt		The excess sample kurtosis with the small-sample correction used by spreadsheets. <code>StatsBase.kurtosis</code> returns the unadjusted excess kurtosis.
+dbeta	Distributions.Beta; Distributions.pdf	<code>pdf(Beta(s1, s2), x)</code>. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pbeta	Distributions.Beta; Distributions.cdf	<code>cdf(Beta(s1, s2), x)</code>, the probability of a value up to x. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.
+qbeta	Distributions.Beta; Distributions.quantile	<code>quantile(Beta(s1, s2), p)</code>, the inverse of <code>pbeta</code>; <code>p</code> between 0 and 1. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.
+rbeta	Distributions.Beta; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Beta(s1, s2), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.
+dbinom	Distributions.Binomial; Distributions.pdf	<code>pdf(Binomial(n, q), x)</code>. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pbinom	Distributions.Binomial; Distributions.cdf	<code>cdf(Binomial(n, q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.
+qbinom	Distributions.Binomial; Distributions.quantile	<code>quantile(Binomial(n, q), p)</code>, the inverse of <code>pbinom</code>; <code>p</code> between 0 and 1. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.
+rbinom	Distributions.Binomial; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Binomial(n, q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.
+dcauchy	Distributions.Cauchy; Distributions.pdf	<code>pdf(Cauchy(l, s), x)</code>. Location <code>l</code>, scale <code>s</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pcauchy	Distributions.Cauchy; Distributions.cdf	<code>cdf(Cauchy(l, s), x)</code>, the probability of a value up to x. Location <code>l</code>, scale <code>s</code> &gt; 0.
+qcauchy	Distributions.Cauchy; Distributions.quantile	<code>quantile(Cauchy(l, s), p)</code>, the inverse of <code>pcauchy</code>; <code>p</code> between 0 and 1. Location <code>l</code>, scale <code>s</code> &gt; 0.
+rcauchy	Distributions.Cauchy; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Cauchy(l, s), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Location <code>l</code>, scale <code>s</code> &gt; 0.
+dchisq	Distributions.Chisq; Distributions.pdf	<code>pdf(Chisq(d), x)</code>. <code>d</code> degrees of freedom; <code>d</code> need not be an integer. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pchisq	Distributions.Chisq; Distributions.cdf	<code>cdf(Chisq(d), x)</code>, the probability of a value up to x. <code>d</code> degrees of freedom; <code>d</code> need not be an integer.
+qchisq	Distributions.Chisq; Distributions.quantile	<code>quantile(Chisq(d), p)</code>, the inverse of <code>pchisq</code>; <code>p</code> between 0 and 1. <code>d</code> degrees of freedom; <code>d</code> need not be an integer.
+rchisq	Distributions.Chisq; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Chisq(d), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d</code> degrees of freedom; <code>d</code> need not be an integer.
+dexp	Distributions.Exponential; Distributions.pdf	<code>pdf(Exponential(1/r), x)</code>. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pexp	Distributions.Exponential; Distributions.cdf	<code>cdf(Exponential(1/r), x)</code>, the probability of a value up to x. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.
+qexp	Distributions.Exponential; Distributions.quantile	<code>quantile(Exponential(1/r), p)</code>, the inverse of <code>pexp</code>; <code>p</code> between 0 and 1. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.
+rexp	Distributions.Exponential; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Exponential(1/r), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.
+dF	Distributions.FDist; Distributions.pdf	<code>pdf(FDist(d1, d2), x)</code>. <code>d1</code>, <code>d2</code> degrees of freedom. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pF	Distributions.FDist; Distributions.cdf	<code>cdf(FDist(d1, d2), x)</code>, the probability of a value up to x. <code>d1</code>, <code>d2</code> degrees of freedom.
+qF	Distributions.FDist; Distributions.quantile	<code>quantile(FDist(d1, d2), p)</code>, the inverse of <code>pF</code>; <code>p</code> between 0 and 1. <code>d1</code>, <code>d2</code> degrees of freedom.
+rF	Distributions.FDist; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, FDist(d1, d2), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d1</code>, <code>d2</code> degrees of freedom.
+dgamma	Distributions.Gamma; Distributions.pdf	<code>pdf(Gamma(s, 1), x)</code>. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pgamma	Distributions.Gamma; Distributions.cdf	<code>cdf(Gamma(s, 1), x)</code>, the probability of a value up to x. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.
+qgamma	Distributions.Gamma; Distributions.quantile	<code>quantile(Gamma(s, 1), p)</code>, the inverse of <code>pgamma</code>; <code>p</code> between 0 and 1. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.
+rgamma	Distributions.Gamma; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Gamma(s, 1), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.
+dgeom	Distributions.Geometric; Distributions.pdf	<code>pdf(Geometric(q), x)</code>. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pgeom	Distributions.Geometric; Distributions.cdf	<code>cdf(Geometric(q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.
+qgeom	Distributions.Geometric; Distributions.quantile	<code>quantile(Geometric(q), p)</code>, the inverse of <code>pgeom</code>; <code>p</code> between 0 and 1. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.
+rgeom	Distributions.Geometric; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Geometric(q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.
+dhypergeom	Distributions.Hypergeometric; Distributions.pdf	<code>pdf(Hypergeometric(a, b, n), x)</code>. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+phypergeom	Distributions.Hypergeometric; Distributions.cdf	<code>cdf(Hypergeometric(a, b, n), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.
+qhypergeom	Distributions.Hypergeometric; Distributions.quantile	<code>quantile(Hypergeometric(a, b, n), p)</code>, the inverse of <code>phypergeom</code>; <code>p</code> between 0 and 1. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.
+rhypergeom	Distributions.Hypergeometric; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Hypergeometric(a, b, n), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.
+dlnorm	Distributions.LogNormal; Distributions.pdf	<code>pdf(LogNormal(μ, σ), x)</code>. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+plnorm	Distributions.LogNormal; Distributions.cdf	<code>cdf(LogNormal(μ, σ), x)</code>, the probability of a value up to x. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.
+qlnorm	Distributions.LogNormal; Distributions.quantile	<code>quantile(LogNormal(μ, σ), p)</code>, the inverse of <code>plnorm</code>; <code>p</code> between 0 and 1. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.
+rlnorm	Distributions.LogNormal; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, LogNormal(μ, σ), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.
+dlogis	Distributions.Logistic; Distributions.pdf	<code>pdf(Logistic(l, s), x)</code>. Location <code>l</code>, scale <code>s</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+plogis	Distributions.Logistic; Distributions.cdf	<code>cdf(Logistic(l, s), x)</code>, the probability of a value up to x. Location <code>l</code>, scale <code>s</code> &gt; 0.
+qlogis	Distributions.Logistic; Distributions.quantile	<code>quantile(Logistic(l, s), p)</code>, the inverse of <code>plogis</code>; <code>p</code> between 0 and 1. Location <code>l</code>, scale <code>s</code> &gt; 0.
+rlogis	Distributions.Logistic; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Logistic(l, s), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Location <code>l</code>, scale <code>s</code> &gt; 0.
+dnbinom	Distributions.NegativeBinomial; Distributions.pdf	<code>pdf(NegativeBinomial(n, q), x)</code>. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pnbinom	Distributions.NegativeBinomial; Distributions.cdf	<code>cdf(NegativeBinomial(n, q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.
+qnbinom	Distributions.NegativeBinomial; Distributions.quantile	<code>quantile(NegativeBinomial(n, q), p)</code>, the inverse of <code>pnbinom</code>; <code>p</code> between 0 and 1. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.
+rnbinom	Distributions.NegativeBinomial; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, NegativeBinomial(n, q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.
+dnorm	Distributions.Normal; Distributions.pdf	<code>pdf(Normal(μ, σ), x)</code>. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pnorm	Distributions.Normal; Distributions.cdf	<code>cdf(Normal(μ, σ), x)</code>, the probability of a value up to x. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0.
+qnorm	Distributions.Normal; Distributions.quantile	<code>quantile(Normal(μ, σ), p)</code>, the inverse of <code>pnorm</code>; <code>p</code> between 0 and 1. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0.
+dpois	Distributions.Poisson; Distributions.pdf	<code>pdf(Poisson(λ), x)</code>. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+ppois	Distributions.Poisson; Distributions.cdf	<code>cdf(Poisson(λ), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.
+qpois	Distributions.Poisson; Distributions.quantile	<code>quantile(Poisson(λ), p)</code>, the inverse of <code>ppois</code>; <code>p</code> between 0 and 1. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.
+rpois	Distributions.Poisson; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Poisson(λ), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.
+dt	Distributions.TDist; Distributions.pdf	<code>pdf(TDist(d), x)</code>. <code>d</code> degrees of freedom; a non-central t is not provided. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pt	Distributions.TDist; Distributions.cdf	<code>cdf(TDist(d), x)</code>, the probability of a value up to x. <code>d</code> degrees of freedom; a non-central t is not provided.
+qt	Distributions.TDist; Distributions.quantile	<code>quantile(TDist(d), p)</code>, the inverse of <code>pt</code>; <code>p</code> between 0 and 1. <code>d</code> degrees of freedom; a non-central t is not provided.
+rt	Distributions.TDist; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, TDist(d), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d</code> degrees of freedom; a non-central t is not provided.
+dunif	Distributions.Uniform; Distributions.pdf	<code>pdf(Uniform(a, b), x)</code>. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+punif	Distributions.Uniform; Distributions.cdf	<code>cdf(Uniform(a, b), x)</code>, the probability of a value up to x. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.
+qunif	Distributions.Uniform; Distributions.quantile	<code>quantile(Uniform(a, b), p)</code>, the inverse of <code>punif</code>; <code>p</code> between 0 and 1. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.
+runif	Distributions.Uniform; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Uniform(a, b), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.
+dweibull	Distributions.Weibull; Distributions.pdf	<code>pdf(Weibull(s, 1), x)</code>. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).
+pweibull	Distributions.Weibull; Distributions.cdf	<code>cdf(Weibull(s, 1), x)</code>, the probability of a value up to x. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.
+qweibull	Distributions.Weibull; Distributions.quantile	<code>quantile(Weibull(s, 1), p)</code>, the inverse of <code>pweibull</code>; <code>p</code> between 0 and 1. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.
+rweibull	Distributions.Weibull; Distributions.rand	A column of <code>m</code> random numbers, <code>rand(rng, Weibull(s, 1), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.
+rnorm	Distributions.Normal; Distributions.rand	A column of <code>m</code> random numbers from the normal distribution with mean <code>μ</code> and standard deviation <code>σ</code>, from the shared random generator. Only the distribution is guaranteed, not particular values.
+rnd	Random.rand	One uniformly distributed number in [0, x) from the shared generator: <code>rand(rng)·x</code>. Each evaluation gives a new number.
+Seed	Random.Xoshiro	Resets the shared random generator, a <code>Xoshiro</code> generator owned by the calculation engine, to the seed <code>x</code> (an integer from 1 to 2147483647) and returns the previous seed. Without <code>Seed</code>, the generator is seeded from the clock when the engine starts, so random numbers differ from run to run; call <code>Seed</code> at the top of a worksheet for repeatable results.
+cnorm	Distributions.Normal; Distributions.cdf	The standard normal distribution function, <code>cdf(Normal(), x)</code>; the same as <code>pnorm(x, 0, 1)</code>.
+# ---- Fourier and wavelet ----
+dft	FFTW.fft	The discrete Fourier transform <code>Σ x[k]·e^(−2πi·jk/n)</code> without normalisation, exactly <code>fft(x)</code>. A matrix is transformed along both dimensions. The result keeps the shape of the input; units are kept. Element 0 of the result is the zero frequency.
+idft	FFTW.ifft	The inverse of <code>dft</code>, dividing by the number of elements, as <code>ifft</code>.
+dftr	FFTW.fft	The transform of real data: only the non-negative frequencies, <code>n/2 + 1</code> values for n samples, as Julia's <code>rfft</code>. The length (or the number of columns of a matrix) must be even; imaginary parts are ignored.
+idftr	FFTW.ifft	The inverse of <code>dftr</code>: rebuilds the even-length real signal from the non-negative frequencies, as <code>irfft(z, 2(length(z) − 1))</code>.
+cfft	FFTW.ifft	An older transform convention: the positive exponent, scaled by <code>1/√n</code>, that is <code>ifft(x)·√n</code>. Kept for older worksheets; use <code>dft</code> for new work.
+icfft	FFTW.fft	The inverse of <code>cfft</code>: <code>fft(x)/√n</code>.
+cpt	FFTW.r2r	The local cosine packet table: a column of <code>n + 1</code> vectors, levels 0 to n. Level l cuts the periodic signal into 2<sup>l</sup> blocks, folds it smoothly at the block boundaries and applies an orthonormal DCT-IV (<code>FFTW.r2r(…, REDFT11)</code>) to each block. The length must be a multiple of 2<sup>n+1</sup>; matrices are transformed along columns, then rows.
+Bspline		The analysis and synthesis filters of the spline wavelet of orders (m, n), as a two-column matrix. Only the pairs of the standard table are accepted.
+wave		The discrete wavelet transform with the four-coefficient Daubechies wavelet, as a pyramid down to two smooth coefficients. The length must be a power of two. Implemented directly; Julia's <code>Wavelets.jl</code> orders the coefficients differently.
+iwave		The exact inverse of <code>wave</code>.
+# ---- Interpolation and prediction ----
+interp		Evaluates at <code>x</code> the curve described by a vector made by <code>cspline</code>, <code>lspline</code>, <code>pspline</code>, <code>bspline</code> or <code>loess</code> for the same data: <code>interp(cspline(vx, vy), vx, vy, x)</code>. Outside the data the end pieces continue (extrapolation). <code>x</code> may be an array. For two-dimensional data use the matrix form <code>interp(vs, Mxy, Mz, X)</code>. Julia's <code>Interpolations.jl</code> works with interpolation objects instead of coefficient vectors.
+cspline		The coefficient vector of an interpolating cubic spline whose ends are cubic (the second derivative is linear near the ends), for use with <code>interp</code>. The vector holds a header and the second derivatives at the data points. <code>vx</code> must ascend.
+lspline		As <code>cspline</code>, with a natural end condition: the curve is straight at the ends (second derivative zero).
+pspline		As <code>cspline</code>, with parabolic ends.
+bspline		A B-spline of degree <code>n</code> that passes through the points, with the knots <code>u</code> (<code>rows(vx) − n + 1</code> ascending values covering the data; the end knots are repeated). For use with <code>interp</code>.
+Spline2		A least-squares B-spline of degree <code>n</code>. Without knots, equally spaced knots are added until the Durbin–Watson statistic of the residuals reaches 2; with <code>u</code>, the given knots are used. <code>vw</code> gives the standard deviation of each point. The result is used by <code>Binterp</code> and <code>DWS</code>.
+Binterp		The value and the derivatives at <code>x</code> of the B-spline made by <code>Spline2</code>.
+DWS		The Durbin–Watson statistic of the residuals of a <code>Spline2</code> fit.
+Bicubic2D		Interpolates the grid <code>Z</code> (<code>Z[i, j]</code> at <code>(vx[i], vy[j])</code>) at the point (p, q) with natural cubic splines, first along y, then along x; it extrapolates linearly outside.
+linterp		Linear interpolation of the points (vx, vy) at <code>x</code>; outside the data the end segments are extended. <code>vx</code> must ascend. <code>x</code> may be an array.
+predict		<code>n</code> values that continue the evenly spaced data <code>v</code>, by Burg's (maximum entropy) linear prediction with <code>m</code> coefficients.
+polyint		Polynomial interpolation through all points by Neville's algorithm, starting at the point nearest to <code>x</code>: the vector <code>[value; error]</code>, the error being the signed last correction.
+polycoeff		The coefficients, constant term first, of the polynomial of degree n − 1 through the n points. The inverse of evaluating a polynomial; compare <code>Polynomials.fit</code> in Julia.
+polyiter		The column <code>[converged; order; value]</code>: Neville's interpolation of increasing order up to <code>N</code>, stopping when the correction is at most <code>e</code> times the value.
+rationalint		Rational function interpolation (Bulirsch–Stoer) at <code>x</code>: <code>[value; error]</code>. A pole is an error.
+Thielecoeff		The coefficients of Thiele's continued fraction through the points, for <code>Thiele</code>.
+Thiele		Evaluates Thiele's continued fraction <code>a₀ + (x − x₀)/(a₁ + (x − x₁)/(a₂ + …))</code> at <code>x</code>.
+polyroots	LinearAlgebra.eigvals	All roots of the polynomial with the coefficients <code>v</code>, constant term first (2 to 99 coefficients, the last non-zero), as the eigenvalues of the companion matrix. Real roots come back as real numbers. Equivalent to <code>Polynomials.roots(Polynomial(v))</code> in Julia.
+# ---- Regression and curve fitting ----
+loess		Local quadratic regression with tricube weights over the nearest <code>span·N</code> points, for use with <code>interp</code>. Works with one variable (vectors) or several (a matrix of points).
+line		The least-squares line as <code>[intercept; slope]</code>.
+slope		The slope of the least-squares line.
+intercept		The intercept of the least-squares line.
+stderr		The standard error of the linear regression, <code>√(Σresiduals²/(n − 2))</code>.
+medfit		Tukey's resistant median–median line, <code>[intercept; slope]</code>.
+rationalfit		Fits <code>(a₀ + … + aₘxᵐ)/(1 + b₁x + … + bₙxⁿ)</code> by Levenberg–Marquardt; each row is a parameter <code>[value, lower, upper]</code> with <code>conf</code> confidence limits (rows a₀…aₘ, then b₁…bₙ).
+rationalfitnp		As <code>rationalfit</code>, penalising a denominator that approaches zero inside the data range, so the fit has no poles there.
+polyfit		Multivariate polynomial regression. The third argument is the degree (all terms up to that total degree), a string naming the terms (<code>"A,AA"</code>: A the first variable, AA its square, AB the product with the second), or a matrix of exponents. The result is a <strong>function of one argument</strong>: a number for one variable, a vector of the variables otherwise.
+polyfitc		The coefficient table of <code>polyfit</code>: a header row and one row per term with coefficient, standard error, confidence limits, variance inflation factor, t value and one-sided p value.
+polyfitstat		The statistics of <code>polyfit</code>: standard deviation, R², adjusted and predicted R², PRESS, Durbin–Watson, the coefficient table, the ANOVA table and per-observation diagnostics (leverage, studentised residuals, Cook's distance, DFFITS).
+genfit		Fits the parameters <code>u</code> of a function <code>F(x, u)</code> by Levenberg–Marquardt, starting at <code>vg</code>. <code>F</code> may return the value followed by its partial derivatives; otherwise they are computed numerically. Compare <code>LsqFit.curve_fit</code> in Julia.
+expfit		The coefficients <code>[A; b; C]</code> of <code>A·e^(b·x) + C</code>; the guess <code>vg</code> is optional.
+lnfit		The coefficients <code>[a; b]</code> of <code>a·ln(x) + b</code> (a linear fit in ln x).
+logfit		The coefficients of <code>a·ln(x + b) + c</code>.
+lgsfit		The coefficients of the logistic curve <code>a/(1 + b·e^(−c·x))</code>.
+pwrfit		The coefficients of <code>a·x^b + c</code>.
+sinfit		The coefficients of <code>a·sin(x + b) + c</code>.
+LeastSquaresFit		Fits the scalar function <code>F(x, u)</code> and returns, per parameter, <code>[value, lower, upper]</code> with <code>conf</code> confidence limits. Optional: the standard deviations of y (a vector), bounds (a two-column matrix) and the accuracy (a scalar), recognised by their shape.
+confidence		For fitted parameters <code>b</code> of <code>F(x, u)</code>: the half-width of the <code>conf</code> confidence interval of each parameter (first column) and the Student t value used.
+linfit		The least-squares coefficients of a linear combination of the basis functions returned (as a column) by <code>F(x)</code>. Julia equivalent: build the design matrix and solve with <code>\</code>.
+multidfit		As <code>genfit</code> for several independent variables: the rows of <code>X</code> are passed to <code>F</code> as column vectors.
+# ---- Solving ----
+# ---- Other data analysis ----
+hist		The number of data values in each interval; intervals include their left end, and the last one both ends. <code>intvls</code> is either a vector of ascending interval boundaries (one fewer result than boundaries) or a number of equal intervals spanning the data. Compare <code>StatsBase.fit(Histogram, data, edges)</code>.
+histogram		A two-column matrix for plotting: the midpoints of the intervals and the frequencies, with the intervals given as for <code>hist</code>.
+boxplot		For each column of <code>Data</code>, the values that draw a box plot: minimum, quartiles, median and maximum.
+boxplotgraph		Two vectors that draw a box plot as XY traces in an ordinary plot.
+pareto		From a two-column matrix of names and positive values: the rows sorted by decreasing value, with a third column holding the cumulative percentage, for a Pareto chart.
+fullfact		The full factorial design of <code>k</code> factors with 2 levels (or <code>levels</code> levels), first factor changing fastest (Yates order). A design matrix has a header row (<code>"Run"</code>, <code>"Block"</code>, then the factor names A, B, …) and one row per run with the coded levels (−1/+1, or 0, 1, 2 for three levels).
+fractfact		The two-level fractional factorial design 2<sup>k−p</sup>: the first k − p factors in Yates order and p generated factors (named with their generator, for example <code>"D=ABC"</code>) from the standard generator table.
+plackettburman		The Plackett–Burman screening design of <code>n</code> runs (a multiple of 4 from 8 to 48) for n − 1 factors.
+boxbehnken		The Box–Behnken response-surface design for 3 to 7 factors, with its blocks and centre runs.
+taguchi		The Taguchi orthogonal array for <code>k</code> factors at the given number of levels (L4, L8, L9, L12, L27 …); other combinations are an error.
+randomize		The runs of a design matrix in a random order; run numbers move with their rows. Uses the shared random generator (see <code>Seed</code>).
+foldover		The design followed by its fold-over block with every sign reversed, or only the named factor (a string such as <code>"A"</code>) reversed.
+doelabel		Replaces the coded levels of a design matrix with real values: <code>L</code> has a row per factor with its name and one value per level.
+effects		The effect of each factor at each level (mean response at that level minus the grand mean). A number <code>k</code> adds the interactions up to order k; a string such as <code>"AB"</code> selects one term.
+quickscreen		For a −1/+1 design: the mean response at the low and the high level of each term and their difference.
+anova		The analysis of variance of a replicated design (the columns of <code>Y</code> are the replicates): source, sum of squares, degrees of freedom, mean square, F and p.
+Normal	Distributions.Normal	<code>n</code> draws of the standard normal distribution, as a column; intended as the distribution argument of <code>montecarlo</code>.
+Uniform	Distributions.Uniform	<code>n</code> draws uniformly distributed on [−6, 6], so that <code>mean + σ·r</code> spans six standard deviations; for <code>montecarlo</code>.
+LogNormal	Distributions.LogNormal	<code>n</code> draws of the lognormal distribution with parameters 0 and 1; for <code>montecarlo</code>.
+Weibull	Distributions.Weibull	<code>n</code> draws of the Weibull distribution of shape 1 and scale 1; for <code>montecarlo</code>.
+montecarlo		<code>n</code> samples of the function <code>F</code> at random arguments. <code>Rvals</code> has a row per argument of F: its name, mean and standard deviation; each argument is <code>mean + σ·r</code> with r drawn from <code>dist</code> (<code>Normal</code> by default, or a function of your own). <code>Limits</code> (lower and upper, NaN for none) truncates a variable: a value outside is drawn again.
+triangular		The triangular window of <code>n</code> points, rising from 0 to 1 and back to 0.
+hamming		The symmetric Hamming window <code>0.54 − 0.46·cos(2πk/(n − 1))</code> of <code>n</code> points. Same values as <code>DSP.hamming(n)</code>.
+hanning		The symmetric Hann window <code>0.5 − 0.5·cos(2πk/(n − 1))</code> of <code>n</code> points (<code>DSP.hanning</code>).
+blackman		The symmetric Blackman window <code>0.42 − 0.5·cos(2πk/(n−1)) + 0.08·cos(4πk/(n−1))</code> (<code>DSP.blackman</code>).
+gaussian		The Gaussian window <code>exp(−½·(a·k/((n − 1)/2))²)</code> for k from −(n − 1)/2 to (n − 1)/2.
+qqplot	Distributions.quantile	The two columns of a quantile–quantile plot: the sorted data against the matching quantiles of a second data set or of a named distribution (the normal distribution by default).
+Grubbs		Grubbs's test for outliers at significance <code>a</code>, applied repeatedly: the indices of the suspected outliers, their test statistics and their distances to the critical value.
+GrubbsClassic		The classic single-outlier Grubbs test: the most likely outlier, if any.
+ThreeSigma		The indices of the points more than three standard deviations from the mean.
+trim		The vector or matrix without the elements (or rows) at the indices <code>vindex</code>, counted from <code>ORIGIN</code>. Julia equivalent: <code>deleteat!</code> on a copy.
+markNaN		A copy of <code>M</code> with the indexed elements set to NaN.
+matchNaN		The indices of the NaN elements.
+filterNaN		<code>M</code> without the rows that contain NaN. Julia equivalent: <code>M[.!any(isnan, M, dims=2)[:], :]</code>.
+Nipals		Principal component analysis of the columns of <code>DATA</code> by the NIPALS algorithm, extracting <code>NumPC</code> components with at most <code>maxiter</code> iterations each, on scaled or unscaled data. The result feeds <code>scores</code>, <code>loadings</code>, <code>PCAeigenvals</code>, <code>PCAvariance</code> and <code>Nipals2</code>. Components agree with an eigen-decomposition up to sign.
+Nipals2		Extends a <code>Nipals</code> result with more components.
+scores		The score matrix of a <code>Nipals</code> result.
+loadings		The loading matrix of a <code>Nipals</code> result.
+PCAeigenvals		The eigenvalues of the principal components of a <code>Nipals</code> result.
+PCAvariance		The cumulative percentage of variance explained by the principal components.
+localmax		The positions and values of local maxima: of a matrix of heights (<code>M1</code>), or of <code>Z</code> over the grid <code>x</code>, <code>y</code>; <code>w</code> is the half-width of the neighbourhood examined.
+localmin		As <code>localmax</code>, for minima.
+supsmooth		Friedman's super smoother: running-line smoothers with spans of 5, 20 and 50 % of the data, choosing the span point by point by cross-validation.
+ksmooth		A normalised Gaussian kernel smoother; the standard deviation of the kernel is the bandwidth <code>b</code>, in the units of <code>vx</code>.
+medsmooth		A centred running median with an odd window <code>n</code> (3 by default); at the ends of a vector the window shrinks. For a matrix, <code>n</code> × <code>m</code> windows.
+VSmooth		A repeated running median: for each window width of <code>w</code>, the median smoother is applied until the result stops changing (within <code>TOL</code>).
+expsmooth		Exponential smoothing <code>sᵢ = a·vᵢ + (1 − a)·sᵢ₋₁</code>, starting at the first value; 0 ≤ a ≤ 1.
+movavg		The trailing moving average over <code>n</code> values; the first values average over the elements available so far.
+# ---- Differential equations ----
+rkfixed		The classical fourth-order Runge–Kutta method with <code>intvls</code> equal steps. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Rkadapt		Runge–Kutta with adaptive steps (Dormand–Prince 5(4) pair), reporting at <code>intvls</code> equally spaced points. The internal tolerance is tighter than <code>TOL</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Bulstoer		Gragg–Bulirsch–Stoer extrapolation, efficient for smooth problems. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Adams		The fourth-order Adams–Bashforth–Moulton predictor-corrector for non-stiff problems, refining the internal steps until two runs agree within <code>tol</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+BDF		The backward differentiation formula with Newton iterations, for stiff problems; <code>J(x, y)</code> is the Jacobian (computed numerically when omitted). The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Radau		Radau IIA (order 5), for stiff problems and differential-algebraic systems: the optional mass matrix <code>M</code> solves <code>M·y′ = D(x, y)</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Stiffb		Linearly implicit Euler extrapolation for stiff systems; <code>AJ(x, y)</code> returns the augmented Jacobian <code>[∂D/∂x, ∂D/∂y]</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+Stiffr		A Rosenbrock method for stiff systems; <code>AJ</code> as for <code>Stiffb</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+AdamsBDF		Chooses <code>BDF</code> when the problem looks stiff at the start (the spectral radius of the Jacobian times the output step exceeds 1) and <code>Adams</code> otherwise. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+statespace		Solves the linear system <code>x′ = A(t)·x + B(t)·u(t)</code>; <code>A</code>, <code>B</code> and <code>u</code> may be functions of t or constant arrays. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.
+sbval		For a boundary value problem: the initial values missing at <code>x1</code>, found by shooting (adaptive Runge–Kutta and Levenberg–Marquardt). <code>load1(x1, v1)</code> builds the initial vector from the guesses and <code>score(x2, y)</code> measures the mismatch at the far end.
+bvalfit		As <code>sbval</code>, shooting from both ends to the match point <code>xf</code>: the row of values missing at <code>x1</code> followed by those missing at <code>x2</code>.
+numol		The method of lines for one-dimensional time-dependent partial differential equations: space is discretised on <code>xpts</code> points with fourth-order differences, time integrated with Radau. <code>bc_func</code> gives, per equation, the left and right boundary values and their type (<code>"D"</code> Dirichlet, <code>"N"</code> Neumann). The result has <code>xpts</code> rows and, for each function, <code>tpts</code> columns.
+relax		Solves the five-point finite-difference equation <code>A·u[i+1,j] + B·u[i−1,j] + C·u[i,j+1] + D·u[i,j−1] + E·u[i,j] = S[i,j]</code> (Poisson or Laplace on a grid) by red–black successive over-relaxation with Chebyshev acceleration; <code>U</code> holds the boundary values and the starting guess, <code>rjac</code> the spectral radius of the Jacobi iteration.
+multigrid		Solves Poisson's equation <code>∇²u = M</code> on the unit square with zero boundary by the multigrid method with <code>ncycle</code> V-cycles per level; <code>M</code> must be square with 2<sup>k</sup> + 1 rows.
+odesolve		Used as the closing call of a solve block of differential equations (see <a href="../solving.html#odesolve">Solving equations</a>): the solution as a function of the independent variable, between the first condition point and <code>b</code>. Initial value problems are integrated with an adaptive Adams/BDF scheme; conditions at two points are met by shooting.
+# ---- File access ----
+READFILE	CSV.File; XLSX.readxlsx	A general reader. <code>"type"</code> is <code>"delimited"</code>, <code>"fixed"</code> (then <code>colwidths</code> gives the column widths), <code>"Excel"</code> (<code>.xls</code> and <code>.xlsx</code>) or an OpenDocument spreadsheet. <code>rows</code> and <code>cols</code> select a block, <code>emptyfill</code> replaces missing values (NaN by default), <code>decsymb</code> sets the decimal symbol. Numbers become numbers and other cells strings. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEFILE	XLSX.writetable	Writes a matrix to a spreadsheet (<code>.ods</code>, <code>.xls</code>, <code>.xlsx</code>) or, for other extensions, to tab-delimited text. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READTEXT	CSV.File	Reads delimited or fixed-width text with options for the delimiter, column widths, the rows and columns to read (<code>"rowspec"</code>, <code>"colspec"</code>), the value of empty cells and how blank rows are treated. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITETEXT		Writes a matrix as tab-delimited text, optionally only the given rows and columns, with the chosen decimal symbol. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READBIN		Reads raw binary data of the given <code>"type"</code> (<code>"byte"</code>, <code>"uint16"</code>, <code>"int32"</code>, <code>"float"</code>, <code>"double"</code> …) and byte order (0 little-endian, 1 big-endian) into a matrix with <code>cols</code> columns, skipping <code>skip</code> bytes. Julia equivalent: <code>read!</code> into an array plus <code>ltoh</code>/<code>ntoh</code>. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEBIN		Writes a matrix as raw binary data of the given type and byte order. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READCSV	CSV.File	Reads a comma-separated file into a matrix; numeric cells become numbers, others strings. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITECSV	CSV.write	Writes a matrix as comma-separated values, optionally only the given rows and columns, with the chosen decimal symbol. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READPRN		Reads a structured data file: whitespace-separated numeric rows, or the block format that <code>WRITEPRN</code> uses for complex, string and nested matrices. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEPRN		Writes a matrix as structured data: real numbers as rows with <code>PRNCOLWIDTH</code> columns of width and <code>PRNPRECISION</code> significant digits; complex, string or nested matrices in a block format that <code>READPRN</code> reads back. Returns the matrix written. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+APPENDPRN		Appends the rows of <code>M</code> to a structured data file (the columns must match) and returns <code>M</code>. Writes are serialised, so a loop can log results safely. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEEXCEL	XLSX.writetable	Writes a matrix into an <code>.xlsx</code> or <code>.xls</code> workbook, optionally into a range such as <code>"Sheet1!B2"</code>. An existing <code>.xls</code> with features that cannot be preserved safely is refused rather than damaged. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READ_IMAGE	ImageMagick.load	Reads an image (BMP, GIF, JPEG, TGA, PCX, PBM, PGM, PPM, TIFF, PNG) as a matrix of grey levels from 0 to 255, one element per pixel, rows from the top. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READBMP	ImageMagick.load	As <code>READ_IMAGE</code>, for bitmap files.
+WRITEBMP	ImageMagick.save	Writes a matrix of grey levels (0 to 255) as a greyscale bitmap. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+READRGB	ImageMagick.load	Reads a colour image as one matrix with the red, green and blue planes side by side (three times as many columns as pixels).
+WRITERGB	ImageMagick.save	Writes a colour image from a matrix with the red, green and blue planes side by side.
+READ_RED	ImageMagick.load	The red plane of a colour image, 0 to 255.
+READ_GREEN	ImageMagick.load	The green plane.
+READ_BLUE	ImageMagick.load	The blue plane.
+READ_HLS	Colors.HSL	The hue, lightness and saturation planes side by side, each scaled to 0–255.
+WRITE_HLS	Colors.HSL	Writes a colour image from hue, lightness and saturation planes side by side.
+READ_HSV	Colors.HSV	The hue, saturation and value planes side by side, each scaled to 0–255.
+WRITE_HSV	Colors.HSV	Writes a colour image from hue, saturation and value planes.
+READ_HLS_SAT	Colors.HSL	The saturation plane of the HLS model.
+READ_HSV_SAT	Colors.HSV	The saturation plane of the HSV model.
+READ_LIGHT	Colors.HSL	The lightness plane.
+READ_VALUE	Colors.HSV	The value plane.
+READ_HUE	Colors.HSV	The hue plane (the same in the HLS and HSV models).
+READWAV	WAV.wavread	The samples of a WAV file as a matrix, one column per channel, as integers in the range of the file's resolution. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEWAV	WAV.wavwrite	Writes the columns of <code>M</code> as the channels of a WAV file with sample rate <code>s</code> (Hz) and resolution <code>b</code> (bits). A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+GETWAVINFO	WAV.wavread	A vector with the number of channels, the sample rate, the resolution and the average bytes per second.
+READODS		Reads a range of an OpenDocument spreadsheet (<code>.ods</code>, the LibreOffice Calc format, which Excel also reads and writes) as a matrix. The range is <code>"B2"</code>, <code>"A1:C10"</code>, <code>"Sheet name!A1:C10"</code> (or with a period) or <code>"'My sheet'!A1:B2"</code>; without one, the used range of the first sheet. Numbers become numbers, text strings; empty cells take <code>emptyfill</code> (NaN by default). Implemented in Equavela's runtime, with no spreadsheet application needed. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+WRITEODS		Writes a matrix into the named sheet of an OpenDocument workbook (the first sheet by default), creating the file if needed and keeping the other sheets and their content. A relative file name is relative to the worksheet's folder (<code>CWD</code>).
+root		Without an interval, the secant method from the guess (the current value of <code>x</code>; a complex guess finds complex roots), accepting the point only if <code>|f(x)| ≤ TOL</code>. With an interval [a, b] where <code>f</code> changes sign, bisection to machine precision. Units are allowed: the result has the unit of the guess or of the bounds. The first argument is an expression of the variable, not a function value, so <code>root(x² − 2, x)</code> works directly. Compare <code>Roots.find_zero</code> in Julia. A worksheet definition named <code>root</code> takes precedence; the n-th root is the operator <code>ⁿ√x</code>.
+find		Levenberg–Marquardt on the residuals of the equations and the violations of the inequalities, starting from the guess values; succeeds only when every constraint holds within <code>CTOL</code>. With one unknown it returns its value, with several a column vector in call order. <code>find(x, y) →</code> solves symbolically. May be written <code>Find</code>.
+minerr		The same algorithm as <code>find</code>, returning the best point found even when the constraints are not met; check the result.
+minimize		A quadratic penalty method (weights 10, 10³, 10⁵, 10⁷), each stage minimised by BFGS with central-difference gradients. <code>f</code> is named without arguments. The final point must satisfy the constraints within <code>CTOL</code>. Compare <code>Optim.optimize</code> in Julia.
+maximize		As <code>minimize</code>, for the largest value.

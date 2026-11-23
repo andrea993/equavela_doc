@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Special functions · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html" aria-current="page">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Special functions</h1>
+<p class="toc"><a href="#f-Ai"><code>Ai</code></a> <a href="#f-Ai_2esc"><code>Ai.sc</code></a> <a href="#f-bei"><code>bei</code></a> <a href="#f-ber"><code>ber</code></a> <a href="#f-Bi"><code>Bi</code></a> <a href="#f-Bi_2esc"><code>Bi.sc</code></a> <a href="#f-DAi"><code>DAi</code></a> <a href="#f-DAi_2esc"><code>DAi.sc</code></a> <a href="#f-DBi"><code>DBi</code></a> <a href="#f-DBi_2esc"><code>DBi.sc</code></a> <a href="#f-erf"><code>erf</code></a> <a href="#f-erfc"><code>erfc</code></a> <a href="#f-fhyper"><code>fhyper</code></a> <a href="#f-Gamma"><code>Gamma</code></a> <a href="#f-H1"><code>H1</code></a> <a href="#f-H1_2esc"><code>H1.sc</code></a> <a href="#f-H2"><code>H2</code></a> <a href="#f-H2_2esc"><code>H2.sc</code></a> <a href="#f-Her"><code>Her</code></a> <a href="#f-I0"><code>I0</code></a> <a href="#f-I0_2esc"><code>I0.sc</code></a> <a href="#f-I1"><code>I1</code></a> <a href="#f-I1_2esc"><code>I1.sc</code></a> <a href="#f-ibeta"><code>ibeta</code></a> <a href="#f-In"><code>In</code></a> <a href="#f-In_2esc"><code>In.sc</code></a> <a href="#f-J0"><code>J0</code></a> <a href="#f-J0_2esc"><code>J0.sc</code></a> <a href="#f-J1"><code>J1</code></a> <a href="#f-J1_2esc"><code>J1.sc</code></a> <a href="#f-Jac"><code>Jac</code></a> <a href="#f-Jn"><code>Jn</code></a> <a href="#f-Jn_2esc"><code>Jn.sc</code></a> <a href="#f-js"><code>js</code></a> <a href="#f-K0"><code>K0</code></a> <a href="#f-K0_2esc"><code>K0.sc</code></a> <a href="#f-K1"><code>K1</code></a> <a href="#f-K1_2esc"><code>K1.sc</code></a> <a href="#f-Kn"><code>Kn</code></a> <a href="#f-Kn_2esc"><code>Kn.sc</code></a> <a href="#f-Lag"><code>Lag</code></a> <a href="#f-Leg"><code>Leg</code></a> <a href="#f-lnGamma"><code>lnGamma</code></a> <a href="#f-ln_393"><code>lnΓ</code></a> <a href="#f-mhyper"><code>mhyper</code></a> <a href="#f-Psi"><code>Psi</code></a> <a href="#f-Tcheb"><code>Tcheb</code></a> <a href="#f-Ucheb"><code>Ucheb</code></a> <a href="#f-Y0"><code>Y0</code></a> <a href="#f-Y0_2esc"><code>Y0.sc</code></a> <a href="#f-Y1"><code>Y1</code></a> <a href="#f-Y1_2esc"><code>Y1.sc</code></a> <a href="#f-Yn"><code>Yn</code></a> <a href="#f-Yn_2esc"><code>Yn.sc</code></a> <a href="#f-ys"><code>ys</code></a> <a href="#f-_393"><code>Γ</code></a> <a href="#f-_3b4"><code>δ</code></a> <a href="#f-_3b5"><code>ε</code></a> <a href="#f-_3a6"><code>Φ</code></a></p>
+<section class="function" id="f-Ai">
+<h3><code>Ai</code></h3>
+<p class="signature"><code>Ai(z)</code></p>
+<p>Airy function of the first kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airyai</code></dd><dt>Notes</dt><dd>Same values as Julia; complex arguments allowed.</dd></dl>
+</section>
+<section class="function" id="f-Ai_2esc">
+<h3><code>Ai.sc</code></h3>
+<p class="signature"><code>Ai.sc(z)</code></p>
+<p>Scaled Ai function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airyaix</code></dd><dt>Notes</dt><dd>Scaled: <code>Ai(z)·e^(⅔·z^(3/2))</code>.</dd></dl>
+</section>
+<section class="function" id="f-bei">
+<h3><code>bei</code></h3>
+<p class="signature"><code>bei(m, x)</code></p>
+<p>Imaginary Kelvin function of order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj</code></dd><dt>Notes</dt><dd>Computed as <code>imag(besselj(m, x·e^(3πi/4)))</code>, with the same conditions as <code>ber</code>.</dd></dl>
+</section>
+<section class="function" id="f-ber">
+<h3><code>ber</code></h3>
+<p class="signature"><code>ber(m, x)</code></p>
+<p>Real Kelvin function of order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj</code></dd><dt>Notes</dt><dd>Computed as <code>real(besselj(m, x·e^(3πi/4)))</code>. The order must be a non-negative integer and <code>x</code> real; Julia has no Kelvin function of its own.</dd></dl>
+</section>
+<section class="function" id="f-Bi">
+<h3><code>Bi</code></h3>
+<p class="signature"><code>Bi(z)</code></p>
+<p>Airy function of the second kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airybi</code></dd><dt>Notes</dt><dd>Same values as Julia.</dd></dl>
+</section>
+<section class="function" id="f-Bi_2esc">
+<h3><code>Bi.sc</code></h3>
+<p class="signature"><code>Bi.sc(z)</code></p>
+<p>Scaled Bi function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airybix</code></dd><dt>Notes</dt><dd>Scaled: <code>Bi(z)·e^(−|Re(⅔·z^(3/2))|)</code>.</dd></dl>
+</section>
+<section class="function" id="f-DAi">
+<h3><code>DAi</code></h3>
+<p class="signature"><code>DAi(z)</code></p>
+<p>Derivative of Ai.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airyaiprime</code></dd><dt>Notes</dt><dd>Same values as Julia.</dd></dl>
+</section>
+<section class="function" id="f-DAi_2esc">
+<h3><code>DAi.sc</code></h3>
+<p class="signature"><code>DAi.sc(z)</code></p>
+<p>Scaled DAi function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airyaiprimex</code></dd><dt>Notes</dt><dd>Scaled derivative of Ai, as <code>airyaiprimex</code>.</dd></dl>
+</section>
+<section class="function" id="f-DBi">
+<h3><code>DBi</code></h3>
+<p class="signature"><code>DBi(z)</code></p>
+<p>Derivative of Bi.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airybiprime</code></dd><dt>Notes</dt><dd>Same values as Julia.</dd></dl>
+</section>
+<section class="function" id="f-DBi_2esc">
+<h3><code>DBi.sc</code></h3>
+<p class="signature"><code>DBi.sc(z)</code></p>
+<p>Scaled DBi function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.airybiprimex</code></dd><dt>Notes</dt><dd>Scaled derivative of Bi, as <code>airybiprimex</code>.</dd></dl>
+</section>
+<section class="function" id="f-erf">
+<h3><code>erf</code></h3>
+<p class="signature"><code>erf(x)</code></p>
+<p>Error function (x dimensionless, complex allowed).</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.erf</code></dd><dt>Notes</dt><dd>Same values as Julia; complex arguments allowed; element by element on arrays.</dd></dl>
+</section>
+<section class="function" id="f-erfc">
+<h3><code>erfc</code></h3>
+<p class="signature"><code>erfc(x)</code></p>
+<p>Complementary error function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.erfc</code></dd><dt>Notes</dt><dd>Same values as Julia.</dd></dl>
+</section>
+<section class="function" id="f-fhyper">
+<h3><code>fhyper</code></h3>
+<p class="signature"><code>fhyper(a, b, c, x)</code></p>
+<p>Gauss hypergeometric 2F1, -1 &lt; x &lt; 1.</p>
+<dl><dt>Julia</dt><dd><code>HypergeometricFunctions._₂F₁</code></dd><dt>Notes</dt><dd>The Gauss hypergeometric function <sub>2</sub>F<sub>1</sub>(a, b; c; x), for real arguments with −1 &lt; x &lt; 1 only (Julia's function also continues outside). Returns 1 when <code>a</code>, <code>b</code> or <code>x</code> is 0.</dd></dl>
+</section>
+<section class="function" id="f-Gamma">
+<h3><code>Gamma</code></h3>
+<p class="signature"><code>Gamma(z) / Gamma(a, x)</code></p>
+<p>Euler gamma function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.gamma</code></dd><dt>Notes</dt><dd>The same function as <code>Γ</code>, spelled in Latin letters.</dd></dl>
+</section>
+<section class="function" id="f-H1">
+<h3><code>H1</code></h3>
+<p class="signature"><code>H1(m, z)</code></p>
+<p>Hankel function of the first kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.hankelh1</code></dd><dt>Notes</dt><dd><code>H1(m, z) = hankelh1(m, z) = Jn(m, z) + i·Yn(m, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-H1_2esc">
+<h3><code>H1.sc</code></h3>
+<p class="signature"><code>H1.sc(m, z)</code></p>
+<p>Scaled H1 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.hankelh1x</code></dd><dt>Notes</dt><dd>Scaled: <code>H1(m, z)·e^(−i·z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-H2">
+<h3><code>H2</code></h3>
+<p class="signature"><code>H2(m, z)</code></p>
+<p>Hankel function of the second kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.hankelh2</code></dd><dt>Notes</dt><dd><code>H2(m, z) = hankelh2(m, z) = Jn(m, z) − i·Yn(m, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-H2_2esc">
+<h3><code>H2.sc</code></h3>
+<p class="signature"><code>H2.sc(m, z)</code></p>
+<p>Scaled H2 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.hankelh2x</code></dd><dt>Notes</dt><dd>Scaled: <code>H2(m, z)·e^(i·z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-Her">
+<h3><code>Her</code></h3>
+<p class="signature"><code>Her(n, x)</code></p>
+<p>Hermite polynomial.</p>
+<dl><dt>Notes</dt><dd>Physicists' Hermite polynomial H<sub>n</sub>(x) (H<sub>1</sub>(x) = 2x).</dd></dl>
+</section>
+<section class="function" id="f-I0">
+<h3><code>I0</code></h3>
+<p class="signature"><code>I0(z)</code></p>
+<p>Modified Bessel first kind, order 0.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseli</code></dd><dt>Notes</dt><dd>Equals <code>besseli(0, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-I0_2esc">
+<h3><code>I0.sc</code></h3>
+<p class="signature"><code>I0.sc(z)</code></p>
+<p>Scaled I0 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselix</code></dd><dt>Notes</dt><dd>Scaled: <code>I0(z)·e^(−|Re z|)</code>.</dd></dl>
+</section>
+<section class="function" id="f-I1">
+<h3><code>I1</code></h3>
+<p class="signature"><code>I1(z)</code></p>
+<p>Modified Bessel first kind, order 1.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseli</code></dd><dt>Notes</dt><dd>Equals <code>besseli(1, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-I1_2esc">
+<h3><code>I1.sc</code></h3>
+<p class="signature"><code>I1.sc(z)</code></p>
+<p>Scaled I1 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselix</code></dd><dt>Notes</dt><dd><code>besselix(1, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-ibeta">
+<h3><code>ibeta</code></h3>
+<p class="signature"><code>ibeta(a, x, y)</code></p>
+<p>Incomplete beta function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.beta_inc</code></dd><dt>Notes</dt><dd><code>ibeta(a, x, y)</code> is the regularised incomplete beta function I<sub>a</sub>(x, y), the first value of <code>beta_inc(x, y, a)</code>. Note the order: the integration limit comes first. It needs 0 ≤ a ≤ 1 and x, y &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-In">
+<h3><code>In</code></h3>
+<p class="signature"><code>In(m, z)</code></p>
+<p>Modified Bessel first kind, order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseli</code></dd><dt>Notes</dt><dd><code>In(m, z) = besseli(m, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-In_2esc">
+<h3><code>In.sc</code></h3>
+<p class="signature"><code>In.sc(m, z)</code></p>
+<p>Scaled In function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselix</code></dd><dt>Notes</dt><dd><code>besselix(m, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-J0">
+<h3><code>J0</code></h3>
+<p class="signature"><code>J0(z)</code></p>
+<p>Bessel function of the first kind, order 0.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj0</code></dd><dt>Notes</dt><dd>Equals <code>besselj(0, z)</code>. The argument must be dimensionless; it may be complex and may be an array (element by element). A negative real argument is passed as a complex number, so the principal value is returned where Julia's real method would throw. An overflow is an error instead of <code>Inf</code>.</dd></dl>
+</section>
+<section class="function" id="f-J0_2esc">
+<h3><code>J0.sc</code></h3>
+<p class="signature"><code>J0.sc(z)</code></p>
+<p>Scaled J0 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseljx</code></dd><dt>Notes</dt><dd>Scaled: <code>J0(z)·e^(−|Im z|)</code>. Type the name with a literal subscript, J<sub>0.sc</sub>.</dd></dl>
+</section>
+<section class="function" id="f-J1">
+<h3><code>J1</code></h3>
+<p class="signature"><code>J1(z)</code></p>
+<p>Bessel first kind, order 1.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj1</code></dd><dt>Notes</dt><dd>As <code>J0</code>, order 1.</dd></dl>
+</section>
+<section class="function" id="f-J1_2esc">
+<h3><code>J1.sc</code></h3>
+<p class="signature"><code>J1.sc(z)</code></p>
+<p>Scaled J1 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseljx</code></dd><dt>Notes</dt><dd><code>besseljx(1, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-Jac">
+<h3><code>Jac</code></h3>
+<p class="signature"><code>Jac(n, a, b, x)</code></p>
+<p>Jacobi polynomial.</p>
+<dl><dt>Notes</dt><dd>The Jacobi polynomial P<sub>n</sub><sup>(a, b)</sup>(x) by its three-term recurrence; <code>a</code>, <code>b</code> &gt; −1, <code>n</code> a non-negative integer. Element by element on <code>x</code>. Julia's standard library has no Jacobi polynomial.</dd></dl>
+</section>
+<section class="function" id="f-Jn">
+<h3><code>Jn</code></h3>
+<p class="signature"><code>Jn(m, z)</code></p>
+<p>Bessel first kind, order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj</code></dd><dt>Notes</dt><dd><code>Jn(m, z) = besselj(m, z)</code>; the order <code>m</code> must be real (it need not be an integer). Arrays of orders or arguments are taken element by element.</dd></dl>
+</section>
+<section class="function" id="f-Jn_2esc">
+<h3><code>Jn.sc</code></h3>
+<p class="signature"><code>Jn.sc(m, z)</code></p>
+<p>Scaled Jn function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besseljx</code></dd><dt>Notes</dt><dd><code>besseljx(m, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-js">
+<h3><code>js</code></h3>
+<p class="signature"><code>js(m, z)</code></p>
+<p>Spherical Bessel, first kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselj</code></dd><dt>Notes</dt><dd><code>js(m, z) = √(π/(2z))·besselj(m + ½, z)</code>, which equals <code>SpecialFunctions.sphericalbesselj</code>. At <code>z = 0</code> it returns the limit (1 for order 0, 0 otherwise). For an integer order and a real argument the result is real.</dd></dl>
+</section>
+<section class="function" id="f-K0">
+<h3><code>K0</code></h3>
+<p class="signature"><code>K0(z)</code></p>
+<p>Modified Bessel second kind, order 0.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselk</code></dd><dt>Notes</dt><dd>Equals <code>besselk(0, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-K0_2esc">
+<h3><code>K0.sc</code></h3>
+<p class="signature"><code>K0.sc(z)</code></p>
+<p>Scaled K0 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselkx</code></dd><dt>Notes</dt><dd>Scaled: <code>K0(z)·e^z</code>; <code>z</code> non-zero.</dd></dl>
+</section>
+<section class="function" id="f-K1">
+<h3><code>K1</code></h3>
+<p class="signature"><code>K1(z)</code></p>
+<p>Modified Bessel second kind, order 1.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselk</code></dd><dt>Notes</dt><dd>Equals <code>besselk(1, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-K1_2esc">
+<h3><code>K1.sc</code></h3>
+<p class="signature"><code>K1.sc(z)</code></p>
+<p>Scaled K1 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselkx</code></dd><dt>Notes</dt><dd><code>besselkx(1, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-Kn">
+<h3><code>Kn</code></h3>
+<p class="signature"><code>Kn(m, z)</code></p>
+<p>Modified Bessel second kind, order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselk</code></dd><dt>Notes</dt><dd><code>Kn(m, z) = besselk(m, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-Kn_2esc">
+<h3><code>Kn.sc</code></h3>
+<p class="signature"><code>Kn.sc(m, z)</code></p>
+<p>Scaled Kn function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselkx</code></dd><dt>Notes</dt><dd><code>besselkx(m, z)</code>.</dd></dl>
+</section>
+<section class="function" id="f-Lag">
+<h3><code>Lag</code></h3>
+<p class="signature"><code>Lag(n, x)</code></p>
+<p>Laguerre polynomial.</p>
+<dl><dt>Notes</dt><dd>Laguerre polynomial L<sub>n</sub>(x).</dd></dl>
+</section>
+<section class="function" id="f-Leg">
+<h3><code>Leg</code></h3>
+<p class="signature"><code>Leg(n, x)</code></p>
+<p>Legendre polynomial.</p>
+<dl><dt>Notes</dt><dd>Legendre polynomial P<sub>n</sub>(x) by Bonnet's recurrence. Element by element on <code>x</code>.</dd></dl>
+</section>
+<section class="function" id="f-lnGamma">
+<h3><code>lnGamma</code></h3>
+<p class="signature"><code>lnGamma(z)</code></p>
+<p>Natural log of the gamma function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.loggamma</code></dd><dt>Notes</dt><dd>The same function as <code>lnΓ</code>.</dd></dl>
+</section>
+<section class="function" id="f-ln_393">
+<h3><code>lnΓ</code></h3>
+<p class="signature"><code>lnΓ(z)</code></p>
+<p>Natural log of the gamma function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.loggamma</code></dd><dt>Notes</dt><dd>Where Γ is negative the result is complex (the principal logarithm), as <code>loggamma</code> of a complex number; Julia's <code>logabsgamma</code> would return the logarithm of the absolute value instead.</dd></dl>
+</section>
+<section class="function" id="f-mhyper">
+<h3><code>mhyper</code></h3>
+<p class="signature"><code>mhyper(a, b, x)</code></p>
+<p>Confluent hypergeometric 1F1.</p>
+<dl><dt>Julia</dt><dd><code>HypergeometricFunctions._₁F₁</code></dd><dt>Notes</dt><dd>The confluent hypergeometric function <sub>1</sub>F<sub>1</sub>(a; b; x) for real arguments.</dd></dl>
+</section>
+<section class="function" id="f-Psi">
+<h3><code>Psi</code></h3>
+<p class="signature"><code>Psi(y)</code></p>
+<p>Digamma function (derivative of ln of gamma).</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.digamma</code>, <code>SpecialFunctions.polygamma</code></dd><dt>Notes</dt><dd><code>Psi(y)</code> is <code>digamma(y)</code>; <code>Psi(n, y)</code> is <code>polygamma(n, y)</code>, the n-th derivative, with <code>n</code> a non-negative integer.</dd></dl>
+</section>
+<section class="function" id="f-Tcheb">
+<h3><code>Tcheb</code></h3>
+<p class="signature"><code>Tcheb(n, x)</code></p>
+<p>Chebyshev polynomial, first kind.</p>
+<dl><dt>Notes</dt><dd>Chebyshev polynomial of the first kind T<sub>n</sub>(x) by its recurrence.</dd></dl>
+</section>
+<section class="function" id="f-Ucheb">
+<h3><code>Ucheb</code></h3>
+<p class="signature"><code>Ucheb(n, x)</code></p>
+<p>Chebyshev polynomial, second kind.</p>
+<dl><dt>Notes</dt><dd>Chebyshev polynomial of the second kind U<sub>n</sub>(x) by its recurrence.</dd></dl>
+</section>
+<section class="function" id="f-Y0">
+<h3><code>Y0</code></h3>
+<p class="signature"><code>Y0(z)</code></p>
+<p>Bessel second kind, order 0.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.bessely0</code></dd><dt>Notes</dt><dd>Equals <code>bessely(0, z)</code>. The argument must be non-zero (the function has a pole at 0, reported as an error). Negative real arguments give the complex principal value.</dd></dl>
+</section>
+<section class="function" id="f-Y0_2esc">
+<h3><code>Y0.sc</code></h3>
+<p class="signature"><code>Y0.sc(z)</code></p>
+<p>Scaled Y0 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselyx</code></dd><dt>Notes</dt><dd><code>besselyx(0, z)</code>; <code>z</code> non-zero.</dd></dl>
+</section>
+<section class="function" id="f-Y1">
+<h3><code>Y1</code></h3>
+<p class="signature"><code>Y1(z)</code></p>
+<p>Bessel second kind, order 1.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.bessely1</code></dd><dt>Notes</dt><dd>As <code>Y0</code>, order 1.</dd></dl>
+</section>
+<section class="function" id="f-Y1_2esc">
+<h3><code>Y1.sc</code></h3>
+<p class="signature"><code>Y1.sc(z)</code></p>
+<p>Scaled Y1 function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselyx</code></dd><dt>Notes</dt><dd><code>besselyx(1, z)</code>; <code>z</code> non-zero.</dd></dl>
+</section>
+<section class="function" id="f-Yn">
+<h3><code>Yn</code></h3>
+<p class="signature"><code>Yn(m, z)</code></p>
+<p>Bessel second kind, order m.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.bessely</code></dd><dt>Notes</dt><dd><code>Yn(m, z) = bessely(m, z)</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-Yn_2esc">
+<h3><code>Yn.sc</code></h3>
+<p class="signature"><code>Yn.sc(m, z)</code></p>
+<p>Scaled Yn function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.besselyx</code></dd><dt>Notes</dt><dd><code>besselyx(m, z)</code>; <code>z</code> non-zero.</dd></dl>
+</section>
+<section class="function" id="f-ys">
+<h3><code>ys</code></h3>
+<p class="signature"><code>ys(m, z)</code></p>
+<p>Spherical Bessel, second kind.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.bessely</code></dd><dt>Notes</dt><dd><code>ys(m, z) = √(π/(2z))·bessely(m + ½, z)</code>, as <code>SpecialFunctions.sphericalbessely</code>; <code>z</code> must be non-zero.</dd></dl>
+</section>
+<section class="function" id="f-_393">
+<h3><code>Γ</code></h3>
+<p class="signature"><code>Γ(z) / Γ(a, x)</code></p>
+<p>Euler gamma function.</p>
+<dl><dt>Julia</dt><dd><code>SpecialFunctions.gamma</code></dd><dt>Notes</dt><dd><code>Γ(z)</code> is <code>gamma(z)</code>, also for complex <code>z</code>. At a pole (0, −1, …) or on overflow (<code>Γ(172)</code>) the result is an error instead of Julia's <code>Inf</code> or <code>NaN</code>. <code>Γ(a, x)</code> is the upper incomplete gamma function <code>∫ₓ^∞ t^(a−1)e^(−t) dt</code>, computed as <code>gamma(a, x)</code> in extended precision; it needs <code>a &gt; 0</code> and <code>x ≥ 0</code>. Type it with <code>G</code> <kbd>Ctrl</kbd>+<kbd>G</kbd>.</dd></dl>
+</section>
+<section class="function" id="f-_3b4">
+<h3><code>δ</code></h3>
+<p class="signature"><code>δ(m, n)</code></p>
+<p>Kronecker delta: 1 if m = n, else 0.</p>
+<dl><dt>Notes</dt><dd>Kronecker delta: 1 when <code>m = n</code>, otherwise 0.</dd></dl>
+</section>
+<section class="function" id="f-_3b5">
+<h3><code>ε</code></h3>
+<p class="signature"><code>ε(i, j, k)</code></p>
+<p>Antisymmetric tensor of rank 3 (indices ORIGIN..ORIGIN+2).</p>
+<dl><dt>Notes</dt><dd>The Levi-Civita symbol of rank 3: +1 for an even permutation of the indices, −1 for an odd one, 0 when two are equal. The indices run from <code>ORIGIN</code> to <code>ORIGIN + 2</code>.</dd></dl>
+</section>
+<section class="function" id="f-_3a6">
+<h3><code>Φ</code></h3>
+<p class="signature"><code>Φ(x)</code></p>
+<p>Heaviside step: 0 for x &lt; 0, 1 for x &gt; 0, 0.5 at 0.</p>
+<dl><dt>Notes</dt><dd>Heaviside step. <code>Φ(0) = 0.5</code>, where some definitions use 0 or 1.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

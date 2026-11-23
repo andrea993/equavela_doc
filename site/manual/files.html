@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Files and recovery · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html" aria-current="page">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Files and recovery</h1>
+
+<h2 id="worksheet-files">Worksheet files</h2>
+<p>A worksheet is saved as a <code>.eqv</code> file: a readable UTF-8 text file in YAML, with the mathematics written in the linear form you can also type (<code>M := q·L^2/8</code>). It works well with version control and can be compared line by line. Images are stored inside the file; results are not stored, because they are recalculated when the file opens.</p>
+<ul>
+<li><kbd>Ctrl</kbd>+<kbd>N</kbd> new worksheet, <kbd>Ctrl</kbd>+<kbd>O</kbd> open, <kbd>Ctrl</kbd>+<kbd>S</kbd> save, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> save as, <kbd>Ctrl</kbd>+<kbd>W</kbd> close.</li>
+<li>Several files can be opened at once; each gets its own tab. A file already open is brought to the front.</li>
+<li>Closing a worksheet with unsaved changes asks whether to save it.</li>
+<li>A file written by a newer version of Equavela is refused with a message rather than misread. Files written by older versions are upgraded when they are read and saved in the current format.</li>
+</ul>
+<p>Files with the earlier extensions <code>.mm</code> and <code>.mmz</code> still open, include and import; saving keeps their name, and <em>Save as</em> proposes <code>.eqv</code>.</p>
+
+<h2 id="portable">Portable documents</h2>
+<p>A <code>.eqvz</code> file is a ZIP archive that carries a worksheet, or a whole project, together with what it needs elsewhere: images, included worksheets and the description of its Julia environment. <em>Save as</em> with the portable type writes one; opening a <code>.eqvz</code> document opens its worksheet. A project archive is unpacked with <em>File › Extract project from .eqvz…</em>.</p>
+
+<h2 id="include">Including worksheets</h2>
+<p><em>Insert › Include</em> refers to another worksheet file by a relative path. The definitions of the included worksheet are visible from the include region on, as if its regions were written there; its evaluations are not shown. Included worksheets may include others; a cycle is an error. The included worksheet is calculated with the settings of the including one (<code>ORIGIN</code>, tolerances) and can use the definitions visible above the include. The <em>Includes</em> tab of the side panel lists what each include provides. A missing file is an error on the include region.</p>
+
+<h2 id="autosave">Automatic backup and recovery</h2>
+<p>Every 30 seconds Equavela writes a backup of each modified worksheet: for a saved worksheet a hidden file <code>.&lt;name&gt;.recovery</code> next to it, for an untitled one a file in your user data folder. Saving or closing the worksheet deletes the backup.</p>
+<p>If Equavela or the computer stops unexpectedly, opening the file again offers the newer backup, and at start-up untitled backups are offered. A restored worksheet stays marked as modified, so you decide whether to save it. Modified text files of a project are backed up in the same way; <em>Recovered text files…</em> in the command palette lists them. The interval and whether backups are written are set in the options.</p>
+
+<h2 id="crash-reports">Crash reports</h2>
+<p>If Equavela or its calculation engine fails, a report is written to the <code>equavela/crashes</code> folder of your user data (<code>%LOCALAPPDATA%</code> on Windows, <code>~/.local/share</code> on Linux). Reports stay on your computer; nothing is sent anywhere. Attach them to a bug report if you want the failure investigated.</p>
+
+<h2 id="import">Importing <code>.mcdx</code> and <code>.xmcd</code> worksheets</h2>
+<p><em>File › Import .mcdx or .xmcd worksheet…</em> reads a worksheet in the <code>.mcdx</code> format and opens it as a new untitled Equavela worksheet; the original file is only read. Math, text, plots, tables, images, areas, solve blocks, headers, footers, page settings and result formats are converted. What cannot be converted is listed in the import report (<em>Help › Show import report</em>), region by region, and the message bar says whether everything was imported. Saved results in the file are ignored; everything is recalculated.</p>
+<p>The same command reads the older <code>.xmcd</code> format and its compressed form <code>.xmcdz</code>. Math, text, X-Y plots (traces, styles, limits, logarithmic axes, grids, titles and axis labels), images, page breaks, headers, footers and page settings are converted. A unit such as <code>m</code> or <code>kN</code> that the old worksheet uses without defining becomes a unit, except <code>g</code>, which meant the acceleration of gravity there and is the gram in Equavela. A definition indexed by range variables, such as <code>d[k + 1] := d[k]·q</code> or <code>L[i, j] := …</code>, becomes a program that loops over the ranges, so each element can use the ones computed before it, as in the old worksheet. Included worksheets become includes of the same worksheet as <code>.eqv</code>, found next to the imported file even when the original path was on another computer; import each included worksheet too and save it at the path the include names (the import report lists them). Polar and 3D plots, Windows metafile pictures and components are not converted yet and appear in the import report; the regions of an area are imported without the area.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

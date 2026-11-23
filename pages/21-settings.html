@@ -1,0 +1,29 @@
+<!-- title: Settings -->
+<h1>Settings</h1>
+<p>Settings live at three levels: the application (for you, on this computer), the worksheet (saved in the file) and the region.</p>
+
+<h2 id="application">Application options</h2>
+<p><em>File › Options</em>:</p>
+<ul>
+<li><strong>Autosave</strong>: whether modified worksheets are backed up automatically, and how often (in seconds). A backup never changes your file; see <a href="files.html#autosave">recovery</a>.</li>
+<li><strong>Spelling</strong>: whether misspelt words in text regions are underlined.</li>
+</ul>
+<p>The layout of the window (ribbon mode, side panel, panel widths, recent files) is remembered for you automatically. Shortcuts work on every keyboard layout: each one is <kbd>Ctrl</kbd> with the character shown, typed with the keys that type it on your layout.</p>
+
+<h2 id="worksheet">Worksheet settings</h2>
+<table>
+<thead><tr><th>Setting</th><th>Where</th><th>Affects</th></tr></thead>
+<tbody>
+<tr><td><code>ORIGIN</code>, <code>TOL</code>, <code>CTOL</code></td><td><em>Calculate › Calculation settings…</em></td><td>Calculation; a change recalculates everything.</td></tr>
+<tr><td>Automatic or manual calculation</td><td><code>AUTO</code> in the status bar</td><td>When regions are calculated.</td></tr>
+<tr><td>Result format</td><td><em>Calculate › Results › Worksheet format…</em></td><td>How numbers are displayed.</td></tr>
+<tr><td>Elements before scrolling</td><td>Matrix tab</td><td>When a matrix result scrolls.</td></tr>
+<tr><td>Label styles</td><td><em>Calculate › Math Formatting</em></td><td>How each kind of name is drawn.</td></tr>
+<tr><td>Page size, margins, header, footer</td><td><em>Page setup…</em></td><td>Layout and print.</td></tr>
+<tr><td>Spelling language and ignored words</td><td><em>Edit › Spelling…</em></td><td>Spell checking.</td></tr>
+<tr><td>Julia environment</td><td><em>File › Julia environment</em></td><td>Which packages the worksheet uses.</td></tr>
+</tbody>
+</table>
+
+<h2 id="region">Region settings</h2>
+<p>A math region can override the result format and set its own font size, colour and highlight. A text region can have its own spelling language. Any region can be disabled. Plots, images, Julia blocks and result boxes store their size.</p>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex numbers and sign · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html" aria-current="page">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Complex numbers and sign</h1>
+<p class="toc"><a href="#f-abs"><code>abs</code></a> <a href="#f-angle"><code>angle</code></a> <a href="#f-arg"><code>arg</code></a> <a href="#f-atan2"><code>atan2</code></a> <a href="#f-csgn"><code>csgn</code></a> <a href="#f-Im"><code>Im</code></a> <a href="#f-Re"><code>Re</code></a> <a href="#f-sign"><code>sign</code></a> <a href="#f-signum"><code>signum</code></a></p>
+<section class="function" id="f-abs">
+<h3><code>abs</code></h3>
+<p class="signature"><code>abs(x)</code></p>
+<p>Absolute value of a number, magnitude of a complex number, or element-wise for arrays.</p>
+<dl><dt>Julia</dt><dd><code>Base.abs</code></dd><dt>Notes</dt><dd>Absolute value or complex modulus, element by element on arrays. The operator <code>|x|</code> differs on arrays: it gives the length of a vector and the determinant of a square matrix.</dd></dl>
+</section>
+<section class="function" id="f-angle">
+<h3><code>angle</code></h3>
+<p class="signature"><code>angle(x, y)</code></p>
+<p>Polar angle of point (x, y), 0 to 2*pi (excl.).</p>
+<dl><dt>Julia</dt><dd><code>Base.atan</code></dd><dt>Notes</dt><dd>The angle of the point (x, y) in [0, 2π), measured counter-clockwise from the positive x axis; Julia's <code>atan(y, x)</code> plus 2π when negative. (0, 0) is an error.</dd></dl>
+</section>
+<section class="function" id="f-arg">
+<h3><code>arg</code></h3>
+<p class="signature"><code>arg(z)</code></p>
+<p>Principal argument, -pi to pi inclusive.</p>
+<dl><dt>Julia</dt><dd><code>Base.angle</code></dd><dt>Notes</dt><dd>The principal argument in (−π, π], as Julia's <code>angle</code>; <code>arg(0) = 0</code>. Units are ignored.</dd></dl>
+</section>
+<section class="function" id="f-atan2">
+<h3><code>atan2</code></h3>
+<p class="signature"><code>atan2(x, y)</code></p>
+<p>Angle of point (x, y), -pi to pi (excl. -pi).</p>
+<dl><dt>Julia</dt><dd><code>Base.atan</code></dd><dt>Notes</dt><dd><code>atan2(x, y)</code> is Julia's <code>atan(y, x)</code>: note that <strong>x comes first</strong> here and second in Julia. The result is in (−π, π]; both arguments need the same unit; (0, 0) is an error.</dd></dl>
+</section>
+<section class="function" id="f-csgn">
+<h3><code>csgn</code></h3>
+<p class="signature"><code>csgn(z)</code></p>
+<p>Half-plane of z: 0 at 0, 1 for right half-plane (or on positive imaginary axis), -1 otherwise.</p>
+<dl><dt>Notes</dt><dd>1 when <code>z</code> is in the right half-plane or on the positive imaginary axis, −1 otherwise, 0 at 0.</dd></dl>
+</section>
+<section class="function" id="f-Im">
+<h3><code>Im</code></h3>
+<p class="signature"><code>Im(Z)</code></p>
+<p>Imaginary part.</p>
+<dl><dt>Julia</dt><dd><code>Base.imag</code></dd><dt>Notes</dt><dd>Element by element.</dd></dl>
+</section>
+<section class="function" id="f-Re">
+<h3><code>Re</code></h3>
+<p class="signature"><code>Re(Z)</code></p>
+<p>Real part of a scalar or matrix.</p>
+<dl><dt>Julia</dt><dd><code>Base.real</code></dd><dt>Notes</dt><dd>Element by element.</dd></dl>
+</section>
+<section class="function" id="f-sign">
+<h3><code>sign</code></h3>
+<p class="signature"><code>sign(x)</code></p>
+<p>Sign of a real number: -1, 0, 1.</p>
+<dl><dt>Julia</dt><dd><code>Base.sign</code></dd><dt>Notes</dt><dd>−1, 0 or 1 for a real number; units are ignored. Complex numbers are an error (use <code>signum</code>).</dd></dl>
+</section>
+<section class="function" id="f-signum">
+<h3><code>signum</code></h3>
+<p class="signature"><code>signum(z, [x])</code></p>
+<p>Vectorized sign of a real or complex number.</p>
+<dl><dt>Julia</dt><dd><code>Base.sign</code></dd><dt>Notes</dt><dd><code>z/|z|</code>, also for complex <code>z</code> (as Julia's <code>sign</code> of a complex number); at 0 it returns the optional second argument, 1 by default, where Julia returns 0.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

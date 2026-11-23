@@ -1,0 +1,60 @@
+<!-- title: Definitions and calculation -->
+<h1>Definitions and calculation</h1>
+
+<h2 id="order">Reading order</h2>
+<p>A worksheet is calculated in reading order: from top to bottom and, on the same line, from left to right. A region's place is the top-left corner of its box. A definition <code>x := e</code> is valid from its position on: in the regions to its right on the same line and in every region below. Using <code>x</code> above its definition is the error "<code>x</code> is undefined".</p>
+<p>Moving a region changes what it can see. If a result suddenly says that a name is undefined, check that the definition is still above the region that uses it.</p>
+
+<h2 id="redefinition">Redefining a name</h2>
+<p>A name can be defined again further down. The new value applies to the regions after the new definition; the regions between the two definitions keep the earlier value. Redefining a built-in function or constant (for example defining your own <code>mean</code> or <code>e</code>) hides the built-in from that point on.</p>
+
+<h2 id="global">Global definitions</h2>
+<p>A global definition <code>x ≡ e</code> is valid in the whole worksheet, also above its position. The names it uses must be globally defined themselves. A name can have only one global definition, and an ordinary definition of a globally defined name is an error. Global definitions are calculated first, from top to bottom.</p>
+
+<h2 id="evaluation">Evaluation</h2>
+<p><code>e =</code> shows the value of <code>e</code>. After the result there is a placeholder for a unit: type a unit there to see the value converted to it (see <a href="units.html">Units</a>). <code>x := e =</code> defines <code>x</code> and shows its value in one region. A region without any of <code>:=</code>, <code>≡</code>, <code>=</code> or <code>→</code>, such as a Boolean equality written as a statement, is drawn but not calculated.</p>
+<p>Results are never stored as input: they are recalculated whenever the worksheet is opened.</p>
+
+<h2 id="functions">User functions</h2>
+<p>Define a function by writing its parameters after the name: <code>f(x) := x² + 1</code>, <code>area(b, h) := b·h/2</code>. Call it like a built-in: <code>f(3) = 10</code>. A function sees the definitions above its own definition, not those above the call, so redefining a variable after the function was defined does not change the function. Functions can take vectors, matrices, quantities with units, strings and other functions as arguments, and can return any of them. A function can call itself (recursion).</p>
+<p>A function whose body is a program can use local variables, loops and conditions; see <a href="programs.html">Programs</a>.</p>
+
+<h2 id="automatic">Automatic and manual calculation</h2>
+<p>In automatic mode (<code>AUTO</code> in the status bar) every change recalculates the regions it affects, and only those: a region that does not depend on the change keeps its result. Moving a region without changing the reading order, editing text, or changing how a result is displayed does not recalculate anything.</p>
+<p>In manual mode results that need updating are marked as out of date. <kbd>F5</kbd> (<em>Calculate</em>) recalculates the out-of-date regions; <kbd>Ctrl</kbd>+<kbd>F5</kbd> (<em>Calculate all</em>) recalculates the whole worksheet. Click <code>AUTO</code> in the status bar, or use <em>Calculate › Automatic calculation</em>, to switch.</p>
+<p>While a calculation runs, the region being calculated is marked and the status bar shows the progress. <em>Stop</em> interrupts it. Editing during a calculation stops it and starts again from the change.</p>
+
+<h2 id="disable">Disabling a region</h2>
+<p><em>Calculate › Disable region</em> turns the calculation of the selected regions off. A disabled region is dimmed, on screen and in print. It has no result, and its definitions are not visible to the regions below, which report the usual "undefined" error. You can still move and edit it; the change counts when you enable it again with the same button.</p>
+
+<h2 id="errors">Errors</h2>
+<p>A region whose calculation fails is drawn with its error: the part of the expression that caused it is marked, and the message says what went wrong. The <em>Problems</em> tab of the side panel lists every error and unit warning; <em>Calculate › Next problem</em> and <em>Previous problem</em> move between them. A region that depends on a failed definition reports that the name is undefined or that its definition failed.</p>
+<p>A <strong>unit warning</strong> appears before calculation when the dimensions of an expression cannot agree, for example when adding a length to a time. It does not stop the calculation, which then reports the error itself.</p>
+
+<h2 id="constants">Built-in constants</h2>
+<table>
+<thead><tr><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>π</code></td><td>3.14159…</td></tr>
+<tr><td><code>e</code></td><td>2.71828…, the base of the natural logarithm</td></tr>
+<tr><td><code>∞</code></td><td>Infinity (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>)</td></tr>
+<tr><td><code>1i</code>, <code>1j</code></td><td>The imaginary unit; <code>i</code> or <code>j</code> alone is an ordinary name</td></tr>
+<tr><td><code>NaN</code></td><td>Not a number, marks missing data</td></tr>
+<tr><td><code>γ</code></td><td>The Euler–Mascheroni constant 0.57721…</td></tr>
+<tr><td><code>c</code>, <code>h</code>, <code>ħ</code>, <code>k</code>, <code>e.c</code>, <code>m.u</code>, <code>N.A</code>, <code>R</code>, <code>R∞</code>, <code>α</code>, <code>ε₀</code>, <code>μ₀</code>, <code>σ</code>, <code>Φ₀</code></td><td>Physical constants with their SI units (CODATA 2022): speed of light, Planck and reduced Planck constants, Boltzmann constant, elementary charge, atomic mass constant, Avogadro constant, gas constant, Rydberg constant, fine-structure constant, vacuum permittivity and permeability, Stefan–Boltzmann constant and magnetic flux quantum. They are on the Constants panel.</td></tr>
+</tbody>
+</table>
+<p>A definition of the same name in the worksheet replaces the constant from that point on.</p>
+
+<h2 id="system-variables">Worksheet settings that act like variables</h2>
+<table>
+<thead><tr><th>Name</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>ORIGIN</code></td><td>0</td><td>The index of the first element of every vector and matrix. Set it in <em>Calculate › Calculation settings</em>; it cannot be defined in the worksheet.</td></tr>
+<tr><td><code>TOL</code></td><td>0.001</td><td>The convergence tolerance of root finding, numeric integration and differentiation.</td></tr>
+<tr><td><code>CTOL</code></td><td>0.001</td><td>How closely a solve block must satisfy its constraints.</td></tr>
+<tr><td><code>PRNPRECISION</code>, <code>PRNCOLWIDTH</code></td><td>4, 8</td><td>Precision and column width of the structured text files written by <code>WRITEPRN</code>.</td></tr>
+<tr><td><code>CWD</code></td><td>the worksheet's folder</td><td>The folder relative file names are read from and written to.</td></tr>
+</tbody>
+</table>
+<p>The calculation settings also hold the random seed, the unit system and how strictly results are checked. Changing a setting recalculates the whole worksheet.</p>

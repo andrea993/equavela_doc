@@ -1,0 +1,61 @@
+<!-- title: Vectors, matrices and ranges -->
+<h1>Vectors, matrices and ranges</h1>
+
+<h2 id="matrices">Creating matrices</h2>
+<p>Press <kbd>Ctrl</kbd>+<kbd>M</kbd> to insert a matrix of a chosen size, or type <kbd>[</kbd> on an empty placeholder. In a matrix:</p>
+<ul>
+<li><kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> move to the next and previous element; <kbd>Tab</kbd> on the last element adds a row.</li>
+<li><kbd>Shift</kbd>+<kbd>Space</kbd> adds a column to the right of the current element, <kbd>Shift</kbd>+<kbd>Enter</kbd> a row below it.</li>
+<li>The <strong>Matrix</strong> tab inserts rows above or below and columns left or right, selects and deletes rows and columns, and clears cells. Drag across cells to select a row, a column or a block; typing then replaces all selected cells at once.</li>
+<li><kbd>Backspace</kbd> on an empty element of a vector removes the element.</li>
+</ul>
+<p>Every array is two-dimensional: a vector is a matrix with one column. Elements can be real or complex numbers, quantities with units, strings, or arrays themselves (nested arrays), and one array can mix them.</p>
+
+<h2 id="indexing">Indexing</h2>
+<ul>
+<li><code>v[i]</code> is element <code>i</code> of a vector, <code>M[i, j]</code> element (i, j) of a matrix. Type <kbd>[</kbd> after the name.</li>
+<li>Indices count from <code>ORIGIN</code>, which is 0 unless you change it in <em>Calculate › Calculation settings</em>. With the default, the first element of <code>v</code> is <code>v[0]</code>.</li>
+<li><code>M⟨j⟩</code> is column <code>j</code> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>), and the row operator (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>) row <code>i</code>.</li>
+<li>A range selects several: <code>v[2..5]</code> the elements 2 to 5, <code>M⟨0..1⟩</code> the first two columns, the row operator with a range a block of rows.</li>
+<li>An index must be a whole number without unit inside the array, otherwise the region shows an error.</li>
+</ul>
+<p>Assigning past the end of an array grows it, filling new elements with 0: <code>v[5] := 1</code> creates <code>v</code> with six elements if it did not exist. Assigning an element of an undefined name creates the array. A matrix of names on the left of a definition assigns every element: <code>[a; b] := [1; 2]</code>. A name with a transpose on the left defines it transposed: <code>Vᵀ := [1, 2, 3]</code> makes <code>V</code> a column, and <code>[U; S; Wᵀ] := svd(A)</code> defines <code>W</code> as the transpose of the third factor.</p>
+<p>Arrays are values: <code>B := A</code> copies <code>A</code>, and changing <code>B</code> afterwards never changes <code>A</code>.</p>
+
+<h2 id="operators">Array arithmetic</h2>
+<table>
+<thead><tr><th>Expression</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><code>A + B</code>, <code>A − B</code></td><td>Element by element; the sizes must agree. A scalar is added to every element.</td></tr>
+<tr><td><code>s·A</code>, <code>A/s</code></td><td>Every element scaled.</td></tr>
+<tr><td><code>A·B</code></td><td>Matrix product. Two vectors of equal length give the dot product (the second vector conjugated when complex). A 1×1 product becomes a scalar.</td></tr>
+<tr><td><code>u × v</code></td><td>Cross product of two 3-element vectors.</td></tr>
+<tr><td><code>M^n</code></td><td>Matrix power of a square matrix; <code>M^-1</code> is the inverse and <code>M^0</code> the identity. A non-integer power is computed as <code>exp(p·ln M)</code>.</td></tr>
+<tr><td><code>v^n</code>, <code>u/v</code>, <code>s/v</code></td><td>Element by element for vectors and non-square arrays.</td></tr>
+<tr><td><code>s/M</code></td><td><code>s·M⁻¹</code> for a square matrix.</td></tr>
+<tr><td><code>Mᵀ</code></td><td>Transpose; nested arrays inside are not transposed.</td></tr>
+<tr><td><code>|x|</code></td><td>Absolute value of a scalar, length (Euclidean norm) of a vector, determinant of a square matrix.</td></tr>
+<tr><td><code>‖x‖</code></td><td>Norm.</td></tr>
+<tr><td><code>Σv</code></td><td>Sum of all elements of an array.</td></tr>
+<tr><td><code>A ∗ B</code>, <code>A ⊛ B</code></td><td>Linear and circular convolution.</td></tr>
+</tbody>
+</table>
+<p>Functions such as <code>floor</code>, <code>Re</code> or <code>Im</code> apply to every element. <code>exp</code>, <code>ln</code>, <code>sqrt</code> and the trigonometric and hyperbolic functions of a <strong>square matrix</strong> are matrix functions (<code>exp(M)</code> is the matrix exponential), as in Julia.</p>
+
+<h2 id="vectorize">Vectorize</h2>
+<p>Select an expression and press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>^</kbd>: an arrow is drawn over it, and every operator and function under the arrow applies element by element. <code>A·B</code> under the arrow multiplies elements instead of forming the matrix product, <code>|M|</code> takes the absolute value of every element, and a user function written for scalars is applied to every element. All arrays under the arrow must have the same size; scalars are used for every element.</p>
+
+<h2 id="ranges">Range variables</h2>
+<p><code>i := 0..10</code> defines a range variable that takes the values 0, 1, …, 10. <code>x := 0, 0.1..1</code> steps by the difference of the first two values. When the end is smaller than the start the step is −1.</p>
+<p>A range variable is not a vector: it makes the expression that uses it run once per value.</p>
+<ul>
+<li><code>f(i) =</code> shows a column of results, one per value of <code>i</code>.</li>
+<li><code>v[i] := i²</code> fills a vector element by element, and the right side may read earlier elements: <code>F[i] := F[i−1] + F[i−2]</code>.</li>
+<li><code>∑[i] e</code> sums over all values of <code>i</code>.</li>
+<li>Defining a variable as an expression of a range variable (<code>x := i²</code>) is an error; use <code>vec(i)</code> to turn a range into a vector.</li>
+</ul>
+<p>Ranges also work with units: <code>h := 0 m, 100 m..1000 m</code>.</p>
+
+<h2 id="sums">Sums and products</h2>
+<p><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>$</kbd> inserts <code>∑</code> with a lower bound <code>k = a</code> and an upper bound <code>b</code>; <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>#</kbd> the product <code>∏</code>. The terms are added in order, from <code>a</code> up to <code>b</code>, or downwards when <code>b &lt; a</code>; arrays can be summed. The variable of the sum is local to it.</p>
+<p>The functions for creating, combining and analysing arrays (<code>augment</code>, <code>stack</code>, <code>submatrix</code>, <code>identity</code>, <code>eigenvals</code>, <code>lsolve</code> …) are in <a href="functions/array-creation-joining-and-subdividing.html">Array creation</a>, <a href="functions/array-characteristics-and-linear-algebra.html">Linear algebra</a> and <a href="functions/matrix-factorization.html">Matrix factorization</a>.</p>

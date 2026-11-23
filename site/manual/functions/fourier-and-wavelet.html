@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fourier and wavelet · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html" aria-current="page">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Fourier and wavelet</h1>
+<p class="toc"><a href="#f-Bspline"><code>Bspline</code></a> <a href="#f-cfft"><code>cfft</code></a> <a href="#f-cpt"><code>cpt</code></a> <a href="#f-dft"><code>dft</code></a> <a href="#f-dftr"><code>dftr</code></a> <a href="#f-icfft"><code>icfft</code></a> <a href="#f-idft"><code>idft</code></a> <a href="#f-idftr"><code>idftr</code></a> <a href="#f-iwave"><code>iwave</code></a> <a href="#f-wave"><code>wave</code></a></p>
+<section class="function" id="f-Bspline">
+<h3><code>Bspline</code></h3>
+<p class="signature"><code>Bspline(m, n)</code></p>
+<p>Analysis and synthesis spline wavelet filters.</p>
+<dl><dt>Notes</dt><dd>The analysis and synthesis filters of the spline wavelet of orders (m, n), as a two-column matrix. Only the pairs of the standard table are accepted.</dd></dl>
+</section>
+<section class="function" id="f-cfft">
+<h3><code>cfft</code></h3>
+<p class="signature"><code>cfft(v)</code></p>
+<p>Deprecated legacy name, replaced by dft (still works in the reference application).</p>
+<dl><dt>Julia</dt><dd><code>FFTW.ifft</code></dd><dt>Notes</dt><dd>An older transform convention: the positive exponent, scaled by <code>1/√n</code>, that is <code>ifft(x)·√n</code>. Kept for older worksheets; use <code>dft</code> for new work.</dd></dl>
+</section>
+<section class="function" id="f-cpt">
+<h3><code>cpt</code></h3>
+<p class="signature"><code>cpt(a, n)</code></p>
+<p>Local cosine packet table, n levels.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.r2r</code></dd><dt>Notes</dt><dd>The local cosine packet table: a column of <code>n + 1</code> vectors, levels 0 to n. Level l cuts the periodic signal into 2<sup>l</sup> blocks, folds it smoothly at the block boundaries and applies an orthonormal DCT-IV (<code>FFTW.r2r(…, REDFT11)</code>) to each block. The length must be a multiple of 2<sup>n+1</sup>; matrices are transformed along columns, then rows.</dd></dl>
+</section>
+<section class="function" id="f-dft">
+<h3><code>dft</code></h3>
+<p class="signature"><code>dft(A)</code></p>
+<p>Forward Fourier transform of a complex vector or matrix.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.fft</code></dd><dt>Notes</dt><dd>The discrete Fourier transform <code>Σ x[k]·e^(−2πi·jk/n)</code> without normalisation, exactly <code>fft(x)</code>. A matrix is transformed along both dimensions. The result keeps the shape of the input; units are kept. Element 0 of the result is the zero frequency.</dd></dl>
+</section>
+<section class="function" id="f-dftr">
+<h3><code>dftr</code></h3>
+<p class="signature"><code>dftr(B)</code></p>
+<p>Forward Fourier transform of real data.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.fft</code></dd><dt>Notes</dt><dd>The transform of real data: only the non-negative frequencies, <code>n/2 + 1</code> values for n samples, as Julia's <code>rfft</code>. The length (or the number of columns of a matrix) must be even; imaginary parts are ignored.</dd></dl>
+</section>
+<section class="function" id="f-icfft">
+<h3><code>icfft</code></h3>
+<p class="signature"><code>icfft(v)</code></p>
+<p>Deprecated legacy name, replaced by idft.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.fft</code></dd><dt>Notes</dt><dd>The inverse of <code>cfft</code>: <code>fft(x)/√n</code>.</dd></dl>
+</section>
+<section class="function" id="f-idft">
+<h3><code>idft</code></h3>
+<p class="signature"><code>idft(Z)</code></p>
+<p>Inverse of dft.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.ifft</code></dd><dt>Notes</dt><dd>The inverse of <code>dft</code>, dividing by the number of elements, as <code>ifft</code>.</dd></dl>
+</section>
+<section class="function" id="f-idftr">
+<h3><code>idftr</code></h3>
+<p class="signature"><code>idftr(Z)</code></p>
+<p>Inverse of dftr.</p>
+<dl><dt>Julia</dt><dd><code>FFTW.ifft</code></dd><dt>Notes</dt><dd>The inverse of <code>dftr</code>: rebuilds the even-length real signal from the non-negative frequencies, as <code>irfft(z, 2(length(z) − 1))</code>.</dd></dl>
+</section>
+<section class="function" id="f-iwave">
+<h3><code>iwave</code></h3>
+<p class="signature"><code>iwave(u)</code></p>
+<p>Inverse wavelet transform.</p>
+<dl><dt>Notes</dt><dd>The exact inverse of <code>wave</code>.</dd></dl>
+</section>
+<section class="function" id="f-wave">
+<h3><code>wave</code></h3>
+<p class="signature"><code>wave(v)</code></p>
+<p>Daubechies four-coefficient wavelet transform.</p>
+<dl><dt>Notes</dt><dd>The discrete wavelet transform with the four-coefficient Daubechies wavelet, as a pyramid down to two smooth coefficients. The length must be a power of two. Implemented directly; Julia's <code>Wavelets.jl</code> orders the coefficients differently.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

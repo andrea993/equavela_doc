@@ -1,0 +1,26 @@
+<!-- title: Tables -->
+<h1>Tables</h1>
+<p>An input table defines several column vectors at once from values you type in a grid, as in a spreadsheet. It is edited like a matrix.</p>
+
+<h2 id="insert">Creating a table</h2>
+<p><em>Insert › Table</em> creates a table with two columns, a header row, a units row and two value rows; every cell is a placeholder and the caret is in the first header cell.</p>
+<ul>
+<li><strong>Header row</strong>: one name per column, the name the column defines. A plain name, optionally with a literal subscript.</li>
+<li><strong>Units row</strong>: one unit per column, optional. Every name in it is a unit. When no unit is filled in, the row is not shown once you leave the table.</li>
+<li><strong>Value rows</strong>: the values, any math expression.</li>
+</ul>
+<p>Use the arrow keys and <kbd>Tab</kbd> to move between cells, and the Matrix tab to insert and delete rows and columns or clear cells. Cells and blocks of cells can be copied and pasted as in a matrix.</p>
+
+<h2 id="meaning">What a table defines</h2>
+<p>Each column defines its name as the column vector of its values, multiplied by its unit:</p>
+<table>
+<thead><tr><th><code>F</code></th><th><code>δ</code></th></tr></thead>
+<tbody>
+<tr><td><code>kN</code></td><td><code>mm</code></td></tr>
+<tr><td>0</td><td>0</td></tr>
+<tr><td>10</td><td>1.2</td></tr>
+<tr><td>20</td><td>2.5</td></tr>
+</tbody>
+</table>
+<p>defines <code>F := [0; 10; 20] kN</code> and <code>δ := [0; 1.2; 2.5] mm</code>. The definitions are made at the table's place in reading order, column by column. Values may use names defined above the table, not the other columns of the same table. A column with an empty header defines nothing; a column with an empty value cell is incomplete and defines nothing either. A header that is not a name, a repeated name or an unknown unit is shown as an error on its cell.</p>
+<p>The columns are ordinary vectors: plot them, interpolate them (<code>linterp(F, δ, 15 kN)</code>) or fit them (<code>line(F, δ)</code>).</p>

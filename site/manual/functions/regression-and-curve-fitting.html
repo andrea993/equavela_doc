@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regression and curve fitting · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html" aria-current="page">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Regression and curve fitting</h1>
+<p class="toc"><a href="#f-confidence"><code>confidence</code></a> <a href="#f-expfit"><code>expfit</code></a> <a href="#f-genfit"><code>genfit</code></a> <a href="#f-intercept"><code>intercept</code></a> <a href="#f-LeastSquaresFit"><code>LeastSquaresFit</code></a> <a href="#f-lgsfit"><code>lgsfit</code></a> <a href="#f-line"><code>line</code></a> <a href="#f-linfit"><code>linfit</code></a> <a href="#f-lnfit"><code>lnfit</code></a> <a href="#f-loess"><code>loess</code></a> <a href="#f-logfit"><code>logfit</code></a> <a href="#f-medfit"><code>medfit</code></a> <a href="#f-multidfit"><code>multidfit</code></a> <a href="#f-polyfit"><code>polyfit</code></a> <a href="#f-polyfitc"><code>polyfitc</code></a> <a href="#f-polyfitstat"><code>polyfitstat</code></a> <a href="#f-pwrfit"><code>pwrfit</code></a> <a href="#f-rationalfit"><code>rationalfit</code></a> <a href="#f-rationalfitnp"><code>rationalfitnp</code></a> <a href="#f-sinfit"><code>sinfit</code></a> <a href="#f-slope"><code>slope</code></a> <a href="#f-stderr"><code>stderr</code></a></p>
+<section class="function" id="f-confidence">
+<h3><code>confidence</code></h3>
+<p class="signature"><code>confidence(vx, vy, F, b, conf)</code></p>
+<p>Confidence limits of fit parameters b.</p>
+<dl><dt>Notes</dt><dd>For fitted parameters <code>b</code> of <code>F(x, u)</code>: the half-width of the <code>conf</code> confidence interval of each parameter (first column) and the Student t value used.</dd></dl>
+</section>
+<section class="function" id="f-expfit">
+<h3><code>expfit</code></h3>
+<p class="signature"><code>expfit(vx, vy, [vg])</code></p>
+<p>Coefficients of A*exp(b*x) + C.</p>
+<dl><dt>Notes</dt><dd>The coefficients <code>[A; b; C]</code> of <code>A·e^(b·x) + C</code>; the guess <code>vg</code> is optional.</dd></dl>
+</section>
+<section class="function" id="f-genfit">
+<h3><code>genfit</code></h3>
+<p class="signature"><code>genfit(vx, vy, vg, F)</code></p>
+<p>Levenberg-Marquardt nonlinear fit of F(x, u) with guess vg.</p>
+<dl><dt>Notes</dt><dd>Fits the parameters <code>u</code> of a function <code>F(x, u)</code> by Levenberg–Marquardt, starting at <code>vg</code>. <code>F</code> may return the value followed by its partial derivatives; otherwise they are computed numerically. Compare <code>LsqFit.curve_fit</code> in Julia.</dd></dl>
+</section>
+<section class="function" id="f-intercept">
+<h3><code>intercept</code></h3>
+<p class="signature"><code>intercept(vx, vy)</code></p>
+<p>Intercept of the least-squares line.</p>
+<dl><dt>Notes</dt><dd>The intercept of the least-squares line.</dd></dl>
+</section>
+<section class="function" id="f-LeastSquaresFit">
+<h3><code>LeastSquaresFit</code></h3>
+<p class="signature"><code>LeastSquaresFit(vx, vy, F, guess, conf, [Stdy], [LBUB], [Acc])</code></p>
+<p>Nonlinear fit with parameter confidence limits.</p>
+<dl><dt>Notes</dt><dd>Fits the scalar function <code>F(x, u)</code> and returns, per parameter, <code>[value, lower, upper]</code> with <code>conf</code> confidence limits. Optional: the standard deviations of y (a vector), bounds (a two-column matrix) and the accuracy (a scalar), recognised by their shape.</dd></dl>
+</section>
+<section class="function" id="f-lgsfit">
+<h3><code>lgsfit</code></h3>
+<p class="signature"><code>lgsfit(vx, vy, vg)</code></p>
+<p>Coefficients of a/(1 + b*exp(-c*x)).</p>
+<dl><dt>Notes</dt><dd>The coefficients of the logistic curve <code>a/(1 + b·e^(−c·x))</code>.</dd></dl>
+</section>
+<section class="function" id="f-line">
+<h3><code>line</code></h3>
+<p class="signature"><code>line(vx, vy)</code></p>
+<p>Vector [a; b] for the least-squares line a + b*x.</p>
+<dl><dt>Notes</dt><dd>The least-squares line as <code>[intercept; slope]</code>.</dd></dl>
+</section>
+<section class="function" id="f-linfit">
+<h3><code>linfit</code></h3>
+<p class="signature"><code>linfit(vx, vy, F)</code></p>
+<p>Least-squares coefficients for a linear combination of the functions in F.</p>
+<dl><dt>Notes</dt><dd>The least-squares coefficients of a linear combination of the basis functions returned (as a column) by <code>F(x)</code>. Julia equivalent: build the design matrix and solve with <code>\</code>.</dd></dl>
+</section>
+<section class="function" id="f-lnfit">
+<h3><code>lnfit</code></h3>
+<p class="signature"><code>lnfit(vx, vy)</code></p>
+<p>Logarithmic fit (named on the category page; no detail signature found).</p>
+<dl><dt>Notes</dt><dd>The coefficients <code>[a; b]</code> of <code>a·ln(x) + b</code> (a linear fit in ln x).</dd></dl>
+</section>
+<section class="function" id="f-loess">
+<h3><code>loess</code></h3>
+<p class="signature"><code>loess(vx, vy, span) / loess(Mx, vy, span)</code></p>
+<p>Localized second-order polynomial regression.</p>
+<dl><dt>Notes</dt><dd>Local quadratic regression with tricube weights over the nearest <code>span·N</code> points, for use with <code>interp</code>. Works with one variable (vectors) or several (a matrix of points).</dd></dl>
+</section>
+<section class="function" id="f-logfit">
+<h3><code>logfit</code></h3>
+<p class="signature"><code>logfit(vx, vy, vg)</code></p>
+<p>Coefficients of a*ln(x + b) + c.</p>
+<dl><dt>Notes</dt><dd>The coefficients of <code>a·ln(x + b) + c</code>.</dd></dl>
+</section>
+<section class="function" id="f-medfit">
+<h3><code>medfit</code></h3>
+<p class="signature"><code>medfit(vx, vy)</code></p>
+<p>Median-median line [a; b].</p>
+<dl><dt>Notes</dt><dd>Tukey's resistant median–median line, <code>[intercept; slope]</code>.</dd></dl>
+</section>
+<section class="function" id="f-multidfit">
+<h3><code>multidfit</code></h3>
+<p class="signature"><code>multidfit(X, Y, G, F)</code></p>
+<p>General multivariate fit.</p>
+<dl><dt>Notes</dt><dd>As <code>genfit</code> for several independent variables: the rows of <code>X</code> are passed to <code>F</code> as column vectors.</dd></dl>
+</section>
+<section class="function" id="f-polyfit">
+<h3><code>polyfit</code></h3>
+<p class="signature"><code>polyfit(X, Y, n/&quot;terms&quot;/M)</code></p>
+<p>Function for a multivariate polynomial regression surface.</p>
+<dl><dt>Notes</dt><dd>Multivariate polynomial regression. The third argument is the degree (all terms up to that total degree), a string naming the terms (<code>"A,AA"</code>: A the first variable, AA its square, AB the product with the second), or a matrix of exponents. The result is a <strong>function of one argument</strong>: a number for one variable, a vector of the variables otherwise.</dd></dl>
+</section>
+<section class="function" id="f-polyfitc">
+<h3><code>polyfitc</code></h3>
+<p class="signature"><code>polyfitc(X, Y, n/&quot;terms&quot;/M, [conf])</code></p>
+<p>Regression coefficients with extra information.</p>
+<dl><dt>Notes</dt><dd>The coefficient table of <code>polyfit</code>: a header row and one row per term with coefficient, standard error, confidence limits, variance inflation factor, t value and one-sided p value.</dd></dl>
+</section>
+<section class="function" id="f-polyfitstat">
+<h3><code>polyfitstat</code></h3>
+<p class="signature"><code>polyfitstat(X, Y, n/&quot;terms&quot;/M, [conf])</code></p>
+<p>Statistics of the polynomial regression model.</p>
+<dl><dt>Notes</dt><dd>The statistics of <code>polyfit</code>: standard deviation, R², adjusted and predicted R², PRESS, Durbin–Watson, the coefficient table, the ANOVA table and per-observation diagnostics (leverage, studentised residuals, Cook's distance, DFFITS).</dd></dl>
+</section>
+<section class="function" id="f-pwrfit">
+<h3><code>pwrfit</code></h3>
+<p class="signature"><code>pwrfit(vx, vy, vg)</code></p>
+<p>Coefficients of a*x^b + c.</p>
+<dl><dt>Notes</dt><dd>The coefficients of <code>a·x^b + c</code>.</dd></dl>
+</section>
+<section class="function" id="f-rationalfit">
+<h3><code>rationalfit</code></h3>
+<p class="signature"><code>rationalfit(vx, vy, conf, m, n, [Stdy], [LBUB], [Acc], [&quot;noscale&quot;])</code></p>
+<p>Rational polynomial fit, parameters with confidence limits.</p>
+<dl><dt>Notes</dt><dd>Fits <code>(a₀ + … + aₘxᵐ)/(1 + b₁x + … + bₙxⁿ)</code> by Levenberg–Marquardt; each row is a parameter <code>[value, lower, upper]</code> with <code>conf</code> confidence limits (rows a₀…aₘ, then b₁…bₙ).</dd></dl>
+</section>
+<section class="function" id="f-rationalfitnp">
+<h3><code>rationalfitnp</code></h3>
+<p class="signature"><code>rationalfitnp(vx, vy, conf, m, n, [Stdy], [LBUB], [Acc], [&quot;noscale&quot;])</code></p>
+<p>Like rationalfit, avoiding poles.</p>
+<dl><dt>Notes</dt><dd>As <code>rationalfit</code>, penalising a denominator that approaches zero inside the data range, so the fit has no poles there.</dd></dl>
+</section>
+<section class="function" id="f-sinfit">
+<h3><code>sinfit</code></h3>
+<p class="signature"><code>sinfit(vx, vy, vg)</code></p>
+<p>Coefficients of a*sin(x + b) + c.</p>
+<dl><dt>Notes</dt><dd>The coefficients of <code>a·sin(x + b) + c</code>.</dd></dl>
+</section>
+<section class="function" id="f-slope">
+<h3><code>slope</code></h3>
+<p class="signature"><code>slope(vx, vy)</code></p>
+<p>Slope of the least-squares line.</p>
+<dl><dt>Notes</dt><dd>The slope of the least-squares line.</dd></dl>
+</section>
+<section class="function" id="f-stderr">
+<h3><code>stderr</code></h3>
+<p class="signature"><code>stderr(vx, vy)</code></p>
+<p>Standard error of the linear regression.</p>
+<dl><dt>Notes</dt><dd>The standard error of the linear regression, <code>√(Σresiduals²/(n − 2))</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- title: Text -->
+<h1>Text</h1>
+<p>Text regions hold formatted prose with mathematics inside it. Their inline math is calculated like any math region.</p>
+
+<h2 id="kinds">Text boxes and text blocks</h2>
+<ul>
+<li>A <strong>text box</strong> (<kbd>Ctrl</kbd>+<kbd>T</kbd>, <em>Insert › Text box</em>) widens as you type and wraps at the right margin. Drag its right edge to give it a fixed width, which it then keeps.</li>
+<li>A <strong>text block</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>, <em>Insert › Text block</em>) always spans the printable width of the page, from margin to margin, and grows downwards; the regions below move down with it.</li>
+</ul>
+<p>You can also start a text box by typing: on empty space, type a word and a <kbd>Space</kbd>. Because a word followed by a space cannot be the start of mathematics, Equavela turns the region into a text box and you can go on writing.</p>
+<p>Move a text region by dragging its border. A drag on the text selects text, as in a word processor. <kbd>Esc</kbd> leaves the region. A text box you empty and leave is removed.</p>
+
+<h2 id="formatting">Formatting</h2>
+<p>While a text region is being edited, the <strong>Text</strong> tab appears:</p>
+<ul>
+<li><strong>Font</strong>: bold (<kbd>Ctrl</kbd>+<kbd>B</kbd>), italic (<kbd>Ctrl</kbd>+<kbd>I</kbd>), underline (<kbd>Ctrl</kbd>+<kbd>U</kbd>), subscript, superscript and size (8 to 72 pt).</li>
+<li><strong>Paragraph</strong>: align left, centre, right or justify.</li>
+<li><strong>Text styles</strong>: Normal (10 pt), Title (28 pt), Subtitle (18 pt), Heading 1 (16 pt), Heading 2 (13 pt) and Heading 3 (12 pt). Headings appear in the <em>Outline</em> tab of the side panel.</li>
+</ul>
+<p><kbd>Enter</kbd> starts a new paragraph. The text font is Noto Sans, bundled with Equavela, so text looks the same on every computer and in the PDF.</p>
+
+<h2 id="inline-math">Mathematics in text</h2>
+<p>Press <kbd>Ctrl</kbd>+<kbd>M</kbd> in a text region to insert a math placeholder into the sentence, then type the math as in a math region. The arrow keys move into and out of it, and a click on it puts the caret inside. <kbd>Backspace</kbd> right after it or <kbd>Delete</kbd> right before it removes it.</p>
+<p>Inline math is calculated: a definition in a sentence, such as "the span is <code>L := 6 m</code>", defines <code>L</code> for everything below the text region, and "the moment is <code>M =</code>" shows the value in the sentence. A plain name or expression without <code>:=</code> or <code>=</code> is only displayed.</p>
+
+<h2 id="paste">Pasting</h2>
+<p>Plain text pasted on empty space makes a new text box. Math copied from Equavela and pasted into a text region becomes inline math.</p>
+
+<h2 id="spelling">Spelling</h2>
+<p>Misspelt words in text regions get a red wavy underline on screen; it is never printed. Right-click a word for up to six corrections, <em>Ignore</em> (remembered by the worksheet) or <em>Add to dictionary</em> (remembered for you in every worksheet). Mathematics, names, Julia code, plots and tables are never checked.</p>
+<p>The worksheet has one language, English by default, and a text region can have its own. <em>Edit › Spelling…</em> sets them and can download any of the 96 LibreOffice dictionaries after you agree; downloaded dictionaries can be removed again. Spell checking can be turned off in the options.</p>

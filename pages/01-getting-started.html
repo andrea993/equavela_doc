@@ -1,0 +1,42 @@
+<!-- title: Getting started -->
+<h1>Getting started</h1>
+<p>This chapter installs Equavela, starts it and walks through a first worksheet.</p>
+
+<h2 id="install">Installing</h2>
+<p>Equavela runs on Windows and Linux. The installer carries everything it needs: the application, the Julia runtime with the numerical packages, a precompiled system image so that calculations start quickly, and the Python environment that the symbolic engine uses.</p>
+<ul>
+  <li><strong>Windows</strong>: run the setup program. It installs for the current user, without administrator rights, adds a Start menu entry and associates <code>.eqv</code> and <code>.eqvz</code> files with Equavela.</li>
+  <li><strong>Linux</strong>: install the <code>.deb</code> package (<code>sudo apt install ./equavela_*.deb</code>) or make the AppImage executable and run it. Both register the worksheet file types with the desktop.</li>
+</ul>
+<p>Only one Equavela window runs per user. Opening a worksheet from the file manager while Equavela is running opens it as a new tab in the existing window.</p>
+
+<h2 id="first-start">The first start</h2>
+<p>A small window with the Equavela logo appears while the interface loads; then the main window opens with an empty worksheet. The calculation engine (the <em>kernel</em>) starts in the background. The status bar at the bottom shows its state: while it starts you can already type, and results appear as soon as it is ready. The first start after an installation can take longer, because the engine prepares its caches.</p>
+
+<h2 id="help">Opening the manual</h2>
+<p>Choose <strong>Help › Manual</strong> to open the offline manual in its own window. The search box finds functions, commands and keyboard shortcuts. When the caret is on a function name, <kbd>F1</kbd> opens its help entry. Choose <strong>Open in the manual</strong> for the full reference.</p>
+<figure class="manual-screenshot">
+  <img src="assets/screenshots/manual-window.png" width="1100" height="800" alt="The Equavela manual in its own window with a search field and a chapter list">
+</figure>
+
+<h2 id="first-worksheet">A first worksheet</h2>
+<p>The page shows a small blue cross, the <strong>crosshair</strong>. It marks where the next region goes. Click anywhere on the page to move it, then type.</p>
+<ol>
+  <li>Type <code>L:6m</code>. The colon becomes the definition sign <code>:=</code>. While the caret is on <code>m</code>, press <kbd>Ctrl</kbd>+<kbd>U</kbd>: <code>m</code> is now the unit metre and is drawn in the unit style. (Picking <em>m</em> from the suggestion list that appears while you type does the same.) Press <kbd>Enter</kbd> to finish the region.</li>
+  <li>Below it, type <code>q:12kN/m</code>, mark <code>kN</code> and <code>m</code> as units the same way, and press <kbd>Enter</kbd>.</li>
+  <li>Type <code>M:q*L^2</code>, press <kbd>→</kbd> to leave the exponent, then <code>/8</code> and <kbd>Enter</kbd>.</li>
+  <li>Type <code>M=</code>. Equavela shows the bending moment in SI units, 54000 newton metres.</li>
+  <li>Click the placeholder after the result and type <code>kN·m</code>: the result reads <code>M = 54 kN·m</code>.</li>
+</ol>
+<p>Change the first region to <code>L := 8 m</code>: the result updates immediately. Every region is calculated from the definitions above it and to its left, in reading order.</p>
+<div class="note">Only a name marked as a unit is a unit. A plain <code>m</code> that nothing defines is the error "<code>m</code> is undefined", so a worksheet can use <code>m</code> for a mass and <code>m</code> (the unit) for metres side by side. See <a href="units.html">Units</a>.</div>
+
+<h2 id="saving">Saving</h2>
+<p>Press <kbd>Ctrl</kbd>+<kbd>S</kbd>. A worksheet is saved as a <code>.eqv</code> file, a readable text file that works well with version control. Equavela also keeps an automatic backup while you work, so an unexpected exit does not lose your changes (see <a href="files.html">Files and recovery</a>).</p>
+
+<h2 id="next">Where to go next</h2>
+<ul>
+  <li><a href="window.html">The window</a> introduces the ribbon, the panels and the command palette.</li>
+  <li><a href="math.html">Entering mathematics</a> explains how to type formulas efficiently.</li>
+  <li><a href="calculation.html">Definitions and calculation</a> explains the order in which a worksheet is calculated.</li>
+</ul>

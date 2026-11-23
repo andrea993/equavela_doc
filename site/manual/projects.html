@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html" aria-current="page">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Projects</h1>
+<p>A project is a folder that groups worksheets, Julia source files, images and other files, together with their own Julia environment. Use one when a piece of work outgrows a single worksheet, when several worksheets share images or Julia code, or when you want to reuse the results of one project in another.</p>
+
+<h2 id="create">Creating and opening</h2>
+<ul>
+<li><em>File › New project…</em> asks for a name and a new folder. Equavela creates the folder with the project file <code>equavela-project.yaml</code>, a first worksheet <code>worksheets/main.eqv</code> and a Julia module in <code>julia/</code>.</li>
+<li><em>File › Open project…</em> chooses a project folder. The tabs you had open in that project the last time open again.</li>
+<li><em>File › Convert to project…</em> turns the worksheet in front into a project.</li>
+<li><em>Recent</em> in the title bar lists the recent projects above the recent worksheets.</li>
+<li><em>File › Close project</em> closes its tabs.</li>
+</ul>
+
+<h2 id="explorer">The project explorer</h2>
+<p>While a project is open, the explorer on the left shows every folder and file of the project, like the explorer of a code editor:</p>
+<ul>
+<li>A click opens a worksheet in a worksheet tab, a text file (<code>.jl</code>, <code>.toml</code>, <code>.txt</code>, <code>.csv</code>, <code>.md</code>, <code>.json</code>, <code>.yaml</code>) in a text tab, and an image in an image tab. Other files open in their system application with a double click or <em>Open with system app</em>.</li>
+<li><em>New worksheet…</em>, <em>New Julia file…</em> and <em>New folder…</em> create in the selected folder; <em>Import files…</em> copies files in.</li>
+<li>Rename with <kbd>F2</kbd>, move by dragging, delete with <kbd>Delete</kbd>. Deleted files go to a project trash and can be restored. Renaming or moving a worksheet updates the references to it.</li>
+<li><kbd>Ctrl</kbd>+click and <kbd>Shift</kbd>+click select several entries.</li>
+<li>Unsaved files are marked. <kbd>Ctrl</kbd>+<kbd>S</kbd> on a text tab saves the file.</li>
+</ul>
+<p>Text tabs are a small code editor with find and replace, go to line, comment toggling, indentation, automatic indentation and completion for Julia files.</p>
+
+<h2 id="images">Shared images</h2>
+<p>An image inserted into a project worksheet is stored once in <code>assets/images/</code>; inserting the same picture again reuses the file. <em>Image resource usage…</em> (in the command palette or Project settings) lists which worksheets use which images, and which images are missing or unused. A worksheet saved outside the project embeds its images again.</p>
+
+<h2 id="julia-modules">Julia code in a project</h2>
+<p>The project has its own Julia environment (the <code>julia/</code> folder), shared by all its worksheets, the project's Julia blocks and the REPL. Packages you add there are available to the whole project.</p>
+<p>A <code>.jl</code> file of the project can be loaded into every worksheet: open it and check <em>Load in worksheets</em> beside its save button. The file must define one module, for example <code>module Beams … end</code>; its functions are then called from math as <code>julia.Beams.deflection(L, E, I)</code>. The project's own package (<code>julia/src/&lt;Name&gt;.jl</code>) is loaded with <code>import</code>.</p>
+<p>In the REPL of a project, worksheet definitions are reachable as <code>Project.&lt;worksheet&gt;.&lt;name&gt;</code>, for example <code>Project.beam.M_max</code>.</p>
+
+<h2 id="references">Using another project</h2>
+<p>A project can publish definitions and another project can use them under an alias:</p>
+<ol>
+<li>In the providing project, right-click a definition region and choose <em>Export</em>. Only exported definitions are public.</li>
+<li>In the consuming project, <em>Add project reference…</em> chooses the providing project's folder and an alias, for example <code>Steam</code>.</li>
+<li>In the consumer's worksheets, call the exports with the alias: <code>Steam.h(p, T)</code>.</li>
+</ol>
+<p>The consumer locks the list of exports it saw; <em>Update</em> takes in changes. A missing project, a removed export or a cycle between projects is reported in the Problems panel. A reference needs to be trusted like a worksheet. The <em>References</em> section of the explorer lists the references.</p>
+
+<h2 id="settings">Project settings</h2>
+<p><em>Project settings…</em> shows the project's name, its environment and its Julia modules, and opens the image usage report.</p>
+
+<h2 id="portable">Portable projects</h2>
+<p><em>File › Pack project as .eqvz…</em> writes the whole project, with its environment description and the projects it references, into one portable file to send to someone else. <em>File › Extract project from .eqvz…</em> unpacks it into a new folder. See <a href="files.html#portable">portable documents</a>.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

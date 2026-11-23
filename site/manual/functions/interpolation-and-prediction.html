@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interpolation and prediction · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html" aria-current="page">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Interpolation and prediction</h1>
+<p class="toc"><a href="#f-Bicubic2D"><code>Bicubic2D</code></a> <a href="#f-Binterp"><code>Binterp</code></a> <a href="#f-bspline"><code>bspline</code></a> <a href="#f-cspline"><code>cspline</code></a> <a href="#f-DWS"><code>DWS</code></a> <a href="#f-interp"><code>interp</code></a> <a href="#f-linterp"><code>linterp</code></a> <a href="#f-lspline"><code>lspline</code></a> <a href="#f-polycoeff"><code>polycoeff</code></a> <a href="#f-polyint"><code>polyint</code></a> <a href="#f-polyiter"><code>polyiter</code></a> <a href="#f-predict"><code>predict</code></a> <a href="#f-pspline"><code>pspline</code></a> <a href="#f-rationalint"><code>rationalint</code></a> <a href="#f-Spline2"><code>Spline2</code></a> <a href="#f-Thiele"><code>Thiele</code></a> <a href="#f-Thielecoeff"><code>Thielecoeff</code></a></p>
+<section class="function" id="f-Bicubic2D">
+<h3><code>Bicubic2D</code></h3>
+<p class="signature"><code>Bicubic2D(vx, vy, Z, p, q)</code></p>
+<p>Bicubic interpolation at (p, q).</p>
+<dl><dt>Notes</dt><dd>Interpolates the grid <code>Z</code> (<code>Z[i, j]</code> at <code>(vx[i], vy[j])</code>) at the point (p, q) with natural cubic splines, first along y, then along x; it extrapolates linearly outside.</dd></dl>
+</section>
+<section class="function" id="f-Binterp">
+<h3><code>Binterp</code></h3>
+<p class="signature"><code>Binterp(x, b)</code></p>
+<p>B-spline value (and derivatives) from Spline2 output.</p>
+<dl><dt>Notes</dt><dd>The value and the derivatives at <code>x</code> of the B-spline made by <code>Spline2</code>.</dd></dl>
+</section>
+<section class="function" id="f-bspline">
+<h3><code>bspline</code></h3>
+<p class="signature"><code>bspline(vx, vy, u, n)</code></p>
+<p>B-spline of degree n with knots u.</p>
+<dl><dt>Notes</dt><dd>A B-spline of degree <code>n</code> that passes through the points, with the knots <code>u</code> (<code>rows(vx) − n + 1</code> ascending values covering the data; the end knots are repeated). For use with <code>interp</code>.</dd></dl>
+</section>
+<section class="function" id="f-cspline">
+<h3><code>cspline</code></h3>
+<p class="signature"><code>cspline(vx, vy) / cspline(Mxy, Mz)</code></p>
+<p>Cubic spline coefficients with cubic end conditions (vs for interp).</p>
+<dl><dt>Notes</dt><dd>The coefficient vector of an interpolating cubic spline whose ends are cubic (the second derivative is linear near the ends), for use with <code>interp</code>. The vector holds a header and the second derivatives at the data points. <code>vx</code> must ascend.</dd></dl>
+</section>
+<section class="function" id="f-DWS">
+<h3><code>DWS</code></h3>
+<p class="signature"><code>DWS(b)</code></p>
+<p>Durbin-Watson statistic of Spline2 output.</p>
+<dl><dt>Notes</dt><dd>The Durbin–Watson statistic of the residuals of a <code>Spline2</code> fit.</dd></dl>
+</section>
+<section class="function" id="f-interp">
+<h3><code>interp</code></h3>
+<p class="signature"><code>interp(vs, vx, vy, x) / interp(vs, Mxy, Mz, X)</code></p>
+<p>Interpolated value from the vs produced by cspline, lspline, pspline, bspline or loess.</p>
+<dl><dt>Notes</dt><dd>Evaluates at <code>x</code> the curve described by a vector made by <code>cspline</code>, <code>lspline</code>, <code>pspline</code>, <code>bspline</code> or <code>loess</code> for the same data: <code>interp(cspline(vx, vy), vx, vy, x)</code>. Outside the data the end pieces continue (extrapolation). <code>x</code> may be an array. For two-dimensional data use the matrix form <code>interp(vs, Mxy, Mz, X)</code>. Julia's <code>Interpolations.jl</code> works with interpolation objects instead of coefficient vectors.</dd></dl>
+</section>
+<section class="function" id="f-linterp">
+<h3><code>linterp</code></h3>
+<p class="signature"><code>linterp(vx, vy, x)</code></p>
+<p>Linear interpolation.</p>
+<dl><dt>Notes</dt><dd>Linear interpolation of the points (vx, vy) at <code>x</code>; outside the data the end segments are extended. <code>vx</code> must ascend. <code>x</code> may be an array.</dd></dl>
+</section>
+<section class="function" id="f-lspline">
+<h3><code>lspline</code></h3>
+<p class="signature"><code>lspline(vx, vy) / lspline(Mxy, Mz)</code></p>
+<p>Cubic spline, linear end condition.</p>
+<dl><dt>Notes</dt><dd>As <code>cspline</code>, with a natural end condition: the curve is straight at the ends (second derivative zero).</dd></dl>
+</section>
+<section class="function" id="f-polycoeff">
+<h3><code>polycoeff</code></h3>
+<p class="signature"><code>polycoeff(vx, vy)</code></p>
+<p>Coefficients of the interpolating polynomial.</p>
+<dl><dt>Notes</dt><dd>The coefficients, constant term first, of the polynomial of degree n − 1 through the n points. The inverse of evaluating a polynomial; compare <code>Polynomials.fit</code> in Julia.</dd></dl>
+</section>
+<section class="function" id="f-polyint">
+<h3><code>polyint</code></h3>
+<p class="signature"><code>polyint(vx, vy, x)</code></p>
+<p>Polynomial interpolation at x and expected error.</p>
+<dl><dt>Notes</dt><dd>Polynomial interpolation through all points by Neville's algorithm, starting at the point nearest to <code>x</code>: the vector <code>[value; error]</code>, the error being the signed last correction.</dd></dl>
+</section>
+<section class="function" id="f-polyiter">
+<h3><code>polyiter</code></h3>
+<p class="signature"><code>polyiter(vx, vy, x, N, e)</code></p>
+<p>Polynomial interpolation with max order N and max error e.</p>
+<dl><dt>Notes</dt><dd>The column <code>[converged; order; value]</code>: Neville's interpolation of increasing order up to <code>N</code>, stopping when the correction is at most <code>e</code> times the value.</dd></dl>
+</section>
+<section class="function" id="f-predict">
+<h3><code>predict</code></h3>
+<p class="signature"><code>predict(v, m, n)</code></p>
+<p>n values predicted past the end of v (linear prediction, m coefficients).</p>
+<dl><dt>Notes</dt><dd><code>n</code> values that continue the evenly spaced data <code>v</code>, by Burg's (maximum entropy) linear prediction with <code>m</code> coefficients.</dd></dl>
+</section>
+<section class="function" id="f-pspline">
+<h3><code>pspline</code></h3>
+<p class="signature"><code>pspline(vx, vy) / pspline(Mxy, Mz)</code></p>
+<p>Cubic spline, parabolic end condition.</p>
+<dl><dt>Notes</dt><dd>As <code>cspline</code>, with parabolic ends.</dd></dl>
+</section>
+<section class="function" id="f-rationalint">
+<h3><code>rationalint</code></h3>
+<p class="signature"><code>rationalint(vx, vy, x)</code></p>
+<p>Rational function interpolation and error.</p>
+<dl><dt>Notes</dt><dd>Rational function interpolation (Bulirsch–Stoer) at <code>x</code>: <code>[value; error]</code>. A pole is an error.</dd></dl>
+</section>
+<section class="function" id="f-Spline2">
+<h3><code>Spline2</code></h3>
+<p class="signature"><code>Spline2(vx, vy, n, [vw], [u], [level])</code></p>
+<p>Optimal order-n B-spline knots.</p>
+<dl><dt>Notes</dt><dd>A least-squares B-spline of degree <code>n</code>. Without knots, equally spaced knots are added until the Durbin–Watson statistic of the residuals reaches 2; with <code>u</code>, the given knots are used. <code>vw</code> gives the standard deviation of each point. The result is used by <code>Binterp</code> and <code>DWS</code>.</dd></dl>
+</section>
+<section class="function" id="f-Thiele">
+<h3><code>Thiele</code></h3>
+<p class="signature"><code>Thiele(vx, coeff, x)</code></p>
+<p>Thiele interpolation at x.</p>
+<dl><dt>Notes</dt><dd>Evaluates Thiele's continued fraction <code>a₀ + (x − x₀)/(a₁ + (x − x₁)/(a₂ + …))</code> at <code>x</code>.</dd></dl>
+</section>
+<section class="function" id="f-Thielecoeff">
+<h3><code>Thielecoeff</code></h3>
+<p class="signature"><code>Thielecoeff(vx, vy)</code></p>
+<p>Thiele continued fraction coefficients.</p>
+<dl><dt>Notes</dt><dd>The coefficients of Thiele's continued fraction through the points, for <code>Thiele</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- title: Projects -->
+<h1>Projects</h1>
+<p>A project is a folder that groups worksheets, Julia source files, images and other files, together with their own Julia environment. Use one when a piece of work outgrows a single worksheet, when several worksheets share images or Julia code, or when you want to reuse the results of one project in another.</p>
+
+<h2 id="create">Creating and opening</h2>
+<ul>
+<li><em>File › New project…</em> asks for a name and a new folder. Equavela creates the folder with the project file <code>equavela-project.yaml</code>, a first worksheet <code>worksheets/main.eqv</code> and a Julia module in <code>julia/</code>.</li>
+<li><em>File › Open project…</em> chooses a project folder. The tabs you had open in that project the last time open again.</li>
+<li><em>File › Convert to project…</em> turns the worksheet in front into a project.</li>
+<li><em>Recent</em> in the title bar lists the recent projects above the recent worksheets.</li>
+<li><em>File › Close project</em> closes its tabs.</li>
+</ul>
+
+<h2 id="explorer">The project explorer</h2>
+<p>While a project is open, the explorer on the left shows every folder and file of the project, like the explorer of a code editor:</p>
+<ul>
+<li>A click opens a worksheet in a worksheet tab, a text file (<code>.jl</code>, <code>.toml</code>, <code>.txt</code>, <code>.csv</code>, <code>.md</code>, <code>.json</code>, <code>.yaml</code>) in a text tab, and an image in an image tab. Other files open in their system application with a double click or <em>Open with system app</em>.</li>
+<li><em>New worksheet…</em>, <em>New Julia file…</em> and <em>New folder…</em> create in the selected folder; <em>Import files…</em> copies files in.</li>
+<li>Rename with <kbd>F2</kbd>, move by dragging, delete with <kbd>Delete</kbd>. Deleted files go to a project trash and can be restored. Renaming or moving a worksheet updates the references to it.</li>
+<li><kbd>Ctrl</kbd>+click and <kbd>Shift</kbd>+click select several entries.</li>
+<li>Unsaved files are marked. <kbd>Ctrl</kbd>+<kbd>S</kbd> on a text tab saves the file.</li>
+</ul>
+<p>Text tabs are a small code editor with find and replace, go to line, comment toggling, indentation, automatic indentation and completion for Julia files.</p>
+
+<h2 id="images">Shared images</h2>
+<p>An image inserted into a project worksheet is stored once in <code>assets/images/</code>; inserting the same picture again reuses the file. <em>Image resource usage…</em> (in the command palette or Project settings) lists which worksheets use which images, and which images are missing or unused. A worksheet saved outside the project embeds its images again.</p>
+
+<h2 id="julia-modules">Julia code in a project</h2>
+<p>The project has its own Julia environment (the <code>julia/</code> folder), shared by all its worksheets, the project's Julia blocks and the REPL. Packages you add there are available to the whole project.</p>
+<p>A <code>.jl</code> file of the project can be loaded into every worksheet: open it and check <em>Load in worksheets</em> beside its save button. The file must define one module, for example <code>module Beams … end</code>; its functions are then called from math as <code>julia.Beams.deflection(L, E, I)</code>. The project's own package (<code>julia/src/&lt;Name&gt;.jl</code>) is loaded with <code>import</code>.</p>
+<p>In the REPL of a project, worksheet definitions are reachable as <code>Project.&lt;worksheet&gt;.&lt;name&gt;</code>, for example <code>Project.beam.M_max</code>.</p>
+
+<h2 id="references">Using another project</h2>
+<p>A project can publish definitions and another project can use them under an alias:</p>
+<ol>
+<li>In the providing project, right-click a definition region and choose <em>Export</em>. Only exported definitions are public.</li>
+<li>In the consuming project, <em>Add project reference…</em> chooses the providing project's folder and an alias, for example <code>Steam</code>.</li>
+<li>In the consumer's worksheets, call the exports with the alias: <code>Steam.h(p, T)</code>.</li>
+</ol>
+<p>The consumer locks the list of exports it saw; <em>Update</em> takes in changes. A missing project, a removed export or a cycle between projects is reported in the Problems panel. A reference needs to be trusted like a worksheet. The <em>References</em> section of the explorer lists the references.</p>
+
+<h2 id="settings">Project settings</h2>
+<p><em>Project settings…</em> shows the project's name, its environment and its Julia modules, and opens the image usage report.</p>
+
+<h2 id="portable">Portable projects</h2>
+<p><em>File › Pack project as .eqvz…</em> writes the whole project, with its environment description and the projects it references, into one portable file to send to someone else. <em>File › Extract project from .eqvz…</em> unpacks it into a new folder. See <a href="files.html#portable">portable documents</a>.</p>

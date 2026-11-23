@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Units · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html" aria-current="page">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Units</h1>
+<p>Every number can carry a unit. Equavela calculates in SI base units internally, checks that dimensions agree, and shows results in SI units unless you ask for another unit.</p>
+
+<h2 id="entering">Entering a unit</h2>
+<p>A unit is a name with the <em>unit</em> label. There are three ways to give it that label:</p>
+<ul>
+<li>pick the unit from the suggestion list that appears while you type its name;</li>
+<li>type the name and press <kbd>Ctrl</kbd>+<kbd>U</kbd> (on a selection, <kbd>Ctrl</kbd>+<kbd>U</kbd> marks every unit name in it, for example all of <code>kg·m/s²</code>);</li>
+<li>insert it from the <em>Units</em> panel (<em>Math › Units</em>), which lists the units by dimension.</li>
+</ul>
+<p>Write the unit after the number: <code>3.5 m</code>, <code>12 kN/m</code>, <code>20 °C</code>. A space or nothing between them is an implicit multiplication; <code>3.5·m</code> means the same. Units are drawn in their own style (bold blue italic by default), so a unit is always recognisable.</p>
+<div class="note">A name without the unit label is never a unit. If nothing defines <code>m</code>, the plain name <code>m</code> is an "undefined" error, not the metre. This lets a worksheet use <code>L</code>, <code>m</code> or <code>s</code> as variable names next to the units of the same spelling.</div>
+
+<h2 id="dimensions">Dimension checks</h2>
+<ul>
+<li>Adding, subtracting and comparing quantities of different dimensions is an error ("the units do not match"); a static check warns about it before the calculation.</li>
+<li>Multiplication, division and integer or rational powers combine units: <code>(4 m²)^0.5 = 2 m</code>.</li>
+<li>A dimensionless result is a plain number. Angles are dimensionless: <code>rad</code> is 1 and <code>deg</code> is π/180, so <code>sin(30 deg) = 0.5</code>.</li>
+<li>Functions such as <code>sin</code>, <code>exp</code> and <code>ln</code> need a dimensionless argument.</li>
+<li>The elements of a vector or matrix may each have their own unit; element-wise operations check each element.</li>
+<li>Ranges and functions work with quantities: <code>h := 0 m, 100 m..1000 m</code>.</li>
+</ul>
+
+<h2 id="display">Showing a result in a unit</h2>
+<p>A result is shown in SI units with the unit simplified. After the result is a placeholder: type a unit there to convert the displayed value, for example <code>v = 25 m/s</code> becomes <code>v = 90 km/hr</code>. Here a plain name is enough, because nothing but a unit can go in that slot. The unit must have the dimension of the value, otherwise the region shows an error. The conversion changes only the display, never the value used by other regions.</p>
+
+<h2 id="temperature">Temperatures</h2>
+<p><code>°C</code> and <code>°F</code> are absolute temperatures with an offset. A number followed by one of them becomes the temperature in kelvin at once: <code>20 °C</code> is 293.15 K, and from then on it is an ordinary kelvin value. So <code>30 °C − 20 °C = 10 K</code>, and <code>20 °C + 5 °C</code> adds two absolute temperatures (571.3 K). For a temperature difference use <code>Δ°C</code> or <code>Δ°F</code>: <code>20 °C + 5 Δ°C = 298.15 K</code>. Shown in <code>°C</code>, a value is converted back with the offset. <code>°C</code> may follow only a single number; for vectors use <code>K</code> or <code>Δ°C</code>.</p>
+
+<h2 id="prefixes">Prefixes</h2>
+<p>Most SI units accept the prefixes p, n, μ (or u), m, c, d, k, M, G and T: <code>mm</code>, <code>kN</code>, <code>MPa</code>, <code>GHz</code>. A full unit name always wins over a prefix reading: <code>min</code> is the minute and <code>mi</code> the mile.</p>
+
+<h2 id="list">Available units</h2>
+<p>The <a href="units-reference.html">units reference</a> lists every unit with its definition. It covers length, area, volume, mass, time, frequency, velocity, force, pressure, energy, power, electrical and magnetic units, temperature, amount of substance, light and absorbed dose, in SI and in common imperial forms (<code>in</code>, <code>ft</code>, <code>lb</code>, <code>psi</code>, <code>BTU</code>…).</p>
+
+<h2 id="symbolic">Units in symbolic results</h2>
+<p>Symbolic evaluation treats unit names as symbols and does not convert them. Evaluate numerically (<code>=</code>) to get a converted quantity.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

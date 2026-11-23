@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conditional, type tests and errors · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html" aria-current="page">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Conditional, type tests and errors</h1>
+<p class="toc"><a href="#f-error"><code>error</code></a> <a href="#f-if"><code>if</code></a> <a href="#f-IsArray"><code>IsArray</code></a> <a href="#f-IsFunction"><code>IsFunction</code></a> <a href="#f-IsNaN"><code>IsNaN</code></a> <a href="#f-IsRange"><code>IsRange</code></a> <a href="#f-IsScalar"><code>IsScalar</code></a> <a href="#f-IsString"><code>IsString</code></a> <a href="#f-SIUnitsOf"><code>SIUnitsOf</code></a></p>
+<section class="function" id="f-error">
+<h3><code>error</code></h3>
+<p class="signature"><code>error(&quot;S&quot;)</code></p>
+<p>Raises S as an error message.</p>
+<dl><dt>Julia</dt><dd><code>Base.error</code></dd><dt>Notes</dt><dd>Raises an error with the given message, shown on the region; a <code>try</code> in a program catches it.</dd></dl>
+</section>
+<section class="function" id="f-if">
+<h3><code>if</code></h3>
+<p class="signature"><code>if(cond, x, y)</code></p>
+<p>Returns x if cond is true (nonzero), else y.</p>
+<dl><dt>Julia</dt><dd><code>Base.ifelse</code></dd><dt>Notes</dt><dd><code>if(c, a, b)</code> returns <code>a</code> when <code>c</code> is non-zero and <code>b</code> otherwise. Unlike Julia's <code>ifelse</code>, which evaluates both arguments, only the chosen branch is evaluated (like Julia's ternary <code>c ? a : b</code>), so the other branch may contain an expression that would fail.</dd></dl>
+</section>
+<section class="function" id="f-IsArray">
+<h3><code>IsArray</code></h3>
+<p class="signature"><code>IsArray(x)</code></p>
+<p>1 if x is a vector or matrix.</p>
+<dl><dt>Notes</dt><dd>1 for a vector or matrix. Julia equivalent: <code>x isa AbstractArray</code>.</dd></dl>
+</section>
+<section class="function" id="f-IsFunction">
+<h3><code>IsFunction</code></h3>
+<p class="signature"><code>IsFunction(x)</code></p>
+<p>1 if x is a function.</p>
+<dl><dt>Notes</dt><dd>1 when the argument is a function (a built-in, your own or a Julia function). Julia equivalent: <code>x isa Function</code>.</dd></dl>
+</section>
+<section class="function" id="f-IsNaN">
+<h3><code>IsNaN</code></h3>
+<p class="signature"><code>IsNaN(x)</code></p>
+<p>1 if x is NaN.</p>
+<dl><dt>Julia</dt><dd><code>Base.isnan</code></dd><dt>Notes</dt><dd>Element by element; 1 when the real or the imaginary part is NaN; 0 for strings and other values that are not numbers (Julia's <code>isnan</code> throws for them).</dd></dl>
+</section>
+<section class="function" id="f-IsRange">
+<h3><code>IsRange</code></h3>
+<p class="signature"><code>IsRange(x)</code></p>
+<p>1 if x is a range.</p>
+<dl><dt>Notes</dt><dd>1 when the argument is a range variable.</dd></dl>
+</section>
+<section class="function" id="f-IsScalar">
+<h3><code>IsScalar</code></h3>
+<p class="signature"><code>IsScalar(x)</code></p>
+<p>1 if x is a real or complex scalar.</p>
+<dl><dt>Notes</dt><dd>1 for a number or a quantity, real or complex; 0 for arrays, strings and functions. Julia equivalent: <code>x isa Number</code>.</dd></dl>
+</section>
+<section class="function" id="f-IsString">
+<h3><code>IsString</code></h3>
+<p class="signature"><code>IsString(x)</code></p>
+<p>1 if x is a string.</p>
+<dl><dt>Notes</dt><dd>1 for a string. Julia equivalent: <code>x isa AbstractString</code>.</dd></dl>
+</section>
+<section class="function" id="f-SIUnitsOf">
+<h3><code>SIUnitsOf</code></h3>
+<p class="signature"><code>SIUnitsOf(x)</code></p>
+<p>Unit of x scaled to SI.</p>
+<dl><dt>Julia</dt><dd><code>Unitful.upreferred</code></dd><dt>Notes</dt><dd>One unit of the argument's dimension in SI base units: <code>SIUnitsOf(3 km) = 1 m</code>; 1 for a dimensionless number. Divide by it to strip the unit: <code>x/SIUnitsOf(x)</code>. Similar to <code>oneunit(upreferred(x))</code> in Unitful.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Units reference · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html" aria-current="page">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Units reference</h1>
+<p>Every unit Equavela knows, grouped by dimension. Names are case sensitive. A unit marked <em>prefixes</em> also exists with every SI prefix: <code>p (10^-12)</code>, <code>n (10^-9)</code>, <code>μ (10^-6)</code>, <code>u (10^-6)</code>, <code>m (10^-3)</code>, <code>c (10^-2)</code>, <code>d (10^-1)</code>, <code>k (10^3)</code>, <code>M (10^6)</code>, <code>G (10^9)</code>, <code>T (10^12)</code>, so <code>km</code>, <code>kN</code>, <code>MPa</code> and <code>μs</code> are units. This page is generated from the unit table of the calculation engine. How to use units is explained in <a href="units.html">Units</a>.</p>
+<h2 id="units-length">Length</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>m</code></td><td><code>m</code></td><td>yes</td></tr>
+<tr><td><code>meter</code></td><td><code>m</code></td><td></td></tr>
+<tr><td><code>metre</code></td><td><code>m</code></td><td></td></tr>
+<tr><td><code>angstrom</code></td><td><code>Å</code></td><td></td></tr>
+<tr><td><code>in</code></td><td><code>inch</code></td><td></td></tr>
+<tr><td><code>inch</code></td><td><code>inch</code></td><td></td></tr>
+<tr><td><code>ft</code></td><td><code>ft</code></td><td></td></tr>
+<tr><td><code>yd</code></td><td><code>yd</code></td><td></td></tr>
+<tr><td><code>mi</code></td><td><code>mi</code></td><td></td></tr>
+<tr><td><code>mile</code></td><td><code>mi</code></td><td></td></tr>
+<tr><td><code>mil</code></td><td><code>mil</code></td><td></td></tr>
+<tr><td><code>nmi</code></td><td><code>1852*m</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-area">Area</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>acre</code></td><td><code>ac</code></td><td></td></tr>
+<tr><td><code>ha</code></td><td><code>ha</code></td><td></td></tr>
+<tr><td><code>hectare</code></td><td><code>ha</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-volume">Volume</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>L</code></td><td><code>L</code></td><td>yes</td></tr>
+<tr><td><code>l</code></td><td><code>L</code></td><td>yes</td></tr>
+<tr><td><code>liter</code></td><td><code>L</code></td><td></td></tr>
+<tr><td><code>litre</code></td><td><code>L</code></td><td></td></tr>
+<tr><td><code>gal</code></td><td><code>3.785411784*L</code></td><td></td></tr>
+<tr><td><code>qt</code></td><td><code>0.946352946*L</code></td><td></td></tr>
+<tr><td><code>pt</code></td><td><code>0.473176473*L</code></td><td></td></tr>
+<tr><td><code>floz</code></td><td><code>0.0295735295625*L</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-mass">Mass</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>g</code></td><td><code>g</code></td><td>yes</td></tr>
+<tr><td><code>gm</code></td><td><code>g</code></td><td>yes</td></tr>
+<tr><td><code>gram</code></td><td><code>g</code></td><td></td></tr>
+<tr><td><code>tonne</code></td><td><code>1000*kg</code></td><td></td></tr>
+<tr><td><code>lb</code></td><td><code>lb</code></td><td></td></tr>
+<tr><td><code>lbm</code></td><td><code>lb</code></td><td></td></tr>
+<tr><td><code>oz</code></td><td><code>oz</code></td><td></td></tr>
+<tr><td><code>slug</code></td><td><code>slug</code></td><td></td></tr>
+<tr><td><code>ton</code></td><td><code>2000*lb</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-time">Time</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>s</code></td><td><code>s</code></td><td>yes</td></tr>
+<tr><td><code>sec</code></td><td><code>s</code></td><td>yes</td></tr>
+<tr><td><code>second</code></td><td><code>s</code></td><td></td></tr>
+<tr><td><code>min</code></td><td><code>minute</code></td><td></td></tr>
+<tr><td><code>minute</code></td><td><code>minute</code></td><td></td></tr>
+<tr><td><code>hr</code></td><td><code>hr</code></td><td></td></tr>
+<tr><td><code>hour</code></td><td><code>hr</code></td><td></td></tr>
+<tr><td><code>day</code></td><td><code>d</code></td><td></td></tr>
+<tr><td><code>wk</code></td><td><code>wk</code></td><td></td></tr>
+<tr><td><code>week</code></td><td><code>wk</code></td><td></td></tr>
+<tr><td><code>yr</code></td><td><code>yr</code></td><td></td></tr>
+<tr><td><code>year</code></td><td><code>yr</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-frequency">Frequency</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>Hz</code></td><td><code>Hz</code></td><td>yes</td></tr>
+<tr><td><code>hertz</code></td><td><code>Hz</code></td><td></td></tr>
+<tr><td><code>rpm</code></td><td><code>rpm</code></td><td></td></tr>
+<tr><td><code>Bq</code></td><td><code>Bq</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-velocity">Velocity</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>knot</code></td><td><code>1852*m/hr</code></td><td></td></tr>
+<tr><td><code>mph</code></td><td><code>mi/hr</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-force">Force</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>N</code></td><td><code>N</code></td><td>yes</td></tr>
+<tr><td><code>newton</code></td><td><code>N</code></td><td></td></tr>
+<tr><td><code>dyne</code></td><td><code>dyn</code></td><td></td></tr>
+<tr><td><code>lbf</code></td><td><code>lbf</code></td><td></td></tr>
+<tr><td><code>kgf</code></td><td><code>9.80665*N</code></td><td></td></tr>
+<tr><td><code>kip</code></td><td><code>1000*lbf</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-pressure">Pressure</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>Pa</code></td><td><code>Pa</code></td><td>yes</td></tr>
+<tr><td><code>pascal</code></td><td><code>Pa</code></td><td></td></tr>
+<tr><td><code>bar</code></td><td><code>bar</code></td><td>yes</td></tr>
+<tr><td><code>atm</code></td><td><code>atm</code></td><td></td></tr>
+<tr><td><code>torr</code></td><td><code>Torr</code></td><td></td></tr>
+<tr><td><code>mmHg</code></td><td><code>133.322387415*Pa</code></td><td></td></tr>
+<tr><td><code>psi</code></td><td><code>psi</code></td><td></td></tr>
+<tr><td><code>ksi</code></td><td><code>1000*psi</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-energy">Energy</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>J</code></td><td><code>J</code></td><td>yes</td></tr>
+<tr><td><code>joule</code></td><td><code>J</code></td><td></td></tr>
+<tr><td><code>erg</code></td><td><code>erg</code></td><td></td></tr>
+<tr><td><code>cal</code></td><td><code>cal</code></td><td>yes</td></tr>
+<tr><td><code>BTU</code></td><td><code>1055.05585262*J</code></td><td></td></tr>
+<tr><td><code>Wh</code></td><td><code>3600*J</code></td><td>yes</td></tr>
+<tr><td><code>eV</code></td><td><code>eV</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-power">Power</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>W</code></td><td><code>W</code></td><td>yes</td></tr>
+<tr><td><code>watt</code></td><td><code>W</code></td><td></td></tr>
+<tr><td><code>hp</code></td><td><code>745.69987158227*W</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-electric-current">Electric current</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>A</code></td><td><code>A</code></td><td>yes</td></tr>
+<tr><td><code>ampere</code></td><td><code>A</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-electric-charge">Electric charge</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>C</code></td><td><code>C</code></td><td>yes</td></tr>
+<tr><td><code>coulomb</code></td><td><code>C</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-voltage">Voltage</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>V</code></td><td><code>V</code></td><td>yes</td></tr>
+<tr><td><code>volt</code></td><td><code>V</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-resistance">Resistance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>ohm</code></td><td><code>Ω</code></td><td>yes</td></tr>
+<tr><td><code>Ω</code></td><td><code>Ω</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-conductance">Conductance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>S</code></td><td><code>S</code></td><td>yes</td></tr>
+<tr><td><code>siemens</code></td><td><code>S</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-capacitance">Capacitance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>F</code></td><td><code>F</code></td><td>yes</td></tr>
+<tr><td><code>farad</code></td><td><code>F</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-inductance">Inductance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>H</code></td><td><code>H</code></td><td>yes</td></tr>
+<tr><td><code>henry</code></td><td><code>H</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-magnetic-flux">Magnetic flux</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>Wb</code></td><td><code>Wb</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-magnetic-flux-density">Magnetic flux density</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>T</code></td><td><code>T</code></td><td>yes</td></tr>
+<tr><td><code>tesla</code></td><td><code>T</code></td><td></td></tr>
+<tr><td><code>gauss</code></td><td><code>Gauss</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-temperature">Temperature</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>K</code></td><td><code>K</code></td><td></td></tr>
+<tr><td><code>°C</code></td><td><code>K</code></td><td></td></tr>
+<tr><td><code>°F</code></td><td><code>K*5/9</code></td><td></td></tr>
+<tr><td><code>Δ°C</code></td><td><code>K</code></td><td></td></tr>
+<tr><td><code>Δ°F</code></td><td><code>K*5/9</code></td><td></td></tr>
+<tr><td><code>kelvin</code></td><td><code>K</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-amount-of-substance">Amount of substance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>mol</code></td><td><code>mol</code></td><td>yes</td></tr>
+<tr><td><code>mole</code></td><td><code>mol</code></td><td></td></tr>
+</tbody></table>
+<h2 id="units-luminous-intensity">Luminous intensity</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>cd</code></td><td><code>cd</code></td><td></td></tr>
+<tr><td><code>candela</code></td><td><code>cd</code></td><td></td></tr>
+<tr><td><code>lm</code></td><td><code>lm</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-illuminance">Illuminance</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>lx</code></td><td><code>lx</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-absorbed-dose">Absorbed dose</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>Gy</code></td><td><code>Gy</code></td><td>yes</td></tr>
+<tr><td><code>Sv</code></td><td><code>Sv</code></td><td>yes</td></tr>
+</tbody></table>
+<h2 id="units-dimensionless-angles">Dimensionless (angles)</h2>
+<table><thead><tr><th>Unit</th><th>Equals</th><th>Prefixes</th></tr></thead><tbody>
+<tr><td><code>rad</code></td><td><code>rad</code></td><td>yes</td></tr>
+<tr><td><code>deg</code></td><td><code>°</code></td><td></td></tr>
+<tr><td><code>°</code></td><td><code>°</code></td><td></td></tr>
+<tr><td><code>sr</code></td><td><code>sr</code></td><td></td></tr>
+</tbody></table>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

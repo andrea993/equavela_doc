@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyboard shortcuts · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html" aria-current="page">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Keyboard shortcuts</h1>
+<p>Equavela has one table of shortcuts for every keyboard layout. A shortcut is a character: <kbd>Ctrl</kbd>+<kbd>[</kbd> is <kbd>Ctrl</kbd> and the character <kbd>[</kbd>, typed with the keys your layout uses for it. On the Italian layout it is <kbd>Ctrl</kbd>+<kbd>AltGr</kbd>+<kbd>è</kbd>, and <kbd>Ctrl</kbd>+<kbd>=</kbd> is <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd>. A layout without the character has no shortcut for it: run the command from the ribbon or the <strong>Commands</strong> palette (<kbd>Ctrl</kbd>+<kbd>K</kbd>), which shows the shortcuts next to each command. <em>Help › Keyboard shortcuts</em> prints them.</p>
+<h2 id="keys-global">Anywhere</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>Calculate</td><td><kbd>F5</kbd></td></tr>
+<tr><td>Calculate worksheet</td><td><kbd>Ctrl</kbd>+<kbd>F5</kbd></td></tr>
+<tr><td>Close worksheet</td><td><kbd>Ctrl</kbd>+<kbd>W</kbd></td></tr>
+<tr><td>Command palette</td><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td></tr>
+<tr><td>Copy</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td></tr>
+<tr><td>Cut</td><td><kbd>Ctrl</kbd>+<kbd>X</kbd></td></tr>
+<tr><td>Help for the function at the cursor</td><td><kbd>F1</kbd></td></tr>
+<tr><td>New worksheet</td><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td></tr>
+<tr><td>Open the function catalogue</td><td><kbd>F2</kbd></td></tr>
+<tr><td>Open worksheet</td><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td></tr>
+<tr><td>Paste</td><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td></tr>
+<tr><td>Print…</td><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td></tr>
+<tr><td>Redo</td><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td></tr>
+<tr><td>Save worksheet</td><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td></tr>
+<tr><td>Save worksheet as</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td></tr>
+<tr><td>Undo</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td></tr>
+</tbody></table>
+<h2 id="keys-sheet">On the worksheet (no region being edited)</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>Clear selection</td><td><kbd>Escape</kbd></td></tr>
+<tr><td>Delete back</td><td><kbd>Backspace</kbd></td></tr>
+<tr><td>Delete selected regions</td><td><kbd>Delete</kbd></td></tr>
+<tr><td>Insert line</td><td><kbd>Enter</kbd></td></tr>
+<tr><td>Insert math region</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd></td></tr>
+<tr><td>Insert text block (full width)</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td></tr>
+<tr><td>Insert text region</td><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td></tr>
+<tr><td>Nudge down</td><td><kbd>Down</kbd></td></tr>
+<tr><td>Nudge down far</td><td><kbd>Shift</kbd>+<kbd>Down</kbd></td></tr>
+<tr><td>Nudge left</td><td><kbd>Left</kbd></td></tr>
+<tr><td>Nudge left far</td><td><kbd>Shift</kbd>+<kbd>Left</kbd></td></tr>
+<tr><td>Nudge right</td><td><kbd>Right</kbd></td></tr>
+<tr><td>Nudge right far</td><td><kbd>Shift</kbd>+<kbd>Right</kbd></td></tr>
+<tr><td>Nudge up</td><td><kbd>Up</kbd></td></tr>
+<tr><td>Nudge up far</td><td><kbd>Shift</kbd>+<kbd>Up</kbd></td></tr>
+<tr><td>Select all regions</td><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td></tr>
+<tr><td>Zoom to 100%</td><td><kbd>Ctrl</kbd>+<kbd>0</kbd></td></tr>
+</tbody></table>
+<h2 id="keys-math">In a math region</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>Abs</td><td><kbd>|</kbd></td></tr>
+<tr><td>Add</td><td><kbd>+</kbd></td></tr>
+<tr><td>Add break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>+</kbd></td></tr>
+<tr><td>Also if</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>)</kbd></td></tr>
+<tr><td>And</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>&amp;</kbd></td></tr>
+<tr><td>Backspace</td><td><kbd>Backspace</kbd></td></tr>
+<tr><td>Bool eq</td><td><kbd>Ctrl</kbd>+<kbd>=</kbd></td></tr>
+<tr><td>Bracket</td><td><kbd>[</kbd></td></tr>
+<tr><td>Break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>{</kbd></td></tr>
+<tr><td>Close paren</td><td><kbd>)</kbd></td></tr>
+<tr><td>Column</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></td></tr>
+<tr><td>Comma</td><td><kbd>,</kbd></td></tr>
+<tr><td>Conj</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>(</kbd></td></tr>
+<tr><td>Continue</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>:</kbd></td></tr>
+<tr><td>Cross</td><td><kbd>Ctrl</kbd>+<kbd>8</kbd></td></tr>
+<tr><td>Define</td><td><kbd>:</kbd></td></tr>
+<tr><td>Delete</td><td><kbd>Delete</kbd></td></tr>
+<tr><td>Deriv</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td></tr>
+<tr><td>Down</td><td><kbd>Down</kbd></td></tr>
+<tr><td>Element</td><td><kbd>Ctrl</kbd>+<kbd>F7</kbd></td></tr>
+<tr><td>Else</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>}</kbd></td></tr>
+<tr><td>Else if</td><td><kbd>Ctrl</kbd>+<kbd>;</kbd></td></tr>
+<tr><td>End</td><td><kbd>End</kbd></td></tr>
+<tr><td>Equation break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td></tr>
+<tr><td>Evaluate</td><td><kbd>=</kbd></td></tr>
+<tr><td>Exit region</td><td><kbd>Enter</kbd></td></tr>
+<tr><td>Factorial</td><td><kbd>!</kbd></td></tr>
+<tr><td>Flip side</td><td><kbd>Insert</kbd></td></tr>
+<tr><td>For</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>&quot;</kbd></td></tr>
+<tr><td>Frac</td><td><kbd>/</kbd></td></tr>
+<tr><td>Global define</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd></td></tr>
+<tr><td>Greater</td><td><kbd>&gt;</kbd></td></tr>
+<tr><td>Greater eq</td><td><kbd>Ctrl</kbd>+<kbd>0</kbd></td></tr>
+<tr><td>Greek</td><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td></tr>
+<tr><td>Grow</td><td><kbd>Space</kbd></td></tr>
+<tr><td>Grow left</td><td><kbd>Shift</kbd>+<kbd>Left</kbd></td></tr>
+<tr><td>Grow right</td><td><kbd>Shift</kbd>+<kbd>Right</kbd></td></tr>
+<tr><td>Home</td><td><kbd>Home</kbd></td></tr>
+<tr><td>If</td><td><kbd>}</kbd></td></tr>
+<tr><td>Infinity</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></td></tr>
+<tr><td>Inline div</td><td><kbd>Ctrl</kbd>+<kbd>/</kbd></td></tr>
+<tr><td>Inline div break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd></td></tr>
+<tr><td>Insert search</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd></td></tr>
+<tr><td>Integral</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td></tr>
+<tr><td>Label</td><td><kbd>Ctrl</kbd>+<kbd>Q</kbd></td></tr>
+<tr><td>Leave region</td><td><kbd>Escape</kbd></td></tr>
+<tr><td>Left</td><td><kbd>Left</kbd></td></tr>
+<tr><td>Less</td><td><kbd>&lt;</kbd></td></tr>
+<tr><td>Less eq</td><td><kbd>Ctrl</kbd>+<kbd>9</kbd></td></tr>
+<tr><td>Limit</td><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td></tr>
+<tr><td>Line break</td><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td></tr>
+<tr><td>Literal subscript</td><td><kbd>Ctrl</kbd>+<kbd>-</kbd></td></tr>
+<tr><td>Local assign</td><td><kbd>{</kbd></td></tr>
+<tr><td>Make unit</td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+<tr><td>Matrix</td><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td></tr>
+<tr><td>Mul</td><td><kbd>*</kbd></td></tr>
+<tr><td>Mul break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>*</kbd></td></tr>
+<tr><td>Next placeholder</td><td><kbd>Tab</kbd></td></tr>
+<tr><td>Norm</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>|</kbd></td></tr>
+<tr><td>Not</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>!</kbd></td></tr>
+<tr><td>Open paren</td><td><kbd>(</kbd></td></tr>
+<tr><td>Or</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>@</kbd></td></tr>
+<tr><td>Partial</td><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td></tr>
+<tr><td>Percent</td><td><kbd>%</kbd></td></tr>
+<tr><td>Pow</td><td><kbd>^</kbd></td></tr>
+<tr><td>Prev placeholder</td><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td></tr>
+<tr><td>Prime deriv</td><td><kbd>Ctrl</kbd>+<kbd>'</kbd></td></tr>
+<tr><td>Prod</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>#</kbd></td></tr>
+<tr><td>Program line</td><td><kbd>]</kbd></td></tr>
+<tr><td>Return</td><td><kbd>Ctrl</kbd>+<kbd>\</kbd></td></tr>
+<tr><td>Right</td><td><kbd>Right</kbd></td></tr>
+<tr><td>Row</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></td></tr>
+<tr><td>Sqrt</td><td><kbd>\</kbd></td></tr>
+<tr><td>String</td><td><kbd>&quot;</kbd></td></tr>
+<tr><td>Sub</td><td><kbd>-</kbd></td></tr>
+<tr><td>Sub break</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>-</kbd></td></tr>
+<tr><td>Sum</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>$</kbd> or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd></td></tr>
+<tr><td>Symbolic</td><td><kbd>Ctrl</kbd>+<kbd>.</kbd></td></tr>
+<tr><td>Transpose</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td></tr>
+<tr><td>Try</td><td><kbd>Ctrl</kbd>+<kbd>[</kbd></td></tr>
+<tr><td>Up</td><td><kbd>Up</kbd></td></tr>
+<tr><td>Vectorize</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>^</kbd></td></tr>
+<tr><td>While</td><td><kbd>Ctrl</kbd>+<kbd>]</kbd></td></tr>
+<tr><td>Word left</td><td><kbd>Ctrl</kbd>+<kbd>Left</kbd></td></tr>
+<tr><td>Word right</td><td><kbd>Ctrl</kbd>+<kbd>Right</kbd></td></tr>
+<tr><td>Word to operator</td><td><kbd>Ctrl</kbd>+<kbd>J</kbd></td></tr>
+<tr><td>Xor</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>%</kbd></td></tr>
+</tbody></table>
+<h2 id="keys-matrix">In a matrix</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>Insert column right</td><td><kbd>Shift</kbd>+<kbd>Space</kbd></td></tr>
+<tr><td>Insert row below</td><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td></tr>
+<tr><td>Next cell</td><td><kbd>Tab</kbd> or <kbd>Ctrl</kbd>+<kbd>Right</kbd></td></tr>
+<tr><td>Prev cell</td><td><kbd>Shift</kbd>+<kbd>Tab</kbd> or <kbd>Ctrl</kbd>+<kbd>Left</kbd></td></tr>
+</tbody></table>
+<h2 id="keys-program">In a program</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>New program line</td><td><kbd>Enter</kbd></td></tr>
+<tr><td>Program line around</td><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td></tr>
+</tbody></table>
+
+<h2 id="keys-text">In a text region</h2>
+<table><thead><tr><th>Command</th><th>Keys</th></tr></thead><tbody>
+<tr><td>Insert inline math</td><td><kbd>Ctrl</kbd>+<kbd>M</kbd> or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd></td></tr>
+<tr><td>Leave text</td><td><kbd>Escape</kbd></td></tr>
+<tr><td>Toggle bold</td><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td></tr>
+<tr><td>Toggle italic</td><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td></tr>
+<tr><td>Toggle underline</td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+</tbody></table>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

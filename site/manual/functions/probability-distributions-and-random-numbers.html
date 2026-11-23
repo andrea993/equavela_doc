@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Probability distributions and random numbers · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html" aria-current="page">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Probability distributions and random numbers</h1>
+<p class="toc"><a href="#f-cnorm"><code>cnorm</code></a> <a href="#f-dbeta"><code>dbeta</code></a> <a href="#f-dbinom"><code>dbinom</code></a> <a href="#f-dcauchy"><code>dcauchy</code></a> <a href="#f-dchisq"><code>dchisq</code></a> <a href="#f-dexp"><code>dexp</code></a> <a href="#f-dF"><code>dF</code></a> <a href="#f-dgamma"><code>dgamma</code></a> <a href="#f-dgeom"><code>dgeom</code></a> <a href="#f-dhypergeom"><code>dhypergeom</code></a> <a href="#f-dlnorm"><code>dlnorm</code></a> <a href="#f-dlogis"><code>dlogis</code></a> <a href="#f-dnbinom"><code>dnbinom</code></a> <a href="#f-dnorm"><code>dnorm</code></a> <a href="#f-dpois"><code>dpois</code></a> <a href="#f-dt"><code>dt</code></a> <a href="#f-dunif"><code>dunif</code></a> <a href="#f-dweibull"><code>dweibull</code></a> <a href="#f-pbeta"><code>pbeta</code></a> <a href="#f-pbinom"><code>pbinom</code></a> <a href="#f-pcauchy"><code>pcauchy</code></a> <a href="#f-pchisq"><code>pchisq</code></a> <a href="#f-pexp"><code>pexp</code></a> <a href="#f-pF"><code>pF</code></a> <a href="#f-pgamma"><code>pgamma</code></a> <a href="#f-pgeom"><code>pgeom</code></a> <a href="#f-phypergeom"><code>phypergeom</code></a> <a href="#f-plnorm"><code>plnorm</code></a> <a href="#f-plogis"><code>plogis</code></a> <a href="#f-pnbinom"><code>pnbinom</code></a> <a href="#f-pnorm"><code>pnorm</code></a> <a href="#f-ppois"><code>ppois</code></a> <a href="#f-pt"><code>pt</code></a> <a href="#f-punif"><code>punif</code></a> <a href="#f-pweibull"><code>pweibull</code></a> <a href="#f-qbeta"><code>qbeta</code></a> <a href="#f-qbinom"><code>qbinom</code></a> <a href="#f-qcauchy"><code>qcauchy</code></a> <a href="#f-qchisq"><code>qchisq</code></a> <a href="#f-qexp"><code>qexp</code></a> <a href="#f-qF"><code>qF</code></a> <a href="#f-qgamma"><code>qgamma</code></a> <a href="#f-qgeom"><code>qgeom</code></a> <a href="#f-qhypergeom"><code>qhypergeom</code></a> <a href="#f-qlnorm"><code>qlnorm</code></a> <a href="#f-qlogis"><code>qlogis</code></a> <a href="#f-qnbinom"><code>qnbinom</code></a> <a href="#f-qnorm"><code>qnorm</code></a> <a href="#f-qpois"><code>qpois</code></a> <a href="#f-qt"><code>qt</code></a> <a href="#f-qunif"><code>qunif</code></a> <a href="#f-qweibull"><code>qweibull</code></a> <a href="#f-rbeta"><code>rbeta</code></a> <a href="#f-rbinom"><code>rbinom</code></a> <a href="#f-rcauchy"><code>rcauchy</code></a> <a href="#f-rchisq"><code>rchisq</code></a> <a href="#f-rexp"><code>rexp</code></a> <a href="#f-rF"><code>rF</code></a> <a href="#f-rgamma"><code>rgamma</code></a> <a href="#f-rgeom"><code>rgeom</code></a> <a href="#f-rhypergeom"><code>rhypergeom</code></a> <a href="#f-rlnorm"><code>rlnorm</code></a> <a href="#f-rlogis"><code>rlogis</code></a> <a href="#f-rnbinom"><code>rnbinom</code></a> <a href="#f-rnd"><code>rnd</code></a> <a href="#f-rnorm"><code>rnorm</code></a> <a href="#f-rpois"><code>rpois</code></a> <a href="#f-rt"><code>rt</code></a> <a href="#f-runif"><code>runif</code></a> <a href="#f-rweibull"><code>rweibull</code></a> <a href="#f-Seed"><code>Seed</code></a></p>
+<section class="function" id="f-cnorm">
+<h3><code>cnorm</code></h3>
+<p class="signature"><code>cnorm(x)</code></p>
+<p>Cumulative normal distribution with mean 0, variance 1.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd>The standard normal distribution function, <code>cdf(Normal(), x)</code>; the same as <code>pnorm(x, 0, 1)</code>.</dd></dl>
+</section>
+<section class="function" id="f-dbeta">
+<h3><code>dbeta</code></h3>
+<p class="signature"><code>dbeta(x, s1, s2)</code></p>
+<p>Probability density, beta distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Beta</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Beta(s1, s2), x)</code>. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dbinom">
+<h3><code>dbinom</code></h3>
+<p class="signature"><code>dbinom(k, n, q)</code></p>
+<p>Probability density, binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Binomial</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Binomial(n, q), x)</code>. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dcauchy">
+<h3><code>dcauchy</code></h3>
+<p class="signature"><code>dcauchy(x, l, s)</code></p>
+<p>Probability density, Cauchy distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Cauchy</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Cauchy(l, s), x)</code>. Location <code>l</code>, scale <code>s</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dchisq">
+<h3><code>dchisq</code></h3>
+<p class="signature"><code>dchisq(x, d)</code></p>
+<p>Probability density, chi-squared distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Chisq</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Chisq(d), x)</code>. <code>d</code> degrees of freedom; <code>d</code> need not be an integer. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dexp">
+<h3><code>dexp</code></h3>
+<p class="signature"><code>dexp(x, r)</code></p>
+<p>Probability density, exponential distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Exponential</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Exponential(1/r), x)</code>. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dF">
+<h3><code>dF</code></h3>
+<p class="signature"><code>dF(x, d1, d2)</code></p>
+<p>Probability density, F distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.FDist</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(FDist(d1, d2), x)</code>. <code>d1</code>, <code>d2</code> degrees of freedom. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dgamma">
+<h3><code>dgamma</code></h3>
+<p class="signature"><code>dgamma(x, s)</code></p>
+<p>Probability density, gamma distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Gamma</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Gamma(s, 1), x)</code>. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dgeom">
+<h3><code>dgeom</code></h3>
+<p class="signature"><code>dgeom(k, q)</code></p>
+<p>Probability density, geometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Geometric</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Geometric(q), x)</code>. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dhypergeom">
+<h3><code>dhypergeom</code></h3>
+<p class="signature"><code>dhypergeom(m, a, b, n)</code></p>
+<p>Probability density, hypergeometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Hypergeometric</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Hypergeometric(a, b, n), x)</code>. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dlnorm">
+<h3><code>dlnorm</code></h3>
+<p class="signature"><code>dlnorm(x, μ, σ)</code></p>
+<p>Probability density, log normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.LogNormal</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(LogNormal(μ, σ), x)</code>. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dlogis">
+<h3><code>dlogis</code></h3>
+<p class="signature"><code>dlogis(x, l, s)</code></p>
+<p>Probability density, logistic distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Logistic</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Logistic(l, s), x)</code>. Location <code>l</code>, scale <code>s</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dnbinom">
+<h3><code>dnbinom</code></h3>
+<p class="signature"><code>dnbinom(k, n, q)</code></p>
+<p>Probability density, negative binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.NegativeBinomial</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(NegativeBinomial(n, q), x)</code>. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dnorm">
+<h3><code>dnorm</code></h3>
+<p class="signature"><code>dnorm(x, μ, σ)</code></p>
+<p>Probability density, normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Normal(μ, σ), x)</code>. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dpois">
+<h3><code>dpois</code></h3>
+<p class="signature"><code>dpois(k, λ)</code></p>
+<p>Probability density, Poisson distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Poisson</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Poisson(λ), x)</code>. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events. For a non-integer argument the probability is 0. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dt">
+<h3><code>dt</code></h3>
+<p class="signature"><code>dt(x, d)</code></p>
+<p>Probability density, Student's t distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.TDist</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(TDist(d), x)</code>. <code>d</code> degrees of freedom; a non-central t is not provided. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dunif">
+<h3><code>dunif</code></h3>
+<p class="signature"><code>dunif(x, a, b)</code></p>
+<p>Probability density, uniform distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Uniform</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Uniform(a, b), x)</code>. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-dweibull">
+<h3><code>dweibull</code></h3>
+<p class="signature"><code>dweibull(x, s)</code></p>
+<p>Probability density, Weibull distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Weibull</code>, <code>Distributions.pdf</code></dd><dt>Notes</dt><dd><code>pdf(Weibull(s, 1), x)</code>. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale. All arguments are dimensionless real numbers; <code>x</code> may be an array (element by element).</dd></dl>
+</section>
+<section class="function" id="f-pbeta">
+<h3><code>pbeta</code></h3>
+<p class="signature"><code>pbeta(x, s1, s2)</code></p>
+<p>Cumulative probability, beta distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Beta</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Beta(s1, s2), x)</code>, the probability of a value up to x. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.</dd></dl>
+</section>
+<section class="function" id="f-pbinom">
+<h3><code>pbinom</code></h3>
+<p class="signature"><code>pbinom(k, n, q)</code></p>
+<p>Cumulative probability, binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Binomial</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Binomial(n, q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.</dd></dl>
+</section>
+<section class="function" id="f-pcauchy">
+<h3><code>pcauchy</code></h3>
+<p class="signature"><code>pcauchy(x, l, s)</code></p>
+<p>Cumulative probability, Cauchy distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Cauchy</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Cauchy(l, s), x)</code>, the probability of a value up to x. Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-pchisq">
+<h3><code>pchisq</code></h3>
+<p class="signature"><code>pchisq(x, d)</code></p>
+<p>Cumulative probability, chi-squared distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Chisq</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Chisq(d), x)</code>, the probability of a value up to x. <code>d</code> degrees of freedom; <code>d</code> need not be an integer.</dd></dl>
+</section>
+<section class="function" id="f-pexp">
+<h3><code>pexp</code></h3>
+<p class="signature"><code>pexp(x, r)</code></p>
+<p>Cumulative probability, exponential distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Exponential</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Exponential(1/r), x)</code>, the probability of a value up to x. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.</dd></dl>
+</section>
+<section class="function" id="f-pF">
+<h3><code>pF</code></h3>
+<p class="signature"><code>pF(x, d1, d2)</code></p>
+<p>Cumulative probability, F distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.FDist</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(FDist(d1, d2), x)</code>, the probability of a value up to x. <code>d1</code>, <code>d2</code> degrees of freedom.</dd></dl>
+</section>
+<section class="function" id="f-pgamma">
+<h3><code>pgamma</code></h3>
+<p class="signature"><code>pgamma(x, s)</code></p>
+<p>Cumulative probability, gamma distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Gamma</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Gamma(s, 1), x)</code>, the probability of a value up to x. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-pgeom">
+<h3><code>pgeom</code></h3>
+<p class="signature"><code>pgeom(k, q)</code></p>
+<p>Cumulative probability, geometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Geometric</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Geometric(q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.</dd></dl>
+</section>
+<section class="function" id="f-phypergeom">
+<h3><code>phypergeom</code></h3>
+<p class="signature"><code>phypergeom(m, a, b, n)</code></p>
+<p>Cumulative probability, hypergeometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Hypergeometric</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Hypergeometric(a, b, n), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.</dd></dl>
+</section>
+<section class="function" id="f-plnorm">
+<h3><code>plnorm</code></h3>
+<p class="signature"><code>plnorm(x, μ, σ)</code></p>
+<p>Cumulative probability, log normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.LogNormal</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(LogNormal(μ, σ), x)</code>, the probability of a value up to x. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.</dd></dl>
+</section>
+<section class="function" id="f-plogis">
+<h3><code>plogis</code></h3>
+<p class="signature"><code>plogis(x, l, s)</code></p>
+<p>Cumulative probability, logistic distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Logistic</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Logistic(l, s), x)</code>, the probability of a value up to x. Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-pnbinom">
+<h3><code>pnbinom</code></h3>
+<p class="signature"><code>pnbinom(k, n, q)</code></p>
+<p>Cumulative probability, negative binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.NegativeBinomial</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(NegativeBinomial(n, q), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.</dd></dl>
+</section>
+<section class="function" id="f-pnorm">
+<h3><code>pnorm</code></h3>
+<p class="signature"><code>pnorm(x, μ, σ)</code></p>
+<p>Cumulative probability, normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Normal(μ, σ), x)</code>, the probability of a value up to x. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-ppois">
+<h3><code>ppois</code></h3>
+<p class="signature"><code>ppois(k, λ)</code></p>
+<p>Cumulative probability, Poisson distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Poisson</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Poisson(λ), x)</code>, the probability of a value up to x. The argument is rounded down to an integer first. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.</dd></dl>
+</section>
+<section class="function" id="f-pt">
+<h3><code>pt</code></h3>
+<p class="signature"><code>pt(x, d)</code></p>
+<p>Cumulative probability, Student's t distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.TDist</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(TDist(d), x)</code>, the probability of a value up to x. <code>d</code> degrees of freedom; a non-central t is not provided.</dd></dl>
+</section>
+<section class="function" id="f-punif">
+<h3><code>punif</code></h3>
+<p class="signature"><code>punif(x, a, b)</code></p>
+<p>Cumulative probability, uniform distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Uniform</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Uniform(a, b), x)</code>, the probability of a value up to x. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.</dd></dl>
+</section>
+<section class="function" id="f-pweibull">
+<h3><code>pweibull</code></h3>
+<p class="signature"><code>pweibull(x, s)</code></p>
+<p>Cumulative probability, Weibull distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Weibull</code>, <code>Distributions.cdf</code></dd><dt>Notes</dt><dd><code>cdf(Weibull(s, 1), x)</code>, the probability of a value up to x. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-qbeta">
+<h3><code>qbeta</code></h3>
+<p class="signature"><code>qbeta(p, s1, s2)</code></p>
+<p>Inverse cumulative probability, beta distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Beta</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Beta(s1, s2), p)</code>, the inverse of <code>pbeta</code>; <code>p</code> between 0 and 1. Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.</dd></dl>
+</section>
+<section class="function" id="f-qbinom">
+<h3><code>qbinom</code></h3>
+<p class="signature"><code>qbinom(p, n, q)</code></p>
+<p>Inverse cumulative probability, binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Binomial</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Binomial(n, q), p)</code>, the inverse of <code>pbinom</code>; <code>p</code> between 0 and 1. <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.</dd></dl>
+</section>
+<section class="function" id="f-qcauchy">
+<h3><code>qcauchy</code></h3>
+<p class="signature"><code>qcauchy(p, l, s)</code></p>
+<p>Inverse cumulative probability, Cauchy distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Cauchy</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Cauchy(l, s), p)</code>, the inverse of <code>pcauchy</code>; <code>p</code> between 0 and 1. Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-qchisq">
+<h3><code>qchisq</code></h3>
+<p class="signature"><code>qchisq(p, d)</code></p>
+<p>Inverse cumulative probability, chi-squared distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Chisq</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Chisq(d), p)</code>, the inverse of <code>pchisq</code>; <code>p</code> between 0 and 1. <code>d</code> degrees of freedom; <code>d</code> need not be an integer.</dd></dl>
+</section>
+<section class="function" id="f-qexp">
+<h3><code>qexp</code></h3>
+<p class="signature"><code>qexp(p, r)</code></p>
+<p>Inverse cumulative probability, exponential distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Exponential</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Exponential(1/r), p)</code>, the inverse of <code>pexp</code>; <code>p</code> between 0 and 1. The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.</dd></dl>
+</section>
+<section class="function" id="f-qF">
+<h3><code>qF</code></h3>
+<p class="signature"><code>qF(p, d1, d2)</code></p>
+<p>Inverse cumulative probability, F distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.FDist</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(FDist(d1, d2), p)</code>, the inverse of <code>pF</code>; <code>p</code> between 0 and 1. <code>d1</code>, <code>d2</code> degrees of freedom.</dd></dl>
+</section>
+<section class="function" id="f-qgamma">
+<h3><code>qgamma</code></h3>
+<p class="signature"><code>qgamma(p, s)</code></p>
+<p>Inverse cumulative probability, gamma distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Gamma</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Gamma(s, 1), p)</code>, the inverse of <code>pgamma</code>; <code>p</code> between 0 and 1. Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-qgeom">
+<h3><code>qgeom</code></h3>
+<p class="signature"><code>qgeom(p, q)</code></p>
+<p>Inverse cumulative probability, geometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Geometric</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Geometric(q), p)</code>, the inverse of <code>pgeom</code>; <code>p</code> between 0 and 1. The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.</dd></dl>
+</section>
+<section class="function" id="f-qhypergeom">
+<h3><code>qhypergeom</code></h3>
+<p class="signature"><code>qhypergeom(p, a, b, n)</code></p>
+<p>Inverse cumulative probability, hypergeometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Hypergeometric</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Hypergeometric(a, b, n), p)</code>, the inverse of <code>phypergeom</code>; <code>p</code> between 0 and 1. <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.</dd></dl>
+</section>
+<section class="function" id="f-qlnorm">
+<h3><code>qlnorm</code></h3>
+<p class="signature"><code>qlnorm(p, μ, σ)</code></p>
+<p>Inverse cumulative probability, log normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.LogNormal</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(LogNormal(μ, σ), p)</code>, the inverse of <code>plnorm</code>; <code>p</code> between 0 and 1. <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.</dd></dl>
+</section>
+<section class="function" id="f-qlogis">
+<h3><code>qlogis</code></h3>
+<p class="signature"><code>qlogis(p, l, s)</code></p>
+<p>Inverse cumulative probability, logistic distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Logistic</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Logistic(l, s), p)</code>, the inverse of <code>plogis</code>; <code>p</code> between 0 and 1. Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-qnbinom">
+<h3><code>qnbinom</code></h3>
+<p class="signature"><code>qnbinom(p, n, q)</code></p>
+<p>Inverse cumulative probability, negative binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.NegativeBinomial</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(NegativeBinomial(n, q), p)</code>, the inverse of <code>pnbinom</code>; <code>p</code> between 0 and 1. The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.</dd></dl>
+</section>
+<section class="function" id="f-qnorm">
+<h3><code>qnorm</code></h3>
+<p class="signature"><code>qnorm(p, μ, σ)</code></p>
+<p>Inverse cumulative probability, normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Normal(μ, σ), p)</code>, the inverse of <code>pnorm</code>; <code>p</code> between 0 and 1. Mean <code>μ</code>, standard deviation <code>σ</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-qpois">
+<h3><code>qpois</code></h3>
+<p class="signature"><code>qpois(p, λ)</code></p>
+<p>Inverse cumulative probability, Poisson distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Poisson</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Poisson(λ), p)</code>, the inverse of <code>ppois</code>; <code>p</code> between 0 and 1. Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.</dd></dl>
+</section>
+<section class="function" id="f-qt">
+<h3><code>qt</code></h3>
+<p class="signature"><code>qt(p, d)</code></p>
+<p>Inverse cumulative probability, Student's t distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.TDist</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(TDist(d), p)</code>, the inverse of <code>pt</code>; <code>p</code> between 0 and 1. <code>d</code> degrees of freedom; a non-central t is not provided.</dd></dl>
+</section>
+<section class="function" id="f-qunif">
+<h3><code>qunif</code></h3>
+<p class="signature"><code>qunif(p, a, b)</code></p>
+<p>Inverse cumulative probability, uniform distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Uniform</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Uniform(a, b), p)</code>, the inverse of <code>punif</code>; <code>p</code> between 0 and 1. Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.</dd></dl>
+</section>
+<section class="function" id="f-qweibull">
+<h3><code>qweibull</code></h3>
+<p class="signature"><code>qweibull(p, s)</code></p>
+<p>Inverse cumulative probability, Weibull distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Weibull</code>, <code>Distributions.quantile</code></dd><dt>Notes</dt><dd><code>quantile(Weibull(s, 1), p)</code>, the inverse of <code>pweibull</code>; <code>p</code> between 0 and 1. Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-rbeta">
+<h3><code>rbeta</code></h3>
+<p class="signature"><code>rbeta(m, s1, s2)</code></p>
+<p>Vector of m random numbers, beta distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Beta</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Beta(s1, s2), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape parameters <code>s1</code>, <code>s2</code> &gt; 0, as Julia's <code>Beta(α, β)</code>.</dd></dl>
+</section>
+<section class="function" id="f-rbinom">
+<h3><code>rbinom</code></h3>
+<p class="signature"><code>rbinom(m, n, q)</code></p>
+<p>Vector of m random numbers, binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Binomial</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Binomial(n, q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>n</code> trials with success probability <code>q</code>, evaluated at <code>k</code> successes.</dd></dl>
+</section>
+<section class="function" id="f-rcauchy">
+<h3><code>rcauchy</code></h3>
+<p class="signature"><code>rcauchy(m, l, s)</code></p>
+<p>Vector of m random numbers, Cauchy distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Cauchy</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Cauchy(l, s), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-rchisq">
+<h3><code>rchisq</code></h3>
+<p class="signature"><code>rchisq(m, d)</code></p>
+<p>Vector of m random numbers, chi-squared distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Chisq</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Chisq(d), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d</code> degrees of freedom; <code>d</code> need not be an integer.</dd></dl>
+</section>
+<section class="function" id="f-rexp">
+<h3><code>rexp</code></h3>
+<p class="signature"><code>rexp(m, r)</code></p>
+<p>Vector of m random numbers, exponential distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Exponential</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Exponential(1/r), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The parameter is the <strong>rate</strong> <code>r</code>, density <code>r·e^(−r·x)</code>. Julia's <code>Exponential(θ)</code> takes the scale θ = 1/r.</dd></dl>
+</section>
+<section class="function" id="f-rF">
+<h3><code>rF</code></h3>
+<p class="signature"><code>rF(m, d1, d2)</code></p>
+<p>Vector of m random numbers, F distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.FDist</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, FDist(d1, d2), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d1</code>, <code>d2</code> degrees of freedom.</dd></dl>
+</section>
+<section class="function" id="f-rgamma">
+<h3><code>rgamma</code></h3>
+<p class="signature"><code>rgamma(m, s)</code></p>
+<p>Vector of m random numbers, gamma distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Gamma</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Gamma(s, 1), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape <code>s</code> with unit scale; for another scale θ use <code>dgamma(x/θ, s)/θ</code>. Julia's <code>Gamma(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-rgeom">
+<h3><code>rgeom</code></h3>
+<p class="signature"><code>rgeom(m, q)</code></p>
+<p>Vector of m random numbers, geometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Geometric</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Geometric(q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The number of failures before the first success, probability <code>q·(1 − q)^k</code> for k = 0, 1, …, as Julia's convention.</dd></dl>
+</section>
+<section class="function" id="f-rhypergeom">
+<h3><code>rhypergeom</code></h3>
+<p class="signature"><code>rhypergeom(m, a, b, n)</code></p>
+<p>Vector of m random numbers, hypergeometric distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Hypergeometric</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Hypergeometric(a, b, n), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>m</code> successes in <code>n</code> draws without replacement from <code>a</code> successes and <code>b</code> failures; Julia's <code>Hypergeometric(s, f, n)</code> with the same meaning.</dd></dl>
+</section>
+<section class="function" id="f-rlnorm">
+<h3><code>rlnorm</code></h3>
+<p class="signature"><code>rlnorm(m, μ, σ)</code></p>
+<p>Vector of m random numbers, log normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.LogNormal</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, LogNormal(μ, σ), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>μ</code> and <code>σ</code> are the mean and standard deviation of the <strong>logarithm</strong>, as Julia's <code>LogNormal</code>.</dd></dl>
+</section>
+<section class="function" id="f-rlogis">
+<h3><code>rlogis</code></h3>
+<p class="signature"><code>rlogis(m, l, s)</code></p>
+<p>Vector of m random numbers, logistic distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Logistic</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Logistic(l, s), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Location <code>l</code>, scale <code>s</code> &gt; 0.</dd></dl>
+</section>
+<section class="function" id="f-rnbinom">
+<h3><code>rnbinom</code></h3>
+<p class="signature"><code>rnbinom(m, n, p)</code></p>
+<p>Vector of m random numbers, negative binomial distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.NegativeBinomial</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, NegativeBinomial(n, q), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). The number of failures <code>k</code> before the <code>n</code>-th success, with success probability <code>q</code>, as Julia's <code>NegativeBinomial(r, p)</code>.</dd></dl>
+</section>
+<section class="function" id="f-rnd">
+<h3><code>rnd</code></h3>
+<p class="signature"><code>rnd(x)</code></p>
+<p>Uniformly distributed random scalar between 0 and x.</p>
+<dl><dt>Julia</dt><dd><code>Random.rand</code></dd><dt>Notes</dt><dd>One uniformly distributed number in [0, x) from the shared generator: <code>rand(rng)·x</code>. Each evaluation gives a new number.</dd></dl>
+</section>
+<section class="function" id="f-rnorm">
+<h3><code>rnorm</code></h3>
+<p class="signature"><code>rnorm(m, μ, σ)</code></p>
+<p>Vector of m random numbers, normal distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Normal</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers from the normal distribution with mean <code>μ</code> and standard deviation <code>σ</code>, from the shared random generator. Only the distribution is guaranteed, not particular values.</dd></dl>
+</section>
+<section class="function" id="f-rpois">
+<h3><code>rpois</code></h3>
+<p class="signature"><code>rpois(m, λ)</code></p>
+<p>Vector of m random numbers, Poisson distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Poisson</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Poisson(λ), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Mean <code>λ</code> &gt; 0, evaluated at <code>k</code> events.</dd></dl>
+</section>
+<section class="function" id="f-rt">
+<h3><code>rt</code></h3>
+<p class="signature"><code>rt(m, d)</code></p>
+<p>Vector of m random numbers, Student's t distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.TDist</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, TDist(d), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). <code>d</code> degrees of freedom; a non-central t is not provided.</dd></dl>
+</section>
+<section class="function" id="f-runif">
+<h3><code>runif</code></h3>
+<p class="signature"><code>runif(m, a, b)</code></p>
+<p>Vector of m random numbers, uniform distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Uniform</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Uniform(a, b), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Between <code>a</code> and <code>b</code>, with <code>a &lt; b</code>.</dd></dl>
+</section>
+<section class="function" id="f-rweibull">
+<h3><code>rweibull</code></h3>
+<p class="signature"><code>rweibull(m, s)</code></p>
+<p>Vector of m random numbers, Weibull distribution.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Weibull</code>, <code>Distributions.rand</code></dd><dt>Notes</dt><dd>A column of <code>m</code> random numbers, <code>rand(rng, Weibull(s, 1), m)</code>, drawn from Equavela's shared random generator (see <code>Seed</code>). Shape <code>s</code> with unit scale; Julia's <code>Weibull(α, θ)</code> also takes the scale.</dd></dl>
+</section>
+<section class="function" id="f-Seed">
+<h3><code>Seed</code></h3>
+<p class="signature"><code>Seed(x)</code></p>
+<p>Resets the shared generator to integer x in 1..2147483647 and returns the previously configured seed.</p>
+<dl><dt>Julia</dt><dd><code>Random.Xoshiro</code></dd><dt>Notes</dt><dd>Resets the shared random generator, a <code>Xoshiro</code> generator owned by the calculation engine, to the seed <code>x</code> (an integer from 1 to 2147483647) and returns the previous seed. Without <code>Seed</code>, the generator is seeded from the clock when the engine starts, so random numbers differ from run to run; call <code>Seed</code> at the top of a worksheet for repeatable results.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- title: Page setup and printing -->
+<h1>Page setup and printing</h1>
+<p>What you see in page view is exactly what is printed: positions are in points, the fonts are part of Equavela, and the same drawing is used on screen, on paper and in the PDF.</p>
+
+<h2 id="page-setup">Page setup</h2>
+<p><em>Page setup…</em> (Insert tab, or the command palette) sets the paper size (A4, A3, A5, Letter, Legal or a custom size), the orientation and the four margins, in millimetres or points. Applying it is one undo step. Regions that would end up in the new left or top margin move just inside it; nothing else moves.</p>
+
+<h2 id="headers">Headers, footers and page numbers</h2>
+<p><em>Header and footer…</em> opens the same dialog at its header and footer fields: a left, a centre and a right part for the header and for the footer, each one line of text. The buttons <em>Page number</em>, <em>Date</em> and <em>File</em> insert the fields <code>{page}</code>, <code>{date}</code> and <code>{file}</code>, which are replaced on every page when it is drawn and printed.</p>
+
+<h2 id="breaks">Page breaks</h2>
+<p><em>Insert › Add page break</em> ends the page at the crosshair. A region that would cross the bottom margin moves to the next page; content that grows pushes the regions below it on, page after page.</p>
+
+<h2 id="pdf">Exporting a PDF</h2>
+<p><em>File › Export PDF…</em> writes the worksheet as a PDF with vector text, mathematics, plots and SVG images, and the full resolution of raster images. The crosshair, selections, editing marks, spelling underlines and other screen aids are never printed. Collapsed areas print collapsed; disabled regions print dimmed, as they appear.</p>
+
+<h2 id="print">Printing</h2>
+<p><kbd>Ctrl</kbd>+<kbd>P</kbd> prints the worksheet through the system print dialog, with the same layout as the PDF.</p>

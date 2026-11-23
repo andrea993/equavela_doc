@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solving and optimization · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html" aria-current="page">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Solving and optimization</h1>
+<p class="toc"><a href="#f-find"><code>find</code></a> <a href="#f-maximize"><code>maximize</code></a> <a href="#f-minerr"><code>minerr</code></a> <a href="#f-minimize"><code>minimize</code></a> <a href="#f-polyroots"><code>polyroots</code></a> <a href="#f-root"><code>root</code></a></p>
+<section class="function" id="f-find">
+<h3><code>find</code></h3>
+<p class="signature"><code>find(x, y, …)</code></p>
+<p>Solve block: values of the unknowns that satisfy the constraints of the Given block above.</p>
+<dl><dt>Notes</dt><dd>Levenberg–Marquardt on the residuals of the equations and the violations of the inequalities, starting from the guess values; succeeds only when every constraint holds within <code>CTOL</code>. With one unknown it returns its value, with several a column vector in call order. <code>find(x, y) →</code> solves symbolically. May be written <code>Find</code>.</dd></dl>
+</section>
+<section class="function" id="f-maximize">
+<h3><code>maximize</code></h3>
+<p class="signature"><code>maximize(f, x, …)</code></p>
+<p>Solve block: the values of the unknowns that maximise f under the constraints.</p>
+<dl><dt>Notes</dt><dd>As <code>minimize</code>, for the largest value.</dd></dl>
+</section>
+<section class="function" id="f-minerr">
+<h3><code>minerr</code></h3>
+<p class="signature"><code>minerr(x, y, …)</code></p>
+<p>Solve block: the closest approximation when the constraints cannot all be met.</p>
+<dl><dt>Notes</dt><dd>The same algorithm as <code>find</code>, returning the best point found even when the constraints are not met; check the result.</dd></dl>
+</section>
+<section class="function" id="f-minimize">
+<h3><code>minimize</code></h3>
+<p class="signature"><code>minimize(f, x, …)</code></p>
+<p>Solve block: the values of the unknowns that minimise f under the constraints.</p>
+<dl><dt>Notes</dt><dd>A quadratic penalty method (weights 10, 10³, 10⁵, 10⁷), each stage minimised by BFGS with central-difference gradients. <code>f</code> is named without arguments. The final point must satisfy the constraints within <code>CTOL</code>. Compare <code>Optim.optimize</code> in Julia.</dd></dl>
+</section>
+<section class="function" id="f-polyroots">
+<h3><code>polyroots</code></h3>
+<p class="signature"><code>polyroots(v)</code></p>
+<p>Roots of the polynomial with coefficients v (constant term first, 2 &lt;= length &lt;= 99).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.eigvals</code></dd><dt>Notes</dt><dd>All roots of the polynomial with the coefficients <code>v</code>, constant term first (2 to 99 coefficients, the last non-zero), as the eigenvalues of the companion matrix. Real roots come back as real numbers. Equivalent to <code>Polynomials.roots(Polynomial(v))</code> in Julia.</dd></dl>
+</section>
+<section class="function" id="f-root">
+<h3><code>root</code></h3>
+<p class="signature"><code>root(f(x), x) / root(f(x), x, a, b)</code></p>
+<p>A root of f in the variable x, from the guess value of x or on the interval [a, b].</p>
+<dl><dt>Notes</dt><dd>Without an interval, the secant method from the guess (the current value of <code>x</code>; a complex guess finds complex roots), accepting the point only if <code>|f(x)| ≤ TOL</code>. With an interval [a, b] where <code>f</code> changes sign, bisection to machine precision. Units are allowed: the result has the unit of the guess or of the bounds. The first argument is an expression of the variable, not a function value, so <code>root(x² − 2, x)</code> works directly. Compare <code>Roots.find_zero</code> in Julia. A worksheet definition named <code>root</code> takes precedence; the n-th root is the operator <code>ⁿ√x</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

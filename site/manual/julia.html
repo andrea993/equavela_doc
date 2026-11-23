@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julia in worksheets · Equavela manual</title>
+<link rel="icon" href="assets/equavela-mark.svg">
+<link rel="stylesheet" href="assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="window.html">The window</a></li>
+<li><a href="worksheets.html">Worksheets and regions</a></li>
+<li><a href="math.html">Entering mathematics</a></li>
+<li><a href="calculation.html">Definitions and calculation</a></li>
+<li><a href="units.html">Units</a></li>
+<li><a href="results.html">Result format</a></li>
+<li><a href="arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="solving.html">Solving equations</a></li>
+<li><a href="symbolics.html">Symbolic calculation</a></li>
+<li><a href="plots.html">Plots</a></li>
+<li><a href="tables.html">Tables</a></li>
+<li><a href="text.html">Text</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="julia.html" aria-current="page">Julia in worksheets</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="files.html">Files and recovery</a></li>
+<li><a href="printing.html">Page setup and printing</a></li>
+<li><a href="settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="units-reference.html">Units reference</a></li>
+<li><a href="keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="commands.html">Command reference</a></li>
+</ul>
+<h2><a href="functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="functions/differential-equations.html">Differential equations</a></li>
+<li><a href="functions/file-access.html">File access</a></li>
+<li><a href="functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="functions/special-functions.html">Special functions</a></li>
+<li><a href="functions/strings.html">Strings</a></li>
+<li><a href="functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<h1>Julia in worksheets</h1>
+<p>Every calculation in Equavela runs in <a href="https://julialang.org">Julia</a>. The built-in functions are written in Julia on top of its standard library and well-known packages, and the <a href="functions/index.html">function reference</a> names the Julia function behind each one. You can also write Julia yourself: in Julia blocks on the page, by calling any Julia package from math, and in the Julia REPL.</p>
+
+<h2 id="blocks">Julia blocks</h2>
+<p><em>Insert › Julia</em> adds a Julia block at the crosshair. Everything inside it is Julia code, including <code>using</code> and <code>import</code> lines; the header lists the packages it loads. The editor indents automatically, completes names, and colours the syntax; <kbd>Tab</kbd> indents and <kbd>Shift</kbd>+<kbd>Tab</kbd> outdents.</p>
+<pre><code>using LinearAlgebra
+k_spring = 2.5e3
+function stiffness(n)
+    K = diagm(0 =&gt; fill(2k_spring, n), 1 =&gt; fill(-k_spring, n-1), -1 =&gt; fill(-k_spring, n-1))
+    return K
+end</code></pre>
+<ul>
+<li>A block is <strong>enabled</strong> or <strong>disabled</strong> (the switch in its header). An enabled block runs in reading order like a math region, whenever you leave it after a change or something it reads changes. A disabled block never runs.</li>
+<li>The <strong>Run</strong> button (▶) or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> runs the block at once; <kbd>Shift</kbd>+<kbd>Enter</kbd> runs it and inserts a new block below. The header shows the block's state and how long its last run took; printed output appears under the code.</li>
+<li>The code may read worksheet variables defined above the block: they are passed in as Julia values before the code runs.</li>
+<li>Drag the corner handle to give the block a fixed box; <em>Julia: reset to content size</em> returns to the size of the code.</li>
+</ul>
+
+<h2 id="names">Using Julia names in math</h2>
+<p>A Julia block exports nothing by itself. Math reaches its names through the qualifier <code>julia.</code>:</p>
+<ul>
+<li><code>julia.k_spring</code> is the value of <code>k_spring</code>, and <code>julia.stiffness(4)</code> calls the function. The name after the dot is written exactly as in Julia.</li>
+<li>Give it a worksheet name with an ordinary definition: <code>K(n) := julia.stiffness</code> registers the function, after which <code>K(4) =</code> calls it; <code>k := julia.k_spring</code> copies the value.</li>
+<li><code>julia.Module.f(args)</code> calls a function of a module or package directly, exported or not, once a Julia block has loaded the package, for example <code>julia.LinearAlgebra.nullspace(A)</code>.</li>
+</ul>
+<p>The name must be defined at the top level of an enabled Julia block above the region (<code>function f</code>, <code>f(x) = …</code>, <code>x = …</code>, <code>const x = …</code>, <code>struct T</code>). A name created inside a <code>begin</code> block or by a macro can be listed in the block's <code>define</code> field.</p>
+
+<h2 id="values">How values cross over</h2>
+<table>
+<thead><tr><th>Worksheet value</th><th>Julia value</th></tr></thead>
+<tbody>
+<tr><td>Number</td><td><code>Float64</code> or <code>ComplexF64</code></td></tr>
+<tr><td>Quantity with a unit</td><td>a <a href="https://painterqubits.github.io/Unitful.jl/stable/">Unitful</a> quantity in SI units</td></tr>
+<tr><td>Vector (n × 1)</td><td><code>Vector</code></td></tr>
+<tr><td>Matrix</td><td><code>Matrix</code></td></tr>
+<tr><td>Range variable</td><td>collected into a <code>Vector</code></td></tr>
+<tr><td>String</td><td><code>String</code></td></tr>
+<tr><td>Function</td><td>a callable Julia function</td></tr>
+</tbody>
+</table>
+<p>Coming back, <code>Bool</code> becomes 1 or 0, every real number becomes a double, a <code>Vector</code> becomes a column, tuples become columns, a <code>Symbol</code> or a <code>Char</code> becomes a string. Arrays with more than two dimensions, <code>nothing</code> and <code>missing</code> are errors. Any other Julia object comes back as a <strong>handle</strong>: the worksheet shows its type and a summary, and you can pass it on to other Julia functions.</p>
+<div class="difference"><strong>Indices.</strong> Julia counts from 1. An index returned by a Julia function stays 1-based, and <code>ORIGIN</code> does not apply inside Julia code, while worksheet indices count from <code>ORIGIN</code> (0 by default). Convert when you mix them.</div>
+
+<h2 id="environment">Packages and environments</h2>
+<p>Packages are installed in a Julia <strong>environment</strong>, a folder with a <code>Project.toml</code> and a <code>Manifest.toml</code>:</p>
+<ul>
+<li>a worksheet of a project uses the project's environment;</li>
+<li>a standalone worksheet can name its own environment folder;</li>
+<li>every other worksheet uses the shared environment <code>DefaultEnv</code> in your user data folder.</li>
+</ul>
+<p>The status bar shows the environment of the worksheet in front; click it, or use <em>File › Julia environment</em>, to open the manager. It lists the packages with their versions and compatibility ranges and can <em>Add package…</em>, <em>Remove</em>, <em>Instantiate</em>, <em>Resolve</em> and <em>Update</em>. Every change is preceded by a snapshot, so a failed or unwanted change can be undone with <em>Undo last change</em>. <em>Restart kernel</em> starts the environment's Julia process again. Each environment runs in its own Julia process, so worksheets in different environments never affect each other.</p>
+<p>A region that needs a package that is not installed fails with a clear message. Its entry in the Problems panel offers <em>Add the package to the environment</em>. Nothing is ever installed without your consent.</p>
+
+<h2 id="trust">Trusting a worksheet</h2>
+<p>Julia code can do anything your user account can do, so a worksheet file you have not opened before is <strong>untrusted</strong>: its Julia blocks are drawn disabled and regions that call Julia are not evaluated, while ordinary mathematics calculates normally. The first time you run a block, Equavela asks <em>Trust this worksheet?</em>. Trusted worksheets are remembered by path for your user account. Worksheets you create are trusted. <em>Stop trusting this worksheet</em> in the command palette revokes it.</p>
+
+<h2 id="repl">The REPL</h2>
+<p>The <em>REPL</em> button in the status bar opens Julia's own interactive prompt in the environment of the open project, or in the shared environment. Help mode (<kbd>?</kbd>), package mode (<kbd>]</kbd>) and shell mode (<kbd>;</kbd>) work as usual. The runtime of Equavela is loaded, and the definitions of project worksheets are reachable as <code>Project.&lt;worksheet&gt;.&lt;name&gt;</code>. See <a href="projects.html#julia-modules">project Julia modules</a>.</p>
+
+<h2 id="libraries">Julia packages behind the built-in functions</h2>
+<table>
+<thead><tr><th>Package</th><th>Used for</th></tr></thead>
+<tbody>
+<tr><td><a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">LinearAlgebra</a> (standard library)</td><td>Matrix functions, decompositions, eigenvalues, linear systems, norms.</td></tr>
+<tr><td><a href="https://docs.julialang.org/en/v1/stdlib/Random/">Random</a> (standard library)</td><td>The random number generator behind <code>rnd</code>, <code>runif</code>, <code>rnorm</code> and the other random functions.</td></tr>
+<tr><td><a href="https://juliastats.org/Distributions.jl/stable/">Distributions</a></td><td>Probability densities, distribution functions, quantiles and random samples.</td></tr>
+<tr><td><a href="https://specialfunctions.juliamath.org/stable/">SpecialFunctions</a></td><td>Bessel, Airy, gamma, beta, error and related functions.</td></tr>
+<tr><td><a href="https://github.com/JuliaMath/HypergeometricFunctions.jl">HypergeometricFunctions</a></td><td>Hypergeometric functions.</td></tr>
+<tr><td><a href="https://juliamath.github.io/FFTW.jl/stable/">FFTW</a></td><td>Fourier transforms.</td></tr>
+<tr><td><a href="https://painterqubits.github.io/Unitful.jl/stable/">Unitful</a></td><td>Quantities and units.</td></tr>
+<tr><td><a href="https://csv.juliadata.org/stable/">CSV</a>, <a href="https://felipenoris.github.io/XLSX.jl/stable/">XLSX</a>, <a href="https://github.com/dancasimiro/WAV.jl">WAV</a>, <a href="https://github.com/JuliaIO/ImageMagick.jl">ImageMagick</a></td><td>Reading and writing data, spreadsheet, sound and image files.</td></tr>
+<tr><td><a href="https://www.sympy.org">SymPy</a> (Python, through PythonCall)</td><td>Symbolic calculation.</td></tr>
+</tbody>
+</table>
+<p>Algorithms that have no standard package, such as the interpolation splines, curve fitting, the ODE solvers, smoothing and wavelets, are implemented in Equavela's own runtime in Julia; their entries in the reference describe the method.</p>
+
+</main>
+</div>
+<script>window.MANUAL_ROOT = "";</script>
+<script src="assets/search-index.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>

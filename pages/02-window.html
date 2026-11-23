@@ -1,0 +1,63 @@
+<!-- title: The window -->
+<h1>The window</h1>
+<p>From top to bottom the Equavela window holds the title bar, the ribbon, the document tabs, the message bar, the worksheet and the status bar. Panels open beside the worksheet and the Julia REPL opens above the status bar.</p>
+
+<h2 id="title-bar">Title bar</h2>
+<p>The title shows the document name. On its left are quick-access buttons: <em>New</em>, <em>Open</em>, <em>Recent</em>, <em>Save</em>, <em>Undo</em> and <em>Redo</em>. <em>Recent</em> lists the last ten worksheets you opened, imported or saved and, under <em>Projects</em>, the recent project folders. Choosing a worksheet that is already open brings its tab to the front.</p>
+
+<h2 id="ribbon">The ribbon</h2>
+<figure class="manual-screenshot">
+  <img src="assets/screenshots/help-ribbon.png" width="1280" height="800" alt="Equavela with the Help tab open, showing the Manual button above an empty worksheet">
+  <figcaption>The Help tab includes Manual, Function Help and Keyboard Shortcuts.</figcaption>
+</figure>
+<p>The ribbon groups commands by task:</p>
+<table>
+<thead><tr><th>Tab</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td>File</td><td>New, open, save and close worksheets; new, open, convert, configure, pack and close projects; the Julia environment; extracting portable documents; importing <code>.mcdx</code> worksheets; PDF export, printing and options.</td></tr>
+<tr><td>Edit</td><td>Undo, redo, cut, copy, paste, selection, deletion, Find, Replace and spelling.</td></tr>
+<tr><td>Insert</td><td>Math, text, plot, table, image, Julia block, area and include regions; templates for fractions, powers, roots, derivatives, integrals and sums; page setup, page breaks and spacing.</td></tr>
+<tr><td>Math</td><td>Operators, symbols and subscripts; units, constants and labels; the function catalogue, matrix functions and programming; symbolic keywords; line breaks, result formats and the math font.</td></tr>
+<tr><td>Calculate</td><td>Calculate, calculate all, automatic calculation, stop, disabling regions, calculation settings and moving between problems.</td></tr>
+<tr><td>View</td><td>Page and draft view, the side panel, the Julia REPL, compact ribbon, zoom and fit.</td></tr>
+<tr><td>Help</td><td>Command search, the function catalogue, keyboard shortcuts, function help and this manual.</td></tr>
+</tbody>
+</table>
+<p>A <strong>contextual tab</strong> appears next to them while it is useful and disappears afterwards:</p>
+<ul>
+<li><strong>Text</strong> while you edit a text region: bold, italic, underline, sub- and superscript, size, alignment, paragraph styles and inline math.</li>
+<li><strong>Matrix</strong> while the caret is in a matrix, or a selected region shows a matrix result: insert and delete rows and columns, clear cells, and how many elements a result shows before it scrolls.</li>
+<li><strong>Plot</strong> for the one selected plot: plot type, traces, trace style, axes and grid.</li>
+<li><strong>Area</strong> for a selected area: collapse or expand it.</li>
+<li><strong>Image</strong> for a selected image: original size or replace the picture.</li>
+</ul>
+<p>The tooltip of every button shows its keyboard shortcut, with the US keys; any layout types it with the keys of the same characters (see <a href="keyboard.html">Keyboard shortcuts</a>). <em>View › Compact ribbon</em> hides the labels and lowers the ribbon to give the page more room; a narrow window uses the compact ribbon automatically. On a narrow window the ribbon scrolls sideways: arrows at its edges, or the mouse wheel over it, reach every command.</p>
+
+<h2 id="command-palette">The command palette</h2>
+<p>Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to search every command, operator, symbol, constant, unit, symbolic keyword and built-in function by name or by a related word. Each entry shows its shortcut. <kbd>Enter</kbd> runs or inserts the highlighted entry. Every ribbon command is also in the palette.</p>
+
+<h2 id="insert-panels">Insert panels</h2>
+<p>The <em>Operators</em>, <em>Symbols</em>, <em>Programming</em>, <em>Constants</em>, <em>Units</em> and <em>Symbolics</em> buttons of the Math tab open a panel. The chips at its top are the sections of the list; click one to scroll to it. The search field filters all panels at once, and <kbd>Enter</kbd> inserts the first match. Panels can be pinned, moved and closed; clicking an entry never takes the keyboard away from the region you are editing.</p>
+
+<h2 id="tabs">Document tabs and the message bar</h2>
+<p>Each open worksheet, project text file or image has a tab. An asterisk after the name means unsaved changes. Rest the pointer on a tab to see the full path of its file; right-click it for <em>Show in folder</em>, <em>Copy path</em> and <em>Close</em>.</p>
+<p>The message bar under the tabs shows one message at a time. Green messages confirm what you asked for and close themselves after a few seconds; blue ones are hints; amber ones say that something was done only in part; red ones report an error.</p>
+
+<h2 id="side-panel">The side panel</h2>
+<p>The side panel inspects the worksheet in front. Every row takes you to the region it names.</p>
+<ul>
+<li><strong>Variables</strong>: every name the worksheet defines, with its value, where it is defined and where it is used.</li>
+<li><strong>Outline</strong>: the headings of the text regions, the areas and the regions in reading order.</li>
+<li><strong>Problems</strong>: errors and unit warnings. <em>Calculate › Next problem</em> and <em>Previous problem</em> walk through them on the page.</li>
+<li><strong>Includes</strong>: the worksheets this one includes and the names they provide.</li>
+</ul>
+<p>When a project is open, the <strong>project explorer</strong> shows its folder. Drag the panel's edge to change its width; <em>View › Side panel</em> shows or hides it.</p>
+
+<h2 id="status-bar">The status bar</h2>
+<p>From left to right: the page indicator (click it and type a page number to jump there), the calculation mode (<code>AUTO</code> with a green dot, or manual; click to switch), the kernel state, the <em>Find</em> and <em>Replace</em> fields, the <em>REPL</em> button, and on the right the zoom percentage with its slider and the buttons for page view and draft view. <kbd>Ctrl</kbd>+mouse wheel zooms around the pointer; <kbd>Ctrl</kbd>+<kbd>0</kbd> resets the zoom.</p>
+
+<h2 id="repl">The Julia REPL</h2>
+<p>The <em>REPL</em> button opens a real Julia terminal in the environment of the open project, or in the shared environment when no project is open. It supports Julia's history, multi-line input, help mode (<kbd>?</kbd>), package mode (<kbd>]</kbd>) and shell mode (<kbd>;</kbd>). The definitions of project worksheets are reachable as <code>Project.&lt;worksheet&gt;.&lt;name&gt;</code>. <em>Restart REPL</em>, in the panel header or the button's context menu, starts the kernel again. See <a href="julia.html">Julia in worksheets</a>.</p>
+
+<h2 id="right-click">Context menus</h2>
+<p>A right click, the <kbd>Menu</kbd> key or <kbd>Shift</kbd>+<kbd>F10</kbd> opens the context menu of what is under the pointer or selected: cut, copy, paste, delete, disable, region-specific commands and the help for a function.</p>

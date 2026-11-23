@@ -1,0 +1,56 @@
+<!-- title: Worksheets and regions -->
+<h1>Worksheets and regions</h1>
+<p>A worksheet is a sequence of pages on which you place <strong>regions</strong>: math, text, plots, tables, images, Julia blocks, solve blocks, areas and includes. Positions and sizes are in points (1/72 inch) on a 3 pt grid, and fonts are part of the program, so a worksheet looks the same on every computer and on paper.</p>
+
+<h2 id="views">Page view and draft view</h2>
+<p><strong>Page view</strong> shows the paper pages with their margins, header and footer. <strong>Draft view</strong> shows one continuous white workspace that grows to the right and downwards; dotted lines mark the paper width and the page heights, dashed lines the margins. Both views place regions at the same page positions and print the same pages. Switch with the buttons at the right of the status bar or from the View tab. <em>View › Fit page</em> fits the current page into the window.</p>
+
+<h2 id="crosshair">The crosshair</h2>
+<p>The blue cross marks where the next region is created. Click on empty space to move it, or move it with the arrow keys; holding an arrow key accelerates it, <kbd>Shift</kbd>+arrow moves it in larger precise steps. Typing starts a math region whose first line lies across the crosshair's vertical bar, as if that bar were a text cursor. When you leave a region with an arrow key, the crosshair is placed beside it on the same line, or above or below it.</p>
+<p>Moving down past the bottom margin continues on the next page; at the end of the worksheet a new blank page appears, which becomes part of the worksheet as soon as you place something on it.</p>
+
+<h2 id="inserting">Inserting regions</h2>
+<p>The <em>Insert</em> tab creates every kind of region at the crosshair:</p>
+<table>
+<thead><tr><th>Region</th><th>Shortcut</th><th>Chapter</th></tr></thead>
+<tbody>
+<tr><td>Math</td><td>start typing, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd></td><td><a href="math.html">Entering mathematics</a></td></tr>
+<tr><td>Text box and text block (full width)</td><td><kbd>Ctrl</kbd>+<kbd>T</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td><td><a href="text.html">Text</a></td></tr>
+<tr><td>Plot</td><td></td><td><a href="plots.html">Plots</a></td></tr>
+<tr><td>Table</td><td></td><td><a href="tables.html">Tables</a></td></tr>
+<tr><td>Image</td><td></td><td><a href="images.html">Images</a></td></tr>
+<tr><td>Julia block</td><td></td><td><a href="julia.html">Julia in worksheets</a></td></tr>
+<tr><td>Solve block</td><td>type <code>Given</code> in a new math region</td><td><a href="solving.html">Solving equations</a></td></tr>
+<tr><td>Area</td><td></td><td><a href="areas.html">Areas</a></td></tr>
+<tr><td>Include</td><td></td><td><a href="files.html#include">Including worksheets</a></td></tr>
+</tbody>
+</table>
+<p>A region that does not fit between the crosshair and the bottom margin (a plot, a table, an image, a Julia block) starts at the top of the next page instead, so it never covers the footer.</p>
+
+<h2 id="selecting">Selecting, moving and resizing</h2>
+<ul>
+<li>Click a region's border, or drag a rectangle over empty space, to select regions; <kbd>Shift</kbd>+click adds to the selection; <kbd>Ctrl</kbd>+<kbd>A</kbd> selects every region.</li>
+<li>Drag a selected region by its border to move it; the arrow keys nudge the selection by one grid step. Moving a region can change the reading order and therefore what it can see (see <a href="calculation.html#order">Reading order</a>).</li>
+<li>Plots, text boxes, images and Julia blocks have resize handles when selected.</li>
+<li><kbd>Delete</kbd> removes the selected regions. <kbd>Esc</kbd> clears the selection.</li>
+<li><kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste regions, also between worksheets; pasted regions go to the crosshair.</li>
+</ul>
+<p>When a region grows, for example a result that becomes a large matrix, the regions below it move down so that nothing overlaps; they keep their distances.</p>
+
+<h2 id="space">Lines, space and page breaks</h2>
+<ul>
+<li><kbd>Enter</kbd> on empty space inserts one line (15 pt) at the crosshair: everything at or below it moves down. At the end of the last page it creates the next page.</li>
+<li>With nothing selected, <kbd>Delete</kbd> removes one line of empty space below the crosshair and <kbd>Backspace</kbd> one line above it.</li>
+<li><em>Insert › Spacing</em> has <em>Add space</em>, <em>Remove space</em> and <em>Add page break</em>. A page break ends the page at the crosshair; delete it with <kbd>Delete</kbd> above it or <kbd>Backspace</kbd> below it.</li>
+</ul>
+<p>Content that no longer fits on its page continues on the next one.</p>
+
+<h2 id="undo">Undo and redo</h2>
+<p><kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes the last change and <kbd>Ctrl</kbd>+<kbd>Y</kbd> redoes it. Every command is one undo step, however many regions it changes. While you edit a math region, undo works inside the region keystroke by keystroke.</p>
+
+<h2 id="find">Find and replace</h2>
+<p>The <em>Find</em> field in the status bar searches the regions of the worksheet: math by its text, text regions, Julia code, plot expressions, area titles and table cells. Every occurrence is highlighted in yellow and the current one in orange; <kbd>Enter</kbd> and <kbd>Shift</kbd>+<kbd>Enter</kbd> move between matches. <em>Replace</em> rewrites the current match and <em>Replace all</em> every match, in one undo step. Only math and text regions are changed by a replacement; a replacement that would make a math region invalid is refused.</p>
+<p>The <code>T</code> / <code>∑</code> toggle at the left of the field switches to <strong>math mode</strong> (also <kbd>Ctrl</kbd>+<kbd>M</kbd> in the field): you type a math expression, and Find matches every region that contains the same expression structurally, for example every use of the name <code>x</code> but not the <code>x</code> inside <code>x_max</code>. Replacing in math mode substitutes the expression and recalculates.</p>
+
+<h2 id="spelling">Spelling</h2>
+<p>Text regions are spell-checked as you type; unknown words are underlined. Right-click a word for suggestions, to add it to your dictionary or to ignore it. <em>Edit › Spelling…</em> sets the language of the worksheet or of the selected text regions and downloads further dictionaries. See <a href="text.html#spelling">Text</a>.</p>

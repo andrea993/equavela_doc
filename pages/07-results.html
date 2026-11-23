@@ -1,0 +1,28 @@
+<!-- title: Result format -->
+<h1>Result format</h1>
+<p>How a result is displayed never changes the value that other regions use: the full double precision value is always kept.</p>
+
+<h2 id="number-format">Number format</h2>
+<p><em>Calculate › Results › Result format…</em> sets the format of the selected region; <em>Worksheet format…</em> sets the default of the whole worksheet. A region uses the worksheet default for every option it does not set itself.</p>
+<table>
+<thead><tr><th>Option</th><th>Choices</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Format</td><td><strong>General</strong> (exponential notation only for very large or small numbers), <strong>Decimal</strong> (never exponential), <strong>Scientific</strong> (always), <strong>Engineering</strong> (exponent a multiple of 3), <strong>Percent</strong></td><td>General</td></tr>
+<tr><td>Precision</td><td>0 to 15 digits after the decimal point</td><td>3</td></tr>
+<tr><td>Trailing zeros</td><td>Show them up to the precision (<code>0.500</code>) or hide them (<code>0.5</code>)</td><td>hidden</td></tr>
+<tr><td>Radix</td><td>Decimal, binary, octal, hexadecimal (whole numbers only)</td><td>decimal</td></tr>
+<tr><td>Complex form</td><td>Cartesian (<code>3 + 4i</code>) or polar (<code>5∠53.13°</code>)</td><td>Cartesian</td></tr>
+<tr><td>Exponential threshold</td><td>In General format, numbers whose power of ten is at least this (or at most its negative) use exponential notation</td><td>3</td></tr>
+<tr><td>Zero threshold</td><td>Numbers smaller in magnitude than 10<sup>−n</sup> are shown as 0</td><td>15</td></tr>
+<tr><td>Complex threshold</td><td>The smaller part of a complex number is hidden when it is below 10<sup>−n</sup> of the larger</td><td>10</td></tr>
+<tr><td>Nested arrays</td><td>Show the elements of a matrix inside a matrix, or only its size</td><td>collapsed</td></tr>
+</tbody>
+</table>
+<p>Strings are shown in double quotes.</p>
+
+<h2 id="matrices">Matrix results</h2>
+<p>A matrix or vector result is drawn as a matrix in brackets. When it has more elements than <em>Elements to see before scrolling</em> (in the Matrix tab, 12 × 12 by default), it is drawn in a box that scrolls; drag the box's corner handle to make it larger or smaller, and the printed page shows exactly what the box shows. Very large results load the visible part only, as you scroll.</p>
+<p><em>Matrix › Show indices</em> draws the row and column indices next to a result. You can select cells of a result with the mouse and copy them (<kbd>Ctrl</kbd>+<kbd>C</kbd>): they are copied as a matrix at full precision.</p>
+
+<h2 id="math-font">Math font and label styles</h2>
+<p><em>Calculate › Math Formatting</em> sets the size (8 to 72 pt, 11 pt by default), the colour and the highlight of the selected math regions. <em>Calculate › Math Formatting › Label styles</em> sets how each kind of name is drawn throughout the worksheet: bold, italic, underline and colour for variables, constants, functions, units, system variables and keywords. These are display settings only.</p>

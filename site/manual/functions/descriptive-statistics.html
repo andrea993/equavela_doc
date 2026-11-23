@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descriptive statistics · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html" aria-current="page">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Descriptive statistics</h1>
+<p class="toc"><a href="#f-contingtbl"><code>contingtbl</code></a> <a href="#f-corr"><code>corr</code></a> <a href="#f-covar"><code>covar</code></a> <a href="#f-cvar"><code>cvar</code></a> <a href="#f-Ftest"><code>Ftest</code></a> <a href="#f-gmean"><code>gmean</code></a> <a href="#f-hmean"><code>hmean</code></a> <a href="#f-kendltau"><code>kendltau</code></a> <a href="#f-kendltau2"><code>kendltau2</code></a> <a href="#f-kurt"><code>kurt</code></a> <a href="#f-mean"><code>mean</code></a> <a href="#f-median"><code>median</code></a> <a href="#f-mode"><code>mode</code></a> <a href="#f-percentile"><code>percentile</code></a> <a href="#f-skew"><code>skew</code></a> <a href="#f-Spear"><code>Spear</code></a> <a href="#f-stdev"><code>stdev</code></a> <a href="#f-Stdev"><code>Stdev</code></a> <a href="#f-var"><code>var</code></a> <a href="#f-Var"><code>Var</code></a></p>
+<section class="function" id="f-contingtbl">
+<h3><code>contingtbl</code></h3>
+<p class="signature"><code>contingtbl(M)</code></p>
+<p>Chi-squared, dof, probability, Cramer's V, contingency coefficient.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.Chisq</code></dd><dt>Notes</dt><dd>For a contingency table: Pearson's χ², the degrees of freedom, the upper-tail probability, Cramér's V and the contingency coefficient C.</dd></dl>
+</section>
+<section class="function" id="f-corr">
+<h3><code>corr</code></h3>
+<p class="signature"><code>corr(A, B)</code></p>
+<p>Pearson correlation coefficient.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.cor</code></dd><dt>Notes</dt><dd>Pearson's correlation coefficient <code>cvar(A, B)/(stdev(A)·stdev(B))</code>; the same value as Julia's <code>cor</code>.</dd></dl>
+</section>
+<section class="function" id="f-covar">
+<h3><code>covar</code></h3>
+<p class="signature"><code>covar(vx, vy)</code></p>
+<p>Covariance of two vectors (page covariance.html).</p>
+<dl><dt>Julia</dt><dd><code>Statistics.cov</code></dd><dt>Notes</dt><dd>The same formula as <code>cvar</code>, for two vectors.</dd></dl>
+</section>
+<section class="function" id="f-cvar">
+<h3><code>cvar</code></h3>
+<p class="signature"><code>cvar(A, B)</code></p>
+<p>Covariance of A and B (divides by m*n; conjugates).</p>
+<dl><dt>Julia</dt><dd><code>Statistics.cov</code></dd><dt>Notes</dt><dd><code>Σ(aᵢ − ā)·conj(bᵢ − b̄)/N</code>: the population covariance, dividing by N, over all elements of two arrays of equal size. Julia's <code>cov</code> divides by N − 1 unless <code>corrected=false</code>.</dd></dl>
+</section>
+<section class="function" id="f-Ftest">
+<h3><code>Ftest</code></h3>
+<p class="signature"><code>Ftest(v1, v2)</code></p>
+<p>F-test statistic and probability for equal variance.</p>
+<dl><dt>Julia</dt><dd><code>Distributions.FDist</code></dd><dt>Notes</dt><dd>The vector <code>[F; p]</code>: the ratio of the two sample variances and the two-sided probability from the F distribution with (n₁ − 1, n₂ − 1) degrees of freedom.</dd></dl>
+</section>
+<section class="function" id="f-gmean">
+<h3><code>gmean</code></h3>
+<p class="signature"><code>gmean(A, B, C, …)</code></p>
+<p>Geometric mean (positive reals).</p>
+<dl><dt>Notes</dt><dd>The geometric mean of positive numbers without units, <code>(∏xᵢ)^(1/n)</code>, computed through logarithms when the product would overflow.</dd></dl>
+</section>
+<section class="function" id="f-hmean">
+<h3><code>hmean</code></h3>
+<p class="signature"><code>hmean(A, B, C, …)</code></p>
+<p>Harmonic mean (positive reals).</p>
+<dl><dt>Notes</dt><dd>The harmonic mean <code>n/Σ(1/xᵢ)</code> of positive numbers; units are kept.</dd></dl>
+</section>
+<section class="function" id="f-kendltau">
+<h3><code>kendltau</code></h3>
+<p class="signature"><code>kendltau(v1, v2)</code></p>
+<p>Kendall's tau-b, the z-score of the normal approximation with the tie correction of its variance, and the two-sided probability, as SciPy.</p>
+<dl><dt>Notes</dt><dd>Kendall's τ<sub>b</sub>, its z-score from the normal approximation with the tie correction of the variance, and the two-sided probability, as SciPy's <code>kendalltau</code>.</dd></dl>
+</section>
+<section class="function" id="f-kendltau2">
+<h3><code>kendltau2</code></h3>
+<p class="signature"><code>kendltau2(M)</code></p>
+<p>Kendall's tau for a contingency table M.</p>
+<dl><dt>Notes</dt><dd>Kendall's τ<sub>b</sub> from a contingency table of frequencies, with its z-score and two-sided probability (without tie correction of the variance).</dd></dl>
+</section>
+<section class="function" id="f-kurt">
+<h3><code>kurt</code></h3>
+<p class="signature"><code>kurt(A, B, C, …)</code></p>
+<p>Kurtosis.</p>
+<dl><dt>Notes</dt><dd>The excess sample kurtosis with the small-sample correction used by spreadsheets. <code>StatsBase.kurtosis</code> returns the unadjusted excess kurtosis.</dd></dl>
+</section>
+<section class="function" id="f-mean">
+<h3><code>mean</code></h3>
+<p class="signature"><code>mean(A, B, C, …)</code></p>
+<p>Arithmetic mean over all elements of the arguments.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.mean</code></dd><dt>Notes</dt><dd>The arithmetic mean over every element of every argument, scalars and arrays together (Julia's <code>mean</code> takes one collection). Units are kept and must agree.</dd></dl>
+</section>
+<section class="function" id="f-median">
+<h3><code>median</code></h3>
+<p class="signature"><code>median(A, B, C, …)</code></p>
+<p>Median (real values).</p>
+<dl><dt>Julia</dt><dd><code>Statistics.median</code></dd><dt>Notes</dt><dd>Over every element of every argument; real values only; the mean of the two middle values for an even count.</dd></dl>
+</section>
+<section class="function" id="f-mode">
+<h3><code>mode</code></h3>
+<p class="signature"><code>mode(A, B, C, …)</code></p>
+<p>Most frequent value.</p>
+<dl><dt>Notes</dt><dd>The most frequent value; when several values are equally frequent, the smallest. Real values only.</dd></dl>
+</section>
+<section class="function" id="f-percentile">
+<h3><code>percentile</code></h3>
+<p class="signature"><code>percentile(v, p)</code></p>
+<p>Value below which fraction p (0..1) of v lies.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.quantile</code></dd><dt>Notes</dt><dd>The value below which the fraction <code>p</code> (0 to 1) of the data lies, interpolating linearly between order statistics at position <code>p·(n − 1)</code>. This matches Julia's default <code>quantile(v, p)</code>.</dd></dl>
+</section>
+<section class="function" id="f-skew">
+<h3><code>skew</code></h3>
+<p class="signature"><code>skew(A, B, C, …)</code></p>
+<p>Skewness.</p>
+<dl><dt>Notes</dt><dd>The sample skewness <code>n/((n−1)(n−2))·Σz³</code> with z standardised by the sample standard deviation (the adjusted Fisher–Pearson coefficient, as spreadsheets compute it). Julia's <code>StatsBase.skewness</code> returns the unadjusted value.</dd></dl>
+</section>
+<section class="function" id="f-Spear">
+<h3><code>Spear</code></h3>
+<p class="signature"><code>Spear(v1, v2)</code></p>
+<p>Spearman rank correlation, returns 5-element vector.</p>
+<dl><dt>Notes</dt><dd>Spearman's rank correlation as a vector of five values: the sum of squared rank differences D, its normal score and two-sided probability, ρ, and the probability of ρ from Student's t distribution. Ties get average ranks.</dd></dl>
+</section>
+<section class="function" id="f-stdev">
+<h3><code>stdev</code></h3>
+<p class="signature"><code>stdev(A, B, C, …)</code></p>
+<p>Population standard deviation.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.std</code></dd><dt>Notes</dt><dd>The <strong>population</strong> standard deviation (divides by N), Julia's <code>std(x, corrected=false)</code>. Julia's default <code>std</code> corresponds to <code>Stdev</code>.</dd></dl>
+</section>
+<section class="function" id="f-Stdev">
+<h3><code>Stdev</code></h3>
+<p class="signature"><code>Stdev(A, B, C, …)</code></p>
+<p>Sample standard deviation.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.std</code></dd><dt>Notes</dt><dd>The sample standard deviation (divides by N − 1), Julia's default <code>std</code>.</dd></dl>
+</section>
+<section class="function" id="f-var">
+<h3><code>var</code></h3>
+<p class="signature"><code>var(A, B, C, …)</code></p>
+<p>Population variance (divides by N).</p>
+<dl><dt>Julia</dt><dd><code>Statistics.var</code></dd><dt>Notes</dt><dd>The <strong>population</strong> variance, dividing by N, which is Julia's <code>var(x, corrected=false)</code>; Julia's default <code>var</code> divides by N − 1 (that is <code>Var</code> here). Complex values use <code>|x − mean|²</code>.</dd></dl>
+</section>
+<section class="function" id="f-Var">
+<h3><code>Var</code></h3>
+<p class="signature"><code>Var(A, B, C, …)</code></p>
+<p>Sample variance.</p>
+<dl><dt>Julia</dt><dd><code>Statistics.var</code></dd><dt>Notes</dt><dd>The sample variance, dividing by N − 1: Julia's default <code>var</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

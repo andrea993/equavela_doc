@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Array creation, joining and subdividing · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html" aria-current="page">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Array creation, joining and subdividing</h1>
+<p class="toc"><a href="#f-augment"><code>augment</code></a> <a href="#f-diag"><code>diag</code></a> <a href="#f-identity"><code>identity</code></a> <a href="#f-logpts"><code>logpts</code></a> <a href="#f-logspace"><code>logspace</code></a> <a href="#f-matrix"><code>matrix</code></a> <a href="#f-stack"><code>stack</code></a> <a href="#f-submatrix"><code>submatrix</code></a> <a href="#f-vec"><code>vec</code></a></p>
+<section class="function" id="f-augment">
+<h3><code>augment</code></h3>
+<p class="signature"><code>augment(A, B, C, …)</code></p>
+<p>Places arrays side by side, left to right.</p>
+<dl><dt>Julia</dt><dd><code>Base.hcat</code></dd><dt>Notes</dt><dd>Places arrays side by side; a scalar counts as a 1 × 1 block. All arguments need the same number of rows.</dd></dl>
+</section>
+<section class="function" id="f-diag">
+<h3><code>diag</code></h3>
+<p class="signature"><code>diag(v/M)</code></p>
+<p>Vector to diagonal matrix, or square matrix to its diagonal vector.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.diagm</code>, <code>LinearAlgebra.diag</code></dd><dt>Notes</dt><dd>A vector gives the square diagonal matrix (<code>diagm</code>); a square matrix gives the column of its diagonal (<code>diag</code>). Julia's <code>diag</code> also accepts non-square matrices.</dd></dl>
+</section>
+<section class="function" id="f-identity">
+<h3><code>identity</code></h3>
+<p class="signature"><code>identity(n)</code></p>
+<p>n x n identity matrix.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.I</code></dd><dt>Notes</dt><dd>An n × n identity matrix of doubles, as <code>Matrix(1.0I, n, n)</code>.</dd></dl>
+</section>
+<section class="function" id="f-logpts">
+<h3><code>logpts</code></h3>
+<p class="signature"><code>logpts(minexp, dec, dnpts)</code></p>
+<p>dec decades of log-spaced points starting at 10^minexp, dnpts per decade.</p>
+<dl><dt>Notes</dt><dd><code>dec·dnpts</code> points <code>10^(minexp + k/dnpts)</code>, k = 0, 1, …: whole decades starting at 10<sup>minexp</sup>, without the start of the next decade.</dd></dl>
+</section>
+<section class="function" id="f-logspace">
+<h3><code>logspace</code></h3>
+<p class="signature"><code>logspace(min, max, npts)</code></p>
+<p>npts log-spaced points from min to max (positive reals, compatible units).</p>
+<dl><dt>Julia</dt><dd><code>Base.range</code></dd><dt>Notes</dt><dd><code>npts</code> points spaced evenly on a logarithmic scale from <code>min</code> to <code>max</code>, both included; both must be positive and have the same unit, which the points keep. Julia equivalent: <code>exp10.(range(log10(a), log10(b), length=n))</code>.</dd></dl>
+</section>
+<section class="function" id="f-matrix">
+<h3><code>matrix</code></h3>
+<p class="signature"><code>matrix(m, n, f)</code></p>
+<p>m x n matrix, element (i, j) = f(i, j), i = 0..m-1 and j = 0..n-1.</p>
+<dl><dt>Notes</dt><dd><code>matrix(m, n, f)</code> builds an m × n matrix with element (i, j) equal to <code>f(i, j)</code>, where i and j count from 0 whatever <code>ORIGIN</code> is. Julia equivalent: <code>[f(i, j) for i in 0:m-1, j in 0:n-1]</code>.</dd></dl>
+</section>
+<section class="function" id="f-stack">
+<h3><code>stack</code></h3>
+<p class="signature"><code>stack(A, B, C, …)</code></p>
+<p>Places arrays top to bottom.</p>
+<dl><dt>Julia</dt><dd><code>Base.vcat</code></dd><dt>Notes</dt><dd>Places arrays top to bottom; a scalar counts as a 1 × 1 block. All arguments need the same number of columns. Elements may be of mixed kinds (numbers, strings, arrays).</dd></dl>
+</section>
+<section class="function" id="f-submatrix">
+<h3><code>submatrix</code></h3>
+<p class="signature"><code>submatrix(A, ir, jr, ic, jc)</code></p>
+<p>Rows ir..jr and columns ic..jc of A.</p>
+<dl><dt>Notes</dt><dd><code>submatrix(A, ir, jr, ic, jc)</code> is Julia's <code>A[ir:jr, ic:jc]</code> with indices counted from <code>ORIGIN</code>. Reversed bounds (<code>jr &lt; ir</code>) return the rows or columns in reverse order. The result is always a matrix, also when it is 1 × 1.</dd></dl>
+</section>
+<section class="function" id="f-vec">
+<h3><code>vec</code></h3>
+<p class="signature"><code>vec(x, y, z) / vec(x, y) / vec(x)</code></p>
+<p>Vector from first x, second y (step y-x) to last z.</p>
+<dl><dt>Julia</dt><dd><code>Base.collect</code></dd><dt>Notes</dt><dd><code>vec(x, y, z)</code> is the column from <code>x</code> to <code>z</code> with step <code>y − x</code>, <code>vec(x, z)</code> with step 1 (−1 when <code>z &lt; x</code>), and <code>vec(i)</code> turns a range variable into a vector. Unlike Julia's <code>vec</code>, which reshapes an array into a vector, this function builds a vector from a range, as <code>collect(x:step:z)</code>.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

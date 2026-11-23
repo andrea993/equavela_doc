@@ -1,0 +1,38 @@
+<!-- title: Units -->
+<h1>Units</h1>
+<p>Every number can carry a unit. Equavela calculates in SI base units internally, checks that dimensions agree, and shows results in SI units unless you ask for another unit.</p>
+
+<h2 id="entering">Entering a unit</h2>
+<p>A unit is a name with the <em>unit</em> label. There are three ways to give it that label:</p>
+<ul>
+<li>pick the unit from the suggestion list that appears while you type its name;</li>
+<li>type the name and press <kbd>Ctrl</kbd>+<kbd>U</kbd> (on a selection, <kbd>Ctrl</kbd>+<kbd>U</kbd> marks every unit name in it, for example all of <code>kg·m/s²</code>);</li>
+<li>insert it from the <em>Units</em> panel (<em>Math › Units</em>), which lists the units by dimension.</li>
+</ul>
+<p>Write the unit after the number: <code>3.5 m</code>, <code>12 kN/m</code>, <code>20 °C</code>. A space or nothing between them is an implicit multiplication; <code>3.5·m</code> means the same. Units are drawn in their own style (bold blue italic by default), so a unit is always recognisable.</p>
+<div class="note">A name without the unit label is never a unit. If nothing defines <code>m</code>, the plain name <code>m</code> is an "undefined" error, not the metre. This lets a worksheet use <code>L</code>, <code>m</code> or <code>s</code> as variable names next to the units of the same spelling.</div>
+
+<h2 id="dimensions">Dimension checks</h2>
+<ul>
+<li>Adding, subtracting and comparing quantities of different dimensions is an error ("the units do not match"); a static check warns about it before the calculation.</li>
+<li>Multiplication, division and integer or rational powers combine units: <code>(4 m²)^0.5 = 2 m</code>.</li>
+<li>A dimensionless result is a plain number. Angles are dimensionless: <code>rad</code> is 1 and <code>deg</code> is π/180, so <code>sin(30 deg) = 0.5</code>.</li>
+<li>Functions such as <code>sin</code>, <code>exp</code> and <code>ln</code> need a dimensionless argument.</li>
+<li>The elements of a vector or matrix may each have their own unit; element-wise operations check each element.</li>
+<li>Ranges and functions work with quantities: <code>h := 0 m, 100 m..1000 m</code>.</li>
+</ul>
+
+<h2 id="display">Showing a result in a unit</h2>
+<p>A result is shown in SI units with the unit simplified. After the result is a placeholder: type a unit there to convert the displayed value, for example <code>v = 25 m/s</code> becomes <code>v = 90 km/hr</code>. Here a plain name is enough, because nothing but a unit can go in that slot. The unit must have the dimension of the value, otherwise the region shows an error. The conversion changes only the display, never the value used by other regions.</p>
+
+<h2 id="temperature">Temperatures</h2>
+<p><code>°C</code> and <code>°F</code> are absolute temperatures with an offset. A number followed by one of them becomes the temperature in kelvin at once: <code>20 °C</code> is 293.15 K, and from then on it is an ordinary kelvin value. So <code>30 °C − 20 °C = 10 K</code>, and <code>20 °C + 5 °C</code> adds two absolute temperatures (571.3 K). For a temperature difference use <code>Δ°C</code> or <code>Δ°F</code>: <code>20 °C + 5 Δ°C = 298.15 K</code>. Shown in <code>°C</code>, a value is converted back with the offset. <code>°C</code> may follow only a single number; for vectors use <code>K</code> or <code>Δ°C</code>.</p>
+
+<h2 id="prefixes">Prefixes</h2>
+<p>Most SI units accept the prefixes p, n, μ (or u), m, c, d, k, M, G and T: <code>mm</code>, <code>kN</code>, <code>MPa</code>, <code>GHz</code>. A full unit name always wins over a prefix reading: <code>min</code> is the minute and <code>mi</code> the mile.</p>
+
+<h2 id="list">Available units</h2>
+<p>The <a href="units-reference.html">units reference</a> lists every unit with its definition. It covers length, area, volume, mass, time, frequency, velocity, force, pressure, energy, power, electrical and magnetic units, temperature, amount of substance, light and absorbed dose, in SI and in common imperial forms (<code>in</code>, <code>ft</code>, <code>lb</code>, <code>psi</code>, <code>BTU</code>…).</p>
+
+<h2 id="symbolic">Units in symbolic results</h2>
+<p>Symbolic evaluation treats unit names as symbols and does not convert them. Evaluate numerically (<code>=</code>) to get a converted quantity.</p>

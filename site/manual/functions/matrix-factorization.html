@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matrix factorization · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html" aria-current="page">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Matrix factorization</h1>
+<p class="toc"><a href="#f-cholesky"><code>cholesky</code></a> <a href="#f-Cholesky"><code>Cholesky</code></a> <a href="#f-LU"><code>LU</code></a> <a href="#f-qr"><code>qr</code></a> <a href="#f-QR"><code>QR</code></a> <a href="#f-svd"><code>svd</code></a> <a href="#f-svds"><code>svds</code></a></p>
+<section class="function" id="f-cholesky">
+<h3><code>cholesky</code></h3>
+<p class="signature"><code>cholesky(M)</code></p>
+<p>Legacy lowercase spelling of a test worksheet (deprecated, still works).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.cholesky</code></dd><dt>Notes</dt><dd>The lower triangular <code>L</code> with <code>M = L·Lᴴ</code>, as <code>cholesky(Hermitian(M)).L</code>. Kept for older worksheets; prefer <code>Cholesky</code>.</dd></dl>
+</section>
+<section class="function" id="f-Cholesky">
+<h3><code>Cholesky</code></h3>
+<p class="signature"><code>Cholesky(M, [p, [u]])</code></p>
+<p>Returns nested [P; L] (pivoted, lower by default).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.cholesky</code></dd><dt>Notes</dt><dd>A nested vector <code>[P; L]</code>: by default with pivoting (<code>RowMaximum</code>), so that <code>P·M·Pᵀ = L·Lᴴ</code>. <code>Cholesky(M, 0)</code> turns pivoting off (P is the identity); a non-zero third argument returns the upper factor <code>Lᴴ</code>. Extract the parts with an index: <code>Cholesky(M)[1]</code>.</dd></dl>
+</section>
+<section class="function" id="f-LU">
+<h3><code>LU</code></h3>
+<p class="signature"><code>LU(M)</code></p>
+<p>Returns nested [P; L; U] with P*M = L*U.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.lu</code></dd><dt>Notes</dt><dd>A nested vector <code>[P; L; U]</code> with <code>P·M = L·U</code> (partial pivoting). Julia returns a factorisation object with a permutation vector instead of the matrix <code>P</code>.</dd></dl>
+</section>
+<section class="function" id="f-qr">
+<h3><code>qr</code></h3>
+<p class="signature"><code>qr(M)</code></p>
+<p>Legacy lowercase spelling of QR (deprecated).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.qr</code></dd><dt>Notes</dt><dd>The matrix <code>augment(Q, R)</code> with the full m × m orthogonal <code>Q</code> and the m × n upper triangular <code>R</code> from Julia's Householder QR. Kept for older worksheets; prefer <code>QR</code>.</dd></dl>
+</section>
+<section class="function" id="f-QR">
+<h3><code>QR</code></h3>
+<p class="signature"><code>QR(M, [p])</code></p>
+<p>Returns nested [P; Q; R] with M*P = Q*R.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.qr</code></dd><dt>Notes</dt><dd>A nested vector <code>[P; Q; R]</code> with <code>M·P = Q·R</code>, columns pivoted by decreasing norm (<code>ColumnNorm</code>); <code>QR(M, 0)</code> returns <code>[Q; R]</code> with <code>M = Q·R</code>. Q is the full square factor. Signs are LAPACK's.</dd></dl>
+</section>
+<section class="function" id="f-svd">
+<h3><code>svd</code></h3>
+<p class="signature"><code>svd(A)</code></p>
+<p>Returns nested [U; S; V] with A = U*diag(S)*V^T, as Julia's `svd`.</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.svd</code></dd><dt>Notes</dt><dd>A nested vector <code>[U; S; V]</code> with the thin factors in Julia's order, <code>A = U·diag(S)·Vᵀ</code>. Unpack it with <code>[U; S; V] := svd(A)</code>; <code>[U; S; Wᵀ] := svd(A)</code> defines <code>W</code> as Vᵀ.</dd></dl>
+</section>
+<section class="function" id="f-svds">
+<h3><code>svds</code></h3>
+<p class="signature"><code>svds(A)</code></p>
+<p>Singular values (sqrt of eigenvalues of A^H*A).</p>
+<dl><dt>Julia</dt><dd><code>LinearAlgebra.svdvals</code></dd><dt>Notes</dt><dd>The singular values in descending order, as a column.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

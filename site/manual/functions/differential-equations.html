@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differential equations · Equavela manual</title>
+<link rel="icon" href="../assets/equavela-mark.svg">
+<link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html"><img src="../assets/equavela-mark.svg" alt=""><span>Equavela</span><small>Manual</small></a>
+  <div class="search"><input id="search" type="search" placeholder="Search the manual (functions, commands, keys)" aria-label="Search the manual" autocomplete="off"><ol id="results" hidden></ol></div>
+  <button class="menu" aria-label="Contents" aria-controls="nav">☰</button>
+</header>
+<div class="frame">
+<nav id="nav">
+<h2>Guide</h2>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+<li><a href="../window.html">The window</a></li>
+<li><a href="../worksheets.html">Worksheets and regions</a></li>
+<li><a href="../math.html">Entering mathematics</a></li>
+<li><a href="../calculation.html">Definitions and calculation</a></li>
+<li><a href="../units.html">Units</a></li>
+<li><a href="../results.html">Result format</a></li>
+<li><a href="../arrays.html">Vectors, matrices and ranges</a></li>
+<li><a href="../programs.html">Programs</a></li>
+<li><a href="../solving.html">Solving equations</a></li>
+<li><a href="../symbolics.html">Symbolic calculation</a></li>
+<li><a href="../plots.html">Plots</a></li>
+<li><a href="../tables.html">Tables</a></li>
+<li><a href="../text.html">Text</a></li>
+<li><a href="../images.html">Images</a></li>
+<li><a href="../areas.html">Areas</a></li>
+<li><a href="../julia.html">Julia in worksheets</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../files.html">Files and recovery</a></li>
+<li><a href="../printing.html">Page setup and printing</a></li>
+<li><a href="../settings.html">Settings</a></li>
+</ul>
+<h2>Reference</h2>
+<ul>
+<li><a href="../units-reference.html">Units reference</a></li>
+<li><a href="../keyboard.html">Keyboard shortcuts</a></li>
+<li><a href="../commands.html">Command reference</a></li>
+</ul>
+<h2><a href="../functions/index.html">Functions</a></h2>
+<ul>
+<li><a href="../functions/array-characteristics-and-linear-algebra.html">Array characteristics and linear algebra</a></li>
+<li><a href="../functions/array-creation-joining-and-subdividing.html">Array creation, joining and subdividing</a></li>
+<li><a href="../functions/combinatorics-and-number-theory.html">Combinatorics and number theory</a></li>
+<li><a href="../functions/complex-numbers-and-sign.html">Complex numbers and sign</a></li>
+<li><a href="../functions/conditional-type-tests-and-errors.html">Conditional, type tests and errors</a></li>
+<li><a href="../functions/descriptive-statistics.html">Descriptive statistics</a></li>
+<li><a href="../functions/differential-equations.html" aria-current="page">Differential equations</a></li>
+<li><a href="../functions/file-access.html">File access</a></li>
+<li><a href="../functions/fourier-and-wavelet.html">Fourier and wavelet</a></li>
+<li><a href="../functions/hyperbolic-and-inverse-hyperbolic.html">Hyperbolic and inverse hyperbolic</a></li>
+<li><a href="../functions/interpolation-and-prediction.html">Interpolation and prediction</a></li>
+<li><a href="../functions/logarithm-and-exponential.html">Logarithm and exponential</a></li>
+<li><a href="../functions/matrix-factorization.html">Matrix factorization</a></li>
+<li><a href="../functions/other-data-analysis-graphical-outliers-pca-smoothing-local-extrema.html">Other data analysis (graphical, outliers, PCA, smoothing, local extrema)</a></li>
+<li><a href="../functions/probability-distributions-and-random-numbers.html">Probability distributions and random numbers</a></li>
+<li><a href="../functions/regression-and-curve-fitting.html">Regression and curve fitting</a></li>
+<li><a href="../functions/rounding-and-truncation.html">Rounding and truncation</a></li>
+<li><a href="../functions/solving-and-optimization.html">Solving and optimization</a></li>
+<li><a href="../functions/sorting-ranking-lookup-convolution.html">Sorting, ranking, lookup, convolution</a></li>
+<li><a href="../functions/special-functions.html">Special functions</a></li>
+<li><a href="../functions/strings.html">Strings</a></li>
+<li><a href="../functions/trigonometric-and-inverse-trigonometric.html">Trigonometric and inverse trigonometric</a></li>
+</ul>
+</nav>
+<main>
+<p class="crumbs"><a href="index.html">Functions</a></p>
+<h1>Differential equations</h1>
+<p class="toc"><a href="#f-Adams"><code>Adams</code></a> <a href="#f-AdamsBDF"><code>AdamsBDF</code></a> <a href="#f-BDF"><code>BDF</code></a> <a href="#f-Bulstoer"><code>Bulstoer</code></a> <a href="#f-bvalfit"><code>bvalfit</code></a> <a href="#f-multigrid"><code>multigrid</code></a> <a href="#f-numol"><code>numol</code></a> <a href="#f-odesolve"><code>odesolve</code></a> <a href="#f-Radau"><code>Radau</code></a> <a href="#f-relax"><code>relax</code></a> <a href="#f-Rkadapt"><code>Rkadapt</code></a> <a href="#f-rkfixed"><code>rkfixed</code></a> <a href="#f-sbval"><code>sbval</code></a> <a href="#f-statespace"><code>statespace</code></a> <a href="#f-Stiffb"><code>Stiffb</code></a> <a href="#f-Stiffr"><code>Stiffr</code></a></p>
+<section class="function" id="f-Adams">
+<h3><code>Adams</code></h3>
+<p class="signature"><code>Adams(init, x1, x2, intvls, D, [tol])</code></p>
+<p>Adams-Bashforth, nonstiff.</p>
+<dl><dt>Notes</dt><dd>The fourth-order Adams–Bashforth–Moulton predictor-corrector for non-stiff problems, refining the internal steps until two runs agree within <code>tol</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-AdamsBDF">
+<h3><code>AdamsBDF</code></h3>
+<p class="signature"><code>AdamsBDF(init, x1, x2, intvls, D, [J], [tol])</code></p>
+<p>Detects stiffness, calls Adams or BDF.</p>
+<dl><dt>Notes</dt><dd>Chooses <code>BDF</code> when the problem looks stiff at the start (the spectral radius of the Jacobian times the output step exceeds 1) and <code>Adams</code> otherwise. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-BDF">
+<h3><code>BDF</code></h3>
+<p class="signature"><code>BDF(init, x1, x2, intvls, D, [J], [tol])</code></p>
+<p>Backward differentiation, stiff.</p>
+<dl><dt>Notes</dt><dd>The backward differentiation formula with Newton iterations, for stiff problems; <code>J(x, y)</code> is the Jacobian (computed numerically when omitted). The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-Bulstoer">
+<h3><code>Bulstoer</code></h3>
+<p class="signature"><code>Bulstoer(init, x1, x2, intvls, D)</code></p>
+<p>Bulirsch-Stoer, smooth systems.</p>
+<dl><dt>Notes</dt><dd>Gragg–Bulirsch–Stoer extrapolation, efficient for smooth problems. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-bvalfit">
+<h3><code>bvalfit</code></h3>
+<p class="signature"><code>bvalfit(v1, v2, x1, x2, xf, D, load1, load2, scoreb)</code></p>
+<p>Boundary-value problem by shooting to a match point xf.</p>
+<dl><dt>Notes</dt><dd>As <code>sbval</code>, shooting from both ends to the match point <code>xf</code>: the row of values missing at <code>x1</code> followed by those missing at <code>x2</code>.</dd></dl>
+</section>
+<section class="function" id="f-multigrid">
+<h3><code>multigrid</code></h3>
+<p class="signature"><code>multigrid(M, ncycle)</code></p>
+<p>Multigrid solver for 2D elliptic PDE on a square.</p>
+<dl><dt>Notes</dt><dd>Solves Poisson's equation <code>∇²u = M</code> on the unit square with zero boundary by the multigrid method with <code>ncycle</code> V-cycles per level; <code>M</code> must be square with 2<sup>k</sup> + 1 rows.</dd></dl>
+</section>
+<section class="function" id="f-numol">
+<h3><code>numol</code></h3>
+<p class="signature"><code>numol(x_endpts, xpts, t_endpts, tpts, num_pde, num_pae, pde_func, pinit, bc_func)</code></p>
+<p>Method-of-lines solver for 1D transient PDE systems.</p>
+<dl><dt>Notes</dt><dd>The method of lines for one-dimensional time-dependent partial differential equations: space is discretised on <code>xpts</code> points with fourth-order differences, time integrated with Radau. <code>bc_func</code> gives, per equation, the left and right boundary values and their type (<code>"D"</code> Dirichlet, <code>"N"</code> Neumann). The result has <code>xpts</code> rows and, for each function, <code>tpts</code> columns.</dd></dl>
+</section>
+<section class="function" id="f-odesolve">
+<h3><code>odesolve</code></h3>
+<p class="signature"><code>odesolve(vf, b, [intvls])</code></p>
+<p>Solve block: the solution function of an ordinary differential equation system with its conditions, up to the end point b.</p>
+<dl><dt>Notes</dt><dd>Used as the closing call of a solve block of differential equations (see <a href="../solving.html#odesolve">Solving equations</a>): the solution as a function of the independent variable, between the first condition point and <code>b</code>. Initial value problems are integrated with an adaptive Adams/BDF scheme; conditions at two points are met by shooting.</dd></dl>
+</section>
+<section class="function" id="f-Radau">
+<h3><code>Radau</code></h3>
+<p class="signature"><code>Radau(init, x1, x2, intvls, D, [J], [M], [tol])</code></p>
+<p>Radau5, stiff.</p>
+<dl><dt>Notes</dt><dd>Radau IIA (order 5), for stiff problems and differential-algebraic systems: the optional mass matrix <code>M</code> solves <code>M·y′ = D(x, y)</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-relax">
+<h3><code>relax</code></h3>
+<p class="signature"><code>relax(A, B, C, D, E, S, U, rjac)</code></p>
+<p>Relaxation solver for Poisson/Laplace elliptic PDE.</p>
+<dl><dt>Notes</dt><dd>Solves the five-point finite-difference equation <code>A·u[i+1,j] + B·u[i−1,j] + C·u[i,j+1] + D·u[i,j−1] + E·u[i,j] = S[i,j]</code> (Poisson or Laplace on a grid) by red–black successive over-relaxation with Chebyshev acceleration; <code>U</code> holds the boundary values and the starting guess, <code>rjac</code> the spectral radius of the Jacobi iteration.</dd></dl>
+</section>
+<section class="function" id="f-Rkadapt">
+<h3><code>Rkadapt</code></h3>
+<p class="signature"><code>Rkadapt(init, x1, x2, intvls, D)</code></p>
+<p>4th-order Runge-Kutta, adaptive step.</p>
+<dl><dt>Notes</dt><dd>Runge–Kutta with adaptive steps (Dormand–Prince 5(4) pair), reporting at <code>intvls</code> equally spaced points. The internal tolerance is tighter than <code>TOL</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-rkfixed">
+<h3><code>rkfixed</code></h3>
+<p class="signature"><code>rkfixed(init, x1, x2, intvls, D)</code></p>
+<p>4th-order Runge-Kutta, fixed step.</p>
+<dl><dt>Notes</dt><dd>The classical fourth-order Runge–Kutta method with <code>intvls</code> equal steps. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-sbval">
+<h3><code>sbval</code></h3>
+<p class="signature"><code>sbval(v1, x1, x2, D, load1, scorei)</code></p>
+<p>Finds missing initial values by shooting.</p>
+<dl><dt>Notes</dt><dd>For a boundary value problem: the initial values missing at <code>x1</code>, found by shooting (adaptive Runge–Kutta and Levenberg–Marquardt). <code>load1(x1, v1)</code> builds the initial vector from the guesses and <code>score(x2, y)</code> measures the mismatch at the far end.</dd></dl>
+</section>
+<section class="function" id="f-statespace">
+<h3><code>statespace</code></h3>
+<p class="signature"><code>statespace(init, t1, t2, intvls, A, [B, u])</code></p>
+<p>Linear first-order ODE system x' = A(t)x + B(t)u(t).</p>
+<dl><dt>Notes</dt><dd>Solves the linear system <code>x′ = A(t)·x + B(t)·u(t)</code>; <code>A</code>, <code>B</code> and <code>u</code> may be functions of t or constant arrays. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-Stiffb">
+<h3><code>Stiffb</code></h3>
+<p class="signature"><code>Stiffb(init, x1, x2, intvls, D, AJ)</code></p>
+<p>Bulirsch-Stoer, stiff, augmented Jacobian AJ.</p>
+<dl><dt>Notes</dt><dd>Linearly implicit Euler extrapolation for stiff systems; <code>AJ(x, y)</code> returns the augmented Jacobian <code>[∂D/∂x, ∂D/∂y]</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+<section class="function" id="f-Stiffr">
+<h3><code>Stiffr</code></h3>
+<p class="signature"><code>Stiffr(init, x1, x2, intvls, D, AJ)</code></p>
+<p>Rosenbrock, stiff.</p>
+<dl><dt>Notes</dt><dd>A Rosenbrock method for stiff systems; <code>AJ</code> as for <code>Stiffb</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
+</section>
+</main>
+</div>
+<script>window.MANUAL_ROOT = "../";</script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

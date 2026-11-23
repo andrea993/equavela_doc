@@ -51,6 +51,16 @@ y := odesolve(y(t), 10)
 y(1.5) = 0.997</code></pre>
 <p>A constraint that uses the variable <code>t</code> is an equation; one that does not is a condition. The result is a function, valid between the first condition point and the end point <code>b</code>; for a system, <code>odesolve([x(t); y(t)], b)</code> returns a column of functions. Conditions at both ends (boundary values) are solved by shooting. The optional third argument is the number of steps (1000 by default).</p>
 
+<h3 id="odesolve-symbolic">Closed-form solution</h3>
+<p>End the block with the symbolic arrow instead (<kbd>Ctrl</kbd>+<kbd>.</kbd>) to solve the same equations exactly:</p>
+<pre><code>Given
+y′′(t) + y(t) <strong>=</strong> 0
+y(0) <strong>=</strong> 0
+y′(0) <strong>=</strong> 1
+y := odesolve(y(t), 10) → sin(t)
+y(1.5) = 0.997</code></pre>
+<p>The result is the formula of the solution, and <code>y</code> is a function of <code>t</code> that numeric and symbolic regions below can use. Conditions that are missing leave integration constants <code>C1</code>, <code>C2</code>, … in the result. A system gives the column of its functions. The end point is not used. When no closed form exists the region shows an error: use the numeric <code>odesolve</code>.</p>
+
 <h2 id="ode-functions">Differential equation functions</h2>
 <p>For first-order systems written as a function <code>D(x, y)</code> that returns the derivatives, use the table solvers: <code>rkfixed</code> (fourth-order Runge–Kutta, fixed step), <code>Rkadapt</code>, <code>Bulstoer</code>, <code>Adams</code>, <code>BDF</code>, <code>Radau</code>, <code>Stiffb</code>, <code>Stiffr</code> and <code>AdamsBDF</code>. They return a matrix whose first column holds the points and the other columns the solution. Boundary value problems use <code>sbval</code> and <code>bvalfit</code>, partial differential equations <code>numol</code>, <code>relax</code> and <code>multigrid</code>. See <a href="functions/differential-equations.html">Differential equations</a>.</p>
 

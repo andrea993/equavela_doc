@@ -1,17 +1,17 @@
 # Equavela manual
 
-The user manual of Equavela as a static HTML site. The application repository includes this repository as a submodule at `private/docs/manual` and serves `site/manual` at `/manual/`.
+The user manual of Equavela as a static HTML site. The application repository includes this repository as a submodule at `docs/manual` and serves `site/manual` at `/manual/`.
 
 - `pages/*.html`: guide chapters. The first line is `<!-- title: ... -->`; the number in the file name sets the order.
-- `functions.tsv`: one row per built-in function: name, Julia counterpart (`;` between several), notes (HTML). The names, signatures, categories and summaries come from the application's catalogue, `docs/spec/fixtures/builtin-catalogue.tsv`.
+- `functions.tsv`: one row per built-in function: name, Julia counterpart (`;` between several), notes (HTML). The names, signatures, categories and summaries come from the application's catalogue, `core/fixtures/builtin-catalogue.tsv`.
 - `assets/`: stylesheet, search script and logos.
 - `site/manual/`: the built site, committed so that it can be browsed and bundled without a build step.
 
 Build from the application repository root:
 
 ```bash
-node private/docs/manual/build.mjs
-node private/docs/manual/build.mjs --check
+node docs/manual/build.mjs
+node docs/manual/build.mjs --check
 ```
 
 Open `site/manual/index.html` in a browser to read it.

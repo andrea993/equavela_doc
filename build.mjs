@@ -11,7 +11,7 @@
 //   assets/*           stylesheet, script and logos, copied as they are
 //   the application    kept by the application repository, whose submodule this repository is
 //                      (at docs/manual; `--app <root>` names another checkout):
-//                      docs/spec/fixtures/builtin-catalogue.tsv  every built-in function
+//                      core/fixtures/builtin-catalogue.tsv       every built-in function
 //                      app/src/keymap/*.json                     the keyboard table
 //                      app/src/catalog/commands.ts               the command titles
 //                      app/src/catalog/units.ts, kernel/*/src/units.tsv   the units
@@ -28,8 +28,8 @@ const SITE = path.join(SRC, "site");
 const OUT = path.join(SITE, "manual");
 const check = process.argv.includes("--check");
 const appAt = process.argv.indexOf("--app");
-// The public code tree of the application repository (`private/docs/manual` -> `public`).
-const APP = appAt > 0 ? path.resolve(process.argv[appAt + 1]) : path.join(SRC, "../../../public");
+// The application repository, whose submodule this repository is at docs/manual.
+const APP = appAt > 0 ? path.resolve(process.argv[appAt + 1]) : path.join(SRC, "../..");
 const CATALOGUE = path.join(APP, "core/fixtures/builtin-catalogue.tsv");
 
 const read = (file) => fs.readFileSync(file, "utf8");

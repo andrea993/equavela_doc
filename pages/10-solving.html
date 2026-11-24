@@ -48,14 +48,24 @@ s = [3; 4]</code></pre>
 <tr><td rowspan="3"><code>find</code>, <code>minerr</code></td><td><em>Automatic</em> (default): Levenberg-Marquardt, then the trust region method if it fails on a square system</td><td>all</td></tr>
 <tr><td>Levenberg-Marquardt</td><td>all</td></tr>
 <tr><td>Trust region, Newton</td><td>equations only, as many as unknowns</td></tr>
-<tr><td rowspan="7"><code>minimize</code>, <code>maximize</code></td><td><em>Automatic</em> (default): SLSQP, then COBYLA; the penalty method when a constraint is <code>≠</code></td><td>all</td></tr>
+<tr><td rowspan="9"><code>minimize</code>, <code>maximize</code></td><td><em>Automatic</em> (default): SLSQP, then COBYLA; the penalty method when a constraint is <code>≠</code></td><td>all</td></tr>
 <tr><td>SLSQP (with gradients)</td><td>equations and inequalities</td></tr>
 <tr><td>MMA, CCSAQ (with gradients)</td><td>inequalities</td></tr>
 <tr><td>L-BFGS (with gradients)</td><td>none</td></tr>
 <tr><td>COBYLA (no derivatives)</td><td>equations and inequalities</td></tr>
 <tr><td>Nelder-Mead (no derivatives)</td><td>none</td></tr>
 <tr><td>Penalty (BFGS)</td><td>all, also <code>≠</code></td></tr>
+<tr><td>ISRES (global)</td><td>bounds, equations and inequalities</td></tr>
+<tr><td>DIRECT-L, CRS2, MLSL (global)</td><td>bounds only</td></tr>
 </table>
+<p>The local algorithms find the minimum nearest to the guess values. When the objective has many local minima, choose a <strong>global</strong> algorithm: it searches the whole box given by the bounds of the unknowns, then a local algorithm refines the best point. The bounds are the constraints that compare one unknown alone with a fixed value, one per line:</p>
+<pre><code>Given
+x ≥ -5
+x ≤ 5
+y ≥ -5
+y ≤ 5
+minimize(f, x, y) =</code></pre>
+<p>Every unknown needs both bounds. ISRES also takes other constraints; DIRECT-L, CRS2 and MLSL take the bounds only. A global search costs many evaluations: set <strong>Max evaluations</strong> or <strong>Max time</strong> to what you can wait for.</p>
 <p>An algorithm that cannot take the constraints of the block shows an error naming the ones that can. Functions with steps (look-ups, rounding, interpolation of tables) have no useful gradient: use COBYLA or Nelder-Mead there.</p>
 <p>The tab also sets:</p>
 <ul>

@@ -41,6 +41,30 @@ s = [3; 4]</code></pre>
 </table>
 <p><code>find</code> and <code>minerr</code> use the Levenberg–Marquardt method on the equation residuals and inequality violations; <code>minimize</code> and <code>maximize</code> a penalty method with BFGS steps. Results depend on the guesses: a guess on the wrong side of an inequality can lead to another root. <code>Given</code>, <code>find</code> and the other closing functions may be written in any letter case.</p>
 
+<h2 id="solver-tab">Choosing the algorithm: the Solver tab</h2>
+<p>Click in the region of <code>find</code>, <code>minerr</code>, <code>minimize</code> or <code>maximize</code>: the contextual <strong>Solver</strong> tab opens in the ribbon. The choice belongs to that region, is saved with the worksheet and recalculates it.</p>
+<table>
+<tr><th>Function</th><th>Algorithm</th><th>Constraints</th></tr>
+<tr><td rowspan="3"><code>find</code>, <code>minerr</code></td><td><em>Automatic</em> (default): Levenberg-Marquardt, then the trust region method if it fails on a square system</td><td>all</td></tr>
+<tr><td>Levenberg-Marquardt</td><td>all</td></tr>
+<tr><td>Trust region, Newton</td><td>equations only, as many as unknowns</td></tr>
+<tr><td rowspan="7"><code>minimize</code>, <code>maximize</code></td><td><em>Automatic</em> (default): SLSQP, then COBYLA; the penalty method when a constraint is <code>≠</code></td><td>all</td></tr>
+<tr><td>SLSQP (with gradients)</td><td>equations and inequalities</td></tr>
+<tr><td>MMA, CCSAQ (with gradients)</td><td>inequalities</td></tr>
+<tr><td>L-BFGS (with gradients)</td><td>none</td></tr>
+<tr><td>COBYLA (no derivatives)</td><td>equations and inequalities</td></tr>
+<tr><td>Nelder-Mead (no derivatives)</td><td>none</td></tr>
+<tr><td>Penalty (BFGS)</td><td>all, also <code>≠</code></td></tr>
+</table>
+<p>An algorithm that cannot take the constraints of the block shows an error naming the ones that can. Functions with steps (look-ups, rounding, interpolation of tables) have no useful gradient: use COBYLA or Nelder-Mead there.</p>
+<p>The tab also sets:</p>
+<ul>
+<li><strong>Derivatives</strong>: <em>Automatic</em> computes gradients and Jacobians exactly by automatic differentiation through your expressions, and falls back to finite differences where an expression does not allow it (a Julia block written for floating-point numbers, for example); <em>Finite differences</em> always estimates them numerically.</li>
+<li><strong>Max evaluations</strong> (10000 by default) and <strong>Max time</strong> in seconds (none by default): when one of them stops the search, the region says which, unless the constraints are already met.</li>
+<li><strong>x tolerance</strong> (relative change of the unknowns, 1e-10) and, for <code>minimize</code> and <code>maximize</code>, <strong>f tolerance</strong> (relative change of the objective, 1e-12). How closely the constraints must hold is <code>CTOL</code>.</li>
+</ul>
+<p><em>Reset to defaults</em> clears the region's choices.</p>
+
 <h2 id="odesolve">Differential equations in a solve block</h2>
 <p><code>odesolve</code> solves an ordinary differential equation, or a system, written as it appears on paper. The equations use the bold equal sign and primes (<kbd>Ctrl</kbd>+<kbd>'</kbd>) or derivatives:</p>
 <pre><code>Given

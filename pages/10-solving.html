@@ -37,9 +37,10 @@ s = [3; 4]</code></pre>
 <tr><td><code>minimize(f, x, …)</code>, <code>maximize(f, x, …)</code></td><td>The values that make the function <code>f</code> (named without arguments) smallest or largest, subject to the constraints. A block may have no constraints.</td></tr>
 <tr><td><code>find(x, y) →</code></td><td>Solves the equations of the block symbolically; no guesses are needed.</td></tr>
 <tr><td><code>odesolve(y(t), b)</code></td><td>Solves a differential equation; see below.</td></tr>
+<tr><td><code>odesolve(y(t), b) →</code></td><td>Solves the differential equations of the block in closed form; see <a href="#odesolve-symbolic">below</a>.</td></tr>
 </tbody>
 </table>
-<p><code>find</code> and <code>minerr</code> use the Levenberg–Marquardt method on the equation residuals and inequality violations; <code>minimize</code> and <code>maximize</code> a penalty method with BFGS steps. Results depend on the guesses: a guess on the wrong side of an inequality can lead to another root. <code>Given</code>, <code>find</code> and the other closing functions may be written in any letter case.</p>
+<p>By default <code>find</code> and <code>minerr</code> use the Levenberg–Marquardt method on the equation residuals and inequality violations, and <code>minimize</code> and <code>maximize</code> the SLSQP method; the <a href="#solver-tab">Solver tab</a> chooses another algorithm. Results depend on the guesses: a guess on the wrong side of an inequality can lead to another root. <code>Given</code>, <code>find</code> and the other closing functions may be written in any letter case.</p>
 
 <h2 id="solver-tab">Choosing the algorithm: the Solver tab</h2>
 <p>Click in the region of <code>find</code>, <code>minerr</code>, <code>minimize</code> or <code>maximize</code>: the contextual <strong>Solver</strong> tab opens in the ribbon. The choice belongs to that region, is saved with the worksheet and recalculates it.</p>

@@ -1,7 +1,7 @@
-# name	signature	category	summary: functions the calculation engine treats as special forms, so they are not in the application catalogue
+# name	signature	category	summary: functions the calculation engine treats as special forms
 root	root(f(x), x) / root(f(x), x, a, b)	Solving and optimization	A root of f in the variable x, from the guess value of x or on the interval [a, b].
 find	find(x, y, …)	Solving and optimization	Solve block: values of the unknowns that satisfy the constraints of the Given block above.
 minerr	minerr(x, y, …)	Solving and optimization	Solve block: the closest approximation when the constraints cannot all be met.
 minimize	minimize(f, x, …)	Solving and optimization	Solve block: the values of the unknowns that minimise f under the constraints.
 maximize	maximize(f, x, …)	Solving and optimization	Solve block: the values of the unknowns that maximise f under the constraints.
-odesolve	odesolve(vf, b, [intvls])	Differential equations	Solve block: the solution function of an ordinary differential equation system with its conditions, up to the end point b.
+odesolve	odesolve(vf, b, [intvls])	Differential equations	Solve block: solves from the initial condition point to b; intvls optionally sets the number of intervals.

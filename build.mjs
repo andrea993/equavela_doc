@@ -7,7 +7,7 @@
 //   pages/*.html       guide chapters; the first line is `<!-- title: ... -->`, the file name's
 //                      number gives the order
 //   functions.tsv      per function: Julia counterpart and notes (HTML allowed)
-//   special-forms.tsv  functions the engine handles as special forms, absent from the catalogue
+//   special-forms.tsv  functions the engine handles as special forms
 //   assets/*           stylesheet, script and logos, copied as they are
 //   the application    kept by the application repository, whose submodule this repository is
 //                      (at docs/manual; `--app <root>` names another checkout):

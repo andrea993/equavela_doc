@@ -123,7 +123,7 @@
 <section class="function" id="f-odesolve">
 <h3><code>odesolve</code></h3>
 <p class="signature"><code>odesolve(vf, b, [intvls])</code></p>
-<p>Solve block: solves from the initial condition point to b; intvls optionally sets the number of intervals.</p>
+<p>Solve block: solves differential equations; the numerical solution runs from the initial condition point to b, with optional interval count.</p>
 <dl><dt>Notes</dt><dd>Used as the closing call of a solve block of differential equations (see <a href="../solving.html#odesolve">Solving equations</a>): the solution as a function of the independent variable, between the first condition point and <code>b</code>. Initial value problems are integrated with an adaptive Adams/BDF scheme; conditions at two points are met by shooting.</dd></dl>
 </section>
 <section class="function" id="f-Radau">

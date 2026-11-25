@@ -4,4 +4,4 @@ find	find(x, y, …)	Solving and optimization	Solve block: values of the unknown
 minerr	minerr(x, y, …)	Solving and optimization	Solve block: the closest approximation when the constraints cannot all be met.
 minimize	minimize(f, x, …)	Solving and optimization	Solve block: the values of the unknowns that minimise f under the constraints.
 maximize	maximize(f, x, …)	Solving and optimization	Solve block: the values of the unknowns that maximise f under the constraints.
-odesolve	odesolve(vf, b, [intvls])	Differential equations	Solve block: solves from the initial condition point to b; intvls optionally sets the number of intervals.
+odesolve	odesolve(vf, b, [intvls])	Differential equations	Solve block: solves differential equations; the numerical solution runs from the initial condition point to b, with optional interval count.

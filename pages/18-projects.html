@@ -14,13 +14,14 @@
 <h2 id="explorer">The project explorer</h2>
 <p>While a project is open, the explorer on the left shows every folder and file of the project, like the explorer of a code editor:</p>
 <ul>
-<li>A click opens a worksheet in a worksheet tab, a text file (<code>.jl</code>, <code>.toml</code>, <code>.txt</code>, <code>.csv</code>, <code>.md</code>, <code>.json</code>, <code>.yaml</code>) in a text tab, and an image in an image tab. Other files open in their system application with a double click or <em>Open with system app</em>.</li>
+<li>A click opens a worksheet in a worksheet tab, an image in an image tab, and other files as text when their contents are supported. If a file cannot be displayed, the message bar says why; <em>Open with system app</em> can open it in another program.</li>
 <li><em>New worksheet…</em>, <em>New Julia file…</em> and <em>New folder…</em> create in the selected folder; <em>Import files…</em> copies files in.</li>
 <li>Rename with <kbd>F2</kbd>, move by dragging, delete with <kbd>Delete</kbd>. Deleted files go to a project trash and can be restored. Renaming or moving a worksheet updates the references to it.</li>
 <li>Copy files with <kbd>Ctrl</kbd>+<kbd>C</kbd> and paste into a selected folder with <kbd>Ctrl</kbd>+<kbd>V</kbd>. Use <kbd>Ctrl</kbd>+<kbd>X</kbd> to move files or folders, or use the context menu. Save modified files first.</li>
 <li><kbd>Ctrl</kbd>+click and <kbd>Shift</kbd>+click select several entries.</li>
 <li>Unsaved files are marked. <kbd>Ctrl</kbd>+<kbd>S</kbd> on a text tab saves the file.</li>
 </ul>
+<p>Hidden files are visible and ordinary hidden files are included when the project is packed. Version-control data and symbolic links are not packed. Application metadata is visible but protected from explorer operations; symbolic links are shown without following them.</p>
 <p>Text tabs are a small code editor with find and replace, go to line, comment toggling, indentation, automatic indentation and completion for Julia files.</p>
 
 <h2 id="images">Shared images</h2>

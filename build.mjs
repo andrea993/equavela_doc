@@ -229,6 +229,7 @@ ${functions}
 </nav>
 <main>
 ${body}
+<footer class="manual-footer">Mathcad® is a registered trademark of PTC Inc. Equavela is an independent open-source project and is not affiliated with, endorsed by, or sponsored by PTC Inc.</footer>
 </main>
 </div>
 <script>window.MANUAL_ROOT = ${JSON.stringify(up)};</script>

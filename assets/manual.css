@@ -160,6 +160,7 @@ main th { background: var(--panel); }
 .function dt { color: var(--muted); font-size: 14px; font-weight: 600; }
 .function dd { margin: 0; }
 .function:target { background: var(--mark); border-radius: 6px; padding-left: 10px; padding-right: 10px; }
+.manual-footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 
 @media (max-width: 820px) {
   .menu { display: block; margin-left: auto; }

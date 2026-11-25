@@ -174,6 +174,7 @@
 <p>Rosenbrock, stiff.</p>
 <dl><dt>Notes</dt><dd>A Rosenbrock method for stiff systems; <code>AJ</code> as for <code>Stiffb</code>. The table solvers return a matrix with <code>intvls + 1</code> rows: the points in the first column, then one column per unknown. <code>D(x, y)</code> receives the unknowns as a column vector and returns their derivatives; <code>init</code> holds the initial values (a scalar for one equation). <code>x2 &lt; x1</code> integrates backwards. Implemented in Equavela's runtime; Julia users would reach for <code>DifferentialEquations.jl</code>, whose solvers return solution objects rather than tables.</dd></dl>
 </section>
+<footer class="manual-footer">Mathcad® is a registered trademark of PTC Inc. Equavela is an independent open-source project and is not affiliated with, endorsed by, or sponsored by PTC Inc.</footer>
 </main>
 </div>
 <script>window.MANUAL_ROOT = "../";</script>
